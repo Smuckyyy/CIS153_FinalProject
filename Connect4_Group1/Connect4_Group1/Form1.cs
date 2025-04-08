@@ -8,7 +8,7 @@ namespace Connect4_Group1
         }
 
         //========================================
-        //Function for opening singleplayer form
+        //Function for opening Singleplayer form
         //========================================
         public void singleplayerForm()
         {
@@ -26,7 +26,7 @@ namespace Connect4_Group1
         }
 
         //========================================
-        //Function for opening singleplayer form
+        //Function for opening Two-Player form
         //========================================
         public void twoplayerForm()
         {
@@ -39,6 +39,24 @@ namespace Connect4_Group1
             this.Hide();
 
             twoplayerForm.ShowDialog();
+
+            this.Show();
+        }
+
+        //========================================
+        //Function for opening Statistics form
+        //========================================
+        public void statisticsForm()
+        {
+            Statistics statisticsForm = new Statistics(this);
+
+            Statistics statisticsFormToLoad = new Statistics();
+
+            statisticsFormToLoad.statisticsFormPass(this);
+
+            this.Hide();
+
+            statisticsForm.ShowDialog();
 
             this.Show();
         }
@@ -61,7 +79,7 @@ namespace Connect4_Group1
         {
             //Opening Stats form
 
-
+            statisticsForm();
         }
 
         private void btn_Exit_Click(object sender, EventArgs e)
