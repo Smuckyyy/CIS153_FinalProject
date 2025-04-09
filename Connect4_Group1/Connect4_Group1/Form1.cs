@@ -4,8 +4,8 @@ namespace Connect4_Group1
 {
     public partial class Form1 : Form
     {
-        // This struct must be passed to any form that needs to read or write the persistant data
-        static private Data.gameData gameData;
+        // Pass this to any form that needs access to this data
+        Data.gameData gameData = new Data.gameData();
 
         public Form1()
         {
@@ -55,7 +55,7 @@ namespace Connect4_Group1
         //========================================
         public void statisticsForm()
         {
-            Statistics statisticsForm = new Statistics(this);
+            Statistics statisticsForm = new Statistics(this, gameData);
 
             Statistics statisticsFormToLoad = new Statistics();
 

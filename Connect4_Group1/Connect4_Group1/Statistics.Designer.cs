@@ -28,18 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
+            lblStats = new Label();
             SuspendLayout();
+            // 
+            // lblStats
+            // 
+            lblStats.AutoSize = true;
+            lblStats.Font = new Font("Segoe UI", 20F, FontStyle.Bold);
+            lblStats.Location = new Point(27, 34);
+            lblStats.Name = "lblStats";
+            lblStats.Size = new Size(205, 37);
+            lblStats.TabIndex = 0;
+            lblStats.Text = "Shows all stats";
             // 
             // Statistics
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(284, 261);
+            Controls.Add(lblStats);
             Name = "Statistics";
             Text = "Connect 4: Statistics Page";
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
+
+        private Label lblStats;
     }
 }

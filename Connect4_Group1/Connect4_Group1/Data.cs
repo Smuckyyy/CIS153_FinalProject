@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 // save data for the program
 namespace Connect4_Group1
 {
-    internal class Data
+    public class Data
     {
         public struct gameData
         {

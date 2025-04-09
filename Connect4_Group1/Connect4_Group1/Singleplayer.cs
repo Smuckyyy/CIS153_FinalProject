@@ -13,7 +13,7 @@ namespace Connect4_Group1
 {
     public partial class Singleplayer : Form
     {
-            Form1 singleplayerForm;
+        Form1 singleplayerForm;
 
         public Singleplayer()
         {
