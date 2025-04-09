@@ -143,22 +143,22 @@ namespace Connect4_Group1
 
                 if (gameConfig.getCurrentPlayer() == 1)
                 {
-                    // Player 1
+                    // Set the next player to 2
                     gameConfig.setCurrentPlayer(2);
                     gameConfig.setPlayerColor("Red");
                     lblCurrentPlayer.Text = String.Format("Player {0,0} Turn", gameConfig.getCurrentPlayer());
                 }
                 else
                 {
-                    // Player 2
+                    // Set the next player to 1
                     gameConfig.setCurrentPlayer(1);
                     gameConfig.setPlayerColor("Yellow");
                     lblCurrentPlayer.Text = String.Format("Player {0,0} Turn", gameConfig.getCurrentPlayer());
                 }
 
-                pictureBoxPlayerColor.BackColor = Color.FromName(gameConfig.getPlayerColor());
-
                 CheckGameStatus();
+
+                pictureBoxPlayerColor.BackColor = Color.FromName(gameConfig.getPlayerColor());
             }
         }
 

@@ -5,7 +5,7 @@ namespace Connect4_Group1
     public partial class Form1 : Form
     {
         // This struct must be passed to any form that needs to read or write the persistant data
-        private Data.gameData gameData;
+        static private Data.gameData gameData;
 
         public Form1()
         {
