@@ -2,4 +2,4 @@
 
 This repo is a Connect 4 game.
 Made by
-Marcus Rollins and Matt Wishman
+Marcus Rollins, Matt Wishman, and Cecil Younglove
