@@ -11,6 +11,9 @@ namespace Connect4_Group1
         {
             InitializeComponent();
 
+            this.FormBorderStyle = FormBorderStyle.Fixed3D; // Disable the ability to resize
+            this.StartPosition = FormStartPosition.CenterScreen; // Open the form at the center of the users screen
+
             readDataFromFile();
         }
 

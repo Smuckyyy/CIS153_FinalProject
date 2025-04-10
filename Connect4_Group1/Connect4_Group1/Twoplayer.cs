@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -31,6 +32,9 @@ namespace Connect4_Group1
         {
             InitializeComponent();
             twoplayerForm = tp;
+
+            this.FormBorderStyle = FormBorderStyle.Fixed3D; // Disable the ability to resize
+            this.StartPosition = FormStartPosition.CenterScreen; // Open the form at the center of the users screen
 
             try
             {
@@ -141,24 +145,25 @@ namespace Connect4_Group1
                     updateGameCells(6);
                 }
 
-                if (gameConfig.getCurrentPlayer() == 1)
-                {
-                    // Set the next player to 2
-                    gameConfig.setCurrentPlayer(2);
-                    gameConfig.setPlayerColor("Red");
-                    lblCurrentPlayer.Text = String.Format("Player {0,0} Turn", gameConfig.getCurrentPlayer());
-                }
-                else
-                {
-                    // Set the next player to 1
-                    gameConfig.setCurrentPlayer(1);
-                    gameConfig.setPlayerColor("Yellow");
-                    lblCurrentPlayer.Text = String.Format("Player {0,0} Turn", gameConfig.getCurrentPlayer());
-                }
+                // Most of this will need to be updated in CheckGameStatus 4-10-2025
+                //if (gameConfig.getCurrentPlayer() == 1)
+                //{
+                //    // Set the next player to 2
+                //    gameConfig.setCurrentPlayer(2);
+                //    gameConfig.setPlayerColor("Red");
+                //    lblCurrentPlayer.Text = String.Format("Player {0,0} Turn", gameConfig.getCurrentPlayer());
+                //    pictureBoxPlayerColor.BackColor = Color.FromName(gameConfig.getPlayerColor());
+                //}
+                //else
+                //{
+                //    // Set the next player to 1
+                //    gameConfig.setCurrentPlayer(1);
+                //    gameConfig.setPlayerColor("Yellow");
+                //    lblCurrentPlayer.Text = String.Format("Player {0,0} Turn", gameConfig.getCurrentPlayer());
+                //    pictureBoxPlayerColor.BackColor = Color.FromName(gameConfig.getPlayerColor());
+                //}
 
                 CheckGameStatus();
-
-                pictureBoxPlayerColor.BackColor = Color.FromName(gameConfig.getPlayerColor());
             }
         }
 
@@ -312,6 +317,11 @@ namespace Connect4_Group1
 
                 cleanUpGame();
             }
+
+            if (areFourCellsConnected())
+            {
+                MessageBox.Show("Four cells found connected");
+            }
         }
 
         // Clean up
@@ -335,6 +345,60 @@ namespace Connect4_Group1
                     button.Enabled = true;
                 }
             }
+
+            // Start game back with player one
+            gameConfig.setCurrentPlayer(1);
+            gameConfig.setPlayerColor("Yellow");
+            lblCurrentPlayer.Text = String.Format("Player {0,0} Turn", gameConfig.getCurrentPlayer());
+            pictureBoxPlayerColor.BackColor = Color.FromName(gameConfig.getPlayerColor());
+        }
+
+        private bool areFourCellsConnected()
+        {
+            // Checking Horizontal Rows
+            List<List<string>> colorGrid = new List<List<string>>(gameBoard.getRows());
+
+            for (int i = 0; i < gameBoard.getRows(); i++)
+            {
+                List<string> colors = new List<string>(gameBoard.getColumns());
+                for (int j = 0; j < gameBoard.getColumns(); j++)
+                {
+                    if (gameBoard.getCell(i,j).getClaimedStatus() == true)
+                    {
+                        colors.Add(gameBoard.getCell(i,j).getCellColor());
+                    }
+                }
+                colorGrid.Add(colors);
+            }
+
+            int counter = 1;
+
+            for (int i = 0; i < colorGrid.Count; i++)
+            {
+                for (int j = 0; j < colorGrid[i].Count - 1; j++)
+                {
+                    if (colorGrid[i][j] == colorGrid[i][j + 1])
+                    {
+                        counter++;
+
+                        if (counter == 4)
+                        {
+                            return true;
+                        }
+                    }
+                    else
+                    {
+                        // The next color was not the same as the previous one,
+                        // reset the counter , while checking a row
+                        counter = 1;
+                    }
+                }
+                // New row so we set the counter back to 1
+                counter = 1;
+            }
+
+
+            return false;
         }
     }
 }
