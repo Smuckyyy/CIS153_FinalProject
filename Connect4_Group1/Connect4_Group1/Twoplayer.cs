@@ -475,7 +475,8 @@ namespace Connect4_Group1
             }
 
             // Check Diagonally
-            // This would be checking the first cell and going row + 1 and col + 1, So when doing the for loop rows and cols would be - 1 on each check
+            // This would be checking the first cell and going row + 1 and col + 1, So when doing the for loop rows and cols would be - 1 on each check ; Putting more though into this, I don't think this is the solution.
+
 
             return false;
         }

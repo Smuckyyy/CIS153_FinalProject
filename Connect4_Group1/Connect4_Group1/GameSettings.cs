@@ -11,22 +11,21 @@ namespace Connect4_Group1
 {
     internal class GameSettings
     {
-        private bool gameOver;
+        private bool gameOver; // This may be the same as runGame, Redundant?
         private bool playerTurn; 
         private int currentPlayer; // P1 = 1, P2 = 2
         private string playerColor;
         private string playerTwoColor;
         private string AIColor;
-        private bool runGame;
+        private bool runGame; // This may be the same as gameOver, Redundant?
 
         // Constructor for singleplayer
         public GameSettings()
         {
-            this.playerColor = "Yellow";
-            this.playerTwoColor = "Red";
             this.gameOver = false;
             this.playerColor = "Yellow";
             this.AIColor = "Red";
+            this.currentPlayer = 1; // The human will always go first on this
         }
 
         // Constructor for Two Player
