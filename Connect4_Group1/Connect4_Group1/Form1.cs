@@ -97,7 +97,8 @@ namespace Connect4_Group1
         {
             //Opening Exit form
 
-            this.Close();
+            //this.Close();
+            System.Environment.Exit(0);
         }
 
         // Read data from the file

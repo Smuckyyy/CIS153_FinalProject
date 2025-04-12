@@ -30,5 +30,10 @@ namespace Connect4_Group1
         {
             singleplayerForm = sp;
         }
+
+        private void singleBtn_Exit_Click(object sender, EventArgs e)
+        {
+            System.Environment.Exit(0);
+        }
     }
 }
