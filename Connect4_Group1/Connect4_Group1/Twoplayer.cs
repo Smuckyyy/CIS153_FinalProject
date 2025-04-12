@@ -317,20 +317,47 @@ namespace Connect4_Group1
 
                 cleanUpGame();
             }
-
-            if (areFourCellsConnected())
+            else
             {
-                MessageBox.Show("Four cells found connected");
+                if (areFourCellsConnected())
+                {
+                    if (gameConfig.getCurrentPlayer() == 1)
+                    {
+                        lblCurrentPlayer.Text = "Player 1 Wins!";
+
+                        gameConfig.setGameStatus(false);
+                        gameConfig.setGameRunning(false);
+                    }
+                    else if (gameConfig.getCurrentPlayer() == 2)
+                    {
+                        lblCurrentPlayer.Text = "Player 2 Wins!";
+
+                        gameConfig.setGameStatus(false);
+                        gameConfig.setGameRunning(false);
+                    }
+
+                    MessageBox.Show("Four cells found connected, Resetting Game!");
+                    cleanUpGame();
+                }
+                else
+                {
+                    // No connect 4 and the board still has cells
+                    updatePlayerTurn();
+                }
             }
         }
 
         // Clean up
         private void cleanUpGame()
         {
+            // Here we would update the Struct that contains the game data. We would update how many times the game has been played
+            // STATUS - NOT IMPLEMENTED
+
+
             foreach (var cell in gameBoard.getEntireBoard())
             {
                 cell.setClaimStatus(false);
-                cell.setCellColor(SystemColors.ScrollBar.ToString());
+                cell.setCellColor("White");
             }
 
             for (int i = 0; i < buttonClick.Length; i++)
@@ -338,6 +365,7 @@ namespace Connect4_Group1
                 buttonClick[i] = 0;
             }
 
+            // The game is over so set each button enabled status to false
             foreach (Control button in this.Controls)
             {
                 if (button is Button && (string)button.Tag == "btnColumn")
@@ -346,38 +374,50 @@ namespace Connect4_Group1
                 }
             }
 
+            // Implement a New game button that will start the next game
+            //  ~ INSERT CODE HERE FOR THAT LATER ~ 4 / 11 / 2025
+
             // Start game back with player one
             gameConfig.setCurrentPlayer(1);
             gameConfig.setPlayerColor("Yellow");
             lblCurrentPlayer.Text = String.Format("Player {0,0} Turn", gameConfig.getCurrentPlayer());
             pictureBoxPlayerColor.BackColor = Color.FromName(gameConfig.getPlayerColor());
+
+            // For debugging purposes I will reenable the game to continue playing, This can be changed later
+            gameConfig.setGameRunning(true);
         }
 
         private bool areFourCellsConnected()
         {
             // Checking Horizontal Rows
-            List<List<string>> colorGrid = new List<List<string>>(gameBoard.getRows());
 
-            for (int i = 0; i < gameBoard.getRows(); i++)
-            {
-                List<string> colors = new List<string>(gameBoard.getColumns());
-                for (int j = 0; j < gameBoard.getColumns(); j++)
-                {
-                    if (gameBoard.getCell(i,j).getClaimedStatus() == true)
-                    {
-                        colors.Add(gameBoard.getCell(i,j).getCellColor());
-                    }
-                }
-                colorGrid.Add(colors);
-            }
+            // This just takes extra computation time because we can just go over the gameBoard itself
+            // instead of re-creating it this way
+            //List<List<string>> colorGrid = new List<List<string>>(gameBoard.getRows());
 
+            //for (int i = 0; i < gameBoard.getRows(); i++)
+            //{
+            //    List<string> colors = new List<string>(gameBoard.getColumns());
+            //    for (int j = 0; j < gameBoard.getColumns(); j++)
+            //    {
+            //        if (gameBoard.getCell(i,j).getClaimedStatus() == true)
+            //        {
+            //            colors.Add(gameBoard.getCell(i,j).getCellColor());
+            //        }
+            //    }
+            //    colorGrid.Add(colors);
+            //}
+
+            // Counter is 1 because we are counting the first cell
             int counter = 1;
 
-            for (int i = 0; i < colorGrid.Count; i++)
+            // Go over each row in the gameBoard
+            for (int rows = 0; rows < gameBoard.getRows(); rows++)
             {
-                for (int j = 0; j < colorGrid[i].Count - 1; j++)
+                // Go over each cell inside of the gameBoard - 1 because we are checking for cells in advance
+                for (int cols = 0; cols < gameBoard.getColumns() - 1; cols++)
                 {
-                    if (colorGrid[i][j] == colorGrid[i][j + 1])
+                    if ((gameBoard.getCell(rows,cols).getCellColor() != Color.White.ToString() && gameBoard.getCell(rows, cols + 1).getCellColor() != Color.White.ToString()) && gameBoard.getCell(rows,cols).getCellColor() == gameBoard.getCell(rows, cols + 1).getCellColor())
                     {
                         counter++;
 
@@ -388,17 +428,78 @@ namespace Connect4_Group1
                     }
                     else
                     {
-                        // The next color was not the same as the previous one,
-                        // reset the counter , while checking a row
                         counter = 1;
                     }
+
+
+                    //if (colorGrid[i][j] == colorGrid[i][j + 1])
+                    //{
+                    //    counter++;
+
+                    //    if (counter == 4)
+                    //    {
+                    //        return true;
+                    //    }
+                    //}
+                    //else
+                    //{
+                    //    // The next color was not the same as the previous one,
+                    //    // reset the counter , while checking a row
+                    //    counter = 1;
+                    //}
                 }
                 // New row so we set the counter back to 1
                 counter = 1;
             }
 
+            // Check for a Connect 4 Vertically now
+            // Go through each row and search + 1 of each column
+
+            // Check each column
+            for (int cols = 0; cols < gameBoard.getColumns(); cols++)
+            {
+                // Checks every element in row[0 -> 5] - 1
+                for (int rows = 0; rows < gameBoard.getRows() - 1; rows++)
+                {
+                    if ((gameBoard.getCell(rows, cols).getCellColor() != Color.White.ToString() && gameBoard.getCell(rows + 1, cols).getCellColor() != Color.White.ToString()) && gameBoard.getCell(rows, cols).getCellColor() == gameBoard.getCell(rows + 1, cols).getCellColor())
+                    {
+                        counter++;
+
+                        if (counter == 4)
+                        {
+                            return true;
+                        }
+                    }
+                }
+                counter = 1;
+            }
+
+            // Check Diagonally
+            // This would be checking the first cell and going row + 1 and col + 1, So when doing the for loop rows and cols would be - 1 on each check
 
             return false;
+        }
+
+        private void updatePlayerTurn()
+        {
+            if (gameConfig.getCurrentPlayer() == 1)
+            {
+                //Set the next player to player two
+                gameConfig.setCurrentPlayer(2);
+                gameConfig.setPlayerColor("Red");
+                lblCurrentPlayer.Text = String.Format("Player {0,0} Turn", gameConfig.getCurrentPlayer());
+                pictureBoxPlayerColor.BackColor = Color.FromName(gameConfig.getPlayerColor());
+            }
+            else if (gameConfig.getCurrentPlayer() == 2)
+            {
+                // Set the next player to player one
+                gameConfig.setCurrentPlayer(1);
+                gameConfig.setPlayerColor("Yellow");
+                lblCurrentPlayer.Text = String.Format("Player {0,0} Turn", gameConfig.getCurrentPlayer());
+                pictureBoxPlayerColor.BackColor = Color.FromName(gameConfig.getPlayerColor());
+
+
+            }
         }
     }
 }

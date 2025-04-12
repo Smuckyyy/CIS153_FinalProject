@@ -22,6 +22,8 @@ namespace Connect4_Group1
         // Constructor for singleplayer
         public GameSettings()
         {
+            this.playerColor = "Yellow";
+            this.playerTwoColor = "Red";
             this.gameOver = false;
             this.playerColor = "Yellow";
             this.AIColor = "Red";
