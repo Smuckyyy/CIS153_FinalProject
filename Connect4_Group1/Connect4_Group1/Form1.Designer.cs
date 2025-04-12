@@ -33,6 +33,7 @@
             btn_Twoplayer = new Button();
             btn_Exit = new Button();
             btn_Stats = new Button();
+            label2 = new Label();
             SuspendLayout();
             // 
             // label1
@@ -100,12 +101,23 @@
             btn_Stats.UseVisualStyleBackColor = false;
             btn_Stats.Click += btn_Stats_Click;
             // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Viner Hand ITC", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label2.Location = new Point(12, 160);
+            label2.Name = "label2";
+            label2.Size = new Size(249, 26);
+            label2.TabIndex = 5;
+            label2.Text = "Music provided by NAME HERE";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.MediumSlateBlue;
-            ClientSize = new Size(800, 171);
+            ClientSize = new Size(800, 192);
+            Controls.Add(label2);
             Controls.Add(btn_Stats);
             Controls.Add(btn_Exit);
             Controls.Add(btn_Twoplayer);
@@ -124,5 +136,6 @@
         private Button btn_Twoplayer;
         private Button btn_Exit;
         private Button btn_Stats;
+        private Label label2;
     }
 }

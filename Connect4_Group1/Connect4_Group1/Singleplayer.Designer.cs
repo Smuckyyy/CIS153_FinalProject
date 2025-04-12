@@ -52,7 +52,7 @@
             ClientSize = new Size(800, 450);
             Controls.Add(singleBtn_Exit);
             Name = "Singleplayer";
-            Text = "Connect 4: Singleplayer Game";
+            Text = "Connect 4: Single Player Game";
             ResumeLayout(false);
         }
 

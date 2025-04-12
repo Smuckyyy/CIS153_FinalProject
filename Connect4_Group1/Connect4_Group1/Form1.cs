@@ -1,4 +1,5 @@
 //REMINDER: We must include a header. - Cecil
+using System.Media;
 using static Connect4_Group1.Data;
 
 namespace Connect4_Group1
@@ -8,12 +9,19 @@ namespace Connect4_Group1
         // Pass this to any form that needs access to this data
         Data.gameData gameData = new Data.gameData();
 
+        //Create objects needed for sound-playing
+        Stream soundFile;
+        SoundPlayer player;
+
         public Form1()
         {
             InitializeComponent();
 
             this.FormBorderStyle = FormBorderStyle.Fixed3D; // Disable the ability to resize
             this.StartPosition = FormStartPosition.CenterScreen; // Open the form at the center of the users screen
+
+            //Begin looping the music
+            
 
             readDataFromFile();
         }

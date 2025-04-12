@@ -20,7 +20,7 @@ namespace Connect4_Group1
             InitializeComponent();
             /*this.FormBorderStyle = FormBorderStyle.Fixed3D; // Disable the ability to resize
             this.StartPosition = FormStartPosition.CenterScreen; // Open the form at the center of the users screen*/
-            //The commented-out code doesn't work. Why is that?
+            //The commented-out code didn't work when I tested it (before commenting it out, of course). Why is that?
         }
 
         public Singleplayer(Form1 sp)
