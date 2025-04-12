@@ -11,7 +11,7 @@ namespace Connect4_Group1
 
         //Create objects needed for sound-playing
         Stream soundFile;
-        SoundPlayer player;
+        SoundPlayer player = new SoundPlayer();
 
         public Form1()
         {
@@ -21,7 +21,9 @@ namespace Connect4_Group1
             this.StartPosition = FormStartPosition.CenterScreen; // Open the form at the center of the users screen
 
             //Begin looping the music
-            
+            checkBoxMusic.Checked = true;
+            musicHandler();
+
 
             readDataFromFile();
         }
@@ -142,6 +144,25 @@ namespace Connect4_Group1
                 // This will pop if the file is not found
                 MessageBox.Show(ex.Message);
             };
+        }
+
+        private void checkBoxMusic_Click(object sender, EventArgs e)
+        {
+            musicHandler();
+        }
+
+        private void musicHandler()
+        {
+            if (checkBoxMusic.Checked)
+            {
+                // The location where the .exe is located
+                player.SoundLocation = @".\Background.wav";
+                player.PlayLooping();
+            }
+            else
+            {
+                player.Stop();
+            }
         }
     }
 }

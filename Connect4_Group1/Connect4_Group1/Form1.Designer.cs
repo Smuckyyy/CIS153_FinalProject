@@ -34,6 +34,7 @@
             btn_Exit = new Button();
             btn_Stats = new Button();
             label2 = new Label();
+            checkBoxMusic = new CheckBox();
             SuspendLayout();
             // 
             // label1
@@ -107,9 +108,22 @@
             label2.Font = new Font("Viner Hand ITC", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label2.Location = new Point(12, 160);
             label2.Name = "label2";
-            label2.Size = new Size(249, 26);
+            label2.Size = new Size(282, 26);
             label2.TabIndex = 5;
-            label2.Text = "Music provided by NAME HERE";
+            label2.Tag = "https://soundcloud.com/zbofficialmusic/moonlit-lake";
+            label2.Text = "Music provided by: ZB - SoundCloud";
+            label2.Click += checkBoxMusic_Click;
+            // 
+            // checkBoxMusic
+            // 
+            checkBoxMusic.AutoSize = true;
+            checkBoxMusic.Location = new Point(705, 167);
+            checkBoxMusic.Name = "checkBoxMusic";
+            checkBoxMusic.Size = new Size(83, 19);
+            checkBoxMusic.TabIndex = 6;
+            checkBoxMusic.Text = "Play Music";
+            checkBoxMusic.UseVisualStyleBackColor = true;
+            checkBoxMusic.Click += checkBoxMusic_Click;
             // 
             // Form1
             // 
@@ -117,6 +131,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.MediumSlateBlue;
             ClientSize = new Size(800, 192);
+            Controls.Add(checkBoxMusic);
             Controls.Add(label2);
             Controls.Add(btn_Stats);
             Controls.Add(btn_Exit);
@@ -137,5 +152,6 @@
         private Button btn_Exit;
         private Button btn_Stats;
         private Label label2;
+        private CheckBox checkBoxMusic;
     }
 }
