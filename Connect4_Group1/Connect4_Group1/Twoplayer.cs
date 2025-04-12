@@ -477,6 +477,24 @@ namespace Connect4_Group1
             // Check Diagonally
             // This would be checking the first cell and going row + 1 and col + 1, So when doing the for loop rows and cols would be - 1 on each check ; Putting more though into this, I don't think this is the solution.
 
+            // How this would work
+            // {0,0}, {1,1}, {2,2} , {3,3} would be diagonally
+
+            for (int i = 0; i < gameBoard.getRows() - 3; i++)
+            {
+                for (int j = 0; j < gameBoard.getColumns() - 3; j++)
+                {
+                    if (gameBoard.getCell(i, j).getCellColor() != Color.White.ToString())
+                    {
+                        // This checks left to upper right, We need another check going left to bottom right 
+                        if (gameBoard.getCell(i, j).getCellColor() == gameBoard.getCell(i + 1, j + 1).getCellColor() && gameBoard.getCell(i + 1, j + 1).getCellColor() == gameBoard.getCell(i + 2, j + 2).getCellColor() && gameBoard.getCell(i + 2, j + 2).getCellColor() == gameBoard.getCell(i + 3, j + 3).getCellColor())
+                        {
+                            return true;
+                        }
+                    }
+                }
+            }
+
 
             return false;
         }
