@@ -47,8 +47,8 @@ namespace Connect4_Group1
 
                 gameConfig.setGameRunning(true); // Setup completed so the game can proceed
 
-            } 
-            catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
                 gameConfig.setGameRunning(false);
@@ -417,7 +417,7 @@ namespace Connect4_Group1
                 // Go over each cell inside of the gameBoard - 1 because we are checking for cells in advance
                 for (int cols = 0; cols < gameBoard.getColumns() - 1; cols++)
                 {
-                    if ((gameBoard.getCell(rows,cols).getCellColor() != Color.White.ToString() && gameBoard.getCell(rows, cols + 1).getCellColor() != Color.White.ToString()) && gameBoard.getCell(rows,cols).getCellColor() == gameBoard.getCell(rows, cols + 1).getCellColor())
+                    if ((gameBoard.getCell(rows, cols).getCellColor() != Color.White.ToString() && gameBoard.getCell(rows, cols + 1).getCellColor() != Color.White.ToString()) && gameBoard.getCell(rows, cols).getCellColor() == gameBoard.getCell(rows, cols + 1).getCellColor())
                     {
                         counter++;
 
@@ -519,6 +519,16 @@ namespace Connect4_Group1
 
 
             }
+        }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void doubleBtn_Exit_Click(object sender, EventArgs e)
+        {
+            System.Environment.Exit(0);
         }
     }
 }

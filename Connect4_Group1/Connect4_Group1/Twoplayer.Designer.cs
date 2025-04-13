@@ -43,48 +43,48 @@
             PictureBox pictureBox13;
             PictureBox pictureBox14;
             PictureBox pictureBox15;
-            pictureBox16 = new PictureBox();
-            pictureBox17 = new PictureBox();
-            pictureBox18 = new PictureBox();
-            pictureBox19 = new PictureBox();
-            pictureBox20 = new PictureBox();
-            pictureBox21 = new PictureBox();
-            pictureBox22 = new PictureBox();
-            pictureBox23 = new PictureBox();
-            pictureBox24 = new PictureBox();
-            pictureBox25 = new PictureBox();
-            pictureBox26 = new PictureBox();
-            pictureBox27 = new PictureBox();
-            pictureBox28 = new PictureBox();
-            pictureBox29 = new PictureBox();
-            pictureBox30 = new PictureBox();
-            pictureBox31 = new PictureBox();
-            pictureBox32 = new PictureBox();
-            pictureBox33 = new PictureBox();
-            pictureBox34 = new PictureBox();
-            pictureBox35 = new PictureBox();
-            pictureBox36 = new PictureBox();
-            pictureBox37 = new PictureBox();
-            pictureBox38 = new PictureBox();
-            pictureBox39 = new PictureBox();
-            pictureBox40 = new PictureBox();
-            pictureBox41 = new PictureBox();
-            pictureBox42 = new PictureBox();
-            pictureBox43 = new PictureBox();
-            pictureBox44 = new PictureBox();
-            pictureBox45 = new PictureBox();
-            pictureBox46 = new PictureBox();
-            pictureBox47 = new PictureBox();
-            pictureBox48 = new PictureBox();
-            pictureBox49 = new PictureBox();
-            pictureBox50 = new PictureBox();
-            pictureBox51 = new PictureBox();
-            pictureBox52 = new PictureBox();
-            pictureBox53 = new PictureBox();
-            pictureBox54 = new PictureBox();
-            pictureBox55 = new PictureBox();
-            pictureBox56 = new PictureBox();
-            pictureBox57 = new PictureBox();
+            doubPic_f1 = new PictureBox();
+            doubPic_f2 = new PictureBox();
+            doubPic_f3 = new PictureBox();
+            doubPic_f4 = new PictureBox();
+            doubPic_f5 = new PictureBox();
+            doubPic_f6 = new PictureBox();
+            doubPic_f7 = new PictureBox();
+            doubPic_e1 = new PictureBox();
+            doubPic_e2 = new PictureBox();
+            doubPic_e3 = new PictureBox();
+            doubPic_e4 = new PictureBox();
+            doubPic_e5 = new PictureBox();
+            doubPic_e6 = new PictureBox();
+            doubPic_e7 = new PictureBox();
+            doubPic_d1 = new PictureBox();
+            doubPic_d2 = new PictureBox();
+            doubPic_d3 = new PictureBox();
+            doubPic_d4 = new PictureBox();
+            doubPic_d5 = new PictureBox();
+            doubPic_d6 = new PictureBox();
+            doubPic_d7 = new PictureBox();
+            doubPic_3a = new PictureBox();
+            doubPic_3b = new PictureBox();
+            doubPic_3c = new PictureBox();
+            doubPic_3d = new PictureBox();
+            doubPic_3e = new PictureBox();
+            doubPic_3f = new PictureBox();
+            doubPic_3g = new PictureBox();
+            doubPic_2a = new PictureBox();
+            doubPic_2b = new PictureBox();
+            doubPic_2c = new PictureBox();
+            doubPic_2d = new PictureBox();
+            doubPic_2e = new PictureBox();
+            doubPic_2f = new PictureBox();
+            doubPic_2g = new PictureBox();
+            doubPic_1a = new PictureBox();
+            doubPic_1b = new PictureBox();
+            doubPic_1c = new PictureBox();
+            doubPic_1d = new PictureBox();
+            doubPic_1e = new PictureBox();
+            doubPic_1f = new PictureBox();
+            doubPic_1g = new PictureBox();
             btnCol1 = new Button();
             btnCol2 = new Button();
             btnCol3 = new Button();
@@ -94,6 +94,7 @@
             btnCol7 = new Button();
             pictureBoxPlayerColor = new PictureBox();
             lblCurrentPlayer = new Label();
+            doubleBtn_Exit = new Button();
             pictureBox1 = new PictureBox();
             pictureBox2 = new PictureBox();
             pictureBox3 = new PictureBox();
@@ -124,54 +125,54 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox13).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox14).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox15).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox16).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox17).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox18).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox19).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox20).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox21).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox22).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox23).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox24).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox25).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox26).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox27).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox28).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox29).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox30).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox31).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox32).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox33).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox34).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox35).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox36).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox37).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox38).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox39).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox40).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox41).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox42).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox43).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox44).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox45).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox46).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox47).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox48).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox49).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox50).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox51).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox52).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox53).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox54).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox55).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox56).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox57).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)doubPic_f1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)doubPic_f2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)doubPic_f3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)doubPic_f4).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)doubPic_f5).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)doubPic_f6).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)doubPic_f7).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)doubPic_e1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)doubPic_e2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)doubPic_e3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)doubPic_e4).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)doubPic_e5).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)doubPic_e6).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)doubPic_e7).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)doubPic_d1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)doubPic_d2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)doubPic_d3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)doubPic_d4).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)doubPic_d5).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)doubPic_d6).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)doubPic_d7).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)doubPic_3a).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)doubPic_3b).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)doubPic_3c).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)doubPic_3d).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)doubPic_3e).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)doubPic_3f).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)doubPic_3g).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)doubPic_2a).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)doubPic_2b).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)doubPic_2c).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)doubPic_2d).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)doubPic_2e).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)doubPic_2f).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)doubPic_2g).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)doubPic_1a).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)doubPic_1b).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)doubPic_1c).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)doubPic_1d).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)doubPic_1e).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)doubPic_1f).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)doubPic_1g).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBoxPlayerColor).BeginInit();
             SuspendLayout();
             // 
             // pictureBox1
             // 
-            pictureBox1.BackColor = Color.Blue;
+            pictureBox1.BackColor = Color.Black;
             pictureBox1.Location = new Point(117, 87);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(10, 400);
@@ -180,7 +181,7 @@
             // 
             // pictureBox2
             // 
-            pictureBox2.BackColor = Color.Blue;
+            pictureBox2.BackColor = Color.Black;
             pictureBox2.Location = new Point(117, 477);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(400, 10);
@@ -189,7 +190,7 @@
             // 
             // pictureBox3
             // 
-            pictureBox3.BackColor = Color.Blue;
+            pictureBox3.BackColor = Color.Black;
             pictureBox3.Location = new Point(117, 87);
             pictureBox3.Name = "pictureBox3";
             pictureBox3.Size = new Size(400, 10);
@@ -198,16 +199,17 @@
             // 
             // pictureBox4
             // 
-            pictureBox4.BackColor = Color.Blue;
+            pictureBox4.BackColor = Color.Black;
             pictureBox4.Location = new Point(507, 87);
             pictureBox4.Name = "pictureBox4";
             pictureBox4.Size = new Size(10, 400);
             pictureBox4.TabIndex = 3;
             pictureBox4.TabStop = false;
+            pictureBox4.Click += pictureBox4_Click;
             // 
             // pictureBox5
             // 
-            pictureBox5.BackColor = Color.Blue;
+            pictureBox5.BackColor = Color.Black;
             pictureBox5.Location = new Point(117, 156);
             pictureBox5.Name = "pictureBox5";
             pictureBox5.Size = new Size(400, 10);
@@ -216,7 +218,7 @@
             // 
             // pictureBox6
             // 
-            pictureBox6.BackColor = Color.Blue;
+            pictureBox6.BackColor = Color.Black;
             pictureBox6.Location = new Point(117, 219);
             pictureBox6.Name = "pictureBox6";
             pictureBox6.Size = new Size(400, 10);
@@ -225,7 +227,7 @@
             // 
             // pictureBox7
             // 
-            pictureBox7.BackColor = Color.Blue;
+            pictureBox7.BackColor = Color.Black;
             pictureBox7.Location = new Point(117, 282);
             pictureBox7.Name = "pictureBox7";
             pictureBox7.Size = new Size(400, 10);
@@ -234,7 +236,7 @@
             // 
             // pictureBox8
             // 
-            pictureBox8.BackColor = Color.Blue;
+            pictureBox8.BackColor = Color.Black;
             pictureBox8.Location = new Point(117, 345);
             pictureBox8.Name = "pictureBox8";
             pictureBox8.Size = new Size(400, 10);
@@ -243,7 +245,7 @@
             // 
             // pictureBox9
             // 
-            pictureBox9.BackColor = Color.Blue;
+            pictureBox9.BackColor = Color.Black;
             pictureBox9.Location = new Point(117, 408);
             pictureBox9.Name = "pictureBox9";
             pictureBox9.Size = new Size(400, 10);
@@ -252,7 +254,7 @@
             // 
             // pictureBox10
             // 
-            pictureBox10.BackColor = Color.Blue;
+            pictureBox10.BackColor = Color.Black;
             pictureBox10.Location = new Point(175, 87);
             pictureBox10.Name = "pictureBox10";
             pictureBox10.Size = new Size(10, 400);
@@ -261,7 +263,7 @@
             // 
             // pictureBox11
             // 
-            pictureBox11.BackColor = Color.Blue;
+            pictureBox11.BackColor = Color.Black;
             pictureBox11.Location = new Point(230, 87);
             pictureBox11.Name = "pictureBox11";
             pictureBox11.Size = new Size(10, 400);
@@ -270,7 +272,7 @@
             // 
             // pictureBox12
             // 
-            pictureBox12.BackColor = Color.Blue;
+            pictureBox12.BackColor = Color.Black;
             pictureBox12.Location = new Point(285, 87);
             pictureBox12.Name = "pictureBox12";
             pictureBox12.Size = new Size(10, 400);
@@ -279,7 +281,7 @@
             // 
             // pictureBox13
             // 
-            pictureBox13.BackColor = Color.Blue;
+            pictureBox13.BackColor = Color.Black;
             pictureBox13.Location = new Point(340, 87);
             pictureBox13.Name = "pictureBox13";
             pictureBox13.Size = new Size(10, 400);
@@ -288,7 +290,7 @@
             // 
             // pictureBox14
             // 
-            pictureBox14.BackColor = Color.Blue;
+            pictureBox14.BackColor = Color.Black;
             pictureBox14.Location = new Point(395, 87);
             pictureBox14.Name = "pictureBox14";
             pictureBox14.Size = new Size(10, 400);
@@ -297,432 +299,432 @@
             // 
             // pictureBox15
             // 
-            pictureBox15.BackColor = Color.Blue;
+            pictureBox15.BackColor = Color.Black;
             pictureBox15.Location = new Point(450, 87);
             pictureBox15.Name = "pictureBox15";
             pictureBox15.Size = new Size(10, 400);
             pictureBox15.TabIndex = 14;
             pictureBox15.TabStop = false;
             // 
-            // pictureBox16
-            // 
-            pictureBox16.BackColor = Color.White;
-            pictureBox16.Location = new Point(127, 417);
-            pictureBox16.Name = "pictureBox16";
-            pictureBox16.Size = new Size(50, 62);
-            pictureBox16.TabIndex = 15;
-            pictureBox16.TabStop = false;
-            pictureBox16.Tag = "0,0";
-            // 
-            // pictureBox17
-            // 
-            pictureBox17.BackColor = Color.White;
-            pictureBox17.Location = new Point(182, 417);
-            pictureBox17.Name = "pictureBox17";
-            pictureBox17.Size = new Size(50, 62);
-            pictureBox17.TabIndex = 15;
-            pictureBox17.TabStop = false;
-            pictureBox17.Tag = "0,1";
-            // 
-            // pictureBox18
-            // 
-            pictureBox18.BackColor = Color.White;
-            pictureBox18.Location = new Point(237, 417);
-            pictureBox18.Name = "pictureBox18";
-            pictureBox18.Size = new Size(50, 62);
-            pictureBox18.TabIndex = 15;
-            pictureBox18.TabStop = false;
-            pictureBox18.Tag = "0,2";
-            // 
-            // pictureBox19
-            // 
-            pictureBox19.BackColor = Color.White;
-            pictureBox19.Location = new Point(292, 417);
-            pictureBox19.Name = "pictureBox19";
-            pictureBox19.Size = new Size(50, 62);
-            pictureBox19.TabIndex = 15;
-            pictureBox19.TabStop = false;
-            pictureBox19.Tag = "0,3";
-            // 
-            // pictureBox20
-            // 
-            pictureBox20.BackColor = Color.White;
-            pictureBox20.Location = new Point(347, 417);
-            pictureBox20.Name = "pictureBox20";
-            pictureBox20.Size = new Size(50, 62);
-            pictureBox20.TabIndex = 15;
-            pictureBox20.TabStop = false;
-            pictureBox20.Tag = "0,4";
-            // 
-            // pictureBox21
-            // 
-            pictureBox21.BackColor = Color.White;
-            pictureBox21.Location = new Point(402, 417);
-            pictureBox21.Name = "pictureBox21";
-            pictureBox21.Size = new Size(50, 62);
-            pictureBox21.TabIndex = 15;
-            pictureBox21.TabStop = false;
-            pictureBox21.Tag = "0,5";
-            // 
-            // pictureBox22
-            // 
-            pictureBox22.BackColor = Color.White;
-            pictureBox22.Location = new Point(457, 417);
-            pictureBox22.Name = "pictureBox22";
-            pictureBox22.Size = new Size(50, 62);
-            pictureBox22.TabIndex = 15;
-            pictureBox22.TabStop = false;
-            pictureBox22.Tag = "0,6";
-            // 
-            // pictureBox23
-            // 
-            pictureBox23.BackColor = Color.White;
-            pictureBox23.Location = new Point(128, 353);
-            pictureBox23.Name = "pictureBox23";
-            pictureBox23.Size = new Size(50, 57);
-            pictureBox23.TabIndex = 15;
-            pictureBox23.TabStop = false;
-            pictureBox23.Tag = "1,0";
-            // 
-            // pictureBox24
-            // 
-            pictureBox24.BackColor = Color.White;
-            pictureBox24.Location = new Point(183, 353);
-            pictureBox24.Name = "pictureBox24";
-            pictureBox24.Size = new Size(50, 57);
-            pictureBox24.TabIndex = 15;
-            pictureBox24.TabStop = false;
-            pictureBox24.Tag = "1,1";
-            // 
-            // pictureBox25
-            // 
-            pictureBox25.BackColor = Color.White;
-            pictureBox25.Location = new Point(238, 353);
-            pictureBox25.Name = "pictureBox25";
-            pictureBox25.Size = new Size(50, 57);
-            pictureBox25.TabIndex = 15;
-            pictureBox25.TabStop = false;
-            pictureBox25.Tag = "1,2";
-            // 
-            // pictureBox26
-            // 
-            pictureBox26.BackColor = Color.White;
-            pictureBox26.Location = new Point(293, 353);
-            pictureBox26.Name = "pictureBox26";
-            pictureBox26.Size = new Size(50, 57);
-            pictureBox26.TabIndex = 15;
-            pictureBox26.TabStop = false;
-            pictureBox26.Tag = "1,3";
-            // 
-            // pictureBox27
-            // 
-            pictureBox27.BackColor = Color.White;
-            pictureBox27.Location = new Point(348, 353);
-            pictureBox27.Name = "pictureBox27";
-            pictureBox27.Size = new Size(50, 57);
-            pictureBox27.TabIndex = 15;
-            pictureBox27.TabStop = false;
-            pictureBox27.Tag = "1,4";
-            // 
-            // pictureBox28
-            // 
-            pictureBox28.BackColor = Color.White;
-            pictureBox28.Location = new Point(403, 353);
-            pictureBox28.Name = "pictureBox28";
-            pictureBox28.Size = new Size(50, 57);
-            pictureBox28.TabIndex = 15;
-            pictureBox28.TabStop = false;
-            pictureBox28.Tag = "1,5";
-            // 
-            // pictureBox29
-            // 
-            pictureBox29.BackColor = Color.White;
-            pictureBox29.Location = new Point(458, 353);
-            pictureBox29.Name = "pictureBox29";
-            pictureBox29.Size = new Size(50, 57);
-            pictureBox29.TabIndex = 15;
-            pictureBox29.TabStop = false;
-            pictureBox29.Tag = "1,6";
-            // 
-            // pictureBox30
-            // 
-            pictureBox30.BackColor = Color.White;
-            pictureBox30.Location = new Point(127, 288);
-            pictureBox30.Name = "pictureBox30";
-            pictureBox30.Size = new Size(50, 59);
-            pictureBox30.TabIndex = 15;
-            pictureBox30.TabStop = false;
-            pictureBox30.Tag = "2,0";
-            // 
-            // pictureBox31
-            // 
-            pictureBox31.BackColor = Color.White;
-            pictureBox31.Location = new Point(182, 288);
-            pictureBox31.Name = "pictureBox31";
-            pictureBox31.Size = new Size(50, 59);
-            pictureBox31.TabIndex = 15;
-            pictureBox31.TabStop = false;
-            pictureBox31.Tag = "2,1";
-            // 
-            // pictureBox32
-            // 
-            pictureBox32.BackColor = Color.White;
-            pictureBox32.Location = new Point(237, 288);
-            pictureBox32.Name = "pictureBox32";
-            pictureBox32.Size = new Size(50, 59);
-            pictureBox32.TabIndex = 15;
-            pictureBox32.TabStop = false;
-            pictureBox32.Tag = "2,2";
-            // 
-            // pictureBox33
-            // 
-            pictureBox33.BackColor = Color.White;
-            pictureBox33.Location = new Point(292, 288);
-            pictureBox33.Name = "pictureBox33";
-            pictureBox33.Size = new Size(50, 59);
-            pictureBox33.TabIndex = 15;
-            pictureBox33.TabStop = false;
-            pictureBox33.Tag = "2,3";
-            // 
-            // pictureBox34
-            // 
-            pictureBox34.BackColor = Color.White;
-            pictureBox34.Location = new Point(347, 288);
-            pictureBox34.Name = "pictureBox34";
-            pictureBox34.Size = new Size(50, 59);
-            pictureBox34.TabIndex = 15;
-            pictureBox34.TabStop = false;
-            pictureBox34.Tag = "2,4";
-            // 
-            // pictureBox35
-            // 
-            pictureBox35.BackColor = Color.White;
-            pictureBox35.Location = new Point(402, 288);
-            pictureBox35.Name = "pictureBox35";
-            pictureBox35.Size = new Size(50, 59);
-            pictureBox35.TabIndex = 15;
-            pictureBox35.TabStop = false;
-            pictureBox35.Tag = "2,5";
-            // 
-            // pictureBox36
-            // 
-            pictureBox36.BackColor = Color.White;
-            pictureBox36.Location = new Point(457, 288);
-            pictureBox36.Name = "pictureBox36";
-            pictureBox36.Size = new Size(50, 59);
-            pictureBox36.TabIndex = 15;
-            pictureBox36.TabStop = false;
-            pictureBox36.Tag = "2,6";
-            // 
-            // pictureBox37
-            // 
-            pictureBox37.BackColor = Color.White;
-            pictureBox37.Location = new Point(127, 227);
-            pictureBox37.Name = "pictureBox37";
-            pictureBox37.Size = new Size(50, 58);
-            pictureBox37.TabIndex = 15;
-            pictureBox37.TabStop = false;
-            pictureBox37.Tag = "3,0";
-            // 
-            // pictureBox38
-            // 
-            pictureBox38.BackColor = Color.White;
-            pictureBox38.Location = new Point(182, 227);
-            pictureBox38.Name = "pictureBox38";
-            pictureBox38.Size = new Size(50, 58);
-            pictureBox38.TabIndex = 15;
-            pictureBox38.TabStop = false;
-            pictureBox38.Tag = "3,1";
-            // 
-            // pictureBox39
-            // 
-            pictureBox39.BackColor = Color.White;
-            pictureBox39.Location = new Point(237, 227);
-            pictureBox39.Name = "pictureBox39";
-            pictureBox39.Size = new Size(50, 58);
-            pictureBox39.TabIndex = 15;
-            pictureBox39.TabStop = false;
-            pictureBox39.Tag = "3,2";
-            // 
-            // pictureBox40
-            // 
-            pictureBox40.BackColor = Color.White;
-            pictureBox40.Location = new Point(292, 227);
-            pictureBox40.Name = "pictureBox40";
-            pictureBox40.Size = new Size(50, 58);
-            pictureBox40.TabIndex = 15;
-            pictureBox40.TabStop = false;
-            pictureBox40.Tag = "3,3";
-            // 
-            // pictureBox41
-            // 
-            pictureBox41.BackColor = Color.White;
-            pictureBox41.Location = new Point(347, 227);
-            pictureBox41.Name = "pictureBox41";
-            pictureBox41.Size = new Size(50, 58);
-            pictureBox41.TabIndex = 15;
-            pictureBox41.TabStop = false;
-            pictureBox41.Tag = "3,4";
-            // 
-            // pictureBox42
-            // 
-            pictureBox42.BackColor = Color.White;
-            pictureBox42.Location = new Point(402, 227);
-            pictureBox42.Name = "pictureBox42";
-            pictureBox42.Size = new Size(50, 58);
-            pictureBox42.TabIndex = 15;
-            pictureBox42.TabStop = false;
-            pictureBox42.Tag = "3,5";
-            // 
-            // pictureBox43
-            // 
-            pictureBox43.BackColor = Color.White;
-            pictureBox43.Location = new Point(457, 227);
-            pictureBox43.Name = "pictureBox43";
-            pictureBox43.Size = new Size(50, 58);
-            pictureBox43.TabIndex = 15;
-            pictureBox43.TabStop = false;
-            pictureBox43.Tag = "3,6";
-            // 
-            // pictureBox44
-            // 
-            pictureBox44.BackColor = Color.White;
-            pictureBox44.Location = new Point(127, 165);
-            pictureBox44.Name = "pictureBox44";
-            pictureBox44.Size = new Size(50, 57);
-            pictureBox44.TabIndex = 15;
-            pictureBox44.TabStop = false;
-            pictureBox44.Tag = "4,0";
-            // 
-            // pictureBox45
-            // 
-            pictureBox45.BackColor = Color.White;
-            pictureBox45.Location = new Point(182, 165);
-            pictureBox45.Name = "pictureBox45";
-            pictureBox45.Size = new Size(50, 57);
-            pictureBox45.TabIndex = 15;
-            pictureBox45.TabStop = false;
-            pictureBox45.Tag = "4,1";
-            // 
-            // pictureBox46
-            // 
-            pictureBox46.BackColor = Color.White;
-            pictureBox46.Location = new Point(237, 165);
-            pictureBox46.Name = "pictureBox46";
-            pictureBox46.Size = new Size(50, 57);
-            pictureBox46.TabIndex = 15;
-            pictureBox46.TabStop = false;
-            pictureBox46.Tag = "4,2";
-            // 
-            // pictureBox47
-            // 
-            pictureBox47.BackColor = Color.White;
-            pictureBox47.Location = new Point(292, 165);
-            pictureBox47.Name = "pictureBox47";
-            pictureBox47.Size = new Size(50, 57);
-            pictureBox47.TabIndex = 15;
-            pictureBox47.TabStop = false;
-            pictureBox47.Tag = "4,3";
-            // 
-            // pictureBox48
-            // 
-            pictureBox48.BackColor = Color.White;
-            pictureBox48.Location = new Point(347, 165);
-            pictureBox48.Name = "pictureBox48";
-            pictureBox48.Size = new Size(50, 57);
-            pictureBox48.TabIndex = 15;
-            pictureBox48.TabStop = false;
-            pictureBox48.Tag = "4,4";
-            // 
-            // pictureBox49
-            // 
-            pictureBox49.BackColor = Color.White;
-            pictureBox49.Location = new Point(402, 165);
-            pictureBox49.Name = "pictureBox49";
-            pictureBox49.Size = new Size(50, 57);
-            pictureBox49.TabIndex = 15;
-            pictureBox49.TabStop = false;
-            pictureBox49.Tag = "4,5";
-            // 
-            // pictureBox50
-            // 
-            pictureBox50.BackColor = Color.White;
-            pictureBox50.Location = new Point(457, 165);
-            pictureBox50.Name = "pictureBox50";
-            pictureBox50.Size = new Size(50, 57);
-            pictureBox50.TabIndex = 15;
-            pictureBox50.TabStop = false;
-            pictureBox50.Tag = "4,6";
-            // 
-            // pictureBox51
-            // 
-            pictureBox51.BackColor = Color.White;
-            pictureBox51.Location = new Point(127, 97);
-            pictureBox51.Name = "pictureBox51";
-            pictureBox51.Size = new Size(50, 61);
-            pictureBox51.TabIndex = 15;
-            pictureBox51.TabStop = false;
-            pictureBox51.Tag = "5,0";
-            // 
-            // pictureBox52
-            // 
-            pictureBox52.BackColor = Color.White;
-            pictureBox52.Location = new Point(182, 97);
-            pictureBox52.Name = "pictureBox52";
-            pictureBox52.Size = new Size(50, 61);
-            pictureBox52.TabIndex = 15;
-            pictureBox52.TabStop = false;
-            pictureBox52.Tag = "5,1";
-            // 
-            // pictureBox53
-            // 
-            pictureBox53.BackColor = Color.White;
-            pictureBox53.Location = new Point(237, 97);
-            pictureBox53.Name = "pictureBox53";
-            pictureBox53.Size = new Size(50, 61);
-            pictureBox53.TabIndex = 15;
-            pictureBox53.TabStop = false;
-            pictureBox53.Tag = "5,2";
-            // 
-            // pictureBox54
-            // 
-            pictureBox54.BackColor = Color.White;
-            pictureBox54.Location = new Point(292, 97);
-            pictureBox54.Name = "pictureBox54";
-            pictureBox54.Size = new Size(50, 61);
-            pictureBox54.TabIndex = 15;
-            pictureBox54.TabStop = false;
-            pictureBox54.Tag = "5,3";
-            // 
-            // pictureBox55
-            // 
-            pictureBox55.BackColor = Color.White;
-            pictureBox55.Location = new Point(347, 97);
-            pictureBox55.Name = "pictureBox55";
-            pictureBox55.Size = new Size(50, 61);
-            pictureBox55.TabIndex = 15;
-            pictureBox55.TabStop = false;
-            pictureBox55.Tag = "5,4";
-            // 
-            // pictureBox56
-            // 
-            pictureBox56.BackColor = Color.White;
-            pictureBox56.Location = new Point(402, 97);
-            pictureBox56.Name = "pictureBox56";
-            pictureBox56.Size = new Size(50, 61);
-            pictureBox56.TabIndex = 15;
-            pictureBox56.TabStop = false;
-            pictureBox56.Tag = "5,5";
-            // 
-            // pictureBox57
-            // 
-            pictureBox57.BackColor = Color.White;
-            pictureBox57.Location = new Point(457, 97);
-            pictureBox57.Name = "pictureBox57";
-            pictureBox57.Size = new Size(50, 61);
-            pictureBox57.TabIndex = 15;
-            pictureBox57.TabStop = false;
-            pictureBox57.Tag = "5,6";
+            // doubPic_f1
+            // 
+            doubPic_f1.BackColor = Color.White;
+            doubPic_f1.Location = new Point(127, 417);
+            doubPic_f1.Name = "doubPic_f1";
+            doubPic_f1.Size = new Size(50, 62);
+            doubPic_f1.TabIndex = 15;
+            doubPic_f1.TabStop = false;
+            doubPic_f1.Tag = "0,0";
+            // 
+            // doubPic_f2
+            // 
+            doubPic_f2.BackColor = Color.White;
+            doubPic_f2.Location = new Point(182, 417);
+            doubPic_f2.Name = "doubPic_f2";
+            doubPic_f2.Size = new Size(50, 62);
+            doubPic_f2.TabIndex = 15;
+            doubPic_f2.TabStop = false;
+            doubPic_f2.Tag = "0,1";
+            // 
+            // doubPic_f3
+            // 
+            doubPic_f3.BackColor = Color.White;
+            doubPic_f3.Location = new Point(237, 417);
+            doubPic_f3.Name = "doubPic_f3";
+            doubPic_f3.Size = new Size(50, 62);
+            doubPic_f3.TabIndex = 15;
+            doubPic_f3.TabStop = false;
+            doubPic_f3.Tag = "0,2";
+            // 
+            // doubPic_f4
+            // 
+            doubPic_f4.BackColor = Color.White;
+            doubPic_f4.Location = new Point(292, 417);
+            doubPic_f4.Name = "doubPic_f4";
+            doubPic_f4.Size = new Size(50, 62);
+            doubPic_f4.TabIndex = 15;
+            doubPic_f4.TabStop = false;
+            doubPic_f4.Tag = "0,3";
+            // 
+            // doubPic_f5
+            // 
+            doubPic_f5.BackColor = Color.White;
+            doubPic_f5.Location = new Point(347, 417);
+            doubPic_f5.Name = "doubPic_f5";
+            doubPic_f5.Size = new Size(50, 62);
+            doubPic_f5.TabIndex = 15;
+            doubPic_f5.TabStop = false;
+            doubPic_f5.Tag = "0,4";
+            // 
+            // doubPic_f6
+            // 
+            doubPic_f6.BackColor = Color.White;
+            doubPic_f6.Location = new Point(402, 417);
+            doubPic_f6.Name = "doubPic_f6";
+            doubPic_f6.Size = new Size(50, 62);
+            doubPic_f6.TabIndex = 15;
+            doubPic_f6.TabStop = false;
+            doubPic_f6.Tag = "0,5";
+            // 
+            // doubPic_f7
+            // 
+            doubPic_f7.BackColor = Color.White;
+            doubPic_f7.Location = new Point(457, 417);
+            doubPic_f7.Name = "doubPic_f7";
+            doubPic_f7.Size = new Size(50, 62);
+            doubPic_f7.TabIndex = 15;
+            doubPic_f7.TabStop = false;
+            doubPic_f7.Tag = "0,6";
+            // 
+            // doubPic_e1
+            // 
+            doubPic_e1.BackColor = Color.White;
+            doubPic_e1.Location = new Point(128, 353);
+            doubPic_e1.Name = "doubPic_e1";
+            doubPic_e1.Size = new Size(50, 57);
+            doubPic_e1.TabIndex = 15;
+            doubPic_e1.TabStop = false;
+            doubPic_e1.Tag = "1,0";
+            // 
+            // doubPic_e2
+            // 
+            doubPic_e2.BackColor = Color.White;
+            doubPic_e2.Location = new Point(183, 353);
+            doubPic_e2.Name = "doubPic_e2";
+            doubPic_e2.Size = new Size(50, 57);
+            doubPic_e2.TabIndex = 15;
+            doubPic_e2.TabStop = false;
+            doubPic_e2.Tag = "1,1";
+            // 
+            // doubPic_e3
+            // 
+            doubPic_e3.BackColor = Color.White;
+            doubPic_e3.Location = new Point(238, 353);
+            doubPic_e3.Name = "doubPic_e3";
+            doubPic_e3.Size = new Size(50, 57);
+            doubPic_e3.TabIndex = 15;
+            doubPic_e3.TabStop = false;
+            doubPic_e3.Tag = "1,2";
+            // 
+            // doubPic_e4
+            // 
+            doubPic_e4.BackColor = Color.White;
+            doubPic_e4.Location = new Point(293, 353);
+            doubPic_e4.Name = "doubPic_e4";
+            doubPic_e4.Size = new Size(50, 57);
+            doubPic_e4.TabIndex = 15;
+            doubPic_e4.TabStop = false;
+            doubPic_e4.Tag = "1,3";
+            // 
+            // doubPic_e5
+            // 
+            doubPic_e5.BackColor = Color.White;
+            doubPic_e5.Location = new Point(348, 353);
+            doubPic_e5.Name = "doubPic_e5";
+            doubPic_e5.Size = new Size(50, 57);
+            doubPic_e5.TabIndex = 15;
+            doubPic_e5.TabStop = false;
+            doubPic_e5.Tag = "1,4";
+            // 
+            // doubPic_e6
+            // 
+            doubPic_e6.BackColor = Color.White;
+            doubPic_e6.Location = new Point(403, 353);
+            doubPic_e6.Name = "doubPic_e6";
+            doubPic_e6.Size = new Size(50, 57);
+            doubPic_e6.TabIndex = 15;
+            doubPic_e6.TabStop = false;
+            doubPic_e6.Tag = "1,5";
+            // 
+            // doubPic_e7
+            // 
+            doubPic_e7.BackColor = Color.White;
+            doubPic_e7.Location = new Point(458, 353);
+            doubPic_e7.Name = "doubPic_e7";
+            doubPic_e7.Size = new Size(50, 57);
+            doubPic_e7.TabIndex = 15;
+            doubPic_e7.TabStop = false;
+            doubPic_e7.Tag = "1,6";
+            // 
+            // doubPic_d1
+            // 
+            doubPic_d1.BackColor = Color.White;
+            doubPic_d1.Location = new Point(127, 288);
+            doubPic_d1.Name = "doubPic_d1";
+            doubPic_d1.Size = new Size(50, 59);
+            doubPic_d1.TabIndex = 15;
+            doubPic_d1.TabStop = false;
+            doubPic_d1.Tag = "2,0";
+            // 
+            // doubPic_d2
+            // 
+            doubPic_d2.BackColor = Color.White;
+            doubPic_d2.Location = new Point(182, 288);
+            doubPic_d2.Name = "doubPic_d2";
+            doubPic_d2.Size = new Size(50, 59);
+            doubPic_d2.TabIndex = 15;
+            doubPic_d2.TabStop = false;
+            doubPic_d2.Tag = "2,1";
+            // 
+            // doubPic_d3
+            // 
+            doubPic_d3.BackColor = Color.White;
+            doubPic_d3.Location = new Point(237, 288);
+            doubPic_d3.Name = "doubPic_d3";
+            doubPic_d3.Size = new Size(50, 59);
+            doubPic_d3.TabIndex = 15;
+            doubPic_d3.TabStop = false;
+            doubPic_d3.Tag = "2,2";
+            // 
+            // doubPic_d4
+            // 
+            doubPic_d4.BackColor = Color.White;
+            doubPic_d4.Location = new Point(292, 288);
+            doubPic_d4.Name = "doubPic_d4";
+            doubPic_d4.Size = new Size(50, 59);
+            doubPic_d4.TabIndex = 15;
+            doubPic_d4.TabStop = false;
+            doubPic_d4.Tag = "2,3";
+            // 
+            // doubPic_d5
+            // 
+            doubPic_d5.BackColor = Color.White;
+            doubPic_d5.Location = new Point(347, 288);
+            doubPic_d5.Name = "doubPic_d5";
+            doubPic_d5.Size = new Size(50, 59);
+            doubPic_d5.TabIndex = 15;
+            doubPic_d5.TabStop = false;
+            doubPic_d5.Tag = "2,4";
+            // 
+            // doubPic_d6
+            // 
+            doubPic_d6.BackColor = Color.White;
+            doubPic_d6.Location = new Point(402, 288);
+            doubPic_d6.Name = "doubPic_d6";
+            doubPic_d6.Size = new Size(50, 59);
+            doubPic_d6.TabIndex = 15;
+            doubPic_d6.TabStop = false;
+            doubPic_d6.Tag = "2,5";
+            // 
+            // doubPic_d7
+            // 
+            doubPic_d7.BackColor = Color.White;
+            doubPic_d7.Location = new Point(457, 288);
+            doubPic_d7.Name = "doubPic_d7";
+            doubPic_d7.Size = new Size(50, 59);
+            doubPic_d7.TabIndex = 15;
+            doubPic_d7.TabStop = false;
+            doubPic_d7.Tag = "2,6";
+            // 
+            // doubPic_3a
+            // 
+            doubPic_3a.BackColor = Color.White;
+            doubPic_3a.Location = new Point(127, 227);
+            doubPic_3a.Name = "doubPic_3a";
+            doubPic_3a.Size = new Size(50, 58);
+            doubPic_3a.TabIndex = 15;
+            doubPic_3a.TabStop = false;
+            doubPic_3a.Tag = "3,0";
+            // 
+            // doubPic_3b
+            // 
+            doubPic_3b.BackColor = Color.White;
+            doubPic_3b.Location = new Point(182, 227);
+            doubPic_3b.Name = "doubPic_3b";
+            doubPic_3b.Size = new Size(50, 58);
+            doubPic_3b.TabIndex = 15;
+            doubPic_3b.TabStop = false;
+            doubPic_3b.Tag = "3,1";
+            // 
+            // doubPic_3c
+            // 
+            doubPic_3c.BackColor = Color.White;
+            doubPic_3c.Location = new Point(237, 227);
+            doubPic_3c.Name = "doubPic_3c";
+            doubPic_3c.Size = new Size(50, 58);
+            doubPic_3c.TabIndex = 15;
+            doubPic_3c.TabStop = false;
+            doubPic_3c.Tag = "3,2";
+            // 
+            // doubPic_3d
+            // 
+            doubPic_3d.BackColor = Color.White;
+            doubPic_3d.Location = new Point(292, 227);
+            doubPic_3d.Name = "doubPic_3d";
+            doubPic_3d.Size = new Size(50, 58);
+            doubPic_3d.TabIndex = 15;
+            doubPic_3d.TabStop = false;
+            doubPic_3d.Tag = "3,3";
+            // 
+            // doubPic_3e
+            // 
+            doubPic_3e.BackColor = Color.White;
+            doubPic_3e.Location = new Point(347, 227);
+            doubPic_3e.Name = "doubPic_3e";
+            doubPic_3e.Size = new Size(50, 58);
+            doubPic_3e.TabIndex = 15;
+            doubPic_3e.TabStop = false;
+            doubPic_3e.Tag = "3,4";
+            // 
+            // doubPic_3f
+            // 
+            doubPic_3f.BackColor = Color.White;
+            doubPic_3f.Location = new Point(402, 227);
+            doubPic_3f.Name = "doubPic_3f";
+            doubPic_3f.Size = new Size(50, 58);
+            doubPic_3f.TabIndex = 15;
+            doubPic_3f.TabStop = false;
+            doubPic_3f.Tag = "3,5";
+            // 
+            // doubPic_3g
+            // 
+            doubPic_3g.BackColor = Color.White;
+            doubPic_3g.Location = new Point(457, 227);
+            doubPic_3g.Name = "doubPic_3g";
+            doubPic_3g.Size = new Size(50, 58);
+            doubPic_3g.TabIndex = 15;
+            doubPic_3g.TabStop = false;
+            doubPic_3g.Tag = "3,6";
+            // 
+            // doubPic_2a
+            // 
+            doubPic_2a.BackColor = Color.White;
+            doubPic_2a.Location = new Point(127, 165);
+            doubPic_2a.Name = "doubPic_2a";
+            doubPic_2a.Size = new Size(50, 57);
+            doubPic_2a.TabIndex = 15;
+            doubPic_2a.TabStop = false;
+            doubPic_2a.Tag = "4,0";
+            // 
+            // doubPic_2b
+            // 
+            doubPic_2b.BackColor = Color.White;
+            doubPic_2b.Location = new Point(182, 165);
+            doubPic_2b.Name = "doubPic_2b";
+            doubPic_2b.Size = new Size(50, 57);
+            doubPic_2b.TabIndex = 15;
+            doubPic_2b.TabStop = false;
+            doubPic_2b.Tag = "4,1";
+            // 
+            // doubPic_2c
+            // 
+            doubPic_2c.BackColor = Color.White;
+            doubPic_2c.Location = new Point(237, 165);
+            doubPic_2c.Name = "doubPic_2c";
+            doubPic_2c.Size = new Size(50, 57);
+            doubPic_2c.TabIndex = 15;
+            doubPic_2c.TabStop = false;
+            doubPic_2c.Tag = "4,2";
+            // 
+            // doubPic_2d
+            // 
+            doubPic_2d.BackColor = Color.White;
+            doubPic_2d.Location = new Point(292, 165);
+            doubPic_2d.Name = "doubPic_2d";
+            doubPic_2d.Size = new Size(50, 57);
+            doubPic_2d.TabIndex = 15;
+            doubPic_2d.TabStop = false;
+            doubPic_2d.Tag = "4,3";
+            // 
+            // doubPic_2e
+            // 
+            doubPic_2e.BackColor = Color.White;
+            doubPic_2e.Location = new Point(347, 165);
+            doubPic_2e.Name = "doubPic_2e";
+            doubPic_2e.Size = new Size(50, 57);
+            doubPic_2e.TabIndex = 15;
+            doubPic_2e.TabStop = false;
+            doubPic_2e.Tag = "4,4";
+            // 
+            // doubPic_2f
+            // 
+            doubPic_2f.BackColor = Color.White;
+            doubPic_2f.Location = new Point(402, 165);
+            doubPic_2f.Name = "doubPic_2f";
+            doubPic_2f.Size = new Size(50, 57);
+            doubPic_2f.TabIndex = 15;
+            doubPic_2f.TabStop = false;
+            doubPic_2f.Tag = "4,5";
+            // 
+            // doubPic_2g
+            // 
+            doubPic_2g.BackColor = Color.White;
+            doubPic_2g.Location = new Point(457, 165);
+            doubPic_2g.Name = "doubPic_2g";
+            doubPic_2g.Size = new Size(50, 57);
+            doubPic_2g.TabIndex = 15;
+            doubPic_2g.TabStop = false;
+            doubPic_2g.Tag = "4,6";
+            // 
+            // doubPic_1a
+            // 
+            doubPic_1a.BackColor = Color.White;
+            doubPic_1a.Location = new Point(127, 97);
+            doubPic_1a.Name = "doubPic_1a";
+            doubPic_1a.Size = new Size(50, 61);
+            doubPic_1a.TabIndex = 15;
+            doubPic_1a.TabStop = false;
+            doubPic_1a.Tag = "5,0";
+            // 
+            // doubPic_1b
+            // 
+            doubPic_1b.BackColor = Color.White;
+            doubPic_1b.Location = new Point(182, 97);
+            doubPic_1b.Name = "doubPic_1b";
+            doubPic_1b.Size = new Size(50, 61);
+            doubPic_1b.TabIndex = 15;
+            doubPic_1b.TabStop = false;
+            doubPic_1b.Tag = "5,1";
+            // 
+            // doubPic_1c
+            // 
+            doubPic_1c.BackColor = Color.White;
+            doubPic_1c.Location = new Point(237, 97);
+            doubPic_1c.Name = "doubPic_1c";
+            doubPic_1c.Size = new Size(50, 61);
+            doubPic_1c.TabIndex = 15;
+            doubPic_1c.TabStop = false;
+            doubPic_1c.Tag = "5,2";
+            // 
+            // doubPic_1d
+            // 
+            doubPic_1d.BackColor = Color.White;
+            doubPic_1d.Location = new Point(292, 97);
+            doubPic_1d.Name = "doubPic_1d";
+            doubPic_1d.Size = new Size(50, 61);
+            doubPic_1d.TabIndex = 15;
+            doubPic_1d.TabStop = false;
+            doubPic_1d.Tag = "5,3";
+            // 
+            // doubPic_1e
+            // 
+            doubPic_1e.BackColor = Color.White;
+            doubPic_1e.Location = new Point(347, 97);
+            doubPic_1e.Name = "doubPic_1e";
+            doubPic_1e.Size = new Size(50, 61);
+            doubPic_1e.TabIndex = 15;
+            doubPic_1e.TabStop = false;
+            doubPic_1e.Tag = "5,4";
+            // 
+            // doubPic_1f
+            // 
+            doubPic_1f.BackColor = Color.White;
+            doubPic_1f.Location = new Point(402, 97);
+            doubPic_1f.Name = "doubPic_1f";
+            doubPic_1f.Size = new Size(50, 61);
+            doubPic_1f.TabIndex = 15;
+            doubPic_1f.TabStop = false;
+            doubPic_1f.Tag = "5,5";
+            // 
+            // doubPic_1g
+            // 
+            doubPic_1g.BackColor = Color.White;
+            doubPic_1g.Location = new Point(457, 97);
+            doubPic_1g.Name = "doubPic_1g";
+            doubPic_1g.Size = new Size(50, 61);
+            doubPic_1g.TabIndex = 15;
+            doubPic_1g.TabStop = false;
+            doubPic_1g.Tag = "5,6";
             // 
             // btnCol1
             // 
@@ -818,12 +820,26 @@
             lblCurrentPlayer.TabIndex = 18;
             lblCurrentPlayer.Text = "Player 1 First";
             // 
+            // doubleBtn_Exit
+            // 
+            doubleBtn_Exit.BackColor = Color.Silver;
+            doubleBtn_Exit.Font = new Font("Viner Hand ITC", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            doubleBtn_Exit.ForeColor = Color.MediumBlue;
+            doubleBtn_Exit.Location = new Point(465, 12);
+            doubleBtn_Exit.Name = "doubleBtn_Exit";
+            doubleBtn_Exit.Size = new Size(158, 39);
+            doubleBtn_Exit.TabIndex = 19;
+            doubleBtn_Exit.Text = "Exit";
+            doubleBtn_Exit.UseVisualStyleBackColor = false;
+            doubleBtn_Exit.Click += doubleBtn_Exit_Click;
+            // 
             // Twoplayer
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Silver;
             ClientSize = new Size(630, 582);
+            Controls.Add(doubleBtn_Exit);
             Controls.Add(lblCurrentPlayer);
             Controls.Add(pictureBoxPlayerColor);
             Controls.Add(btnCol7);
@@ -848,48 +864,48 @@
             Controls.Add(pictureBox7);
             Controls.Add(pictureBox6);
             Controls.Add(pictureBox5);
-            Controls.Add(pictureBox57);
-            Controls.Add(pictureBox50);
-            Controls.Add(pictureBox43);
-            Controls.Add(pictureBox36);
-            Controls.Add(pictureBox29);
-            Controls.Add(pictureBox22);
-            Controls.Add(pictureBox56);
-            Controls.Add(pictureBox49);
-            Controls.Add(pictureBox42);
-            Controls.Add(pictureBox35);
-            Controls.Add(pictureBox28);
-            Controls.Add(pictureBox21);
-            Controls.Add(pictureBox55);
-            Controls.Add(pictureBox48);
-            Controls.Add(pictureBox41);
-            Controls.Add(pictureBox34);
-            Controls.Add(pictureBox27);
-            Controls.Add(pictureBox20);
-            Controls.Add(pictureBox54);
-            Controls.Add(pictureBox47);
-            Controls.Add(pictureBox40);
-            Controls.Add(pictureBox33);
-            Controls.Add(pictureBox26);
-            Controls.Add(pictureBox19);
-            Controls.Add(pictureBox53);
-            Controls.Add(pictureBox46);
-            Controls.Add(pictureBox39);
-            Controls.Add(pictureBox32);
-            Controls.Add(pictureBox25);
-            Controls.Add(pictureBox18);
-            Controls.Add(pictureBox52);
-            Controls.Add(pictureBox45);
-            Controls.Add(pictureBox38);
-            Controls.Add(pictureBox31);
-            Controls.Add(pictureBox24);
-            Controls.Add(pictureBox17);
-            Controls.Add(pictureBox51);
-            Controls.Add(pictureBox44);
-            Controls.Add(pictureBox37);
-            Controls.Add(pictureBox30);
-            Controls.Add(pictureBox23);
-            Controls.Add(pictureBox16);
+            Controls.Add(doubPic_1g);
+            Controls.Add(doubPic_2g);
+            Controls.Add(doubPic_3g);
+            Controls.Add(doubPic_d7);
+            Controls.Add(doubPic_e7);
+            Controls.Add(doubPic_f7);
+            Controls.Add(doubPic_1f);
+            Controls.Add(doubPic_2f);
+            Controls.Add(doubPic_3f);
+            Controls.Add(doubPic_d6);
+            Controls.Add(doubPic_e6);
+            Controls.Add(doubPic_f6);
+            Controls.Add(doubPic_1e);
+            Controls.Add(doubPic_2e);
+            Controls.Add(doubPic_3e);
+            Controls.Add(doubPic_d5);
+            Controls.Add(doubPic_e5);
+            Controls.Add(doubPic_f5);
+            Controls.Add(doubPic_1d);
+            Controls.Add(doubPic_2d);
+            Controls.Add(doubPic_3d);
+            Controls.Add(doubPic_d4);
+            Controls.Add(doubPic_e4);
+            Controls.Add(doubPic_f4);
+            Controls.Add(doubPic_1c);
+            Controls.Add(doubPic_2c);
+            Controls.Add(doubPic_3c);
+            Controls.Add(doubPic_d3);
+            Controls.Add(doubPic_e3);
+            Controls.Add(doubPic_f3);
+            Controls.Add(doubPic_1b);
+            Controls.Add(doubPic_2b);
+            Controls.Add(doubPic_3b);
+            Controls.Add(doubPic_d2);
+            Controls.Add(doubPic_e2);
+            Controls.Add(doubPic_f2);
+            Controls.Add(doubPic_1a);
+            Controls.Add(doubPic_2a);
+            Controls.Add(doubPic_3a);
+            Controls.Add(doubPic_d1);
+            Controls.Add(doubPic_e1);
+            Controls.Add(doubPic_f1);
             FormBorderStyle = FormBorderStyle.Fixed3D;
             Name = "Twoplayer";
             Text = "Connect 4: Two-Player Game";
@@ -908,48 +924,48 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox13).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox14).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox15).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox16).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox17).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox18).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox19).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox20).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox21).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox22).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox23).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox24).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox25).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox26).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox27).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox28).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox29).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox30).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox31).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox32).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox33).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox34).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox35).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox36).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox37).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox38).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox39).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox40).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox41).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox42).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox43).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox44).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox45).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox46).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox47).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox48).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox49).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox50).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox51).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox52).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox53).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox54).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox55).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox56).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox57).EndInit();
+            ((System.ComponentModel.ISupportInitialize)doubPic_f1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)doubPic_f2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)doubPic_f3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)doubPic_f4).EndInit();
+            ((System.ComponentModel.ISupportInitialize)doubPic_f5).EndInit();
+            ((System.ComponentModel.ISupportInitialize)doubPic_f6).EndInit();
+            ((System.ComponentModel.ISupportInitialize)doubPic_f7).EndInit();
+            ((System.ComponentModel.ISupportInitialize)doubPic_e1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)doubPic_e2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)doubPic_e3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)doubPic_e4).EndInit();
+            ((System.ComponentModel.ISupportInitialize)doubPic_e5).EndInit();
+            ((System.ComponentModel.ISupportInitialize)doubPic_e6).EndInit();
+            ((System.ComponentModel.ISupportInitialize)doubPic_e7).EndInit();
+            ((System.ComponentModel.ISupportInitialize)doubPic_d1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)doubPic_d2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)doubPic_d3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)doubPic_d4).EndInit();
+            ((System.ComponentModel.ISupportInitialize)doubPic_d5).EndInit();
+            ((System.ComponentModel.ISupportInitialize)doubPic_d6).EndInit();
+            ((System.ComponentModel.ISupportInitialize)doubPic_d7).EndInit();
+            ((System.ComponentModel.ISupportInitialize)doubPic_3a).EndInit();
+            ((System.ComponentModel.ISupportInitialize)doubPic_3b).EndInit();
+            ((System.ComponentModel.ISupportInitialize)doubPic_3c).EndInit();
+            ((System.ComponentModel.ISupportInitialize)doubPic_3d).EndInit();
+            ((System.ComponentModel.ISupportInitialize)doubPic_3e).EndInit();
+            ((System.ComponentModel.ISupportInitialize)doubPic_3f).EndInit();
+            ((System.ComponentModel.ISupportInitialize)doubPic_3g).EndInit();
+            ((System.ComponentModel.ISupportInitialize)doubPic_2a).EndInit();
+            ((System.ComponentModel.ISupportInitialize)doubPic_2b).EndInit();
+            ((System.ComponentModel.ISupportInitialize)doubPic_2c).EndInit();
+            ((System.ComponentModel.ISupportInitialize)doubPic_2d).EndInit();
+            ((System.ComponentModel.ISupportInitialize)doubPic_2e).EndInit();
+            ((System.ComponentModel.ISupportInitialize)doubPic_2f).EndInit();
+            ((System.ComponentModel.ISupportInitialize)doubPic_2g).EndInit();
+            ((System.ComponentModel.ISupportInitialize)doubPic_1a).EndInit();
+            ((System.ComponentModel.ISupportInitialize)doubPic_1b).EndInit();
+            ((System.ComponentModel.ISupportInitialize)doubPic_1c).EndInit();
+            ((System.ComponentModel.ISupportInitialize)doubPic_1d).EndInit();
+            ((System.ComponentModel.ISupportInitialize)doubPic_1e).EndInit();
+            ((System.ComponentModel.ISupportInitialize)doubPic_1f).EndInit();
+            ((System.ComponentModel.ISupportInitialize)doubPic_1g).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBoxPlayerColor).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -957,48 +973,48 @@
 
         #endregion
 
-        private PictureBox pictureBox16;
-        private PictureBox pictureBox17;
-        private PictureBox pictureBox18;
-        private PictureBox pictureBox19;
-        private PictureBox pictureBox20;
-        private PictureBox pictureBox21;
-        private PictureBox pictureBox22;
-        private PictureBox pictureBox23;
-        private PictureBox pictureBox24;
-        private PictureBox pictureBox25;
-        private PictureBox pictureBox26;
-        private PictureBox pictureBox27;
-        private PictureBox pictureBox28;
-        private PictureBox pictureBox29;
-        private PictureBox pictureBox30;
-        private PictureBox pictureBox31;
-        private PictureBox pictureBox32;
-        private PictureBox pictureBox33;
-        private PictureBox pictureBox34;
-        private PictureBox pictureBox35;
-        private PictureBox pictureBox36;
-        private PictureBox pictureBox37;
-        private PictureBox pictureBox38;
-        private PictureBox pictureBox39;
-        private PictureBox pictureBox40;
-        private PictureBox pictureBox41;
-        private PictureBox pictureBox42;
-        private PictureBox pictureBox43;
-        private PictureBox pictureBox44;
-        private PictureBox pictureBox45;
-        private PictureBox pictureBox46;
-        private PictureBox pictureBox47;
-        private PictureBox pictureBox48;
-        private PictureBox pictureBox49;
-        private PictureBox pictureBox50;
-        private PictureBox pictureBox51;
-        private PictureBox pictureBox52;
-        private PictureBox pictureBox53;
-        private PictureBox pictureBox54;
-        private PictureBox pictureBox55;
-        private PictureBox pictureBox56;
-        private PictureBox pictureBox57;
+        private PictureBox doubPic_f1;
+        private PictureBox doubPic_f2;
+        private PictureBox doubPic_f3;
+        private PictureBox doubPic_f4;
+        private PictureBox doubPic_f5;
+        private PictureBox doubPic_f6;
+        private PictureBox doubPic_f7;
+        private PictureBox doubPic_e1;
+        private PictureBox doubPic_e2;
+        private PictureBox doubPic_e3;
+        private PictureBox doubPic_e4;
+        private PictureBox doubPic_e5;
+        private PictureBox doubPic_e6;
+        private PictureBox doubPic_e7;
+        private PictureBox doubPic_d1;
+        private PictureBox doubPic_d2;
+        private PictureBox doubPic_d3;
+        private PictureBox doubPic_d4;
+        private PictureBox doubPic_d5;
+        private PictureBox doubPic_d6;
+        private PictureBox doubPic_d7;
+        private PictureBox doubPic_3a;
+        private PictureBox doubPic_3b;
+        private PictureBox doubPic_3c;
+        private PictureBox doubPic_3d;
+        private PictureBox doubPic_3e;
+        private PictureBox doubPic_3f;
+        private PictureBox doubPic_3g;
+        private PictureBox doubPic_2a;
+        private PictureBox doubPic_2b;
+        private PictureBox doubPic_2c;
+        private PictureBox doubPic_2d;
+        private PictureBox doubPic_2e;
+        private PictureBox doubPic_2f;
+        private PictureBox doubPic_2g;
+        private PictureBox doubPic_1a;
+        private PictureBox doubPic_1b;
+        private PictureBox doubPic_1c;
+        private PictureBox doubPic_1d;
+        private PictureBox doubPic_1e;
+        private PictureBox doubPic_1f;
+        private PictureBox doubPic_1g;
         private Button btnCol1;
         private Button btnCol2;
         private Button btnCol3;
@@ -1008,5 +1024,6 @@
         private Button btnCol7;
         private PictureBox pictureBoxPlayerColor;
         private Label lblCurrentPlayer;
+        private Button doubleBtn_Exit;
     }
 }
