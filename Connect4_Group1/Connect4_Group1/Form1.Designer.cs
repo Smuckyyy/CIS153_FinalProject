@@ -112,7 +112,6 @@
             label2.TabIndex = 5;
             label2.Tag = "https://soundcloud.com/zbofficialmusic/moonlit-lake";
             label2.Text = "Music provided by: ZB - SoundCloud";
-            label2.Click += checkBoxMusic_Click;
             // 
             // checkBoxMusic
             // 

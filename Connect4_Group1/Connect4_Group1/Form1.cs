@@ -1,5 +1,6 @@
 //REMINDER: We must include a header. - Cecil
 using System.Media;
+using System.Resources;
 using static Connect4_Group1.Data;
 
 namespace Connect4_Group1
@@ -119,7 +120,7 @@ namespace Connect4_Group1
             // https://learn.microsoft.com/en-us/dotnet/csharp/how-to/parse-strings-using-split
             // ================================================================================
 
-            const string fileName = "Connect4UserStats.txt";
+            const string fileName = @"..\..\..\Resources\Connect4UserStats.txt";
 
             try
             {
@@ -156,7 +157,8 @@ namespace Connect4_Group1
             if (checkBoxMusic.Checked)
             {
                 // The location where the .exe is located
-                player.SoundLocation = @".\Background.wav";
+                player.SoundLocation = @"..\..\..\Resources\Background.wav";
+
                 player.PlayLooping();
             }
             else
