@@ -180,6 +180,18 @@ namespace Connect4_Group1
                             gameBoard.getCell(i, currentCol).setCellColor(gameConfig.getPlayerColor());
                             gameBoard.getCell(i, currentCol).setClaimStatus(true);
                             buttonClick[currentCol]++;
+
+                            // This is for testing using an image for a cell instead of a color 4-13-2025
+                            // This does work but the images are offset from the center
+                            //if (gameConfig.getPlayerColor() == "Yellow")
+                            //{
+                            //    gameBoard.getCell(i, currentCol).setCellImage(gameConfig.getPlayerOneImage());
+                            //}
+                            //else if (gameConfig.getPlayerColor() == "Red")
+                            //{
+                            //    gameBoard.getCell(i, currentCol).setCellImage(gameConfig.getPlayerTwoImage());
+                            //}
+
                             break;
                         }
                     }
@@ -221,10 +233,10 @@ namespace Connect4_Group1
                     }
                     break;
                 case 4:
-                    for (int i = 0; i < gameBoard.getRows(); i++)
-                    {
-                        if (gameBoard.getCell(i, currentCol).getClaimedStatus() == false)
-                        {
+                    for (int i = 0; i < gameBoard.getRows(); i++)                                      
+                    {                                                                                  
+                        if (gameBoard.getCell(i, currentCol).getClaimedStatus() == false)              
+                        {                                                                              
                             gameBoard.getCell(i, currentCol).setCellColor(gameConfig.getPlayerColor());
                             gameBoard.getCell(i, currentCol).setClaimStatus(true);
                             buttonClick[currentCol]++;

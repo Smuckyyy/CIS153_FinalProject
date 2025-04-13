@@ -19,6 +19,10 @@ namespace Connect4_Group1
         private string AIColor;
         private bool runGame; // This may be the same as gameOver, Redundant?
 
+        // Location to the player piece png files
+        private string playOneImage = @"..\..\..\Resources\Player_1.png";
+        private string playTwoImage = @"..\..\..\Resources\Player_2.png";
+
         // Constructor for singleplayer
         public GameSettings()
         {
@@ -76,6 +80,16 @@ namespace Connect4_Group1
         public bool getGameRunning()
         {
             return this.runGame;
+        }
+
+        public string getPlayerOneImage()
+        {
+            return this.playOneImage;
+        }
+
+        public string getPlayerTwoImage()
+        {
+            return this.playTwoImage;
         }
         // =================== GETTERS ===============
 

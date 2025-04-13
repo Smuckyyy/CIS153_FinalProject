@@ -92,6 +92,11 @@ namespace Connect4_Group1
         {
             this.pictureBox.BackColor = Color.FromName(color);
         }
+
+        public void setCellImage(string imageLocation)
+        {
+            this.pictureBox.ImageLocation = imageLocation;
+        }
         // =================== SETTERS ===============
     }
 }
