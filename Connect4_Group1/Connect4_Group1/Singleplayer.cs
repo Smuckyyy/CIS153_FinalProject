@@ -107,42 +107,54 @@ namespace Connect4_Group1
         {
             if (gameConfig.getGameRunning() == true)
             {
-                if (sender == sing_btnCol1)
+                if(gameConfig.getCurrentPlayer() == 1)
                 {
-                    // Add a token to column 1 ; (0,0) -> (0,6)
-                    updateGameCells(0);
-                }
-                else if (sender == sing_btnCol2)
-                {
+                    if (sender == sing_btnCol1)
+                    {
+                        // Add a token to column 1 ; (0,0) -> (0,6)
+                        updateGameCells(0);
+                    }
+                    else if (sender == sing_btnCol2)
+                    {
+                        // Add a token to column 2 (1,0) -> (1,6)
+                        updateGameCells(1);
+                    }
+                    else if (sender == sing_btnCol3)
+                    {
+                        // Add a token to column 3 (2,0) -> (2,6)
+                        updateGameCells(2);
+                    }
+                    else if (sender == sing_btnCol4)
+                    {
+                        // Add a token to column 4 (3,0) -> (3,6)
+                        updateGameCells(3);
+                    }
+                    else if (sender == sing_btnCol5)
+                    {
+                        // Add a token to column 5 (4,0) -> (4,6)
+                        updateGameCells(4);
+                    }
+                    else if (sender == sing_btnCol6)
+                    {
+                        // Add a token to column 6 (5,0) -> (5,6)
+                        updateGameCells(5);
+                    }
+                    else if (sender == sing_btnCol7)
+                    {
+                        // Add a token to column 7 (6,0) -> (6,6)
+                        updateGameCells(6);
+                    }
 
-                    // Add a token to column 2 (1,0) -> (1,6)
-                    updateGameCells(1);
+                    CheckGameStatus();
                 }
-                else if (sender == sing_btnCol3)
+                else if(gameConfig.getCurrentPlayer() == 2)
                 {
-                    // Add a token to column 3 (2,0) -> (2,6)
-                    updateGameCells(2);
+                    //Call AI to move for it's turn
+                    AI_Move();
+
+                    CheckGameStatus();
                 }
-                else if (sender == sing_btnCol4)
-                {
-                    // Add a token to column 4 (3,0) -> (3,6)
-                    updateGameCells(3);
-                }
-                else if (sender == sing_btnCol5)
-                {
-                    // Add a token to column 5 (4,0) -> (4,6)
-                    updateGameCells(4);
-                }
-                else if (sender == sing_btnCol6)
-                {
-                    // Add a token to column 6 (5,0) -> (5,6)
-                    updateGameCells(5);
-                }
-                else if (sender == sing_btnCol7)
-                {
-                    // Add a token to column 7 (6,0) -> (6,6)
-                    updateGameCells(6);
-                }
+                
 
                 // Most of this will need to be updated in CheckGameStatus 4-10-2025
                 //***************(This will be changed for AI implementation)***************
@@ -163,7 +175,7 @@ namespace Connect4_Group1
                 //    pictureBoxPlayerColor.BackColor = Color.FromName(gameConfig.getPlayerColor());
                 //}
 
-                CheckGameStatus();
+
             }
         }
 
@@ -301,6 +313,15 @@ namespace Connect4_Group1
                     }
 
                 }
+            }
+
+            if(gameConfig.getCurrentPlayer() == 1)
+            {
+                gameConfig.setCurrentPlayer(2);
+            }
+            else
+            {
+                gameConfig.setCurrentPlayer(1); 
             }
 
         }
@@ -491,7 +512,7 @@ namespace Connect4_Group1
                 counter = 1;
             }
 
-            // Check Diagonally
+            // Check Diagonally , Checks from bottom left to top right of the board
             // This would be checking the first cell and going row + 1 and col + 1, So when doing the for loop rows and cols would be - 1 on each check ; Putting more though into this, I don't think this is the solution.
 
             // How this would work
@@ -501,6 +522,11 @@ namespace Connect4_Group1
             {
                 for (int j = 0; j < gameBoard.getColumns() - 3; j++)
                 {
+                    // Visual of how this functions ~ Uncomment to see what happens
+                    //gameBoard.getCell(i, j).setCellColor(Color.Green.ToString());
+                    //Thread.Sleep(100);
+                    //Application.DoEvents(); // This will update anything that is in the application buffer, Right now it's just used to update the cell color visually ~ https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.application.doevents?view=windowsdesktop-9.0
+
                     if (gameBoard.getCell(i, j).getCellColor() != Color.White.ToString())
                     {
                         // This checks left to upper right, We need another check going left to bottom right 
@@ -512,8 +538,102 @@ namespace Connect4_Group1
                 }
             }
 
+            // Check Diagonally Reverse, Checks from top left to the bottom right of the board
+            // {5,0} -> {0, 6}
+            // Start from the top left most cell
+            for (int i = gameBoard.getRows() - 1; i > 2; i--)
+            {
+                // Move through each index in the columns now
+                for (int j = 0; j < gameBoard.getColumns() - 3; j++)
+                {
+                    // Visual of what is happening in this loop ~ Uncomment to see what happens
+                    //gameBoard.getCell(i, j).setCellColor(Color.Green.ToString());
+                    //Thread.Sleep(100);
+                    //Application.DoEvents(); // This will update anything that is in the application buffer, Right now it's just used to update the cell color visually ~ https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.application.doevents?view=windowsdesktop-9.0
+
+                    if (gameBoard.getCell(i, j).getCellColor() != Color.White.ToString())
+                    {
+                        if (gameBoard.getCell(i, j).getCellColor() == gameBoard.getCell(i - 1, j + 1).getCellColor() && gameBoard.getCell(i - 1, j + 1).getCellColor() == gameBoard.getCell(i - 2, j + 2).getCellColor() && gameBoard.getCell(i - 2, j + 2).getCellColor() == gameBoard.getCell(i - 3, j + 3).getCellColor())
+                        {
+                            return true;
+                        }
+                    }
+
+                }
+            }
+
 
             return false;
+        }
+
+        //Function for AI movement
+        private void AI_Move()
+        {
+            //Debugging
+            Console.WriteLine("AI Turn Triggered");
+
+            gameConfig.setPlayerColor(gameConfig.getAIColor());
+            string playerColor = gameConfig.getPlayerColor();
+            string aiColor = gameConfig.getAIColor();
+
+            for (int col = 0; col < gameBoard.getColumns(); col++)
+            {
+                int row = GetAvailableRow(col);
+
+                if (row == -1)
+                    continue;
+
+                Cell simulatedCell = gameBoard.getCell(row, col);
+
+                //Simulate the player placing a coin
+                simulatedCell.setClaimStatus(true);
+                simulatedCell.setCellColor(playerColor);
+
+                //Pretend its player1 turn for check
+                gameConfig.setPlayerColor(playerColor);
+
+                //Check if the player is about to win
+                if(areFourCellsConnected())
+                {
+                    //Undo simulation
+                    simulatedCell.setClaimStatus(false);
+                    //Make this the "empty" color
+                    simulatedCell.setCellColor("White");
+
+                    //AI blocks the player here
+                    updateGameCells(col);
+
+                    gameConfig.setPlayerColor(aiColor);
+                    return;
+                }
+
+                //Undo full simulation
+                simulatedCell.setClaimStatus(false);
+                simulatedCell.setCellColor("White");
+            }
+
+            //If there isn't a player win threat, pick the first column
+            for(int col = 0; col < gameBoard.getColumns(); col++)
+            {
+                int row = GetAvailableRow(col);
+                if(row != -1)
+                {
+                    updateGameCells(col);
+                    return;
+                }
+            }
+        }
+
+        private int GetAvailableRow(int col)
+        {
+            for (int row = gameBoard.getRows() - 1; row >= 0; row--)
+            {
+                if (gameBoard.getCell(row, col).getClaimedStatus())
+                    return row;
+            }
+
+            //Column full
+            return -1;
         }
 
         private void updatePlayerTurn()
@@ -522,9 +642,9 @@ namespace Connect4_Group1
             {
                 //Set the next player to the AI
                 gameConfig.setCurrentPlayer(2);
-                gameConfig.setPlayerColor("Red");
+                gameConfig.setAIColor("Red");
                 sing_lblCurrentPlayer.Text = System.String.Format("AI's Turn", gameConfig.getCurrentPlayer());
-                sing_pictureBoxPlayerColor.BackColor = Color.FromName(gameConfig.getPlayerColor());
+                sing_pictureBoxPlayerColor.BackColor = Color.FromName(gameConfig.getAIColor());
             }
             else if (gameConfig.getCurrentPlayer() == 2)
             {
