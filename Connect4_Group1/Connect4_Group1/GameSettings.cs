@@ -17,7 +17,7 @@ namespace Connect4_Group1
         private string playerColor;
         private string playerTwoColor;
         private string AIColor;
-        private bool runGame; // This may be the same as gameOver, Redundant?
+        //private bool runGame; // This may be the same as gameOver, Redundant?
 
         // Location to the player piece png files
         private string playOneImage = @"..\..\..\Resources\Player_1.png";
@@ -42,7 +42,7 @@ namespace Connect4_Group1
             // Choose what player goes first
             this.currentPlayer = PlayerStart;
 
-            this.runGame = false;
+            this.gameOver = false;
         }
 
         // =================== GETTERS ===============
@@ -79,7 +79,7 @@ namespace Connect4_Group1
         // Return if the game is running
         public bool getGameRunning()
         {
-            return this.runGame;
+            return this.gameOver;
         }
 
         public string getPlayerOneImage()
@@ -133,7 +133,7 @@ namespace Connect4_Group1
         // Set the game enabled state
         public void setGameRunning(bool runState)
         {
-            this.runGame = runState;
+            this.gameOver = runState;
         }
         // =================== SETTERS ===============
     }

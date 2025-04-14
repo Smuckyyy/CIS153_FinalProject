@@ -481,7 +481,7 @@ namespace Connect4_Group1
                 counter = 1;
             }
 
-            // Check Diagonally
+            // Check Diagonally , Checks from bottom left to top right of the board
             // This would be checking the first cell and going row + 1 and col + 1, So when doing the for loop rows and cols would be - 1 on each check ; Putting more though into this, I don't think this is the solution.
 
             // How this would work
@@ -491,6 +491,11 @@ namespace Connect4_Group1
             {
                 for (int j = 0; j < gameBoard.getColumns() - 3; j++)
                 {
+                    // Visual of how this functions ~ Uncomment to see what happens
+                    //gameBoard.getCell(i, j).setCellColor(Color.Green.ToString());
+                    //Thread.Sleep(100);
+                    //Application.DoEvents(); // This will update anything that is in the application buffer, Right now it's just used to update the cell color visually ~ https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.application.doevents?view=windowsdesktop-9.0
+
                     if (gameBoard.getCell(i, j).getCellColor() != Color.White.ToString())
                     {
                         // This checks left to upper right, We need another check going left to bottom right 
@@ -499,6 +504,30 @@ namespace Connect4_Group1
                             return true;
                         }
                     }
+                }
+            }
+
+            // Check Diagonally Reverse, Checks from top left to the bottom right of the board
+            // {5,0} -> {0, 6}
+            // Start from the top left most cell
+            for (int i = gameBoard.getRows() - 1; i > 2; i--)
+            {
+                // Move through each index in the columns now
+                for (int j = 0; j < gameBoard.getColumns() - 3; j++)
+                {
+                    // Visual of what is happening in this loop ~ Uncomment to see what happens
+                    //gameBoard.getCell(i, j).setCellColor(Color.Green.ToString());
+                    //Thread.Sleep(100);
+                    //Application.DoEvents(); // This will update anything that is in the application buffer, Right now it's just used to update the cell color visually ~ https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.application.doevents?view=windowsdesktop-9.0
+
+                    if (gameBoard.getCell(i,j).getCellColor() != Color.White.ToString())
+                    {
+                        if (gameBoard.getCell(i,j).getCellColor() == gameBoard.getCell(i - 1, j + 1).getCellColor() && gameBoard.getCell(i - 1, j + 1).getCellColor() == gameBoard.getCell(i - 2, j + 2).getCellColor() && gameBoard.getCell(i - 2, j + 2).getCellColor() == gameBoard.getCell(i - 3, j + 3).getCellColor())
+                        {
+                            return true;
+                        }
+                    }
+
                 }
             }
 
