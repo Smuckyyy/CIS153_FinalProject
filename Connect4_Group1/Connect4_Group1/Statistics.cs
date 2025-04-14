@@ -12,7 +12,7 @@ namespace Connect4_Group1
 {
     public partial class Statistics : Form
     {
-        Form1 statisticsForm;
+        Form1 mainMenuForm;
         Data.gameData gameData;
 
 
@@ -21,10 +21,10 @@ namespace Connect4_Group1
             InitializeComponent();
         }
 
-        public Statistics(Form1 sp, Data.gameData dataStruct)
+        public Statistics(Form1 stp, Data.gameData dataStruct)
         {
             InitializeComponent();
-            statisticsForm = sp;
+            mainMenuForm = stp;
 
             gameData = dataStruct;
 
@@ -32,12 +32,6 @@ namespace Connect4_Group1
 
             this.StartPosition = FormStartPosition.CenterScreen;
             this.AutoSize = true;
-        }
-
-        // Do we need this? We already pass sp from the main call
-        public void statisticsFormPass(Form1 sp)
-        {
-            statisticsForm = sp;
         }
 
         private void displayStatsToUser()

@@ -41,11 +41,11 @@
             // 
             label1.AutoSize = true;
             label1.BackColor = Color.Firebrick;
-            label1.Font = new Font("Matura MT Script Capitals", 36F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Font = new Font("Microsoft Sans Serif", 36F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.Black;
             label1.Location = new Point(51, 9);
             label1.Name = "label1";
-            label1.Size = new Size(694, 64);
+            label1.Size = new Size(646, 55);
             label1.TabIndex = 0;
             label1.Text = "Ye Olde Connect Four Game";
             label1.TextAlign = ContentAlignment.MiddleCenter;
@@ -53,7 +53,7 @@
             // btn_Singleplayer
             // 
             btn_Singleplayer.BackColor = Color.Silver;
-            btn_Singleplayer.Font = new Font("Viner Hand ITC", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btn_Singleplayer.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btn_Singleplayer.ForeColor = Color.MediumBlue;
             btn_Singleplayer.Location = new Point(51, 76);
             btn_Singleplayer.Name = "btn_Singleplayer";
@@ -66,7 +66,7 @@
             // btn_Twoplayer
             // 
             btn_Twoplayer.BackColor = Color.Silver;
-            btn_Twoplayer.Font = new Font("Viner Hand ITC", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btn_Twoplayer.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btn_Twoplayer.ForeColor = Color.MediumBlue;
             btn_Twoplayer.Location = new Point(215, 76);
             btn_Twoplayer.Name = "btn_Twoplayer";
@@ -79,7 +79,7 @@
             // btn_Exit
             // 
             btn_Exit.BackColor = Color.Silver;
-            btn_Exit.Font = new Font("Viner Hand ITC", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btn_Exit.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btn_Exit.ForeColor = Color.MediumBlue;
             btn_Exit.Location = new Point(587, 76);
             btn_Exit.Name = "btn_Exit";
@@ -92,7 +92,7 @@
             // btn_Stats
             // 
             btn_Stats.BackColor = Color.Silver;
-            btn_Stats.Font = new Font("Viner Hand ITC", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btn_Stats.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btn_Stats.ForeColor = Color.MediumBlue;
             btn_Stats.Location = new Point(423, 76);
             btn_Stats.Name = "btn_Stats";
@@ -105,10 +105,10 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Viner Hand ITC", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label2.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label2.Location = new Point(12, 160);
             label2.Name = "label2";
-            label2.Size = new Size(282, 26);
+            label2.Size = new Size(264, 20);
             label2.TabIndex = 5;
             label2.Tag = "https://soundcloud.com/zbofficialmusic/moonlit-lake";
             label2.Text = "Music provided by: ZB - SoundCloud";
@@ -138,7 +138,7 @@
             Controls.Add(btn_Singleplayer);
             Controls.Add(label1);
             Name = "Form1";
-            Text = "Connect 4: Home Screen";
+            Text = "Connect 4: Main Menu";
             ResumeLayout(false);
             PerformLayout();
         }

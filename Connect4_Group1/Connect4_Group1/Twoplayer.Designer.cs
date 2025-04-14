@@ -95,6 +95,7 @@
             pictureBoxPlayerColor = new PictureBox();
             lblCurrentPlayer = new Label();
             doubleBtn_Exit = new Button();
+            btn_mainMenu = new Button();
             pictureBox1 = new PictureBox();
             pictureBox2 = new PictureBox();
             pictureBox3 = new PictureBox();
@@ -205,7 +206,6 @@
             pictureBox4.Size = new Size(10, 400);
             pictureBox4.TabIndex = 3;
             pictureBox4.TabStop = false;
-            pictureBox4.Click += pictureBox4_Click;
             // 
             // pictureBox5
             // 
@@ -823,15 +823,28 @@
             // doubleBtn_Exit
             // 
             doubleBtn_Exit.BackColor = Color.Silver;
-            doubleBtn_Exit.Font = new Font("Viner Hand ITC", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            doubleBtn_Exit.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             doubleBtn_Exit.ForeColor = Color.MediumBlue;
-            doubleBtn_Exit.Location = new Point(465, 12);
+            doubleBtn_Exit.Location = new Point(523, 12);
             doubleBtn_Exit.Name = "doubleBtn_Exit";
-            doubleBtn_Exit.Size = new Size(158, 39);
+            doubleBtn_Exit.Size = new Size(100, 53);
             doubleBtn_Exit.TabIndex = 19;
             doubleBtn_Exit.Text = "Exit";
             doubleBtn_Exit.UseVisualStyleBackColor = false;
             doubleBtn_Exit.Click += doubleBtn_Exit_Click;
+            // 
+            // btn_mainMenu
+            // 
+            btn_mainMenu.BackColor = Color.Silver;
+            btn_mainMenu.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btn_mainMenu.ForeColor = Color.MediumBlue;
+            btn_mainMenu.Location = new Point(523, 71);
+            btn_mainMenu.Name = "btn_mainMenu";
+            btn_mainMenu.Size = new Size(100, 60);
+            btn_mainMenu.TabIndex = 20;
+            btn_mainMenu.Text = "Main Menu";
+            btn_mainMenu.UseVisualStyleBackColor = false;
+            btn_mainMenu.Click += btn_mainMenu_Click;
             // 
             // Twoplayer
             // 
@@ -839,6 +852,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Silver;
             ClientSize = new Size(630, 582);
+            Controls.Add(btn_mainMenu);
             Controls.Add(doubleBtn_Exit);
             Controls.Add(lblCurrentPlayer);
             Controls.Add(pictureBoxPlayerColor);
@@ -1025,5 +1039,6 @@
         private PictureBox pictureBoxPlayerColor;
         private Label lblCurrentPlayer;
         private Button doubleBtn_Exit;
+        private Button btn_mainMenu;
     }
 }

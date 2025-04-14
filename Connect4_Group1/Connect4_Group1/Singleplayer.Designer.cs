@@ -95,6 +95,7 @@
             sing_btnCol3 = new Button();
             sing_btnCol2 = new Button();
             sing_btnCol1 = new Button();
+            btn_mainMenu = new Button();
             pictureBox4 = new PictureBox();
             pictureBox3 = new PictureBox();
             pictureBox2 = new PictureBox();
@@ -169,19 +170,6 @@
             ((System.ComponentModel.ISupportInitialize)sing_6a).BeginInit();
             ((System.ComponentModel.ISupportInitialize)sing_pictureBoxPlayerColor).BeginInit();
             SuspendLayout();
-            // 
-            // singleBtn_Exit
-            // 
-            singleBtn_Exit.BackColor = Color.Silver;
-            singleBtn_Exit.Font = new Font("Viner Hand ITC", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            singleBtn_Exit.ForeColor = Color.MediumBlue;
-            singleBtn_Exit.Location = new Point(630, 12);
-            singleBtn_Exit.Name = "singleBtn_Exit";
-            singleBtn_Exit.Size = new Size(158, 39);
-            singleBtn_Exit.TabIndex = 4;
-            singleBtn_Exit.Text = "Exit";
-            singleBtn_Exit.UseVisualStyleBackColor = false;
-            singleBtn_Exit.Click += singleBtn_Exit_Click;
             // 
             // pictureBox4
             // 
@@ -317,6 +305,19 @@
             pictureBox5.Size = new Size(400, 10);
             pictureBox5.TabIndex = 20;
             pictureBox5.TabStop = false;
+            // 
+            // singleBtn_Exit
+            // 
+            singleBtn_Exit.BackColor = Color.Silver;
+            singleBtn_Exit.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            singleBtn_Exit.ForeColor = Color.MediumBlue;
+            singleBtn_Exit.Location = new Point(630, 12);
+            singleBtn_Exit.Name = "singleBtn_Exit";
+            singleBtn_Exit.Size = new Size(158, 39);
+            singleBtn_Exit.TabIndex = 4;
+            singleBtn_Exit.Text = "Exit";
+            singleBtn_Exit.UseVisualStyleBackColor = false;
+            singleBtn_Exit.Click += singleBtn_Exit_Click;
             // 
             // sing_1g
             // 
@@ -764,6 +765,7 @@
             sing_btnCol7.Tag = "btnColumn";
             sing_btnCol7.Text = "Insert";
             sing_btnCol7.UseVisualStyleBackColor = true;
+            sing_btnCol7.Click += button_click_handler;
             // 
             // sing_btnCol6
             // 
@@ -774,6 +776,7 @@
             sing_btnCol6.Tag = "btnColumn";
             sing_btnCol6.Text = "Insert";
             sing_btnCol6.UseVisualStyleBackColor = true;
+            sing_btnCol6.Click += button_click_handler;
             // 
             // sing_btnCol5
             // 
@@ -784,6 +787,7 @@
             sing_btnCol5.Tag = "btnColumn";
             sing_btnCol5.Text = "Insert";
             sing_btnCol5.UseVisualStyleBackColor = true;
+            sing_btnCol5.Click += button_click_handler;
             // 
             // sing_btnCol4
             // 
@@ -794,6 +798,7 @@
             sing_btnCol4.Tag = "btnColumn";
             sing_btnCol4.Text = "Insert";
             sing_btnCol4.UseVisualStyleBackColor = true;
+            sing_btnCol4.Click += button_click_handler;
             // 
             // sing_btnCol3
             // 
@@ -804,6 +809,7 @@
             sing_btnCol3.Tag = "btnColumn";
             sing_btnCol3.Text = "Insert";
             sing_btnCol3.UseVisualStyleBackColor = true;
+            sing_btnCol3.Click += button_click_handler;
             // 
             // sing_btnCol2
             // 
@@ -814,6 +820,7 @@
             sing_btnCol2.Tag = "btnColumn";
             sing_btnCol2.Text = "Insert";
             sing_btnCol2.UseVisualStyleBackColor = true;
+            sing_btnCol2.Click += button_click_handler;
             // 
             // sing_btnCol1
             // 
@@ -824,6 +831,20 @@
             sing_btnCol1.Tag = "btnColumn";
             sing_btnCol1.Text = "Insert";
             sing_btnCol1.UseVisualStyleBackColor = true;
+            sing_btnCol1.Click += button_click_handler;
+            // 
+            // btn_mainMenu
+            // 
+            btn_mainMenu.BackColor = Color.Silver;
+            btn_mainMenu.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btn_mainMenu.ForeColor = Color.MediumBlue;
+            btn_mainMenu.Location = new Point(630, 66);
+            btn_mainMenu.Name = "btn_mainMenu";
+            btn_mainMenu.Size = new Size(158, 39);
+            btn_mainMenu.TabIndex = 82;
+            btn_mainMenu.Text = "Main Menu";
+            btn_mainMenu.UseVisualStyleBackColor = false;
+            btn_mainMenu.Click += btn_mainMenu_Click;
             // 
             // Singleplayer
             // 
@@ -831,6 +852,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.MediumSlateBlue;
             ClientSize = new Size(800, 608);
+            Controls.Add(btn_mainMenu);
             Controls.Add(sing_lblCurrentPlayer);
             Controls.Add(sing_pictureBoxPlayerColor);
             Controls.Add(sing_btnCol7);
@@ -1016,5 +1038,6 @@
         private Button sing_btnCol3;
         private Button sing_btnCol2;
         private Button sing_btnCol1;
+        private Button btn_mainMenu;
     }
 }

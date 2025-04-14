@@ -13,7 +13,7 @@ namespace Connect4_Group1
 {
     public partial class Twoplayer : Form
     {
-        Form1 twoplayerForm;
+        Form1 mainMenuForm;
 
         Board gameBoard = new Board();
         GameSettings gameConfig = new GameSettings();
@@ -31,7 +31,7 @@ namespace Connect4_Group1
         public Twoplayer(Form1 tp)
         {
             InitializeComponent();
-            twoplayerForm = tp;
+            mainMenuForm = tp;
 
             this.FormBorderStyle = FormBorderStyle.Fixed3D; // Disable the ability to resize
             this.StartPosition = FormStartPosition.CenterScreen; // Open the form at the center of the users screen
@@ -53,11 +53,6 @@ namespace Connect4_Group1
                 MessageBox.Show(ex.Message);
                 gameConfig.setGameRunning(false);
             }
-        }
-
-        public void twoplayerFormPass(Form1 tp)
-        {
-            twoplayerForm = tp;
         }
 
         private void setupGameSettings()
@@ -233,10 +228,10 @@ namespace Connect4_Group1
                     }
                     break;
                 case 4:
-                    for (int i = 0; i < gameBoard.getRows(); i++)                                      
-                    {                                                                                  
-                        if (gameBoard.getCell(i, currentCol).getClaimedStatus() == false)              
-                        {                                                                              
+                    for (int i = 0; i < gameBoard.getRows(); i++)
+                    {
+                        if (gameBoard.getCell(i, currentCol).getClaimedStatus() == false)
+                        {
                             gameBoard.getCell(i, currentCol).setCellColor(gameConfig.getPlayerColor());
                             gameBoard.getCell(i, currentCol).setClaimStatus(true);
                             buttonClick[currentCol]++;
@@ -533,14 +528,21 @@ namespace Connect4_Group1
             }
         }
 
-        private void pictureBox4_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void doubleBtn_Exit_Click(object sender, EventArgs e)
         {
             System.Environment.Exit(0);
+        }
+
+        private void btn_mainMenu_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Are you sure you want to return to the main menu?\nThis game will not be saved.", "Confirm Exit?", MessageBoxButtons.YesNo);
+
+            if(result == DialogResult.Yes)
+            {
+                mainMenuForm.Show();
+                this.Close();
+            }
+            
         }
     }
 }

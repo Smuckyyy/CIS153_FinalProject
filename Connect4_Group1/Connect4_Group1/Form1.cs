@@ -36,10 +36,6 @@ namespace Connect4_Group1
         {
             Singleplayer singleplayerForm = new Singleplayer(this);
 
-            Singleplayer singlePlayerFormToLoad = new Singleplayer();
-
-            singlePlayerFormToLoad.singleplayerFormPass(this);
-
             this.Hide();
 
             singleplayerForm.ShowDialog();
@@ -54,10 +50,6 @@ namespace Connect4_Group1
         {
             Twoplayer twoplayerForm = new Twoplayer(this);
 
-            Twoplayer twoPlayerFormToLoad = new Twoplayer();
-
-            twoPlayerFormToLoad.twoplayerFormPass(this);
-
             this.Hide();
 
             twoplayerForm.ShowDialog();
@@ -71,10 +63,6 @@ namespace Connect4_Group1
         public void statisticsForm()
         {
             Statistics statisticsForm = new Statistics(this, gameData);
-
-            Statistics statisticsFormToLoad = new Statistics();
-
-            statisticsFormToLoad.statisticsFormPass(this);
 
             this.Hide();
 
@@ -108,7 +96,6 @@ namespace Connect4_Group1
         {
             //Opening Exit form
 
-            //this.Close();
             System.Environment.Exit(0);
         }
 
