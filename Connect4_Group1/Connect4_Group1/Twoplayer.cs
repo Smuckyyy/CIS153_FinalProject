@@ -520,9 +520,9 @@ namespace Connect4_Group1
                     //Thread.Sleep(100);
                     //Application.DoEvents(); // This will update anything that is in the application buffer, Right now it's just used to update the cell color visually ~ https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.application.doevents?view=windowsdesktop-9.0
 
-                    if (gameBoard.getCell(i,j).getCellColor() != Color.White.ToString())
+                    if (gameBoard.getCell(i, j).getCellColor() != Color.White.ToString())
                     {
-                        if (gameBoard.getCell(i,j).getCellColor() == gameBoard.getCell(i - 1, j + 1).getCellColor() && gameBoard.getCell(i - 1, j + 1).getCellColor() == gameBoard.getCell(i - 2, j + 2).getCellColor() && gameBoard.getCell(i - 2, j + 2).getCellColor() == gameBoard.getCell(i - 3, j + 3).getCellColor())
+                        if (gameBoard.getCell(i, j).getCellColor() == gameBoard.getCell(i - 1, j + 1).getCellColor() && gameBoard.getCell(i - 1, j + 1).getCellColor() == gameBoard.getCell(i - 2, j + 2).getCellColor() && gameBoard.getCell(i - 2, j + 2).getCellColor() == gameBoard.getCell(i - 3, j + 3).getCellColor())
                         {
                             return true;
                         }
@@ -566,11 +566,17 @@ namespace Connect4_Group1
         {
             DialogResult result = MessageBox.Show("Are you sure you want to return to the main menu?\nThis game will not be saved.", "Confirm Exit?", MessageBoxButtons.YesNo);
 
-            if(result == DialogResult.Yes)
+            if (result == DialogResult.Yes)
             {
                 mainMenuForm.Show();
                 this.Close();
             }
+
+        }
+
+        private void btnCol1_MouseHover(object sender, EventArgs e)
+        {
+            //Get the lowest unfilled row
             
         }
     }

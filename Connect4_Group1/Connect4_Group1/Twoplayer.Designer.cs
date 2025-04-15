@@ -736,6 +736,7 @@
             btnCol1.Text = "Insert";
             btnCol1.UseVisualStyleBackColor = true;
             btnCol1.Click += button_click_handler;
+            btnCol1.MouseHover += btnCol1_MouseHover;
             // 
             // btnCol2
             // 
