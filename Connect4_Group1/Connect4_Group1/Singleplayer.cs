@@ -63,10 +63,10 @@ namespace Connect4_Group1
         private void setupGameSettings()
         {
             gameConfig.setCurrentPlayer(1);
-            gameConfig.setPlayerColor("Yellow");
-            gameConfig.setAIColor("Red");
+            gameConfig.setPlayerColor(Color.Yellow);
+            gameConfig.setAIColor(Color.Red);
 
-            sing_pictureBoxPlayerColor.BackColor = Color.FromName(gameConfig.getPlayerColor());
+            sing_pictureBoxPlayerColor.BackColor = gameConfig.getPlayerColor();
         }
 
         private void setBoardCellData()
@@ -391,7 +391,7 @@ namespace Connect4_Group1
             foreach (var cell in gameBoard.getEntireBoard())
             {
                 cell.setClaimStatus(false);
-                cell.setCellColor("White");
+                cell.setCellColor(Color.White);
             }
 
             for (int i = 0; i < buttonClick.Length; i++)
@@ -455,7 +455,7 @@ namespace Connect4_Group1
                 // Go over each cell inside of the gameBoard - 1 because we are checking for cells in advance
                 for (int cols = 0; cols < gameBoard.getColumns() - 1; cols++)
                 {
-                    if ((gameBoard.getCell(rows, cols).getCellColor() != Color.White.ToString() && gameBoard.getCell(rows, cols + 1).getCellColor() != Color.White.ToString()) && gameBoard.getCell(rows, cols).getCellColor() == gameBoard.getCell(rows, cols + 1).getCellColor())
+                    if ((gameBoard.getCell(rows, cols).getCellColor() != Color.White && gameBoard.getCell(rows, cols + 1).getCellColor() != Color.White) && gameBoard.getCell(rows, cols).getCellColor() == gameBoard.getCell(rows, cols + 1).getCellColor())
                     {
                         counter++;
 
@@ -499,7 +499,7 @@ namespace Connect4_Group1
                 // Checks every element in row[0 -> 5] - 1
                 for (int rows = 0; rows < gameBoard.getRows() - 1; rows++)
                 {
-                    if ((gameBoard.getCell(rows, cols).getCellColor() != Color.White.ToString() && gameBoard.getCell(rows + 1, cols).getCellColor() != Color.White.ToString()) && gameBoard.getCell(rows, cols).getCellColor() == gameBoard.getCell(rows + 1, cols).getCellColor())
+                    if ((gameBoard.getCell(rows, cols).getCellColor() != Color.White && gameBoard.getCell(rows + 1, cols).getCellColor() != Color.White) && gameBoard.getCell(rows, cols).getCellColor() == gameBoard.getCell(rows + 1, cols).getCellColor())
                     {
                         counter++;
 
@@ -527,7 +527,7 @@ namespace Connect4_Group1
                     //Thread.Sleep(100);
                     //Application.DoEvents(); // This will update anything that is in the application buffer, Right now it's just used to update the cell color visually ~ https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.application.doevents?view=windowsdesktop-9.0
 
-                    if (gameBoard.getCell(i, j).getCellColor() != Color.White.ToString())
+                    if (gameBoard.getCell(i, j).getCellColor() != Color.White)
                     {
                         // This checks left to upper right, We need another check going left to bottom right 
                         if (gameBoard.getCell(i, j).getCellColor() == gameBoard.getCell(i + 1, j + 1).getCellColor() && gameBoard.getCell(i + 1, j + 1).getCellColor() == gameBoard.getCell(i + 2, j + 2).getCellColor() && gameBoard.getCell(i + 2, j + 2).getCellColor() == gameBoard.getCell(i + 3, j + 3).getCellColor())
@@ -551,7 +551,7 @@ namespace Connect4_Group1
                     //Thread.Sleep(100);
                     //Application.DoEvents(); // This will update anything that is in the application buffer, Right now it's just used to update the cell color visually ~ https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.application.doevents?view=windowsdesktop-9.0
 
-                    if (gameBoard.getCell(i, j).getCellColor() != Color.White.ToString())
+                    if (gameBoard.getCell(i, j).getCellColor() != Color.White)
                     {
                         if (gameBoard.getCell(i, j).getCellColor() == gameBoard.getCell(i - 1, j + 1).getCellColor() && gameBoard.getCell(i - 1, j + 1).getCellColor() == gameBoard.getCell(i - 2, j + 2).getCellColor() && gameBoard.getCell(i - 2, j + 2).getCellColor() == gameBoard.getCell(i - 3, j + 3).getCellColor())
                         {
@@ -573,8 +573,8 @@ namespace Connect4_Group1
             Console.WriteLine("AI Turn Triggered");
 
             gameConfig.setPlayerColor(gameConfig.getAIColor());
-            string playerColor = gameConfig.getPlayerColor();
-            string aiColor = gameConfig.getAIColor();
+            Color playerColor = gameConfig.getPlayerColor();
+            Color aiColor = gameConfig.getAIColor();
 
             for (int col = 0; col < gameBoard.getColumns(); col++)
             {
@@ -598,7 +598,7 @@ namespace Connect4_Group1
                     //Undo simulation
                     simulatedCell.setClaimStatus(false);
                     //Make this the "empty" color
-                    simulatedCell.setCellColor("White");
+                    simulatedCell.setCellColor(Color.White);
 
                     //AI blocks the player here
                     updateGameCells(col);
@@ -609,7 +609,7 @@ namespace Connect4_Group1
 
                 //Undo full simulation
                 simulatedCell.setClaimStatus(false);
-                simulatedCell.setCellColor("White");
+                simulatedCell.setCellColor(Color.White);
             }
 
             //If there isn't a player win threat, pick the first column
@@ -642,17 +642,17 @@ namespace Connect4_Group1
             {
                 //Set the next player to the AI
                 gameConfig.setCurrentPlayer(2);
-                gameConfig.setAIColor("Red");
+                gameConfig.setAIColor(Color.Red);
                 sing_lblCurrentPlayer.Text = System.String.Format("AI's Turn", gameConfig.getCurrentPlayer());
-                sing_pictureBoxPlayerColor.BackColor = Color.FromName(gameConfig.getAIColor());
+                sing_pictureBoxPlayerColor.BackColor = gameConfig.getAIColor();
             }
             else if (gameConfig.getCurrentPlayer() == 2)
             {
                 // Set the next player to player one
                 gameConfig.setCurrentPlayer(1);
-                gameConfig.setPlayerColor("Yellow");
+                gameConfig.setPlayerColor(Color.Yellow);
                 sing_lblCurrentPlayer.Text = System.String.Format("Your Turn", gameConfig.getCurrentPlayer());
-                sing_pictureBoxPlayerColor.BackColor = Color.FromName(gameConfig.getPlayerColor());
+                sing_pictureBoxPlayerColor.BackColor = gameConfig.getPlayerColor();
 
 
             }

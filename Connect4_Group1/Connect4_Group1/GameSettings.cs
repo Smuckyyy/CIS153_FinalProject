@@ -14,26 +14,26 @@ namespace Connect4_Group1
         private bool gameOver; // This may be the same as runGame, Redundant?
         private bool playerTurn; 
         private int currentPlayer; // P1 = 1, P2 = 2
-        private string playerColor;
-        private string playerTwoColor;
-        private string AIColor;
+        private Color playerColor;
+        private Color playerTwoColor;
+        private Color AIColor;
         //private bool runGame; // This may be the same as gameOver, Redundant?
 
         // Location to the player piece png files
         private string playOneImage = @"..\..\..\Resources\Player_1.png";
         private string playTwoImage = @"..\..\..\Resources\Player_2.png";
 
-        // Constructor for singleplayer
+        // Constructor for singleplayer, This can be changed depending on how the Form is setup
         public GameSettings()
         {
             this.gameOver = false;
-            this.playerColor = "Yellow";
-            this.AIColor = "Red";
+            this.playerColor = Color.Yellow;
+            this.AIColor = Color.Red;
             this.currentPlayer = 1; // The human will always go first on this
         }
 
         // Constructor for Two Player
-        public GameSettings(string P1Color, string P2Color, int PlayerStart)
+        public GameSettings(Color P1Color, Color P2Color, int PlayerStart)
         {
             this.gameOver = false;
             this.playerColor = P1Color;
@@ -59,13 +59,13 @@ namespace Connect4_Group1
         }
 
         // Returns the AI color
-        public string getAIColor()
+        public Color getAIColor()
         {
             return this.AIColor;
         }
 
         // Returns the player color
-        public string getPlayerColor()
+        public Color getPlayerColor()
         {
             return this.playerColor;
         }
@@ -107,19 +107,19 @@ namespace Connect4_Group1
         }
 
         // Set the color of Player
-        public void setPlayerColor(string color)
+        public void setPlayerColor(Color color)
         {
             this.playerColor = color;
         }
 
         // Set player two color
-        public void setPlayerTwoColor(string color)
+        public void setPlayerTwoColor(Color color)
         {
             this.playerTwoColor = color;
         }
 
         // Set the color of AI
-        public void setAIColor(string color)
+        public void setAIColor(Color color)
         {
             this.AIColor = color;
         }

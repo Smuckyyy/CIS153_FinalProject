@@ -58,10 +58,10 @@ namespace Connect4_Group1
         private void setupGameSettings()
         {
             gameConfig.setCurrentPlayer(1); // Player 1 will start first
-            gameConfig.setPlayerColor("Yellow");
-            gameConfig.setPlayerTwoColor("Red");
+            gameConfig.setPlayerColor(Color.Yellow);
+            gameConfig.setPlayerTwoColor(Color.Red);
 
-            pictureBoxPlayerColor.BackColor = Color.FromName(gameConfig.getPlayerColor());
+            pictureBoxPlayerColor.BackColor = gameConfig.getPlayerColor();
         }
 
         // Called once at runtime to setup the 2D Array grid
@@ -364,7 +364,7 @@ namespace Connect4_Group1
             foreach (var cell in gameBoard.getEntireBoard())
             {
                 cell.setClaimStatus(false);
-                cell.setCellColor("White");
+                cell.setCellColor(Color.White);
             }
 
             for (int i = 0; i < buttonClick.Length; i++)
@@ -386,9 +386,9 @@ namespace Connect4_Group1
 
             // Start game back with player one
             gameConfig.setCurrentPlayer(1);
-            gameConfig.setPlayerColor("Yellow");
+            gameConfig.setPlayerColor(Color.Yellow);
             lblCurrentPlayer.Text = String.Format("Player {0,0} Turn", gameConfig.getCurrentPlayer());
-            pictureBoxPlayerColor.BackColor = Color.FromName(gameConfig.getPlayerColor());
+            pictureBoxPlayerColor.BackColor = gameConfig.getPlayerColor();
 
             // For debugging purposes I will reenable the game to continue playing, This can be changed later
             gameConfig.setGameRunning(true);
@@ -424,7 +424,7 @@ namespace Connect4_Group1
                 // Go over each cell inside of the gameBoard - 1 because we are checking for cells in advance
                 for (int cols = 0; cols < gameBoard.getColumns() - 1; cols++)
                 {
-                    if ((gameBoard.getCell(rows, cols).getCellColor() != Color.White.ToString() && gameBoard.getCell(rows, cols + 1).getCellColor() != Color.White.ToString()) && gameBoard.getCell(rows, cols).getCellColor() == gameBoard.getCell(rows, cols + 1).getCellColor())
+                    if ((gameBoard.getCell(rows, cols).getCellColor() != Color.White && gameBoard.getCell(rows, cols + 1).getCellColor() != Color.White) && gameBoard.getCell(rows, cols).getCellColor() == gameBoard.getCell(rows, cols + 1).getCellColor())
                     {
                         counter++;
 
@@ -468,7 +468,7 @@ namespace Connect4_Group1
                 // Checks every element in row[0 -> 5] - 1
                 for (int rows = 0; rows < gameBoard.getRows() - 1; rows++)
                 {
-                    if ((gameBoard.getCell(rows, cols).getCellColor() != Color.White.ToString() && gameBoard.getCell(rows + 1, cols).getCellColor() != Color.White.ToString()) && gameBoard.getCell(rows, cols).getCellColor() == gameBoard.getCell(rows + 1, cols).getCellColor())
+                    if ((gameBoard.getCell(rows, cols).getCellColor() != Color.White && gameBoard.getCell(rows + 1, cols).getCellColor() != Color.White) && gameBoard.getCell(rows, cols).getCellColor() == gameBoard.getCell(rows + 1, cols).getCellColor())
                     {
                         counter++;
 
@@ -496,7 +496,7 @@ namespace Connect4_Group1
                     //Thread.Sleep(100);
                     //Application.DoEvents(); // This will update anything that is in the application buffer, Right now it's just used to update the cell color visually ~ https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.application.doevents?view=windowsdesktop-9.0
 
-                    if (gameBoard.getCell(i, j).getCellColor() != Color.White.ToString())
+                    if (gameBoard.getCell(i, j).getCellColor() != Color.White)
                     {
                         // This checks left to upper right, We need another check going left to bottom right 
                         if (gameBoard.getCell(i, j).getCellColor() == gameBoard.getCell(i + 1, j + 1).getCellColor() && gameBoard.getCell(i + 1, j + 1).getCellColor() == gameBoard.getCell(i + 2, j + 2).getCellColor() && gameBoard.getCell(i + 2, j + 2).getCellColor() == gameBoard.getCell(i + 3, j + 3).getCellColor())
@@ -520,7 +520,7 @@ namespace Connect4_Group1
                     //Thread.Sleep(100);
                     //Application.DoEvents(); // This will update anything that is in the application buffer, Right now it's just used to update the cell color visually ~ https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.application.doevents?view=windowsdesktop-9.0
 
-                    if (gameBoard.getCell(i, j).getCellColor() != Color.White.ToString())
+                    if (gameBoard.getCell(i, j).getCellColor() != Color.White)
                     {
                         if (gameBoard.getCell(i, j).getCellColor() == gameBoard.getCell(i - 1, j + 1).getCellColor() && gameBoard.getCell(i - 1, j + 1).getCellColor() == gameBoard.getCell(i - 2, j + 2).getCellColor() && gameBoard.getCell(i - 2, j + 2).getCellColor() == gameBoard.getCell(i - 3, j + 3).getCellColor())
                         {
@@ -541,19 +541,45 @@ namespace Connect4_Group1
             {
                 //Set the next player to player two
                 gameConfig.setCurrentPlayer(2);
-                gameConfig.setPlayerColor("Red");
+                gameConfig.setPlayerColor(Color.Red);
                 lblCurrentPlayer.Text = String.Format("Player {0,0} Turn", gameConfig.getCurrentPlayer());
-                pictureBoxPlayerColor.BackColor = Color.FromName(gameConfig.getPlayerColor());
+                pictureBoxPlayerColor.BackColor = gameConfig.getPlayerColor();
             }
             else if (gameConfig.getCurrentPlayer() == 2)
             {
                 // Set the next player to player one
                 gameConfig.setCurrentPlayer(1);
-                gameConfig.setPlayerColor("Yellow");
+                gameConfig.setPlayerColor(Color.Yellow);
                 lblCurrentPlayer.Text = String.Format("Player {0,0} Turn", gameConfig.getCurrentPlayer());
-                pictureBoxPlayerColor.BackColor = Color.FromName(gameConfig.getPlayerColor());
+                pictureBoxPlayerColor.BackColor = gameConfig.getPlayerColor();
 
 
+            }
+        }
+
+        // This function will display where a players piece would go on the board if the button is clicked
+        private void displayPiecePosition(int column)
+        {
+            for (int row = 0; row < gameBoard.getRows(); row++)
+            {
+                if (gameBoard.getCell(row, column).getClaimedStatus() == false)
+                {
+                    gameBoard.getCell(row, column).setCellColor(gameConfig.getPlayerColor());
+                    break;
+                }
+            }
+        }
+
+        // This function will remove the cell if the button was not clicked
+        private void removePiecePosition(int column)
+        {
+            for (int row = 0; row < gameBoard.getRows(); row++)
+            {
+                if (gameBoard.getCell(row, column).getClaimedStatus() == false)
+                {
+                    gameBoard.getCell(row, column).setCellColor(Color.White);
+                    break;
+                }
             }
         }
 
@@ -574,10 +600,72 @@ namespace Connect4_Group1
 
         }
 
-        private void btnCol1_MouseHover(object sender, EventArgs e)
+        // MouseEnter Handler for buttons
+        private void btnCol_MouseEnter(object sender, EventArgs e)
         {
-            //Get the lowest unfilled row
-            
+            if (sender == btnCol1)
+            {
+                //MessageBox.Show("Mouse Entered Buttton 1");
+                displayPiecePosition(0);
+            }
+            else if(sender == btnCol2)
+            {
+                displayPiecePosition(1);
+            }
+            else if(sender == btnCol3)
+            {
+                displayPiecePosition(2);
+            }
+            else if(sender == btnCol4)
+            {
+                displayPiecePosition(3);
+            }
+            else if (sender == btnCol5)
+            {
+                displayPiecePosition(4);
+            }
+            else if (sender == btnCol6)
+            {
+                displayPiecePosition(5);
+            }
+            else if (sender == btnCol7)
+            {
+                displayPiecePosition(6);
+            }
+        }
+
+        // MouseLeave Handler for buttons
+        private void btnCol_MouseLeave(object sender, EventArgs e)
+        {
+            if (sender == btnCol1)
+            {
+                //MessageBox.Show("Mouse Entered Buttton 1");
+                removePiecePosition(0);
+            }
+            else if (sender == btnCol2)
+            {
+                removePiecePosition(1);
+            }
+            else if (sender == btnCol3)
+            {
+                removePiecePosition(2);
+            }
+            else if (sender == btnCol4)
+            {
+                removePiecePosition(3);
+            }
+            else if (sender == btnCol5)
+            {
+                removePiecePosition(4);
+            }
+            else if (sender == btnCol6)
+            {
+                removePiecePosition(5);
+            }
+            else if (sender == btnCol7)
+            {
+                removePiecePosition(6);
+            }
         }
     }
 }

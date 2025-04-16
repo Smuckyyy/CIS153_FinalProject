@@ -62,9 +62,9 @@ namespace Connect4_Group1
         }
 
         // Returns the color of the cells picture box
-        public string getCellColor()
+        public Color getCellColor()
         {
-            return this.pictureBox.BackColor.ToString();
+            return this.pictureBox.BackColor;
         }
         // =================== GETTERS ===============
 
@@ -88,9 +88,9 @@ namespace Connect4_Group1
         }
 
         // Set the color of a cells picture box
-        public void setCellColor(string color)
+        public void setCellColor(Color webColor)
         {
-            this.pictureBox.BackColor = Color.FromName(color);
+            this.pictureBox.BackColor = webColor;
         }
 
         public void setCellImage(string imageLocation)
