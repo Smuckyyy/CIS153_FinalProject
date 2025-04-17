@@ -65,9 +65,9 @@
             lblSAOPG_winner.ForeColor = Color.White;
             lblSAOPG_winner.Location = new Point(199, 69);
             lblSAOPG_winner.Name = "lblSAOPG_winner";
-            lblSAOPG_winner.Size = new Size(76, 23);
+            lblSAOPG_winner.Size = new Size(107, 23);
             lblSAOPG_winner.TabIndex = 2;
-            lblSAOPG_winner.Text = "Winner:";
+            lblSAOPG_winner.Text = "winner here";
             // 
             // btnSAOPG_again
             // 
