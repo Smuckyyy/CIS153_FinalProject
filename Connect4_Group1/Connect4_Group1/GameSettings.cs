@@ -11,13 +11,12 @@ namespace Connect4_Group1
 {
     internal class GameSettings
     {
-        private bool gameOver; // This may be the same as runGame, Redundant?
-        private bool playerTurn; 
+        private bool gameOver; // This is used to tell the program if the game is running or is over
+        private bool playerTurn; // Used to save what turn we are on
         private int currentPlayer; // P1 = 1, P2 = 2
-        private Color playerColor;
-        private Color playerTwoColor;
-        private Color AIColor;
-        //private bool runGame; // This may be the same as gameOver, Redundant?
+        private Color playerColor; // Color of Player 1
+        private Color playerTwoColor; // Color of Player 2
+        private Color AIColor; // Color of the AI
 
         // Location to the player piece png files
         private string playOneImage = @"..\..\..\Resources\Player_1.png";
@@ -33,7 +32,7 @@ namespace Connect4_Group1
         }
 
         // Constructor for Two Player
-        public GameSettings(Color P1Color, Color P2Color, int PlayerStart)
+        public GameSettings(Color P1Color, Color P2Color, int PlayerStart, bool gameState)
         {
             this.gameOver = false;
             this.playerColor = P1Color;
@@ -42,7 +41,7 @@ namespace Connect4_Group1
             // Choose what player goes first
             this.currentPlayer = PlayerStart;
 
-            this.gameOver = false;
+            this.gameOver = gameState;
         }
 
         // =================== GETTERS ===============

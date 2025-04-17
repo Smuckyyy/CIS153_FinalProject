@@ -13,10 +13,11 @@ namespace Connect4_Group1
 {
     public partial class Twoplayer : Form
     {
-        Form1 mainMenuForm;
+        Form1 mainMenuForm; // Pass the main menu form to this
 
-        Board gameBoard = new Board();
-        GameSettings gameConfig = new GameSettings();
+        Board gameBoard = new Board(); // Creates the 2D Board
+        GameSettings gameConfig; // Settings
+        Data.gameData gameData; // The struct of persistant data
 
         // This holds how many time a button has been click.
         // Could be used to dictate if the game should end or
@@ -28,13 +29,14 @@ namespace Connect4_Group1
             InitializeComponent();
         }
 
-        public Twoplayer(Form1 tp)
+        public Twoplayer(Form1 tp, Data.gameData persistantStats)
         {
             InitializeComponent();
             mainMenuForm = tp;
 
             this.FormBorderStyle = FormBorderStyle.Fixed3D; // Disable the ability to resize
             this.StartPosition = FormStartPosition.CenterScreen; // Open the form at the center of the users screen
+            this.gameData = persistantStats;
 
             try
             {
@@ -43,25 +45,23 @@ namespace Connect4_Group1
                 // For Debugging
                 gameBoard.getEntireBoard();
 
+                // Create the settings used for the game
                 setupGameSettings();
-
-                gameConfig.setGameRunning(true); // Setup completed so the game can proceed
-
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-                gameConfig.setGameRunning(false);
             }
         }
 
         private void setupGameSettings()
         {
-            gameConfig.setCurrentPlayer(1); // Player 1 will start first
-            gameConfig.setPlayerColor(Color.Yellow);
-            gameConfig.setPlayerTwoColor(Color.Red);
+
+            // Use the constructor instead
+            gameConfig = new GameSettings(Color.Yellow, Color.Red, 1, true);
 
             pictureBoxPlayerColor.BackColor = gameConfig.getPlayerColor();
+
         }
 
         // Called once at runtime to setup the 2D Array grid
@@ -140,24 +140,7 @@ namespace Connect4_Group1
                     updateGameCells(6);
                 }
 
-                // Most of this will need to be updated in CheckGameStatus 4-10-2025
-                //if (gameConfig.getCurrentPlayer() == 1)
-                //{
-                //    // Set the next player to 2
-                //    gameConfig.setCurrentPlayer(2);
-                //    gameConfig.setPlayerColor("Red");
-                //    lblCurrentPlayer.Text = String.Format("Player {0,0} Turn", gameConfig.getCurrentPlayer());
-                //    pictureBoxPlayerColor.BackColor = Color.FromName(gameConfig.getPlayerColor());
-                //}
-                //else
-                //{
-                //    // Set the next player to 1
-                //    gameConfig.setCurrentPlayer(1);
-                //    gameConfig.setPlayerColor("Yellow");
-                //    lblCurrentPlayer.Text = String.Format("Player {0,0} Turn", gameConfig.getCurrentPlayer());
-                //    pictureBoxPlayerColor.BackColor = Color.FromName(gameConfig.getPlayerColor());
-                //}
-
+                // Search the board for a win status
                 CheckGameStatus();
             }
         }
@@ -328,23 +311,38 @@ namespace Connect4_Group1
             {
                 if (areFourCellsConnected())
                 {
+                    // Here I would pass the game status to the new stats form and update the public struct of game data
+                    // because areFourCellsConnected returned true meaning that a player has won the game
+                    statsAfterTwoPlayerGame satpg = new statsAfterTwoPlayerGame(gameConfig.getCurrentPlayer(), gameConfig.getPlayerColor(), this);
+
+                    // I will update the struct here
+                    // Will we only save the win data if player 1 is the winner?
                     if (gameConfig.getCurrentPlayer() == 1)
                     {
-                        lblCurrentPlayer.Text = "Player 1 Wins!";
-
-                        gameConfig.setGameStatus(false);
-                        gameConfig.setGameRunning(false);
-                    }
-                    else if (gameConfig.getCurrentPlayer() == 2)
-                    {
-                        lblCurrentPlayer.Text = "Player 2 Wins!";
-
-                        gameConfig.setGameStatus(false);
-                        gameConfig.setGameRunning(false);
+                        gameData.userWins++;
                     }
 
-                    MessageBox.Show("Four cells found connected, Resetting Game!");
-                    cleanUpGame();
+                    satpg.ShowDialog(); // Display the TPG Complete form
+
+
+
+                    //if (gameConfig.getCurrentPlayer() == 1)
+                    //{
+                    //    lblCurrentPlayer.Text = "Player 1 Wins!";
+
+                    //    gameConfig.setGameStatus(false);
+                    //    gameConfig.setGameRunning(false);
+                    //}
+                    //else if (gameConfig.getCurrentPlayer() == 2)
+                    //{
+                    //    lblCurrentPlayer.Text = "Player 2 Wins!";
+
+                    //    gameConfig.setGameStatus(false);
+                    //    gameConfig.setGameRunning(false);
+                    //}
+
+                    //MessageBox.Show("Four cells found connected, Resetting Game!");
+                    //cleanUpGame();
                 }
                 else
                 {

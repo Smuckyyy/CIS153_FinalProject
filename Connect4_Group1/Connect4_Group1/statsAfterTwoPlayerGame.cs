@@ -12,9 +12,21 @@ namespace Connect4_Group1
 {
     public partial class statsAfterTwoPlayerGame : Form
     {
+        Twoplayer tpForm;
+        int winningPlayer;
+        Color winningPlayerColor;
+
         public statsAfterTwoPlayerGame()
         {
             InitializeComponent();
+        }
+
+        public statsAfterTwoPlayerGame(int winningPlayer, Color winningPlayerColor, Twoplayer tpForm)
+        {
+            InitializeComponent();
+            this.tpForm = tpForm;
+
+            updateFormInfo(winningPlayer);
         }
 
         private void InitializeComponent()
@@ -123,6 +135,18 @@ namespace Connect4_Group1
         private void btnSATPG_exit_Click(object sender, EventArgs e)
         {
             System.Environment.Exit(0);
+        }
+
+        private void updateFormInfo(int winner)
+        {
+            if (winningPlayer == 1)
+            {
+                lblSATPG_winner.Text = "Player 1 has won!";
+            }
+            else if (winningPlayer == 2)
+            {
+                lblSATPG_winner.Text = "Player 2 has won!";
+            }
         }
     }
 }

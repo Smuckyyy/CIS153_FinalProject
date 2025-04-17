@@ -48,7 +48,7 @@ namespace Connect4_Group1
         //========================================
         public void twoplayerForm()
         {
-            Twoplayer twoplayerForm = new Twoplayer(this);
+            Twoplayer twoplayerForm = new Twoplayer(this, gameData);
 
             this.Hide();
 
