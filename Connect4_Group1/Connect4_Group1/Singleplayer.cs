@@ -327,7 +327,6 @@ namespace Connect4_Group1
         }
 
         // See if the game is over
-        //***************(This will be changed for AI implementation)***************
         private void CheckGameStatus()
         {
             int totalCells = gameBoard.getEntireBoard().Length;
@@ -422,9 +421,6 @@ namespace Connect4_Group1
             gameConfig.setGameRunning(true);
         }
 
-        //***************************************************************************
-        //(This will be used differently in this Singleplayer Form for use of the AI)
-        //***************************************************************************
         private bool areFourCellsConnected()
         {
             // Checking Horizontal Rows
@@ -600,10 +596,11 @@ namespace Connect4_Group1
                     //Make this the "empty" color
                     simulatedCell.setCellColor(Color.White);
 
+                    gameConfig.setAIColor(aiColor);
+
                     //AI blocks the player here
                     updateGameCells(col);
 
-                    gameConfig.setPlayerColor(aiColor);
                     return;
                 }
 
@@ -618,6 +615,7 @@ namespace Connect4_Group1
                 int row = GetAvailableRow(col);
                 if(row != -1)
                 {
+                    gameConfig.setAIColor(aiColor);
                     updateGameCells(col);
                     return;
                 }
@@ -628,7 +626,7 @@ namespace Connect4_Group1
         {
             for (int row = gameBoard.getRows() - 1; row >= 0; row--)
             {
-                if (gameBoard.getCell(row, col).getClaimedStatus())
+                if (!gameBoard.getCell(row, col).getClaimedStatus())
                     return row;
             }
 
