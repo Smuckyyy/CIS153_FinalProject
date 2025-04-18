@@ -315,14 +315,15 @@ namespace Connect4_Group1
                 }
             }
 
-            if(gameConfig.getCurrentPlayer() == 1)
-            {
-                gameConfig.setCurrentPlayer(2);
-            }
-            else
-            {
-                gameConfig.setCurrentPlayer(1); 
-            }
+            // Dont need this, Handled in check game status
+            //if(gameConfig.getCurrentPlayer() == 1)
+            //{
+            //    gameConfig.setCurrentPlayer(2);
+            //}
+            //else
+            //{
+            //    gameConfig.setCurrentPlayer(1); 
+            //}
 
         }
 

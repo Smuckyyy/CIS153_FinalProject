@@ -43,8 +43,8 @@ namespace Connect4_Group1
             string formattedString = String.Format(
             "Your Wins : {0,0}\n" +
             "AI Wins : {1,0}\n" +
-            "Your Win Percent : {2,0}\n" +
-            "AI Win Percent : {3,0}\n" +
+            "Your Win Percent : {2,0} \n" +
+            "AI Win Percent : {3,0} \n"+
             "Game Ties : {4,0}\n" +
             "Total Games Played : {5,0}\n\n", c_data.getUserWins(), c_data.getAIWins(), c_data.getUserWinPercent(), c_data.getAiWinPercent(), c_data.getGameTies(), c_data.getTotalGamesPlayed());
             lblStats.Text = formattedString;
