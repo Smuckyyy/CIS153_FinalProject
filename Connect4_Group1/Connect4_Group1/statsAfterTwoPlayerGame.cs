@@ -13,8 +13,6 @@ namespace Connect4_Group1
     public partial class statsAfterTwoPlayerGame : Form
     {
         Twoplayer tpForm;
-        int winningPlayer;
-        Color winningPlayerColor;
 
         public statsAfterTwoPlayerGame()
         {
@@ -83,6 +81,7 @@ namespace Connect4_Group1
             btnSATPG_again.TabIndex = 4;
             btnSATPG_again.Text = "Play Again";
             btnSATPG_again.UseVisualStyleBackColor = false;
+            btnSATPG_again.Click += btnSATPG_again_Click;
             // 
             // btnSATPG_review
             // 
@@ -139,14 +138,19 @@ namespace Connect4_Group1
 
         private void updateFormInfo(int winner)
         {
-            if (winningPlayer == 1)
+            if (winner == 1)
             {
-                lblSATPG_winner.Text = "Player 1 has won!";
+                lblSATPG_winner.Text = "Player 1";
             }
-            else if (winningPlayer == 2)
+            else if (winner == 2)
             {
-                lblSATPG_winner.Text = "Player 2 has won!";
+                lblSATPG_winner.Text = "Player 2";
             }
+        }
+
+        private void btnSATPG_again_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

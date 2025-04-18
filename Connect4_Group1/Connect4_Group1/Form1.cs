@@ -7,8 +7,8 @@ namespace Connect4_Group1
 {
     public partial class Form1 : Form
     {
-        // Pass this to any form that needs access to this data
-        Data.gameData gameData = new Data.gameData();
+        // Create a new data struct from the class
+        Data c_data;
 
         //Create objects needed for sound-playing
         Stream soundFile;
@@ -21,12 +21,20 @@ namespace Connect4_Group1
             this.FormBorderStyle = FormBorderStyle.Fixed3D; // Disable the ability to resize
             this.StartPosition = FormStartPosition.CenterScreen; // Open the form at the center of the users screen
 
+            // Try reading data from the file before proceeding
+            try
+            {
+                c_data = new Data();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
             //Begin looping the music
-            checkBoxMusic.Checked = true;
+            checkBoxMusic.Checked = false; // DISABLED 4-17-25 because I can no longer hear it over and over again
             musicHandler();
-
-
-            readDataFromFile();
+            
         }
 
         //========================================
@@ -48,7 +56,7 @@ namespace Connect4_Group1
         //========================================
         public void twoplayerForm()
         {
-            Twoplayer twoplayerForm = new Twoplayer(this, gameData);
+            Twoplayer twoplayerForm = new Twoplayer(this, c_data);
 
             this.Hide();
 
@@ -62,7 +70,7 @@ namespace Connect4_Group1
         //========================================
         public void statisticsForm()
         {
-            Statistics statisticsForm = new Statistics(this, gameData);
+            Statistics statisticsForm = new Statistics(this, c_data);
 
             this.Hide();
 
@@ -97,41 +105,6 @@ namespace Connect4_Group1
             //Opening Exit form
 
             System.Environment.Exit(0);
-        }
-
-        // Read data from the file
-        // line should be a CSV 0,0,0,0,0,0
-        private void readDataFromFile()
-        {
-            // ========================== Split-Strings Reference =============================
-            // https://learn.microsoft.com/en-us/dotnet/csharp/how-to/parse-strings-using-split
-            // ================================================================================
-
-            const string fileName = @"..\..\..\Resources\Connect4UserStats.txt";
-
-            try
-            {
-                string[] lines = File.ReadAllLines(fileName); // Returns every line(s) from the file
-
-                foreach (string line in lines)
-                {
-                    string[] parts = line.Split(',');
-
-                    // It's important to note that the CSV must match this layout
-                    // Convert.ToInt32 will return 0 if data is NULL
-                    gameData.userWins = Convert.ToInt32(parts[0]);
-                    gameData.aiWins = Convert.ToInt32(parts[1]);
-                    gameData.userWinPercent = Convert.ToInt32(parts[2]);
-                    gameData.aiWinPercent = Convert.ToInt32(parts[3]);
-                    gameData.gameTies = Convert.ToInt32(parts[4]);
-                    gameData.totalGamesPlayed = Convert.ToInt32(parts[5]);
-                }
-            }
-            catch (Exception ex)
-            {
-                // This will pop if the file is not found
-                MessageBox.Show(ex.Message);
-            };
         }
 
         private void checkBoxMusic_Click(object sender, EventArgs e)

@@ -17,7 +17,9 @@ namespace Connect4_Group1
 
         Board gameBoard = new Board(); // Creates the 2D Board
         GameSettings gameConfig; // Settings
-        Data.gameData gameData; // The struct of persistant data
+
+        // Holds the info from the Data class
+        Data c_data;
 
         // This holds how many time a button has been click.
         // Could be used to dictate if the game should end or
@@ -29,14 +31,14 @@ namespace Connect4_Group1
             InitializeComponent();
         }
 
-        public Twoplayer(Form1 tp, Data.gameData persistantStats)
+        public Twoplayer(Form1 tp, Data p_data)
         {
             InitializeComponent();
             mainMenuForm = tp;
 
             this.FormBorderStyle = FormBorderStyle.Fixed3D; // Disable the ability to resize
             this.StartPosition = FormStartPosition.CenterScreen; // Open the form at the center of the users screen
-            this.gameData = persistantStats;
+            c_data = p_data;
 
             try
             {
@@ -54,6 +56,7 @@ namespace Connect4_Group1
             }
         }
 
+        // Init the game settings
         private void setupGameSettings()
         {
 
@@ -315,34 +318,11 @@ namespace Connect4_Group1
                     // because areFourCellsConnected returned true meaning that a player has won the game
                     statsAfterTwoPlayerGame satpg = new statsAfterTwoPlayerGame(gameConfig.getCurrentPlayer(), gameConfig.getPlayerColor(), this);
 
-                    // I will update the struct here
-                    // Will we only save the win data if player 1 is the winner?
-                    if (gameConfig.getCurrentPlayer() == 1)
-                    {
-                        gameData.userWins++;
-                    }
-
                     satpg.ShowDialog(); // Display the TPG Complete form
 
+                    // If the user close out of the form this will happen, Otherwise if the Exit button is clicked the entire program is closed
+                    cleanUpGame();
 
-
-                    //if (gameConfig.getCurrentPlayer() == 1)
-                    //{
-                    //    lblCurrentPlayer.Text = "Player 1 Wins!";
-
-                    //    gameConfig.setGameStatus(false);
-                    //    gameConfig.setGameRunning(false);
-                    //}
-                    //else if (gameConfig.getCurrentPlayer() == 2)
-                    //{
-                    //    lblCurrentPlayer.Text = "Player 2 Wins!";
-
-                    //    gameConfig.setGameStatus(false);
-                    //    gameConfig.setGameRunning(false);
-                    //}
-
-                    //MessageBox.Show("Four cells found connected, Resetting Game!");
-                    //cleanUpGame();
                 }
                 else
                 {
@@ -352,25 +332,27 @@ namespace Connect4_Group1
             }
         }
 
-        // Clean up
+        // Clean up ; Should only be called if A.) The entire board is filled, or B.) A player got connect 4
         private void cleanUpGame()
         {
-            // Here we would update the Struct that contains the game data. We would update how many times the game has been played
-            // STATUS - NOT IMPLEMENTED
+            // Update the .txt file
+            updatePersistantData();
 
 
+            // Set each cell back to its default value
             foreach (var cell in gameBoard.getEntireBoard())
             {
                 cell.setClaimStatus(false);
                 cell.setCellColor(Color.White);
             }
 
+            // Set the array of button clicks back to 0
             for (int i = 0; i < buttonClick.Length; i++)
             {
                 buttonClick[i] = 0;
             }
 
-            // The game is over so set each button enabled status to false
+            // Set each button for the coloums back to enabled
             foreach (Control button in this.Controls)
             {
                 if (button is Button && (string)button.Tag == "btnColumn")
@@ -389,30 +371,13 @@ namespace Connect4_Group1
             pictureBoxPlayerColor.BackColor = gameConfig.getPlayerColor();
 
             // For debugging purposes I will reenable the game to continue playing, This can be changed later
-            gameConfig.setGameRunning(true);
+            //gameConfig.setGameRunning(true);
         }
-
+        
+        // Check to see if a player has won the game
         private bool areFourCellsConnected()
         {
             // Checking Horizontal Rows
-
-            // This just takes extra computation time because we can just go over the gameBoard itself
-            // instead of re-creating it this way
-            //List<List<string>> colorGrid = new List<List<string>>(gameBoard.getRows());
-
-            //for (int i = 0; i < gameBoard.getRows(); i++)
-            //{
-            //    List<string> colors = new List<string>(gameBoard.getColumns());
-            //    for (int j = 0; j < gameBoard.getColumns(); j++)
-            //    {
-            //        if (gameBoard.getCell(i,j).getClaimedStatus() == true)
-            //        {
-            //            colors.Add(gameBoard.getCell(i,j).getCellColor());
-            //        }
-            //    }
-            //    colorGrid.Add(colors);
-            //}
-
             // Counter is 1 because we are counting the first cell
             int counter = 1;
 
@@ -428,6 +393,7 @@ namespace Connect4_Group1
 
                         if (counter == 4)
                         {
+                            MessageBox.Show("Win State: Horizontal");
                             return true;
                         }
                     }
@@ -435,23 +401,6 @@ namespace Connect4_Group1
                     {
                         counter = 1;
                     }
-
-
-                    //if (colorGrid[i][j] == colorGrid[i][j + 1])
-                    //{
-                    //    counter++;
-
-                    //    if (counter == 4)
-                    //    {
-                    //        return true;
-                    //    }
-                    //}
-                    //else
-                    //{
-                    //    // The next color was not the same as the previous one,
-                    //    // reset the counter , while checking a row
-                    //    counter = 1;
-                    //}
                 }
                 // New row so we set the counter back to 1
                 counter = 1;
@@ -472,6 +421,7 @@ namespace Connect4_Group1
 
                         if (counter == 4)
                         {
+                            MessageBox.Show("Win State: Vertical");
                             return true;
                         }
                     }
@@ -499,6 +449,7 @@ namespace Connect4_Group1
                         // This checks left to upper right, We need another check going left to bottom right 
                         if (gameBoard.getCell(i, j).getCellColor() == gameBoard.getCell(i + 1, j + 1).getCellColor() && gameBoard.getCell(i + 1, j + 1).getCellColor() == gameBoard.getCell(i + 2, j + 2).getCellColor() && gameBoard.getCell(i + 2, j + 2).getCellColor() == gameBoard.getCell(i + 3, j + 3).getCellColor())
                         {
+                            MessageBox.Show("Win State: Diagonal");
                             return true;
                         }
                     }
@@ -522,6 +473,7 @@ namespace Connect4_Group1
                     {
                         if (gameBoard.getCell(i, j).getCellColor() == gameBoard.getCell(i - 1, j + 1).getCellColor() && gameBoard.getCell(i - 1, j + 1).getCellColor() == gameBoard.getCell(i - 2, j + 2).getCellColor() && gameBoard.getCell(i - 2, j + 2).getCellColor() == gameBoard.getCell(i - 3, j + 3).getCellColor())
                         {
+                            MessageBox.Show("Win State: Diagonal");
                             return true;
                         }
                     }
@@ -533,6 +485,7 @@ namespace Connect4_Group1
             return false;
         }
 
+        // Change what player is currently placing a token
         private void updatePlayerTurn()
         {
             if (gameConfig.getCurrentPlayer() == 1)
@@ -550,8 +503,6 @@ namespace Connect4_Group1
                 gameConfig.setPlayerColor(Color.Yellow);
                 lblCurrentPlayer.Text = String.Format("Player {0,0} Turn", gameConfig.getCurrentPlayer());
                 pictureBoxPlayerColor.BackColor = gameConfig.getPlayerColor();
-
-
             }
         }
 
@@ -664,6 +615,25 @@ namespace Connect4_Group1
             {
                 removePiecePosition(6);
             }
+        }
+
+        private void updatePersistantData()
+        {
+            // Will update the persistant data .txt file
+            // Since this was called we can assume that a game has been played
+            c_data.setTotalGames(c_data.getTotalGamesPlayed() + 1);
+
+            // Only update the player wins here if the player that won was Player 1
+            if (gameConfig.getCurrentPlayer() == 1)
+            {
+                c_data.setUserWins(c_data.getUserWins() + 1);
+            }
+
+            // Update the win percent of the user based on how many games have been played
+            c_data.setUserWinPercent((c_data.getUserWins() / c_data.getTotalGamesPlayed()) * 100);
+
+            // Right now I will just save this data and implement more later, Use this as a reference for Singleplayer! ! !
+            c_data.writeToFile();
         }
     }
 }

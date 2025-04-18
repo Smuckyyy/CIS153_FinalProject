@@ -13,7 +13,9 @@ namespace Connect4_Group1
     public partial class Statistics : Form
     {
         Form1 mainMenuForm;
-        Data.gameData gameData;
+
+        // Will hold the info from the Data class
+        Data c_data;
 
 
         public Statistics()
@@ -21,12 +23,13 @@ namespace Connect4_Group1
             InitializeComponent();
         }
 
-        public Statistics(Form1 stp, Data.gameData dataStruct)
+        public Statistics(Form1 stp, Data p_data)
         {
             InitializeComponent();
             mainMenuForm = stp;
 
-            gameData = dataStruct;
+            // Pass the p_data to the c_data variable
+            c_data = p_data;
 
             displayStatsToUser();
 
@@ -43,7 +46,7 @@ namespace Connect4_Group1
             "Your Win Percent : {2,0}\n" +
             "AI Win Percent : {3,0}\n" +
             "Game Ties : {4,0}\n" +
-            "Total Games Played : {5,0}\n\n", gameData.userWins, gameData.aiWins, gameData.userWinPercent, gameData.aiWinPercent, gameData.gameTies, gameData.totalGamesPlayed);
+            "Total Games Played : {5,0}\n\n", c_data.getUserWins(), c_data.getAIWins(), c_data.getUserWinPercent(), c_data.getAiWinPercent(), c_data.getGameTies(), c_data.getTotalGamesPlayed());
             lblStats.Text = formattedString;
             this.AutoSize = true;
 
