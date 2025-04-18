@@ -34,17 +34,20 @@
             // lblStats
             // 
             lblStats.AutoSize = true;
-            lblStats.Font = new Font("Segoe UI", 20F, FontStyle.Bold);
-            lblStats.Location = new Point(27, 34);
+            lblStats.Font = new Font("Viner Hand ITC", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblStats.ForeColor = Color.Gainsboro;
+            lblStats.Location = new Point(25, 9);
             lblStats.Name = "lblStats";
-            lblStats.Size = new Size(205, 37);
+            lblStats.Size = new Size(221, 44);
             lblStats.TabIndex = 0;
             lblStats.Text = "Shows all stats";
+            lblStats.Click += lblStats_Click;
             // 
             // Statistics
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.MediumSlateBlue;
             ClientSize = new Size(284, 261);
             Controls.Add(lblStats);
             Name = "Statistics";
