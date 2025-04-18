@@ -50,7 +50,13 @@ namespace Connect4_Group1
             lblStats.Text = formattedString;
             this.AutoSize = true;
 
-
+            //Set the text on the individual labels on the right
+            statLbl_yourWins.Text = c_data.getUserWins().ToString();
+            statLbl_AIwins.Text = c_data.getAIWins().ToString();
+            statLbl_yourWinPercentage.Text = c_data.getUserWinPercent().ToString() + "%";
+            statLbl_AIwinPercentage.Text = c_data.getAiWinPercent().ToString() + "%";
+            statLbl_NOT.Text = c_data.getGameTies().ToString();
+            statLbl_totalGamesPlayed.Text = c_data.getTotalGamesPlayed().ToString();
         }
 
         private void lblStats_Click(object sender, EventArgs e)

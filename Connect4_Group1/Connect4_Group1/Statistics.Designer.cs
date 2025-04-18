@@ -29,6 +29,19 @@
         private void InitializeComponent()
         {
             lblStats = new Label();
+            label1 = new Label();
+            label2 = new Label();
+            statLbl_yourWins = new Label();
+            label3 = new Label();
+            statLbl_AIwins = new Label();
+            label4 = new Label();
+            statLbl_yourWinPercentage = new Label();
+            label5 = new Label();
+            statLbl_AIwinPercentage = new Label();
+            label6 = new Label();
+            statLbl_NOT = new Label();
+            label7 = new Label();
+            statLbl_totalGamesPlayed = new Label();
             SuspendLayout();
             // 
             // lblStats
@@ -43,12 +56,168 @@
             lblStats.Text = "Shows all stats";
             lblStats.Click += lblStats_Click;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Viner Hand ITC", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.DarkBlue;
+            label1.Location = new Point(299, 15);
+            label1.Name = "label1";
+            label1.Size = new Size(195, 34);
+            label1.TabIndex = 1;
+            label1.Text = "Ye Olde Statistics";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Times New Roman", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label2.ForeColor = Color.DarkBlue;
+            label2.Location = new Point(276, 49);
+            label2.Name = "label2";
+            label2.Size = new Size(93, 21);
+            label2.TabIndex = 2;
+            label2.Text = "Your Wins:";
+            // 
+            // statLbl_yourWins
+            // 
+            statLbl_yourWins.AutoSize = true;
+            statLbl_yourWins.Font = new Font("Times New Roman", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            statLbl_yourWins.ForeColor = Color.DarkBlue;
+            statLbl_yourWins.Location = new Point(453, 49);
+            statLbl_yourWins.Name = "statLbl_yourWins";
+            statLbl_yourWins.Size = new Size(41, 21);
+            statLbl_yourWins.TabIndex = 3;
+            statLbl_yourWins.Text = "YW";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Times New Roman", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label3.ForeColor = Color.DarkBlue;
+            label3.Location = new Point(276, 70);
+            label3.Name = "label3";
+            label3.Size = new Size(76, 21);
+            label3.TabIndex = 4;
+            label3.Text = "AI Wins:";
+            // 
+            // statLbl_AIwins
+            // 
+            statLbl_AIwins.AutoSize = true;
+            statLbl_AIwins.Font = new Font("Times New Roman", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            statLbl_AIwins.ForeColor = Color.DarkBlue;
+            statLbl_AIwins.Location = new Point(453, 70);
+            statLbl_AIwins.Name = "statLbl_AIwins";
+            statLbl_AIwins.Size = new Size(47, 21);
+            statLbl_AIwins.TabIndex = 5;
+            statLbl_AIwins.Text = "AIW";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Times New Roman", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label4.ForeColor = Color.DarkBlue;
+            label4.Location = new Point(276, 91);
+            label4.Name = "label4";
+            label4.Size = new Size(171, 21);
+            label4.TabIndex = 6;
+            label4.Text = "Your Win Percentage:";
+            // 
+            // statLbl_yourWinPercentage
+            // 
+            statLbl_yourWinPercentage.AutoSize = true;
+            statLbl_yourWinPercentage.Font = new Font("Times New Roman", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            statLbl_yourWinPercentage.ForeColor = Color.DarkBlue;
+            statLbl_yourWinPercentage.Location = new Point(453, 91);
+            statLbl_yourWinPercentage.Name = "statLbl_yourWinPercentage";
+            statLbl_yourWinPercentage.Size = new Size(52, 21);
+            statLbl_yourWinPercentage.TabIndex = 7;
+            statLbl_yourWinPercentage.Text = "YWP";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Times New Roman", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label5.ForeColor = Color.DarkBlue;
+            label5.Location = new Point(276, 112);
+            label5.Name = "label5";
+            label5.Size = new Size(154, 21);
+            label5.TabIndex = 8;
+            label5.Text = "AI Win Percentage:";
+            // 
+            // statLbl_AIwinPercentage
+            // 
+            statLbl_AIwinPercentage.AutoSize = true;
+            statLbl_AIwinPercentage.Font = new Font("Times New Roman", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            statLbl_AIwinPercentage.ForeColor = Color.DarkBlue;
+            statLbl_AIwinPercentage.Location = new Point(453, 112);
+            statLbl_AIwinPercentage.Name = "statLbl_AIwinPercentage";
+            statLbl_AIwinPercentage.Size = new Size(58, 21);
+            statLbl_AIwinPercentage.TabIndex = 9;
+            statLbl_AIwinPercentage.Text = "AIWP";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Times New Roman", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label6.ForeColor = Color.DarkBlue;
+            label6.Location = new Point(276, 133);
+            label6.Name = "label6";
+            label6.Size = new Size(131, 21);
+            label6.TabIndex = 10;
+            label6.Text = "Number of Ties:";
+            // 
+            // statLbl_NOT
+            // 
+            statLbl_NOT.AutoSize = true;
+            statLbl_NOT.Font = new Font("Times New Roman", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            statLbl_NOT.ForeColor = Color.DarkBlue;
+            statLbl_NOT.Location = new Point(453, 133);
+            statLbl_NOT.Name = "statLbl_NOT";
+            statLbl_NOT.Size = new Size(49, 21);
+            statLbl_NOT.TabIndex = 11;
+            statLbl_NOT.Text = "NOT";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Times New Roman", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label7.ForeColor = Color.DarkBlue;
+            label7.Location = new Point(276, 154);
+            label7.Name = "label7";
+            label7.Size = new Size(164, 21);
+            label7.TabIndex = 12;
+            label7.Text = "Total Games Played:";
+            // 
+            // statLbl_totalGamesPlayed
+            // 
+            statLbl_totalGamesPlayed.AutoSize = true;
+            statLbl_totalGamesPlayed.Font = new Font("Times New Roman", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            statLbl_totalGamesPlayed.ForeColor = Color.DarkBlue;
+            statLbl_totalGamesPlayed.Location = new Point(453, 154);
+            statLbl_totalGamesPlayed.Name = "statLbl_totalGamesPlayed";
+            statLbl_totalGamesPlayed.Size = new Size(47, 21);
+            statLbl_totalGamesPlayed.TabIndex = 13;
+            statLbl_totalGamesPlayed.Text = "TGP";
+            // 
             // Statistics
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.MediumSlateBlue;
-            ClientSize = new Size(284, 261);
+            ClientSize = new Size(537, 261);
+            Controls.Add(statLbl_totalGamesPlayed);
+            Controls.Add(label7);
+            Controls.Add(statLbl_NOT);
+            Controls.Add(label6);
+            Controls.Add(statLbl_AIwinPercentage);
+            Controls.Add(label5);
+            Controls.Add(statLbl_yourWinPercentage);
+            Controls.Add(label4);
+            Controls.Add(statLbl_AIwins);
+            Controls.Add(label3);
+            Controls.Add(statLbl_yourWins);
+            Controls.Add(label2);
+            Controls.Add(label1);
             Controls.Add(lblStats);
             Name = "Statistics";
             Text = "Connect 4: Statistics Page";
@@ -59,5 +228,18 @@
         #endregion
 
         private Label lblStats;
+        private Label label1;
+        private Label label2;
+        private Label statLbl_yourWins;
+        private Label label3;
+        private Label statLbl_AIwins;
+        private Label label4;
+        private Label statLbl_yourWinPercentage;
+        private Label label5;
+        private Label statLbl_AIwinPercentage;
+        private Label label6;
+        private Label statLbl_NOT;
+        private Label label7;
+        private Label statLbl_totalGamesPlayed;
     }
 }
