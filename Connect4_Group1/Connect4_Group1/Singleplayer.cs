@@ -157,7 +157,7 @@ namespace Connect4_Group1
                     {
                         if (gameBoard.getCell(i, currentCol).getClaimedStatus() == false)
                         {
-                            gameBoard.getCell(i, currentCol).setCellColor(gameConfig.getPlayerColor());
+                            gameBoard.getCell(i, currentCol).setCellColor(gameConfig.getColorOfCurrPlayer());
                             gameBoard.getCell(i, currentCol).setClaimStatus(true);
                             buttonClick[currentCol]++;
 
