@@ -90,6 +90,19 @@ namespace Connect4_Group1
         {
             return this.playTwoImage;
         }
+
+        // Gets the color of the current player based on the currentPlayer int
+        public Color getColorOfCurrPlayer()
+        {
+            if (this.currentPlayer == 1)
+            {
+                return this.playerColor;
+            }
+            else
+            {
+                return this.AIColor;
+            }
+        }
         // =================== GETTERS ===============
 
         // =================== SETTERS ===============
