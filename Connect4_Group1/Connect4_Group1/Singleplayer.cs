@@ -17,7 +17,7 @@ namespace Connect4_Group1
         Form1 mainMenuForm;
 
         Board gameBoard = new Board();
-        GameSettings gameConfig = new GameSettings();
+        GameSettings gameConfig;
 
         // This holds how many time a button has been click.
         // Could be used to dictate if the game should end or
@@ -63,9 +63,7 @@ namespace Connect4_Group1
 
         private void setupGameSettings()
         {
-            gameConfig.setCurrentPlayer(1);
-            gameConfig.setPlayerColor(Color.Yellow);
-            gameConfig.setAIColor(Color.Red);
+            gameConfig = new GameSettings();
 
             sing_pictureBoxPlayerColor.BackColor = gameConfig.getPlayerColor();
         }
@@ -486,97 +484,97 @@ namespace Connect4_Group1
         }
 
         //Function for AI movement
-        private void AI_Move()
-        {
-            //Debugging
-            Console.WriteLine("AI Turn Triggered");
-
-            gameConfig.setPlayerColor(gameConfig.getAIColor());
-            Color playerColor = gameConfig.getPlayerColor();
-            Color aiColor = gameConfig.getAIColor();
-
-            for (int col = 0; col < gameBoard.getColumns(); col++)
-            {
-                int row = GetAvailableRow(col);
-
-                if (row == -1)
-                    continue;
-
-                Cell simulatedCell = gameBoard.getCell(row, col);
-
-                //Simulate the player placing a coin
-                simulatedCell.setClaimStatus(true);
-                simulatedCell.setCellColor(playerColor);
-
-                //Pretend its player1 turn for check
-                gameConfig.setPlayerColor(playerColor);
-
-                //Check if the player is about to win
-                if(areFourCellsConnected())
-                {
-                    //Undo simulation
-                    simulatedCell.setClaimStatus(false);
-                    //Make this the "empty" color
-                    simulatedCell.setCellColor(Color.White);
-
-                    gameConfig.setAIColor(aiColor);
-
-
-                    // Right here lets do a switch case to click the column button instead.
-                    // Clicking the button performs all the required updates and checks
-                    // SMUCK CODE
-                    //AI blocks the player here
-                    //updateGameCells(col);
-                    // END SMUCK CODE
-
-                    switch (col)
-                    {
-                        case 0:
-                            sing_btnCol1.PerformClick();
-                            break;
-                        case 1:
-                            sing_btnCol2.PerformClick();
-                            break;
-                        case 2:
-                            sing_btnCol3.PerformClick();
-                            break;
-                        case 3:
-                            sing_btnCol4.PerformClick();
-                            break;
-                        case 4:
-                            sing_btnCol5.PerformClick();
-                            break;
-                        case 5:
-                            sing_btnCol6.PerformClick();
-                            break;
-                        case 6:
-                            sing_btnCol7.PerformClick();
-                            break;
-                    }
-
-                    CheckGameStatus();
-
-                    return;
-                }
-
-                //Undo full simulation
-                simulatedCell.setClaimStatus(false);
-                simulatedCell.setCellColor(Color.White);
-            }
-
-            //If there isn't a player win threat, pick the first column
-            for (int col = 0; col < gameBoard.getColumns(); col++)
-            {
-                int row = GetAvailableRow(col);
-                if (row != -1)
-                {
-                    gameConfig.setAIColor(aiColor);
-                    //updateGameCells(col);
-                    return;
-                }
-            }
-
-        }
+        //private void AI_Move()
+        //{
+        //    //Debugging
+        //    Console.WriteLine("AI Turn Triggered");
+        //
+        //    gameConfig.setPlayerColor(gameConfig.getAIColor());
+        //    Color playerColor = gameConfig.getPlayerColor();
+        //    Color aiColor = gameConfig.getAIColor();
+        //
+        //    for (int col = 0; col < gameBoard.getColumns(); col++)
+        //    {
+        //        int row = GetAvailableRow(col);
+        //
+        //        if (row == -1)
+        //            continue;
+        //
+        //        Cell simulatedCell = gameBoard.getCell(row, col);
+        //
+        //        //Simulate the player placing a coin
+        //        simulatedCell.setClaimStatus(true);
+        //        simulatedCell.setCellColor(playerColor);
+        //
+        //        //Pretend its player1 turn for check
+        //        gameConfig.setPlayerColor(playerColor);
+        //
+        //        //Check if the player is about to win
+        //        if(areFourCellsConnected())
+        //        {
+        //            //Undo simulation
+        //            simulatedCell.setClaimStatus(false);
+        //            //Make this the "empty" color
+        //            simulatedCell.setCellColor(Color.White);
+        //
+        //            gameConfig.setAIColor(aiColor);
+        //
+        //
+        //            // Right here lets do a switch case to click the column button instead.
+        //            // Clicking the button performs all the required updates and checks
+        //            // SMUCK CODE
+        //            //AI blocks the player here
+        //            //updateGameCells(col);
+        //            // END SMUCK CODE
+        //
+        //            switch (col)
+        //            {
+        //                case 0:
+        //                    sing_btnCol1.PerformClick();
+        //                    break;
+        //                case 1:
+        //                    sing_btnCol2.PerformClick();
+        //                    break;
+        //                case 2:
+        //                    sing_btnCol3.PerformClick();
+        //                    break;
+        //                case 3:
+        //                    sing_btnCol4.PerformClick();
+        //                    break;
+        //                case 4:
+        //                    sing_btnCol5.PerformClick();
+        //                    break;
+        //                case 5:
+        //                    sing_btnCol6.PerformClick();
+        //                    break;
+        //                case 6:
+        //                    sing_btnCol7.PerformClick();
+        //                    break;
+        //            }
+        //
+        //            CheckGameStatus();
+        //
+        //            return;
+        //        }
+        //
+        //        //Undo full simulation
+        //        simulatedCell.setClaimStatus(false);
+        //        simulatedCell.setCellColor(Color.White);
+        //    }
+        //
+        //    //If there isn't a player win threat, pick the first column
+        //    for (int col = 0; col < gameBoard.getColumns(); col++)
+        //    {
+        //        int row = GetAvailableRow(col);
+        //        if (row != -1)
+        //        {
+        //            gameConfig.setAIColor(aiColor);
+        //            //updateGameCells(col);
+        //            return;
+        //        }
+        //    }
+        //
+        //}
 
         // Matt W, AI implementation
         private void AI_MoveV2()
@@ -679,7 +677,7 @@ namespace Connect4_Group1
                 // Since this is single player we now want to call the AI move
                 gameConfig.setCurrentPlayer(2);
                 sing_lblCurrentPlayer.Text = System.String.Format("AI's Turn", gameConfig.getCurrentPlayer());
-                sing_pictureBoxPlayerColor.BackColor = gameConfig.getAIColor();
+                sing_pictureBoxPlayerColor.BackColor = gameConfig.getColorOfCurrPlayer();
 
                 //AI_Move();
                 AI_MoveV2();
@@ -688,9 +686,8 @@ namespace Connect4_Group1
             {
                 // Set the next player to player one
                 gameConfig.setCurrentPlayer(1);
-                gameConfig.setPlayerColor(Color.Yellow);
                 sing_lblCurrentPlayer.Text = System.String.Format("Your Turn", gameConfig.getCurrentPlayer());
-                sing_pictureBoxPlayerColor.BackColor = gameConfig.getPlayerColor();
+                sing_pictureBoxPlayerColor.BackColor = gameConfig.getColorOfCurrPlayer();
 
 
             }
@@ -721,7 +718,7 @@ namespace Connect4_Group1
 
 
             // Search for a win condition of the player and save the last cell the player needs
-            // Checks Horizontal win state
+            // Checks Horizontal win state. Left to Right
             for (int i = 0; i < rows; i++)
             {
                 for (int j = 0; j < cols - 3; j++)
@@ -729,7 +726,9 @@ namespace Connect4_Group1
                     if (gameBoard.getCell(i,j).getCellColor() == playerColor)
                     {
                         // This states that cells 1, 2, and 3 are claimed by the player and the fourth cell is unclaimed.
-                        if (gameBoard.getCell(i, j + 1).getCellColor() == gameBoard.getCell(i, j + 2).getCellColor() && gameBoard.getCell(i, j + 3).getClaimedStatus() == false)
+                        if (gameBoard.getCell(i, j + 1).getCellColor() == playerColor 
+                            && gameBoard.getCell(i, j + 2).getCellColor() == playerColor
+                            && gameBoard.getCell(i, j + 3).getClaimedStatus() == false)
                         {
                             lastOpenRow = i;
                             lastOpenCol = j + 3;
@@ -738,7 +737,27 @@ namespace Connect4_Group1
                     }
                 }
             }
-            
+
+            // Checks Horizontal win state. Right to Left
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = gameBoard.getColumns() - 1; j > 3; j--)
+                {
+                    if (gameBoard.getCell(i, j).getCellColor() == playerColor)
+                    {
+                        // This states that cells 1, 2, and 3 are claimed by the player and the fourth cell is unclaimed.
+                        if (gameBoard.getCell(i, j - 1).getCellColor() == playerColor
+                            && gameBoard.getCell(i, j - 2).getCellColor() == playerColor
+                            && gameBoard.getCell(i, j - 3).getClaimedStatus() == false)
+                        {
+                            lastOpenRow = i;
+                            lastOpenCol = j - 3;
+                            return true;
+                        }
+                    }
+                }
+            }
+
 
             return false;
         }

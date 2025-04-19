@@ -15,8 +15,7 @@ namespace Connect4_Group1
         private bool playerTurn; // Used to save what turn we are on
         private int currentPlayer; // P1 = 1, P2 = 2
         private Color playerColor; // Color of Player 1
-        private Color playerTwoColor; // Color of Player 2
-        private Color AIColor; // Color of the AI
+        private Color playerTwoColor; // Player 2 and AI will always be RED
 
         // Location to the player piece png files
         private string playOneImage = @"..\..\..\Resources\Player_1.png";
@@ -27,7 +26,7 @@ namespace Connect4_Group1
         {
             this.gameOver = false;
             this.playerColor = Color.Yellow;
-            this.AIColor = Color.Red;
+            this.playerTwoColor = Color.Red;
             this.currentPlayer = 1; // The human will always go first on this
         }
 
@@ -58,10 +57,10 @@ namespace Connect4_Group1
         }
 
         // Returns the AI color
-        public Color getAIColor()
-        {
-            return this.AIColor;
-        }
+        //public Color getAIColor()
+        //{
+        //    return this.AIColor;
+        //}
 
         // Returns the player color
         public Color getPlayerColor()
@@ -100,7 +99,7 @@ namespace Connect4_Group1
             }
             else
             {
-                return this.AIColor;
+                return this.playerTwoColor;
             }
         }
         // =================== GETTERS ===============
@@ -130,11 +129,11 @@ namespace Connect4_Group1
             this.playerTwoColor = color;
         }
 
-        // Set the color of AI
-        public void setAIColor(Color color)
-        {
-            this.AIColor = color;
-        }
+        //// Set the color of AI
+        //public void setAIColor(Color color)
+        //{
+        //    this.AIColor = color;
+        //}
 
         // Set what player goes next
         public void setCurrentPlayer(int currentPlayer)

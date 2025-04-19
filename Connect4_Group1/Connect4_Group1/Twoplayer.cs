@@ -63,7 +63,7 @@ namespace Connect4_Group1
             // Use the constructor instead
             gameConfig = new GameSettings(Color.Yellow, Color.Red, 1, true);
 
-            pictureBoxPlayerColor.BackColor = gameConfig.getPlayerColor();
+            pictureBoxPlayerColor.BackColor = gameConfig.getColorOfCurrPlayer();
 
         }
 
@@ -158,7 +158,7 @@ namespace Connect4_Group1
                     {
                         if (gameBoard.getCell(i, currentCol).getClaimedStatus() == false)
                         {
-                            gameBoard.getCell(i, currentCol).setCellColor(gameConfig.getPlayerColor());
+                            gameBoard.getCell(i, currentCol).setCellColor(gameConfig.getColorOfCurrPlayer());
                             gameBoard.getCell(i, currentCol).setClaimStatus(true);
                             buttonClick[currentCol]++;
 
@@ -182,7 +182,7 @@ namespace Connect4_Group1
                     {
                         if (gameBoard.getCell(i, currentCol).getClaimedStatus() == false)
                         {
-                            gameBoard.getCell(i, currentCol).setCellColor(gameConfig.getPlayerColor());
+                            gameBoard.getCell(i, currentCol).setCellColor(gameConfig.getColorOfCurrPlayer());
                             gameBoard.getCell(i, currentCol).setClaimStatus(true);
                             buttonClick[currentCol]++;
                             return;
@@ -194,7 +194,7 @@ namespace Connect4_Group1
                     {
                         if (gameBoard.getCell(i, currentCol).getClaimedStatus() == false)
                         {
-                            gameBoard.getCell(i, currentCol).setCellColor(gameConfig.getPlayerColor());
+                            gameBoard.getCell(i, currentCol).setCellColor(gameConfig.getColorOfCurrPlayer());
                             gameBoard.getCell(i, currentCol).setClaimStatus(true);
                             buttonClick[currentCol]++;
                             return;
@@ -206,7 +206,7 @@ namespace Connect4_Group1
                     {
                         if (gameBoard.getCell(i, currentCol).getClaimedStatus() == false)
                         {
-                            gameBoard.getCell(i, currentCol).setCellColor(gameConfig.getPlayerColor());
+                            gameBoard.getCell(i, currentCol).setCellColor(gameConfig.getColorOfCurrPlayer());
                             gameBoard.getCell(i, currentCol).setClaimStatus(true);
                             buttonClick[currentCol]++;
                             return;
@@ -218,7 +218,7 @@ namespace Connect4_Group1
                     {
                         if (gameBoard.getCell(i, currentCol).getClaimedStatus() == false)
                         {
-                            gameBoard.getCell(i, currentCol).setCellColor(gameConfig.getPlayerColor());
+                            gameBoard.getCell(i, currentCol).setCellColor(gameConfig.getColorOfCurrPlayer());
                             gameBoard.getCell(i, currentCol).setClaimStatus(true);
                             buttonClick[currentCol]++;
                             return;
@@ -230,7 +230,7 @@ namespace Connect4_Group1
                     {
                         if (gameBoard.getCell(i, currentCol).getClaimedStatus() == false)
                         {
-                            gameBoard.getCell(i, currentCol).setCellColor(gameConfig.getPlayerColor());
+                            gameBoard.getCell(i, currentCol).setCellColor(gameConfig.getColorOfCurrPlayer());
                             gameBoard.getCell(i, currentCol).setClaimStatus(true);
                             buttonClick[currentCol]++;
                             return;
@@ -242,7 +242,7 @@ namespace Connect4_Group1
                     {
                         if (gameBoard.getCell(i, currentCol).getClaimedStatus() == false)
                         {
-                            gameBoard.getCell(i, currentCol).setCellColor(gameConfig.getPlayerColor());
+                            gameBoard.getCell(i, currentCol).setCellColor(gameConfig.getColorOfCurrPlayer());
                             gameBoard.getCell(i, currentCol).setClaimStatus(true);
                             buttonClick[currentCol]++;
                             return;
@@ -492,17 +492,15 @@ namespace Connect4_Group1
             {
                 //Set the next player to player two
                 gameConfig.setCurrentPlayer(2);
-                gameConfig.setPlayerColor(Color.Red);
-                lblCurrentPlayer.Text = String.Format("Player {0,0} Turn", gameConfig.getCurrentPlayer());
-                pictureBoxPlayerColor.BackColor = gameConfig.getPlayerColor();
+                lblCurrentPlayer.Text = string.Format("Player {0,0} Turn", gameConfig.getCurrentPlayer());
+                pictureBoxPlayerColor.BackColor = gameConfig.getColorOfCurrPlayer();
             }
             else if (gameConfig.getCurrentPlayer() == 2)
             {
                 // Set the next player to player one
                 gameConfig.setCurrentPlayer(1);
-                gameConfig.setPlayerColor(Color.Yellow);
-                lblCurrentPlayer.Text = String.Format("Player {0,0} Turn", gameConfig.getCurrentPlayer());
-                pictureBoxPlayerColor.BackColor = gameConfig.getPlayerColor();
+                lblCurrentPlayer.Text = string.Format("Player {0,0} Turn", gameConfig.getCurrentPlayer());
+                pictureBoxPlayerColor.BackColor = gameConfig.getColorOfCurrPlayer();
             }
         }
 
@@ -513,7 +511,7 @@ namespace Connect4_Group1
             {
                 if (gameBoard.getCell(row, column).getClaimedStatus() == false)
                 {
-                    gameBoard.getCell(row, column).setCellColor(gameConfig.getPlayerColor());
+                    gameBoard.getCell(row, column).setCellColor(gameConfig.getColorOfCurrPlayer());
                     return;
                 }
             }
