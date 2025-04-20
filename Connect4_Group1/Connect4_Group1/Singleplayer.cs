@@ -702,7 +702,7 @@ namespace Connect4_Group1
         //                          ref is the same thing as & in CPP
         private bool willPlayerWin(ref int lastOpenRow, ref int lastOpenCol)
         {
-            Color playerColor = gameConfig.getColorOfCurrPlayer();
+            Color playerColor = Color.Yellow;
             int rows = gameBoard.getRows();
             int cols = gameBoard.getColumns();
 
@@ -715,10 +715,10 @@ namespace Connect4_Group1
             {
                 for (int j = 0; j < cols - 3; j++)
                 {
-                    if (gameBoard.getCell(i,j).getCellColor() == playerColor)
+                    if (gameBoard.getCell(i, j).getCellColor() == playerColor)
                     {
                         // This states that cells 1, 2, and 3 are claimed by the player and the fourth cell is unclaimed.
-                        if (gameBoard.getCell(i, j + 1).getCellColor() == playerColor 
+                        if (gameBoard.getCell(i, j + 1).getCellColor() == playerColor
                             && gameBoard.getCell(i, j + 2).getCellColor() == playerColor
                             && gameBoard.getCell(i, j + 3).getClaimedStatus() == false)
                         {
@@ -759,6 +759,101 @@ namespace Connect4_Group1
             Random rnd = new Random();
 
             return rnd.Next(num);
+        }
+
+
+        // These four functions handle displaying a users piece while mousing over a button
+        // MouseEnter Handler for buttons
+        private void btnCol_MouseEnter(object sender, EventArgs e)
+        {
+            if (sender == sing_btnCol1)
+            {
+                //MessageBox.Show("Mouse Entered Buttton 1");
+                displayPiecePosition(0);
+            }
+            else if (sender == sing_btnCol2)
+            {
+                displayPiecePosition(1);
+            }
+            else if (sender == sing_btnCol3)
+            {
+                displayPiecePosition(2);
+            }
+            else if (sender == sing_btnCol4)
+            {
+                displayPiecePosition(3);
+            }
+            else if (sender == sing_btnCol5)
+            {
+                displayPiecePosition(4);
+            }
+            else if (sender == sing_btnCol6)
+            {
+                displayPiecePosition(5);
+            }
+            else if (sender == sing_btnCol7)
+            {
+                displayPiecePosition(6);
+            }
+        }
+
+        // MouseLeave Handler for buttons
+        private void btnCol_MouseLeave(object sender, EventArgs e)
+        {
+            if (sender == sing_btnCol1)
+            {
+                //MessageBox.Show("Mouse Entered Buttton 1");
+                removePiecePosition(0);
+            }
+            else if (sender == sing_btnCol2)
+            {
+                removePiecePosition(1);
+            }
+            else if (sender == sing_btnCol3)
+            {
+                removePiecePosition(2);
+            }
+            else if (sender == sing_btnCol4)
+            {
+                removePiecePosition(3);
+            }
+            else if (sender == sing_btnCol5)
+            {
+                removePiecePosition(4);
+            }
+            else if (sender == sing_btnCol6)
+            {
+                removePiecePosition(5);
+            }
+            else if (sender == sing_btnCol7)
+            {
+                removePiecePosition(6);
+            }
+        }
+
+        // This function will display where a players piece would go on the board if the button is clicked
+        private void displayPiecePosition(int column)
+        {
+            for (int row = 0; row < gameBoard.getRows(); row++)
+            {
+                if (gameBoard.getCell(row, column).getClaimedStatus() == false)
+                {
+                    gameBoard.getCell(row, column).setCellColor(gameConfig.getColorOfCurrPlayer());
+                    return;
+                }
+            }
+        }
+        // This function will remove the cell if the button was not clicked
+        private void removePiecePosition(int column)
+        {
+            for (int row = 0; row < gameBoard.getRows(); row++)
+            {
+                if (gameBoard.getCell(row, column).getClaimedStatus() == false)
+                {
+                    gameBoard.getCell(row, column).setCellColor(Color.White);
+                    return;
+                }
+            }
         }
     }
 }

@@ -766,6 +766,8 @@
             sing_btnCol7.Text = "Insert";
             sing_btnCol7.UseVisualStyleBackColor = true;
             sing_btnCol7.Click += button_click_handler;
+            sing_btnCol7.MouseEnter += btnCol_MouseEnter;
+            sing_btnCol7.MouseLeave += btnCol_MouseLeave;
             // 
             // sing_btnCol6
             // 
@@ -777,6 +779,8 @@
             sing_btnCol6.Text = "Insert";
             sing_btnCol6.UseVisualStyleBackColor = true;
             sing_btnCol6.Click += button_click_handler;
+            sing_btnCol6.MouseEnter += btnCol_MouseEnter;
+            sing_btnCol6.MouseLeave += btnCol_MouseLeave;
             // 
             // sing_btnCol5
             // 
@@ -788,6 +792,8 @@
             sing_btnCol5.Text = "Insert";
             sing_btnCol5.UseVisualStyleBackColor = true;
             sing_btnCol5.Click += button_click_handler;
+            sing_btnCol5.MouseEnter += btnCol_MouseEnter;
+            sing_btnCol5.MouseLeave += btnCol_MouseLeave;
             // 
             // sing_btnCol4
             // 
@@ -799,6 +805,8 @@
             sing_btnCol4.Text = "Insert";
             sing_btnCol4.UseVisualStyleBackColor = true;
             sing_btnCol4.Click += button_click_handler;
+            sing_btnCol4.MouseEnter += btnCol_MouseEnter;
+            sing_btnCol4.MouseLeave += btnCol_MouseLeave;
             // 
             // sing_btnCol3
             // 
@@ -810,6 +818,8 @@
             sing_btnCol3.Text = "Insert";
             sing_btnCol3.UseVisualStyleBackColor = true;
             sing_btnCol3.Click += button_click_handler;
+            sing_btnCol3.MouseEnter += btnCol_MouseEnter;
+            sing_btnCol3.MouseLeave += btnCol_MouseLeave;
             // 
             // sing_btnCol2
             // 
@@ -821,6 +831,8 @@
             sing_btnCol2.Text = "Insert";
             sing_btnCol2.UseVisualStyleBackColor = true;
             sing_btnCol2.Click += button_click_handler;
+            sing_btnCol2.MouseEnter += btnCol_MouseEnter;
+            sing_btnCol2.MouseLeave += btnCol_MouseLeave;
             // 
             // sing_btnCol1
             // 
@@ -832,6 +844,8 @@
             sing_btnCol1.Text = "Insert";
             sing_btnCol1.UseVisualStyleBackColor = true;
             sing_btnCol1.Click += button_click_handler;
+            sing_btnCol1.MouseEnter += btnCol_MouseEnter;
+            sing_btnCol1.MouseLeave += btnCol_MouseLeave;
             // 
             // btn_mainMenu
             // 

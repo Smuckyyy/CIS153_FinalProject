@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -315,13 +316,13 @@ namespace Connect4_Group1
             }
             else
             {
+                // The DFS would be performed here
+
                 if (areFourCellsConnected())
                 {
                     // Here I would pass the game status to the new stats form and update the public struct of game data
                     // because areFourCellsConnected returned true meaning that a player has won the game
                     statsAfterTwoPlayerGame satpg = new statsAfterTwoPlayerGame(gameConfig.getCurrentPlayer(), gameConfig.getColorOfCurrPlayer(), this);
-
-                    displayWinningPicBoxes();
 
                     satpg.ShowDialog(); // Display the TPG Complete form
 
@@ -573,15 +574,15 @@ namespace Connect4_Group1
                 //MessageBox.Show("Mouse Entered Buttton 1");
                 displayPiecePosition(0);
             }
-            else if(sender == btnCol2)
+            else if (sender == btnCol2)
             {
                 displayPiecePosition(1);
             }
-            else if(sender == btnCol3)
+            else if (sender == btnCol3)
             {
                 displayPiecePosition(2);
             }
-            else if(sender == btnCol4)
+            else if (sender == btnCol4)
             {
                 displayPiecePosition(3);
             }
@@ -654,7 +655,7 @@ namespace Connect4_Group1
 
 
         // This function will just be used to change the colors of the winning pictures boxes. Possibly strobe them...
-        private void displayWinningPicBoxes()
+        public void displayWinningPicBoxes()
         {
             int counter = 0;
 
@@ -670,5 +671,6 @@ namespace Connect4_Group1
                 counter++;
             }
         }
+
     }
 }

@@ -94,6 +94,7 @@ namespace Connect4_Group1
             btnSATPG_review.TabIndex = 5;
             btnSATPG_review.Text = "Review Thy Game";
             btnSATPG_review.UseVisualStyleBackColor = false;
+            btnSATPG_review.Click += btnSATPG_review_Click;
             // 
             // btnSATPG_exit
             // 
@@ -150,7 +151,16 @@ namespace Connect4_Group1
 
         private void btnSATPG_again_Click(object sender, EventArgs e)
         {
+            this.Close();
+        }
 
+        private void btnSATPG_review_Click(object sender, EventArgs e)
+        {
+            tpForm.Focus();
+            tpForm.displayWinningPicBoxes();
+
+            this.Activate();
+            this.Focus();
         }
     }
 }
