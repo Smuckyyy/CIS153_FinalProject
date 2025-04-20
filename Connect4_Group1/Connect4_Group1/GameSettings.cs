@@ -25,15 +25,19 @@ namespace Connect4_Group1
         public GameSettings()
         {
             this.gameOver = false;
+
+            // Set the colors of the players
             this.playerColor = Color.Yellow;
             this.playerTwoColor = Color.Red;
+
+            // Set the first player to player one
             this.currentPlayer = 1; // The human will always go first on this
         }
 
         // Constructor for Two Player
         public GameSettings(Color P1Color, Color P2Color, int PlayerStart, bool gameState)
         {
-            this.gameOver = false;
+            // Set the colors of the players
             this.playerColor = P1Color;
             this.playerTwoColor = P2Color;
 
@@ -62,7 +66,7 @@ namespace Connect4_Group1
         //    return this.AIColor;
         //}
 
-        // Returns the player color
+        // Returns the player color, DEPRICATED use getColorOfCurrPlayer()
         public Color getPlayerColor()
         {
             return this.playerColor;

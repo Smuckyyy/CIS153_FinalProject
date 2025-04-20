@@ -65,7 +65,7 @@ namespace Connect4_Group1
         {
             gameConfig = new GameSettings();
 
-            sing_pictureBoxPlayerColor.BackColor = gameConfig.getPlayerColor();
+            sing_pictureBoxPlayerColor.BackColor = gameConfig.getColorOfCurrPlayer();
         }
 
         private void setBoardCellData()
@@ -380,58 +380,47 @@ namespace Connect4_Group1
         private bool areFourCellsConnected()
         {
             // Checking Horizontal Rows
-            // Counter is 1 because we are counting the first cell
-            int counter = 1;
-
-            // Go over each row in the gameBoard
+            // Version 2 not using a counter
             for (int rows = 0; rows < gameBoard.getRows(); rows++)
             {
-                // Go over each cell inside of the gameBoard - 1 because we are checking for cells in advance
-                for (int cols = 0; cols < gameBoard.getColumns() - 1; cols++)
+                for (int cols = 0; cols < gameBoard.getColumns() - 3; cols++)
                 {
-                    if ((gameBoard.getCell(rows, cols).getCellColor() != Color.White && gameBoard.getCell(rows, cols + 1).getCellColor() != Color.White) && gameBoard.getCell(rows, cols).getCellColor() == gameBoard.getCell(rows, cols + 1).getCellColor())
+                    if (gameBoard.getCell(rows, cols).getCellColor() == gameConfig.getColorOfCurrPlayer())
                     {
-                        counter++;
-
-                        if (counter == 4)
+                        if (gameBoard.getCell(rows, cols + 1).getCellColor() == gameConfig.getColorOfCurrPlayer() && gameBoard.getCell(rows, cols + 2).getCellColor() == gameConfig.getColorOfCurrPlayer() && gameBoard.getCell(rows, cols + 3).getCellColor() == gameConfig.getColorOfCurrPlayer())
                         {
+                            MessageBox.Show("Win State: Horizontal");
                             return true;
                         }
                     }
-                    else
-                    {
-                        counter = 1;
-                    }
                 }
-                // New row so we set the counter back to 1
-                counter = 1;
             }
 
             // Check for a Connect 4 Vertically now
-            // Go through each row and search + 1 of each column
+            // Goes through each column and checks each row + 1 for a connect 4
 
             // Check each column
+            // Version 2 not using a counter
             for (int cols = 0; cols < gameBoard.getColumns(); cols++)
             {
-                // Checks every element in row[0 -> 5] - 1
-                for (int rows = 0; rows < gameBoard.getRows() - 1; rows++)
+                // Go up each row and see if four cells match
+                for (int rows = 0; rows < gameBoard.getRows() - 3; rows++)
                 {
-                    if ((gameBoard.getCell(rows, cols).getCellColor() != Color.White && gameBoard.getCell(rows + 1, cols).getCellColor() != Color.White) && gameBoard.getCell(rows, cols).getCellColor() == gameBoard.getCell(rows + 1, cols).getCellColor())
+                    // This is the first cell of the current player
+                    if (gameBoard.getCell(rows, cols).getCellColor() == gameConfig.getColorOfCurrPlayer())
                     {
-                        counter++;
-
-                        if (counter == 4)
+                        // Now we check for cell 2, 3, and 4
+                        if (gameBoard.getCell(rows + 1, cols).getCellColor() == gameConfig.getColorOfCurrPlayer() && gameBoard.getCell(rows + 2, cols).getCellColor() == gameConfig.getColorOfCurrPlayer() && gameBoard.getCell(rows + 3, cols).getCellColor() == gameConfig.getColorOfCurrPlayer())
                         {
+                            // The current player got a Horizontal connect 4
+                            MessageBox.Show("Win State: Vertical");
                             return true;
                         }
                     }
                 }
-                counter = 1;
             }
 
             // Check Diagonally , Checks from bottom left to top right of the board
-            // This would be checking the first cell and going row + 1 and col + 1, So when doing the for loop rows and cols would be - 1 on each check ; Putting more thought into this, I don't think this is the solution.
-
             // How this would work
             // {0,0}, {1,1}, {2,2} , {3,3} would be diagonally
 
@@ -449,6 +438,7 @@ namespace Connect4_Group1
                         // This checks left to upper right, We need another check going left to bottom right 
                         if (gameBoard.getCell(i, j).getCellColor() == gameBoard.getCell(i + 1, j + 1).getCellColor() && gameBoard.getCell(i + 1, j + 1).getCellColor() == gameBoard.getCell(i + 2, j + 2).getCellColor() && gameBoard.getCell(i + 2, j + 2).getCellColor() == gameBoard.getCell(i + 3, j + 3).getCellColor())
                         {
+                            MessageBox.Show("Win State: Diagonal (B.Left to U.Right)");
                             return true;
                         }
                     }
@@ -472,10 +462,10 @@ namespace Connect4_Group1
                     {
                         if (gameBoard.getCell(i, j).getCellColor() == gameBoard.getCell(i - 1, j + 1).getCellColor() && gameBoard.getCell(i - 1, j + 1).getCellColor() == gameBoard.getCell(i - 2, j + 2).getCellColor() && gameBoard.getCell(i - 2, j + 2).getCellColor() == gameBoard.getCell(i - 3, j + 3).getCellColor())
                         {
+                            MessageBox.Show("Win State: Diagonal (U.Left to B.Right)");
                             return true;
                         }
                     }
-
                 }
             }
 
@@ -712,9 +702,11 @@ namespace Connect4_Group1
         //                          ref is the same thing as & in CPP
         private bool willPlayerWin(ref int lastOpenRow, ref int lastOpenCol)
         {
-            Color playerColor = gameConfig.getPlayerColor();
+            Color playerColor = gameConfig.getColorOfCurrPlayer();
             int rows = gameBoard.getRows();
             int cols = gameBoard.getColumns();
+
+            // We should check if the AI could win first THEN check if the player would win
 
 
             // Search for a win condition of the player and save the last cell the player needs
