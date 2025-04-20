@@ -424,6 +424,12 @@ namespace Connect4_Group1
                         {
                             // The current player got a Horizontal connect 4
                             MessageBox.Show("Win State: Vertical");
+                            // Add the cells that caused the connect 4 to the array
+                            picBoxWinners = new PictureBox[4];
+                            picBoxWinners[0] = gameBoard.getCell(rows, cols).getPictureBox();
+                            picBoxWinners[1] = gameBoard.getCell(rows + 1, cols).getPictureBox();
+                            picBoxWinners[2] = gameBoard.getCell(rows + 2, cols).getPictureBox();
+                            picBoxWinners[3] = gameBoard.getCell(rows + 3, cols).getPictureBox();
                             return true;
                         }
                     }
@@ -448,7 +454,15 @@ namespace Connect4_Group1
                         // This checks left to upper right, We need another check going left to bottom right 
                         if (gameBoard.getCell(i, j).getCellColor() == gameBoard.getCell(i + 1, j + 1).getCellColor() && gameBoard.getCell(i + 1, j + 1).getCellColor() == gameBoard.getCell(i + 2, j + 2).getCellColor() && gameBoard.getCell(i + 2, j + 2).getCellColor() == gameBoard.getCell(i + 3, j + 3).getCellColor())
                         {
+
                             MessageBox.Show("Win State: Diagonal (B.Left to U.Right)");
+
+                            // Add the cells that caused the connect 4 to the array
+                            picBoxWinners = new PictureBox[4];
+                            picBoxWinners[0] = gameBoard.getCell(i, j).getPictureBox();
+                            picBoxWinners[1] = gameBoard.getCell(i + 1, j + 1).getPictureBox();
+                            picBoxWinners[2] = gameBoard.getCell(i + 2, j + 2).getPictureBox();
+                            picBoxWinners[3] = gameBoard.getCell(i + 3, j + 3).getPictureBox();
                             return true;
                         }
                     }
@@ -473,6 +487,12 @@ namespace Connect4_Group1
                         if (gameBoard.getCell(i, j).getCellColor() == gameBoard.getCell(i - 1, j + 1).getCellColor() && gameBoard.getCell(i - 1, j + 1).getCellColor() == gameBoard.getCell(i - 2, j + 2).getCellColor() && gameBoard.getCell(i - 2, j + 2).getCellColor() == gameBoard.getCell(i - 3, j + 3).getCellColor())
                         {
                             MessageBox.Show("Win State: Diagonal (U.Left to B.Right)");
+                            // Add the cells that caused the connect 4 to the array
+                            picBoxWinners = new PictureBox[4];
+                            picBoxWinners[0] = gameBoard.getCell(i, j).getPictureBox();
+                            picBoxWinners[1] = gameBoard.getCell(i - 1, j + 1).getPictureBox();
+                            picBoxWinners[2] = gameBoard.getCell(i - 2, j + 2).getPictureBox();
+                            picBoxWinners[3] = gameBoard.getCell(i - 3, j + 3).getPictureBox();
                             return true;
                         }
                     }
