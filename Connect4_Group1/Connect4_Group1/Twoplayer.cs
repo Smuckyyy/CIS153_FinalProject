@@ -21,6 +21,9 @@ namespace Connect4_Group1
         // Holds the info from the Data class
         Data c_data;
 
+        // This array will hold the Picture boxes that caused the game to end 
+        PictureBox[] picBoxWinners;
+
         // This holds how many time a button has been click.
         // Could be used to dictate if the game should end or
         // When a button should be disabled
@@ -318,6 +321,8 @@ namespace Connect4_Group1
                     // because areFourCellsConnected returned true meaning that a player has won the game
                     statsAfterTwoPlayerGame satpg = new statsAfterTwoPlayerGame(gameConfig.getCurrentPlayer(), gameConfig.getColorOfCurrPlayer(), this);
 
+                    displayWinningPicBoxes();
+
                     satpg.ShowDialog(); // Display the TPG Complete form
 
                     // If the user close out of the form this will happen, Otherwise if the Exit button is clicked the entire program is closed
@@ -387,6 +392,13 @@ namespace Connect4_Group1
                     {
                         if (gameBoard.getCell(rows, cols + 1).getCellColor() == gameConfig.getColorOfCurrPlayer() && gameBoard.getCell(rows, cols + 2).getCellColor() == gameConfig.getColorOfCurrPlayer() && gameBoard.getCell(rows, cols + 3).getCellColor() == gameConfig.getColorOfCurrPlayer())
                         {
+                            // Add the cells that caused the connect 4 to the array
+                            picBoxWinners = new PictureBox[4];
+                            picBoxWinners[0] = gameBoard.getCell(rows, cols).getPictureBox();
+                            picBoxWinners[1] = gameBoard.getCell(rows, cols + 1).getPictureBox();
+                            picBoxWinners[2] = gameBoard.getCell(rows, cols + 2).getPictureBox();
+                            picBoxWinners[3] = gameBoard.getCell(rows, cols + 3).getPictureBox();
+
                             MessageBox.Show("Win State: Horizontal");
                             return true;
                         }
@@ -618,6 +630,25 @@ namespace Connect4_Group1
 
             // Right now I will just save this data and implement more later, Use this as a reference for Singleplayer! ! !
             c_data.writeToFile();
+        }
+
+
+        // This function will just be used to change the colors of the winning pictures boxes. Possibly strobe them...
+        private void displayWinningPicBoxes()
+        {
+            int counter = 0;
+
+            while (counter < 10)
+            {
+                foreach (PictureBox picBox in picBoxWinners)
+                {
+                    picBox.BackColor = Color.White;
+                    Thread.Sleep(250);
+                    Application.DoEvents();
+                    picBox.BackColor = gameConfig.getColorOfCurrPlayer();
+                }
+                counter++;
+            }
         }
     }
 }
