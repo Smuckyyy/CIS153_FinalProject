@@ -42,7 +42,7 @@ namespace Connect4_Group1
         //========================================
         public void singleplayerForm()
         {
-            Singleplayer singleplayerForm = new Singleplayer(this);
+            Singleplayer singleplayerForm = new Singleplayer(this, c_data);
 
             this.Hide();
 

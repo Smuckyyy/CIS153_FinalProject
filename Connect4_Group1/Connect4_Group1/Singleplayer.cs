@@ -8,6 +8,7 @@ using System.Net.WebSockets;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Connect4_Group1
@@ -18,6 +19,7 @@ namespace Connect4_Group1
 
         Board gameBoard = new Board();
         GameSettings gameConfig;
+        Data c_data;
 
         // This holds how many time a button has been click.
         // Could be used to dictate if the game should end or
@@ -36,10 +38,11 @@ namespace Connect4_Group1
             //But I added the center screen down below. -Marcus
         }
 
-        public Singleplayer(Form1 sp)
+        public Singleplayer(Form1 sp, Data p_data)
         {
             InitializeComponent();
             mainMenuForm = sp;
+            c_data = p_data;
             this.StartPosition = FormStartPosition.CenterScreen;
 
             try
@@ -51,13 +54,13 @@ namespace Connect4_Group1
 
                 setupGameSettings();
 
-                gameConfig.setGameRunning(true); // Setup completed so the game can proceed
+                gameConfig.setGameStatus(true); // Setup completed so the game can proceed
 
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-                gameConfig.setGameRunning(false);
+                gameConfig.setGameStatus(false);
             }
         }
 
@@ -300,7 +303,15 @@ namespace Connect4_Group1
             // Every space on the grid is filled
             if (filledCells == totalCells)
             {
-                gameConfig.setGameStatus(false);
+                c_data.setGameTies(c_data.getGameTies() + 1);
+                c_data.setTotalGames(c_data.getTotalGamesPlayed() + 1);
+                c_data.writeToFile();
+
+                // -1 will be consider a tie
+                gameConfig.setCurrentPlayer(-1);
+
+                displayAfterGameForm();
+
 
                 // For Debugging
                 MessageBox.Show("Every Cell Is Filled", "Game Status");
@@ -316,18 +327,17 @@ namespace Connect4_Group1
                         sing_lblCurrentPlayer.Text = "Player 1 Wins!";
 
                         gameConfig.setGameStatus(false);
-                        gameConfig.setGameRunning(false);
                     }
                     else if (gameConfig.getCurrentPlayer() == 2)
                     {
                         sing_lblCurrentPlayer.Text = "AI Wins!";
 
                         gameConfig.setGameStatus(false);
-                        gameConfig.setGameRunning(false);
                     }
 
                     MessageBox.Show("Four cells found connected, Resetting Game!");
-                    cleanUpGame();
+
+                    displayAfterGameForm();
                 }
                 else
                 {
@@ -343,19 +353,20 @@ namespace Connect4_Group1
             // Here we would update the Struct that contains the game data. We would update how many times the game has been played
             // STATUS - NOT IMPLEMENTED
 
-
+            // Set every cell back to the starting color
             foreach (var cell in gameBoard.getEntireBoard())
             {
                 cell.setClaimStatus(false);
                 cell.setCellColor(Color.White);
             }
 
+            // Set each index of buttonClick array back to 0
             for (int i = 0; i < buttonClick.Length; i++)
             {
                 buttonClick[i] = 0;
             }
 
-            // The game is over so set each button enabled status to false
+            // While cleaning up the game, Re-enable all the column buttons
             foreach (Control button in this.Controls)
             {
                 if (button is Button && (string)button.Tag == "btnColumn")
@@ -374,7 +385,7 @@ namespace Connect4_Group1
             sing_pictureBoxPlayerColor.BackColor = gameConfig.getColorOfCurrPlayer();
 
             // For debugging purposes I will reenable the game to continue playing, This can be changed later
-            gameConfig.setGameRunning(true);
+            gameConfig.setGameStatus(true);
         }
 
         private bool areFourCellsConnected()
@@ -913,6 +924,80 @@ namespace Connect4_Group1
                 {
                     gameBoard.getCell(row, column).setCellColor(Color.White);
                     return;
+                }
+            }
+        }
+
+        // Display the after report screen
+        private void displayAfterGameForm()
+        {
+            // Here I would pass the game status to the new stats form and update the public struct of game data
+            // because areFourCellsConnected returned true meaning that a player has won the game
+            statsAfterOnePlayerGame saspg = new statsAfterOnePlayerGame(gameConfig.getCurrentPlayer(), gameConfig.getColorOfCurrPlayer(), this);
+
+            // Update the .txt file
+            updatePersistantData();
+
+            // Disable the buttons on the board
+            setBoardState(1);
+
+            saspg.ShowDialog(); // Display the TPG Complete form
+
+            // Enable the buttons on the board since "Play Again" was clicked
+            setBoardState(0);
+
+            // Clean up for a new game
+            cleanUpGame();
+        }
+
+        // Update the game data file
+        private void updatePersistantData()
+        {
+            // Since this was called we can assume that a game has been played
+            c_data.setTotalGames(c_data.getTotalGamesPlayed() + 1);
+
+            // Only update the player wins here if the player that won was Player 1
+            if (gameConfig.getCurrentPlayer() == 1)
+            {
+                // Human
+                c_data.setUserWins(c_data.getUserWins() + 1);
+
+                // Update the win percent of the user based on how many games have been played
+                c_data.setUserWinPercent((int)((double)c_data.getUserWins() / c_data.getTotalGamesPlayed() * 100));
+            }
+            else if (gameConfig.getCurrentPlayer() == 2)
+            {
+                // AI
+                c_data.setAIWins(c_data.getAIWins() + 1);
+
+                c_data.setAIWinPercent((int)((double)c_data.getAIWins() / c_data.getTotalGamesPlayed() * 100));
+            }
+
+            // Write the new data to the file
+            c_data.writeToFile();
+        }
+
+        // Set the board state
+        private void setBoardState(int value)
+        {
+            if (value == 1)
+            {
+                foreach (Control btn in this.Controls)
+                {
+                    if (btn is Button && (string)btn.Tag == "btnColumn")
+                    {
+                        btn.Visible = false;
+                    }
+                }
+            }
+            else if (value == 0)
+            {
+                foreach (Control btn in this.Controls)
+                {
+                    if (btn is Button && (string)btn.Tag == "btnColumn")
+                    {
+                        btn.Visible = true;
+                    }
                 }
             }
         }

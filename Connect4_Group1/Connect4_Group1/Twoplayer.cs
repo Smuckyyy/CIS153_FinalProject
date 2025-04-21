@@ -340,63 +340,52 @@ namespace Connect4_Group1
             // Every space on the grid is filled, Considered a tie
             if (filledCells == totalCells)
             {
+                // New game was played
+                c_data.setTotalGames(c_data.getTotalGamesPlayed() + 1);
                 // Add a tie to the data file
                 c_data.setGameTies(c_data.getGameTies() + 1);
 
                 c_data.writeToFile();
 
-                // For Debugging
-                MessageBox.Show("Every Cell Is Filled", "Game Status");
+                displayAfterGameForm();
 
-                cleanUpGame();
+                // For Debugging
+                //MessageBox.Show("Every Cell Is Filled", "Game Status");
             }
             else
             {
                 // The DFS would be performed here
-                visited = new bool[gameBoard.getRows(), gameBoard.getColumns()];
+                //visited = new bool[gameBoard.getRows(), gameBoard.getColumns()];
 
-                if (dfsForBoard(gameBoard, visited, latestPiece[0], latestPiece[1], 1))
-                {
-                    MessageBox.Show("Found 4 Connected Cells!");
-                }
-                else
-                {
-                    updatePlayerTurn();
-                }
+                //int connectedCells = 0;
 
-                //if (areFourCellsConnected())
+                //if (dfsForBoard(gameBoard, visited, latestPiece[0], latestPiece[1], ref connectedCells))
                 //{
-                //    // Here I would pass the game status to the new stats form and update the public struct of game data
-                //    // because areFourCellsConnected returned true meaning that a player has won the game
-                //    statsAfterTwoPlayerGame satpg = new statsAfterTwoPlayerGame(gameConfig.getCurrentPlayer(), gameConfig.getColorOfCurrPlayer(), this);
+                //    MessageBox.Show("Found 4 Connected Cells!");
 
-                //    // Disable the buttons on the board
-                //    setBoardState(1);
-
-                //    satpg.ShowDialog(); // Display the TPG Complete form
-
-                //    // Enable the buttons on the board since "Play Again" was clicked
-                //    setBoardState(0);
-
-                //    // If the user close out of the form this will happen, Otherwise if the Exit button is clicked the entire program is closed
                 //    cleanUpGame();
-
                 //}
                 //else
                 //{
-                //    // No connect 4 and the board still has cells
                 //    updatePlayerTurn();
                 //}
+
+                if (areFourCellsConnected())
+                {
+                    // Display the after game form
+                    displayAfterGameForm();
+                }
+                else
+                {
+                    // No connect 4 and the board still has cells
+                    updatePlayerTurn();
+                }
             }
         }
 
         // Clean up ; Should only be called if A.) The entire board is filled, or B.) A player got connect 4
         private void cleanUpGame()
         {
-            // Update the .txt file
-            updatePersistantData();
-
-
             // Set each cell back to its default value
             foreach (var cell in gameBoard.getEntireBoard())
             {
@@ -452,7 +441,8 @@ namespace Connect4_Group1
                             picBoxWinners[2] = gameBoard.getCell(rows, cols + 2).getPictureBox();
                             picBoxWinners[3] = gameBoard.getCell(rows, cols + 3).getPictureBox();
 
-                            MessageBox.Show("Win State: Horizontal");
+                            // debugging
+                            //MessageBox.Show("Win State: Horizontal");
                             return true;
                         }
                     }
@@ -476,7 +466,10 @@ namespace Connect4_Group1
                         if (gameBoard.getCell(rows + 1, cols).getCellColor() == gameConfig.getColorOfCurrPlayer() && gameBoard.getCell(rows + 2, cols).getCellColor() == gameConfig.getColorOfCurrPlayer() && gameBoard.getCell(rows + 3, cols).getCellColor() == gameConfig.getColorOfCurrPlayer())
                         {
                             // The current player got a Horizontal connect 4
-                            MessageBox.Show("Win State: Vertical");
+
+                            // debugging
+                            //MessageBox.Show("Win State: Vertical");
+
                             // Add the cells that caused the connect 4 to the array
                             picBoxWinners = new PictureBox[4];
                             picBoxWinners[0] = gameBoard.getCell(rows, cols).getPictureBox();
@@ -507,8 +500,8 @@ namespace Connect4_Group1
                         // This checks left to upper right, We need another check going left to bottom right 
                         if (gameBoard.getCell(i, j).getCellColor() == gameBoard.getCell(i + 1, j + 1).getCellColor() && gameBoard.getCell(i + 1, j + 1).getCellColor() == gameBoard.getCell(i + 2, j + 2).getCellColor() && gameBoard.getCell(i + 2, j + 2).getCellColor() == gameBoard.getCell(i + 3, j + 3).getCellColor())
                         {
-
-                            MessageBox.Show("Win State: Diagonal (B.Left to U.Right)");
+                            // debugging
+                            //MessageBox.Show("Win State: Diagonal (B.Left to U.Right)");
 
                             // Add the cells that caused the connect 4 to the array
                             picBoxWinners = new PictureBox[4];
@@ -539,7 +532,9 @@ namespace Connect4_Group1
                     {
                         if (gameBoard.getCell(i, j).getCellColor() == gameBoard.getCell(i - 1, j + 1).getCellColor() && gameBoard.getCell(i - 1, j + 1).getCellColor() == gameBoard.getCell(i - 2, j + 2).getCellColor() && gameBoard.getCell(i - 2, j + 2).getCellColor() == gameBoard.getCell(i - 3, j + 3).getCellColor())
                         {
-                            MessageBox.Show("Win State: Diagonal (U.Left to B.Right)");
+                            // debugging
+                            // MessageBox.Show("Win State: Diagonal (U.Left to B.Right)");
+
                             // Add the cells that caused the connect 4 to the array
                             picBoxWinners = new PictureBox[4];
                             picBoxWinners[0] = gameBoard.getCell(i, j).getPictureBox();
@@ -686,6 +681,7 @@ namespace Connect4_Group1
             }
         }
 
+        // Function saves data to the file
         private void updatePersistantData()
         {
             // Will update the persistant data .txt file
@@ -699,12 +695,11 @@ namespace Connect4_Group1
             }
 
             // Update the win percent of the user based on how many games have been played
-            c_data.setUserWinPercent((c_data.getUserWins() / c_data.getTotalGamesPlayed()) * 100);
+            c_data.setUserWinPercent((int)((double)c_data.getUserWins() / c_data.getTotalGamesPlayed() * 100));
 
             // Right now I will just save this data and implement more later, Use this as a reference for Singleplayer! ! !
             c_data.writeToFile();
         }
-
 
         // This function will just be used to change the colors of the winning pictures boxes. Possibly strobe them...
         public void displayWinningPicBoxes()
@@ -723,7 +718,6 @@ namespace Connect4_Group1
                 counter++;
             }
         }
-
 
         /**
         * @brief Will set the enable or disable all the buttons on the form depending on the gameOver value
@@ -754,57 +748,76 @@ namespace Connect4_Group1
             }
         }
 
-        private bool dfsForBoard(Board gameBoard, bool[,] visted, int row, int col, int connectedCells)
+        private void displayAfterGameForm()
         {
-            // Base cased found 4 connect cells so we can exit this recursive function
-            if (connectedCells >= 4)
-            {
-                return true;
-            }
+            // Here I would pass the game status to the new stats form and update the public struct of game data
+            // because areFourCellsConnected returned true meaning that a player has won the game
+            statsAfterTwoPlayerGame satpg = new statsAfterTwoPlayerGame(gameConfig.getCurrentPlayer(), gameConfig.getColorOfCurrPlayer(), this);
 
-            //                          Checks if out of bounds                                         If it was visited                           Checks if the color matches the current player
-            if (row < 0 || row >= gameBoard.getRows() || col < 0 || col >= gameBoard.getColumns() || visted[row,col] == true || gameBoard.getCell(row,col).getCellColor() != gameConfig.getColorOfCurrPlayer())
-            {
-                return false;
-            }
+            // Update the .txt file
+            updatePersistantData();
 
-            // Both checks passed now we are here, so we set this current position to visited
-            visited[row, col] = true;
+            // Disable the buttons on the board
+            setBoardState(1);
 
-            // now we check each cell to see if we have a connect 4
+            satpg.ShowDialog(); // Display the TPG Complete form
 
-            if (dfsForBoard(gameBoard, visited, row + 1, col, connectedCells)) // Go up
-            {
-                connectedCells++;
-                return true;
-            }
-            if (dfsForBoard(gameBoard, visited, row - 1, col, connectedCells)) // Go Down
-            {
-                connectedCells++;
-                return true;
-            }
-            if (dfsForBoard(gameBoard, visited, row, col - 1, connectedCells)) // Go Left
-            {
-                connectedCells++;
-                return true;
-            }
-            if (dfsForBoard(gameBoard, visited, row, col + 1, connectedCells)) // Go Right
-            {
-                connectedCells++;
-                return true;
-            }
-            if (dfsForBoard(gameBoard, visited, row + 1, col + 1, connectedCells)) // Go Diagonal
-            {
-                connectedCells++;
-                return true;
-            }
-            if (dfsForBoard(gameBoard, visited, row - 1, col - 1, connectedCells)) // Go Diagonal reversed
-            {
-                connectedCells++;
-                return true;
-            }
+            // Enable the buttons on the board since "Play Again" was clicked
+            setBoardState(0);
 
-            return false;
+            cleanUpGame();
         }
+
+        // Tried and Failed DFS attempt
+        //private bool dfsForBoard(Board gameBoard, bool[,] visted, int row, int col, ref int connectedCells)
+        //{
+        //    // Notes No Fn way this would be the solution, How can I ensure that the cells are in the same row, col, or diagonal direction?
+
+
+        //    // Base cased found 4 connect cells so we can exit this recursive function
+        //    if (connectedCells >= 4)
+        //    {
+        //        return true;
+        //    }
+
+        //    //                          Checks if out of bounds                                         If it was visited                           Checks if the color matches the current player
+        //    if (row < 0 || row >= gameBoard.getRows() || col < 0 || col >= gameBoard.getColumns() || visted[row,col] == true || gameBoard.getCell(row,col).getCellColor() != gameConfig.getColorOfCurrPlayer())
+        //    {
+        //        return false;
+        //    }
+
+        //    // Both checks passed now we are here, so we set this current position to visited
+        //    visited[row, col] = true;
+        //    connectedCells++;
+
+        //    // now we check each cell to see if we have a connect 4
+
+        //    if (dfsForBoard(gameBoard, visited, row + 1, col, ref connectedCells)) // Go up
+        //    {
+        //        return true;
+        //    }
+        //    if (dfsForBoard(gameBoard, visited, row - 1, col, ref connectedCells)) // Go Down
+        //    {
+        //        return true;
+        //    }
+        //    if (dfsForBoard(gameBoard, visited, row, col - 1, ref connectedCells)) // Go Left
+        //    {
+        //        return true;
+        //    }
+        //    if (dfsForBoard(gameBoard, visited, row, col + 1, ref connectedCells)) // Go Right
+        //    {
+        //        return true;
+        //    }
+        //    if (dfsForBoard(gameBoard, visited, row + 1, col + 1, ref connectedCells)) // Go Diagonal
+        //    {
+        //        return true;
+        //    }
+        //    if (dfsForBoard(gameBoard, visited, row - 1, col - 1, ref connectedCells)) // Go Diagonal reversed
+        //    {
+        //        return true;
+        //    }
+
+        //    return false;
+        //}
     }
 }

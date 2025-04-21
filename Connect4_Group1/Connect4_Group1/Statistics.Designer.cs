@@ -66,6 +66,7 @@
             label1.Size = new Size(195, 34);
             label1.TabIndex = 1;
             label1.Text = "Ye Olde Statistics";
+            label1.Visible = false;
             // 
             // label2
             // 
@@ -77,6 +78,7 @@
             label2.Size = new Size(93, 21);
             label2.TabIndex = 2;
             label2.Text = "Your Wins:";
+            label2.Visible = false;
             // 
             // statLbl_yourWins
             // 
@@ -88,6 +90,7 @@
             statLbl_yourWins.Size = new Size(41, 21);
             statLbl_yourWins.TabIndex = 3;
             statLbl_yourWins.Text = "YW";
+            statLbl_yourWins.Visible = false;
             // 
             // label3
             // 
@@ -99,6 +102,7 @@
             label3.Size = new Size(76, 21);
             label3.TabIndex = 4;
             label3.Text = "AI Wins:";
+            label3.Visible = false;
             // 
             // statLbl_AIwins
             // 
@@ -110,6 +114,7 @@
             statLbl_AIwins.Size = new Size(47, 21);
             statLbl_AIwins.TabIndex = 5;
             statLbl_AIwins.Text = "AIW";
+            statLbl_AIwins.Visible = false;
             // 
             // label4
             // 
@@ -121,6 +126,7 @@
             label4.Size = new Size(171, 21);
             label4.TabIndex = 6;
             label4.Text = "Your Win Percentage:";
+            label4.Visible = false;
             // 
             // statLbl_yourWinPercentage
             // 
@@ -132,6 +138,7 @@
             statLbl_yourWinPercentage.Size = new Size(52, 21);
             statLbl_yourWinPercentage.TabIndex = 7;
             statLbl_yourWinPercentage.Text = "YWP";
+            statLbl_yourWinPercentage.Visible = false;
             // 
             // label5
             // 
@@ -143,6 +150,7 @@
             label5.Size = new Size(154, 21);
             label5.TabIndex = 8;
             label5.Text = "AI Win Percentage:";
+            label5.Visible = false;
             // 
             // statLbl_AIwinPercentage
             // 
@@ -154,6 +162,7 @@
             statLbl_AIwinPercentage.Size = new Size(58, 21);
             statLbl_AIwinPercentage.TabIndex = 9;
             statLbl_AIwinPercentage.Text = "AIWP";
+            statLbl_AIwinPercentage.Visible = false;
             // 
             // label6
             // 
@@ -165,6 +174,7 @@
             label6.Size = new Size(131, 21);
             label6.TabIndex = 10;
             label6.Text = "Number of Ties:";
+            label6.Visible = false;
             // 
             // statLbl_NOT
             // 
@@ -176,6 +186,7 @@
             statLbl_NOT.Size = new Size(49, 21);
             statLbl_NOT.TabIndex = 11;
             statLbl_NOT.Text = "NOT";
+            statLbl_NOT.Visible = false;
             // 
             // label7
             // 
@@ -187,6 +198,7 @@
             label7.Size = new Size(164, 21);
             label7.TabIndex = 12;
             label7.Text = "Total Games Played:";
+            label7.Visible = false;
             // 
             // statLbl_totalGamesPlayed
             // 
@@ -198,6 +210,7 @@
             statLbl_totalGamesPlayed.Size = new Size(47, 21);
             statLbl_totalGamesPlayed.TabIndex = 13;
             statLbl_totalGamesPlayed.Text = "TGP";
+            statLbl_totalGamesPlayed.Visible = false;
             // 
             // Statistics
             // 

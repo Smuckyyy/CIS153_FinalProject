@@ -133,22 +133,10 @@ namespace Connect4_Group1
             this.playerTwoColor = color;
         }
 
-        //// Set the color of AI
-        //public void setAIColor(Color color)
-        //{
-        //    this.AIColor = color;
-        //}
-
         // Set what player goes next
         public void setCurrentPlayer(int currentPlayer)
         {
             this.currentPlayer = currentPlayer;
-        }
-
-        // Set the game enabled state
-        public void setGameRunning(bool runState)
-        {
-            this.gameOver = runState;
         }
         // =================== SETTERS ===============
     }
