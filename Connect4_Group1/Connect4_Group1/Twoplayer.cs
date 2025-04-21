@@ -25,6 +25,11 @@ namespace Connect4_Group1
         // This array will hold the Picture boxes that caused the game to end 
         PictureBox[] picBoxWinners;
 
+        // This is what I think the DFS needs to function
+        bool[,] visited;
+        // This is needed to know what piece was last placed on the board
+        int[] latestPiece = { 0, 0 };
+
         // This holds how many time a button has been click.
         // Could be used to dictate if the game should end or
         // When a button should be disabled
@@ -177,6 +182,10 @@ namespace Connect4_Group1
                             //    gameBoard.getCell(i, currentCol).setCellImage(gameConfig.getPlayerTwoImage());
                             //}
 
+                            // Update the latest piece variable
+                            latestPiece[0] = i;
+                            latestPiece[1] = currentCol;
+
                             return;
                         }
                     }
@@ -189,6 +198,10 @@ namespace Connect4_Group1
                             gameBoard.getCell(i, currentCol).setCellColor(gameConfig.getColorOfCurrPlayer());
                             gameBoard.getCell(i, currentCol).setClaimStatus(true);
                             buttonClick[currentCol]++;
+
+                            // Update the latest piece variable
+                            latestPiece[0] = i;
+                            latestPiece[1] = currentCol;
                             return;
                         }
                     }
@@ -201,6 +214,10 @@ namespace Connect4_Group1
                             gameBoard.getCell(i, currentCol).setCellColor(gameConfig.getColorOfCurrPlayer());
                             gameBoard.getCell(i, currentCol).setClaimStatus(true);
                             buttonClick[currentCol]++;
+
+                            // Update the latest piece variable
+                            latestPiece[0] = i;
+                            latestPiece[1] = currentCol;
                             return;
                         }
                     }
@@ -213,6 +230,10 @@ namespace Connect4_Group1
                             gameBoard.getCell(i, currentCol).setCellColor(gameConfig.getColorOfCurrPlayer());
                             gameBoard.getCell(i, currentCol).setClaimStatus(true);
                             buttonClick[currentCol]++;
+
+                            // Update the latest piece variable
+                            latestPiece[0] = i;
+                            latestPiece[1] = currentCol;
                             return;
                         }
                     }
@@ -225,6 +246,10 @@ namespace Connect4_Group1
                             gameBoard.getCell(i, currentCol).setCellColor(gameConfig.getColorOfCurrPlayer());
                             gameBoard.getCell(i, currentCol).setClaimStatus(true);
                             buttonClick[currentCol]++;
+
+                            // Update the latest piece variable
+                            latestPiece[0] = i;
+                            latestPiece[1] = currentCol;
                             return;
                         }
                     }
@@ -237,6 +262,10 @@ namespace Connect4_Group1
                             gameBoard.getCell(i, currentCol).setCellColor(gameConfig.getColorOfCurrPlayer());
                             gameBoard.getCell(i, currentCol).setClaimStatus(true);
                             buttonClick[currentCol]++;
+
+                            // Update the latest piece variable
+                            latestPiece[0] = i;
+                            latestPiece[1] = currentCol;
                             return;
                         }
                     }
@@ -249,6 +278,10 @@ namespace Connect4_Group1
                             gameBoard.getCell(i, currentCol).setCellColor(gameConfig.getColorOfCurrPlayer());
                             gameBoard.getCell(i, currentCol).setClaimStatus(true);
                             buttonClick[currentCol]++;
+
+                            // Update the latest piece variable
+                            latestPiece[0] = i;
+                            latestPiece[1] = currentCol;
                             return;
                         }
                     }
@@ -304,10 +337,13 @@ namespace Connect4_Group1
                 }
             }
 
-            // Every space on the grid is filled
+            // Every space on the grid is filled, Considered a tie
             if (filledCells == totalCells)
             {
-                gameConfig.setGameStatus(false);
+                // Add a tie to the data file
+                c_data.setGameTies(c_data.getGameTies() + 1);
+
+                c_data.writeToFile();
 
                 // For Debugging
                 MessageBox.Show("Every Cell Is Filled", "Game Status");
@@ -317,24 +353,40 @@ namespace Connect4_Group1
             else
             {
                 // The DFS would be performed here
+                visited = new bool[gameBoard.getRows(), gameBoard.getColumns()];
 
-                if (areFourCellsConnected())
+                if (dfsForBoard(gameBoard, visited, latestPiece[0], latestPiece[1], 1))
                 {
-                    // Here I would pass the game status to the new stats form and update the public struct of game data
-                    // because areFourCellsConnected returned true meaning that a player has won the game
-                    statsAfterTwoPlayerGame satpg = new statsAfterTwoPlayerGame(gameConfig.getCurrentPlayer(), gameConfig.getColorOfCurrPlayer(), this);
-
-                    satpg.ShowDialog(); // Display the TPG Complete form
-
-                    // If the user close out of the form this will happen, Otherwise if the Exit button is clicked the entire program is closed
-                    cleanUpGame();
-
+                    MessageBox.Show("Found 4 Connected Cells!");
                 }
                 else
                 {
-                    // No connect 4 and the board still has cells
                     updatePlayerTurn();
                 }
+
+                //if (areFourCellsConnected())
+                //{
+                //    // Here I would pass the game status to the new stats form and update the public struct of game data
+                //    // because areFourCellsConnected returned true meaning that a player has won the game
+                //    statsAfterTwoPlayerGame satpg = new statsAfterTwoPlayerGame(gameConfig.getCurrentPlayer(), gameConfig.getColorOfCurrPlayer(), this);
+
+                //    // Disable the buttons on the board
+                //    setBoardState(1);
+
+                //    satpg.ShowDialog(); // Display the TPG Complete form
+
+                //    // Enable the buttons on the board since "Play Again" was clicked
+                //    setBoardState(0);
+
+                //    // If the user close out of the form this will happen, Otherwise if the Exit button is clicked the entire program is closed
+                //    cleanUpGame();
+
+                //}
+                //else
+                //{
+                //    // No connect 4 and the board still has cells
+                //    updatePlayerTurn();
+                //}
             }
         }
 
@@ -672,5 +724,87 @@ namespace Connect4_Group1
             }
         }
 
+
+        /**
+        * @brief Will set the enable or disable all the buttons on the form depending on the gameOver value
+        * 
+        * @param value 0 for enabled, 1 for disabled
+        */
+        private void setBoardState(int value)
+        {
+            if (value == 1)
+            {
+                foreach (Control btn in this.Controls)
+                {
+                    if (btn is Button && (string)btn.Tag == "btnColumn")
+                    {
+                        btn.Visible = false;
+                    }
+                }
+            }
+            else if (value == 0)
+            {
+                foreach (Control btn in this.Controls)
+                {
+                    if (btn is Button && (string)btn.Tag == "btnColumn")
+                    {
+                        btn.Visible = true;
+                    }
+                }
+            }
+        }
+
+        private bool dfsForBoard(Board gameBoard, bool[,] visted, int row, int col, int connectedCells)
+        {
+            // Base cased found 4 connect cells so we can exit this recursive function
+            if (connectedCells >= 4)
+            {
+                return true;
+            }
+
+            //                          Checks if out of bounds                                         If it was visited                           Checks if the color matches the current player
+            if (row < 0 || row >= gameBoard.getRows() || col < 0 || col >= gameBoard.getColumns() || visted[row,col] == true || gameBoard.getCell(row,col).getCellColor() != gameConfig.getColorOfCurrPlayer())
+            {
+                return false;
+            }
+
+            // Both checks passed now we are here, so we set this current position to visited
+            visited[row, col] = true;
+
+            // now we check each cell to see if we have a connect 4
+
+            if (dfsForBoard(gameBoard, visited, row + 1, col, connectedCells)) // Go up
+            {
+                connectedCells++;
+                return true;
+            }
+            if (dfsForBoard(gameBoard, visited, row - 1, col, connectedCells)) // Go Down
+            {
+                connectedCells++;
+                return true;
+            }
+            if (dfsForBoard(gameBoard, visited, row, col - 1, connectedCells)) // Go Left
+            {
+                connectedCells++;
+                return true;
+            }
+            if (dfsForBoard(gameBoard, visited, row, col + 1, connectedCells)) // Go Right
+            {
+                connectedCells++;
+                return true;
+            }
+            if (dfsForBoard(gameBoard, visited, row + 1, col + 1, connectedCells)) // Go Diagonal
+            {
+                connectedCells++;
+                return true;
+            }
+            if (dfsForBoard(gameBoard, visited, row - 1, col - 1, connectedCells)) // Go Diagonal reversed
+            {
+                connectedCells++;
+                return true;
+            }
+
+            return false;
+        }
     }
 }
