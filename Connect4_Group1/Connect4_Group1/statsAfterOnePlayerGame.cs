@@ -13,15 +13,17 @@ namespace Connect4_Group1
     public partial class statsAfterOnePlayerGame : Form
     {
         Singleplayer spForm;
+        int winningPlayer;
 
         public statsAfterOnePlayerGame()
         {
             InitializeComponent();
         }
-        public statsAfterOnePlayerGame(int winningPlayer, Color winningPlayerColor, Singleplayer p_spForm)
+        public statsAfterOnePlayerGame(int p_winningPlayer, Color winningPlayerColor, Singleplayer p_spForm)
         {
             InitializeComponent();
             spForm = p_spForm;
+            winningPlayer = p_winningPlayer;
 
             updateFormInfo(winningPlayer);
         }
@@ -36,15 +38,33 @@ namespace Connect4_Group1
             if (winningPlayer == 1)
             {
                 // Human Won
+                lblSAOPG_winner.Text = "Human has won!";
             }
             else if (winningPlayer == 2)
             {
                 // AI Won
+                lblSAOPG_winner.Text = "AI has won!";
             }
             else if (winningPlayer == -1)
             {
                 // Tie
+                lblSAOPG_winner.Text = "Game was a tie!";
             }
+        }
+
+        private void btnSAOPG_review_Click(object sender, EventArgs e)
+        {
+            spForm.Focus();
+
+            if (winningPlayer != -1)
+            {
+                spForm.displayWinningPicBoxes();
+            }
+        }
+
+        private void btnSAOPG_again_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

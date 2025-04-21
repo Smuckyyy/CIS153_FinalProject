@@ -379,7 +379,7 @@
             // doubPic_e1
             // 
             doubPic_e1.BackColor = Color.White;
-            doubPic_e1.Location = new Point(128, 353);
+            doubPic_e1.Location = new Point(127, 353);
             doubPic_e1.Name = "doubPic_e1";
             doubPic_e1.Size = new Size(50, 57);
             doubPic_e1.TabIndex = 15;
@@ -736,6 +736,8 @@
             btnCol1.Text = "Insert";
             btnCol1.UseVisualStyleBackColor = true;
             btnCol1.Click += button_click_handler;
+            btnCol1.MouseEnter += btnCol_MouseEnter;
+            btnCol1.MouseLeave += btnCol_MouseLeave;
             // 
             // btnCol2
             // 
@@ -747,6 +749,8 @@
             btnCol2.Text = "Insert";
             btnCol2.UseVisualStyleBackColor = true;
             btnCol2.Click += button_click_handler;
+            btnCol2.MouseEnter += btnCol_MouseEnter;
+            btnCol2.MouseLeave += btnCol_MouseLeave;
             // 
             // btnCol3
             // 
@@ -758,6 +762,8 @@
             btnCol3.Text = "Insert";
             btnCol3.UseVisualStyleBackColor = true;
             btnCol3.Click += button_click_handler;
+            btnCol3.MouseEnter += btnCol_MouseEnter;
+            btnCol3.MouseLeave += btnCol_MouseLeave;
             // 
             // btnCol4
             // 
@@ -769,6 +775,8 @@
             btnCol4.Text = "Insert";
             btnCol4.UseVisualStyleBackColor = true;
             btnCol4.Click += button_click_handler;
+            btnCol4.MouseEnter += btnCol_MouseEnter;
+            btnCol4.MouseLeave += btnCol_MouseLeave;
             // 
             // btnCol5
             // 
@@ -780,6 +788,8 @@
             btnCol5.Text = "Insert";
             btnCol5.UseVisualStyleBackColor = true;
             btnCol5.Click += button_click_handler;
+            btnCol5.MouseEnter += btnCol_MouseEnter;
+            btnCol5.MouseLeave += btnCol_MouseLeave;
             // 
             // btnCol6
             // 
@@ -791,6 +801,8 @@
             btnCol6.Text = "Insert";
             btnCol6.UseVisualStyleBackColor = true;
             btnCol6.Click += button_click_handler;
+            btnCol6.MouseEnter += btnCol_MouseEnter;
+            btnCol6.MouseLeave += btnCol_MouseLeave;
             // 
             // btnCol7
             // 
@@ -802,6 +814,8 @@
             btnCol7.Text = "Insert";
             btnCol7.UseVisualStyleBackColor = true;
             btnCol7.Click += button_click_handler;
+            btnCol7.MouseEnter += btnCol_MouseEnter;
+            btnCol7.MouseLeave += btnCol_MouseLeave;
             // 
             // pictureBoxPlayerColor
             // 

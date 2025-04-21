@@ -20,11 +20,21 @@ namespace Connect4_Group1
         Board gameBoard = new Board();
         GameSettings gameConfig;
         Data c_data;
+        PictureBox[] picBoxWinners;
+
+        // Major issue right now is the way the AI would know what buttons it can click
+        // Right now it just uses a int counter to see how many buttons are available. The issue with this is
+        // When the counter decrements it will no longer click buttons 6 or 7.
+
+        // When a button should be disabled
+        int[] buttonClick = { 0, 0, 0, 0, 0, 0, 0 };
+
+        // ENABLE/DISABLE THIS FOR DEBUGGING PROMPTS
+        const bool shouldDebug = false;
+        //=========================================
 
         // This holds how many time a button has been click.
         // Could be used to dictate if the game should end or
-        // When a button should be disabled
-        int[] buttonClick = { 0, 0, 0, 0, 0, 0, 0 };
 
         public Singleplayer()
         {
@@ -335,7 +345,10 @@ namespace Connect4_Group1
                         gameConfig.setGameStatus(false);
                     }
 
-                    MessageBox.Show("Four cells found connected, Resetting Game!");
+                    if (shouldDebug)
+                    {
+                        MessageBox.Show("Four cells found connected, Resetting Game!");
+                    }
 
                     displayAfterGameForm();
                 }
@@ -400,7 +413,19 @@ namespace Connect4_Group1
                     {
                         if (gameBoard.getCell(rows, cols + 1).getCellColor() == gameConfig.getColorOfCurrPlayer() && gameBoard.getCell(rows, cols + 2).getCellColor() == gameConfig.getColorOfCurrPlayer() && gameBoard.getCell(rows, cols + 3).getCellColor() == gameConfig.getColorOfCurrPlayer())
                         {
-                            MessageBox.Show("Win State: Horizontal");
+
+                            // Add the cells that caused the connect 4 to the array
+                            picBoxWinners = new PictureBox[4];
+                            picBoxWinners[0] = gameBoard.getCell(rows, cols).getPictureBox();
+                            picBoxWinners[1] = gameBoard.getCell(rows, cols + 1).getPictureBox();
+                            picBoxWinners[2] = gameBoard.getCell(rows, cols + 2).getPictureBox();
+                            picBoxWinners[3] = gameBoard.getCell(rows, cols + 3).getPictureBox();
+
+                            if (shouldDebug)
+                            {
+                                MessageBox.Show("Win State: Horizontal");
+                            }
+
                             return true;
                         }
                     }
@@ -423,8 +448,19 @@ namespace Connect4_Group1
                         // Now we check for cell 2, 3, and 4
                         if (gameBoard.getCell(rows + 1, cols).getCellColor() == gameConfig.getColorOfCurrPlayer() && gameBoard.getCell(rows + 2, cols).getCellColor() == gameConfig.getColorOfCurrPlayer() && gameBoard.getCell(rows + 3, cols).getCellColor() == gameConfig.getColorOfCurrPlayer())
                         {
-                            // The current player got a Horizontal connect 4
-                            MessageBox.Show("Win State: Vertical");
+
+                            // Add the cells that caused the connect 4 to the array
+                            picBoxWinners = new PictureBox[4];
+                            picBoxWinners[0] = gameBoard.getCell(rows, cols).getPictureBox();
+                            picBoxWinners[1] = gameBoard.getCell(rows + 1, cols).getPictureBox();
+                            picBoxWinners[2] = gameBoard.getCell(rows + 2, cols).getPictureBox();
+                            picBoxWinners[3] = gameBoard.getCell(rows + 3, cols).getPictureBox();
+
+                            if (shouldDebug)
+                            {
+                                // The current player got a Horizontal connect 4
+                                MessageBox.Show("Win State: Vertical");
+                            }
                             return true;
                         }
                     }
@@ -449,7 +485,17 @@ namespace Connect4_Group1
                         // This checks left to upper right, We need another check going left to bottom right 
                         if (gameBoard.getCell(i, j).getCellColor() == gameBoard.getCell(i + 1, j + 1).getCellColor() && gameBoard.getCell(i + 1, j + 1).getCellColor() == gameBoard.getCell(i + 2, j + 2).getCellColor() && gameBoard.getCell(i + 2, j + 2).getCellColor() == gameBoard.getCell(i + 3, j + 3).getCellColor())
                         {
-                            MessageBox.Show("Win State: Diagonal (B.Left to U.Right)");
+                            // Add the cells that caused the connect 4 to the array
+                            picBoxWinners = new PictureBox[4];
+                            picBoxWinners[0] = gameBoard.getCell(i, j).getPictureBox();
+                            picBoxWinners[1] = gameBoard.getCell(i + 1, j + 1).getPictureBox();
+                            picBoxWinners[2] = gameBoard.getCell(i + 2, j + 2).getPictureBox();
+                            picBoxWinners[3] = gameBoard.getCell(i + 3, j + 3).getPictureBox();
+
+                            if (shouldDebug)
+                            {
+                                MessageBox.Show("Win State: Diagonal (B.Left to U.Right)");
+                            }
                             return true;
                         }
                     }
@@ -473,7 +519,18 @@ namespace Connect4_Group1
                     {
                         if (gameBoard.getCell(i, j).getCellColor() == gameBoard.getCell(i - 1, j + 1).getCellColor() && gameBoard.getCell(i - 1, j + 1).getCellColor() == gameBoard.getCell(i - 2, j + 2).getCellColor() && gameBoard.getCell(i - 2, j + 2).getCellColor() == gameBoard.getCell(i - 3, j + 3).getCellColor())
                         {
-                            MessageBox.Show("Win State: Diagonal (U.Left to B.Right)");
+                            // Add the cells that caused the connect 4 to the array
+                            picBoxWinners = new PictureBox[4];
+                            picBoxWinners[0] = gameBoard.getCell(i, j).getPictureBox();
+                            picBoxWinners[1] = gameBoard.getCell(i - 1, j + 1).getPictureBox();
+                            picBoxWinners[2] = gameBoard.getCell(i - 2, j + 2).getPictureBox();
+                            picBoxWinners[3] = gameBoard.getCell(i - 3, j + 3).getPictureBox();
+
+                            if (shouldDebug)
+                            {
+                                MessageBox.Show("Win State: Diagonal (U.Left to B.Right)");
+                            }
+
                             return true;
                         }
                     }
@@ -586,25 +643,37 @@ namespace Connect4_Group1
 
             if (willPlayerWin("horizontal", ref row, ref col))
             {
-                MessageBox.Show("The AI would place a piece at: " + "Row: " + row + " Col: " + col + "\nTo stop a player horizontal win.");
+                if (shouldDebug)
+                {
+                    MessageBox.Show("The AI would place a piece at: " + "Row: " + row + " Col: " + col + "\nTo stop a player horizontal win.");
+                }
                 makeMove(col);
                 return;
             }
             if(willPlayerWin("vertical", ref row, ref col))
             {
-                MessageBox.Show("The AI would place a piece at: " + "Row: " + row + " Col: " + col + "\nTo stop a player vertical win.");
+                if (shouldDebug)
+                {
+                    MessageBox.Show("The AI would place a piece at: " + "Row: " + row + " Col: " + col + "\nTo stop a player vertical win.");
+                }
                 makeMove(col);
                 return;
             }
             if(willPlayerWin("diagonalUp", ref row, ref col))
             {
-                MessageBox.Show("The AI would place a piece at: " + "Row: " + row + " Col: " + col + "\nTo stop a player diagonal-up win.");
+                if (shouldDebug)
+                {
+                    MessageBox.Show("The AI would place a piece at: " + "Row: " + row + " Col: " + col + "\nTo stop a player diagonal-up win.");
+                }
                 makeMove(col);
                 return;
             }
             if(willPlayerWin("diagonalDown", ref row, ref col))
             {
-                MessageBox.Show("The AI would place a piece at: " + "Row: " + row + " Col: " + col + "\nTo stop a player diagonal-down win.");
+                if (shouldDebug)
+                {
+                    MessageBox.Show("The AI would place a piece at: " + "Row: " + row + " Col: " + col + "\nTo stop a player diagonal-down win.");
+                }
                 makeMove(col);
                 return;
             }
@@ -612,10 +681,11 @@ namespace Connect4_Group1
             // Place a cell if it's possible to win with the AI
             // Place a cell in a random spot on the board if no win state is found
             // First find out if any buttons are disabled
-            int goodButtons = 0;
-            foreach (var btnEnabled in buttonClick)
+            int goodButtons = 6;
+
+            foreach (var goodBtns in buttonClick)
             {
-                if (btnEnabled != 6)
+                if (goodBtns != 6)
                 {
                     goodButtons++;
                 }
@@ -653,7 +723,6 @@ namespace Connect4_Group1
             }
         }
         
-
         private void updatePlayerTurn()
         {
             if (gameConfig.getCurrentPlayer() == 1)
@@ -693,7 +762,7 @@ namespace Connect4_Group1
             }
         }
 
-        //                          ref is the same thing as & in CPP
+        //                                       ref is the same thing as & in CPP
         private bool willPlayerWin(string direction, ref int lastOpenRow, ref int lastOpenCol)
         {
             Color playerColor = Color.Yellow;
@@ -780,7 +849,6 @@ namespace Connect4_Group1
             return false;
         }
                     
-
             // Search for a win condition of the player and save the last cell the player needs
             // Checks Horizontal win state. Left to Right
             //for (int i = 0; i < rows; i++)
@@ -832,7 +900,6 @@ namespace Connect4_Group1
 
             return rnd.Next(num);
         }
-
 
         // These four functions handle displaying a users piece while mousing over a button
         // MouseEnter Handler for buttons
@@ -941,7 +1008,7 @@ namespace Connect4_Group1
             // Disable the buttons on the board
             setBoardState(1);
 
-            saspg.ShowDialog(); // Display the TPG Complete form
+            saspg.ShowDialog(); // Display the SPG Complete form
 
             // Enable the buttons on the board since "Play Again" was clicked
             setBoardState(0);
@@ -999,6 +1066,24 @@ namespace Connect4_Group1
                         btn.Visible = true;
                     }
                 }
+            }
+        }
+
+        // This function will just be used to change the colors of the winning pictures boxes. Possibly strobe them...
+        public void displayWinningPicBoxes()
+        {
+            int numOfCycles = 10;
+
+            while (numOfCycles > 0)
+            {
+                foreach (PictureBox picBox in picBoxWinners)
+                {
+                    picBox.BackColor = Color.White;
+                    Thread.Sleep(200);
+                    Application.DoEvents();
+                    picBox.BackColor = gameConfig.getColorOfCurrPlayer();
+                }
+                numOfCycles--;
             }
         }
     }

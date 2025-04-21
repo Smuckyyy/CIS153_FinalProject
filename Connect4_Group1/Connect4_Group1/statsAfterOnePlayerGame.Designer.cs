@@ -80,6 +80,7 @@
             btnSAOPG_again.TabIndex = 3;
             btnSAOPG_again.Text = "Play Again";
             btnSAOPG_again.UseVisualStyleBackColor = false;
+            btnSAOPG_again.Click += btnSAOPG_again_Click;
             // 
             // btnSAOPG_review
             // 
@@ -92,6 +93,7 @@
             btnSAOPG_review.TabIndex = 4;
             btnSAOPG_review.Text = "Review Thy Game";
             btnSAOPG_review.UseVisualStyleBackColor = false;
+            btnSAOPG_review.Click += btnSAOPG_review_Click;
             // 
             // btnSAOPG_exit
             // 

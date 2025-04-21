@@ -25,8 +25,12 @@ namespace Connect4_Group1
         // This array will hold the Picture boxes that caused the game to end 
         PictureBox[] picBoxWinners;
 
+        // ENABLE/DISABLE THIS FOR DEBUGGING PROMPTS
+        const bool shouldDebug = false;
+        //=========================================
+
         // This is what I think the DFS needs to function
-        bool[,] visited;
+        // bool[,] visited;
         // This is needed to know what piece was last placed on the board
         int[] latestPiece = { 0, 0 };
 
@@ -349,8 +353,11 @@ namespace Connect4_Group1
 
                 displayAfterGameForm();
 
-                // For Debugging
-                //MessageBox.Show("Every Cell Is Filled", "Game Status");
+                if (shouldDebug)
+                {
+                    // For Debugging
+                    MessageBox.Show("Every Cell Is Filled", "Game Status");
+                }
             }
             else
             {
@@ -416,9 +423,6 @@ namespace Connect4_Group1
             gameConfig.setPlayerColor(Color.Yellow);
             lblCurrentPlayer.Text = String.Format("Player {0,0} Turn", gameConfig.getCurrentPlayer());
             pictureBoxPlayerColor.BackColor = gameConfig.getColorOfCurrPlayer();
-
-            // For debugging purposes I will reenable the game to continue playing, This can be changed later
-            //gameConfig.setGameRunning(true);
         }
 
         // Check to see if a player has won the game
@@ -441,8 +445,12 @@ namespace Connect4_Group1
                             picBoxWinners[2] = gameBoard.getCell(rows, cols + 2).getPictureBox();
                             picBoxWinners[3] = gameBoard.getCell(rows, cols + 3).getPictureBox();
 
-                            // debugging
-                            //MessageBox.Show("Win State: Horizontal");
+                            if (shouldDebug)
+                            {
+                                // debugging
+                                MessageBox.Show("Win State: Horizontal");
+                            }
+
                             return true;
                         }
                     }
@@ -467,8 +475,11 @@ namespace Connect4_Group1
                         {
                             // The current player got a Horizontal connect 4
 
-                            // debugging
-                            //MessageBox.Show("Win State: Vertical");
+                            if (shouldDebug)
+                            {
+                                // debugging
+                                MessageBox.Show("Win State: Vertical");
+                            }
 
                             // Add the cells that caused the connect 4 to the array
                             picBoxWinners = new PictureBox[4];
@@ -500,8 +511,11 @@ namespace Connect4_Group1
                         // This checks left to upper right, We need another check going left to bottom right 
                         if (gameBoard.getCell(i, j).getCellColor() == gameBoard.getCell(i + 1, j + 1).getCellColor() && gameBoard.getCell(i + 1, j + 1).getCellColor() == gameBoard.getCell(i + 2, j + 2).getCellColor() && gameBoard.getCell(i + 2, j + 2).getCellColor() == gameBoard.getCell(i + 3, j + 3).getCellColor())
                         {
-                            // debugging
-                            //MessageBox.Show("Win State: Diagonal (B.Left to U.Right)");
+                            if (shouldDebug)
+                            {
+                                // debugging
+                                MessageBox.Show("Win State: Diagonal (B.Left to U.Right)");
+                            }
 
                             // Add the cells that caused the connect 4 to the array
                             picBoxWinners = new PictureBox[4];
@@ -532,8 +546,11 @@ namespace Connect4_Group1
                     {
                         if (gameBoard.getCell(i, j).getCellColor() == gameBoard.getCell(i - 1, j + 1).getCellColor() && gameBoard.getCell(i - 1, j + 1).getCellColor() == gameBoard.getCell(i - 2, j + 2).getCellColor() && gameBoard.getCell(i - 2, j + 2).getCellColor() == gameBoard.getCell(i - 3, j + 3).getCellColor())
                         {
-                            // debugging
-                            // MessageBox.Show("Win State: Diagonal (U.Left to B.Right)");
+                            if (shouldDebug)
+                            {
+                                // debugging
+                                MessageBox.Show("Win State: Diagonal (U.Left to B.Right)");
+                            }
 
                             // Add the cells that caused the connect 4 to the array
                             picBoxWinners = new PictureBox[4];
@@ -618,7 +635,6 @@ namespace Connect4_Group1
         {
             if (sender == btnCol1)
             {
-                //MessageBox.Show("Mouse Entered Buttton 1");
                 displayPiecePosition(0);
             }
             else if (sender == btnCol2)
@@ -652,7 +668,6 @@ namespace Connect4_Group1
         {
             if (sender == btnCol1)
             {
-                //MessageBox.Show("Mouse Entered Buttton 1");
                 removePiecePosition(0);
             }
             else if (sender == btnCol2)
@@ -704,18 +719,18 @@ namespace Connect4_Group1
         // This function will just be used to change the colors of the winning pictures boxes. Possibly strobe them...
         public void displayWinningPicBoxes()
         {
-            int counter = 0;
+            int numOfCycles = 10;
 
-            while (counter < 10)
+            while (numOfCycles > 0)
             {
                 foreach (PictureBox picBox in picBoxWinners)
                 {
                     picBox.BackColor = Color.White;
-                    Thread.Sleep(250);
+                    Thread.Sleep(200);
                     Application.DoEvents();
                     picBox.BackColor = gameConfig.getColorOfCurrPlayer();
                 }
-                counter++;
+                numOfCycles--;
             }
         }
 
