@@ -26,15 +26,15 @@ namespace Connect4_Group1
         // Right now it just uses a int counter to see how many buttons are available. The issue with this is
         // When the counter decrements it will no longer click buttons 6 or 7.
 
+
+        // This holds how many time a button has been click.
+        // Could be used to dictate if the game should end or
         // When a button should be disabled
         int[] buttonClick = { 0, 0, 0, 0, 0, 0, 0 };
 
         // ENABLE/DISABLE THIS FOR DEBUGGING PROMPTS
         const bool shouldDebug = false;
         //=========================================
-
-        // This holds how many time a button has been click.
-        // Could be used to dictate if the game should end or
 
         public Singleplayer()
         {
