@@ -935,10 +935,7 @@ namespace Connect4_Group1
                                 lastOpenRow = i;
                                 lastOpenCol = j + 3;
 
-                                if (lastOpenRow == rows - 1 || gameBoard.getCell(lastOpenRow + 1, lastOpenCol).getClaimedStatus())
-                                {
-                                    return true;
-                                }
+                                return true;
                             }
                         }
 
@@ -957,10 +954,7 @@ namespace Connect4_Group1
                                 lastOpenRow = i + 3;
                                 lastOpenCol = j;
 
-                                if (lastOpenRow == rows - 1 || gameBoard.getCell(lastOpenRow + 1, lastOpenCol).getClaimedStatus())
-                                {
-                                    return true;
-                                }
+                                return true;
                             }
 
                         }
@@ -979,10 +973,7 @@ namespace Connect4_Group1
                                 lastOpenRow = i - 3;
                                 lastOpenCol = j + 3;
 
-                                if (lastOpenRow == rows - 1 || gameBoard.getCell(lastOpenRow + 1, lastOpenCol).getClaimedStatus())
-                                {
-                                    return true;
-                                }
+                                return true;
                             }
                         }
                     }
@@ -1000,10 +991,7 @@ namespace Connect4_Group1
                                 lastOpenRow = i + 3;
                                 lastOpenCol = j + 3;
 
-                                if (lastOpenRow == rows - 1 || gameBoard.getCell(lastOpenRow + 1, lastOpenCol).getClaimedStatus())
-                                {
-                                    return true;
-                                }
+                                return true;
                             }
                         }
                     }
