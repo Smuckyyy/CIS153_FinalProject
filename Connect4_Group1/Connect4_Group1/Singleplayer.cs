@@ -688,39 +688,63 @@ namespace Connect4_Group1
             // Place a cell if it's possible to win with the AI
             // Place a cell in a random spot on the board if no win state is found
             // First find out if any buttons are disabled
+            int randomCol;
+            do
+            {
+                randomCol = getRandomNumber(btnList.Count);
+            }
+            while (randomCol >= btnList.Count || randomCol < 0);
 
-
-
-            int randomCol = getRandomNumber(btnList.Count);
             makeMove(randomCol);
         }
 
         private void makeMove(int col)
         {
-            switch (col)
+
+            try
             {
-                case 0:
-                    btnList[col].PerformClick();
-                    break;
-                case 1:
-                    btnList[col].PerformClick();
-                    break;
-                case 2:
-                    btnList[col].PerformClick();
-                    break;
-                case 3:
-                    btnList[col].PerformClick();
-                    break;
-                case 4:
-                    btnList[col].PerformClick();
-                    break;
-                case 5:
-                    btnList[col].PerformClick();
-                    break;
-                case 6:
-                    btnList[col].PerformClick();
-                    break;
+                btnList[col].PerformClick();
             }
+            catch (Exception e)
+            {
+                //string listOfButtons = "";
+                //foreach (var btn in btnList)
+                //{
+                //    listOfButtons += btn.Name.ToString() + ",";
+                //}
+
+                //MessageBox.Show(e.Message + "\n" + btnList.Count.ToString() + "\n" + "Attempted to click: " + col.ToString() + "\n" + listOfButtons);
+
+
+                // Disgusting hack to make this work...
+                btnList[0].PerformClick();
+            }
+
+            // Dont think we need a swith case anymore
+            //switch (col)
+            //{
+            //    case 0:
+            //        btnList[col].PerformClick();
+            //        break;
+            //    case 1:
+            //        btnList[col].PerformClick();
+            //        break;
+            //    case 2:
+            //        btnList[col].PerformClick();
+            //        break;
+            //    case 3:
+            //        btnList[col].PerformClick();
+            //        break;
+            //    case 4:
+            //        btnList[col].PerformClick();
+            //        break;
+            //    case 5:
+            //        btnList[col].PerformClick();
+            //        break;
+            //    case 6:
+            //        btnList[col].PerformClick();
+            //        break;
+            //}
         }
         
         private void updatePlayerTurn()
@@ -848,50 +872,50 @@ namespace Connect4_Group1
 
             return false;
         }
-                    
-            // Search for a win condition of the player and save the last cell the player needs
-            // Checks Horizontal win state. Left to Right
-            //for (int i = 0; i < rows; i++)
-            //{
-            //    for (int j = 0; j < cols - 3; j++)
-            //    {
-            //        if (gameBoard.getCell(i, j).getCellColor() == playerColor)
-            //        {
-            //            ////This states that cells 1, 2, and 3 are claimed by the player and the fourth cell is unclaimed.
-            //            if (gameBoard.getCell(i, j + 1).getCellColor() == playerColor
-            //                && gameBoard.getCell(i, j + 2).getCellColor() == playerColor
-            //                && gameBoard.getCell(i, j + 3).getClaimedStatus() == false)
-            //            {
-            //                lastOpenRow = i;
-            //                lastOpenCol = j + 3;
-            //                return true;
-            //            }
-            //        }
-            //    }
-            //}
 
-            ////Checks Horizontal win state. Right to Left
-            //for (int i = 0; i < rows; i++)
-            //{
-            //    for (int j = gameBoard.getColumns() - 1; j > 3; j--)
-            //    {
-            //        if (gameBoard.getCell(i, j).getCellColor() == playerColor)
-            //        {
-            //            ////This states that cells 1, 2, and 3 are claimed by the player and the fourth cell is unclaimed.
-            //            if (gameBoard.getCell(i, j - 1).getCellColor() == playerColor
-            //                && gameBoard.getCell(i, j - 2).getCellColor() == playerColor
-            //                && gameBoard.getCell(i, j - 3).getClaimedStatus() == false)
-            //            {
-            //                lastOpenRow = i;
-            //                lastOpenCol = j - 3;
-            //                return true;
-            //            }
-            //        }
-            //    }
-            //}
+        // Search for a win condition of the player and save the last cell the player needs
+        // Checks Horizontal win state. Left to Right
+        //for (int i = 0; i < rows; i++)
+        //{
+        //    for (int j = 0; j < cols - 3; j++)
+        //    {
+        //        if (gameBoard.getCell(i, j).getCellColor() == playerColor)
+        //        {
+        //            ////This states that cells 1, 2, and 3 are claimed by the player and the fourth cell is unclaimed.
+        //            if (gameBoard.getCell(i, j + 1).getCellColor() == playerColor
+        //                && gameBoard.getCell(i, j + 2).getCellColor() == playerColor
+        //                && gameBoard.getCell(i, j + 3).getClaimedStatus() == false)
+        //            {
+        //                lastOpenRow = i;
+        //                lastOpenCol = j + 3;
+        //                return true;
+        //            }
+        //        }
+        //    }
+        //}
+
+        ////Checks Horizontal win state. Right to Left
+        //for (int i = 0; i < rows; i++)
+        //{
+        //    for (int j = gameBoard.getColumns() - 1; j > 3; j--)
+        //    {
+        //        if (gameBoard.getCell(i, j).getCellColor() == playerColor)
+        //        {
+        //            ////This states that cells 1, 2, and 3 are claimed by the player and the fourth cell is unclaimed.
+        //            if (gameBoard.getCell(i, j - 1).getCellColor() == playerColor
+        //                && gameBoard.getCell(i, j - 2).getCellColor() == playerColor
+        //                && gameBoard.getCell(i, j - 3).getClaimedStatus() == false)
+        //            {
+        //                lastOpenRow = i;
+        //                lastOpenCol = j - 3;
+        //                return true;
+        //            }
+        //        }
+        //    }
+        //}
 
 
-            //return false;
+        //return false;
         //}
 
         private int getRandomNumber(int num)
