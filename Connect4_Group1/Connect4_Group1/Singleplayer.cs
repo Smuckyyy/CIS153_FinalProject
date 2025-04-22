@@ -37,7 +37,7 @@ namespace Connect4_Group1
         // Index will be unique ^^^^^^^^^^^^^^^^^^^
 
         // ENABLE/DISABLE THIS FOR DEBUGGING PROMPTS
-        const bool shouldDebug = false;
+        const bool shouldDebug = true;
         //=========================================
 
         public Singleplayer()
@@ -648,7 +648,44 @@ namespace Connect4_Group1
             int row = -1;
             int col = -1;
 
-            if (willPlayerWin("horizontal", ref row, ref col))
+            if (willAIWin("horizontal", ref row, ref col))
+            {
+                if (shouldDebug)
+                {
+                    MessageBox.Show("The AI would win horizontally by placing at: " + "Row: " + row + " Col: " + col);
+                }
+                makeMove(col);
+                return;
+            }
+            if (willAIWin("vertical", ref row, ref col))
+            {
+                if (shouldDebug)
+                {
+                    MessageBox.Show("The AI would win vertically by placing at: " + "Row: " + row + " Col: " + col);
+                }
+                makeMove(col);
+                return;
+            }
+            if (willAIWin("diagonalUp", ref row, ref col))
+            {
+                if (shouldDebug)
+                {
+                    MessageBox.Show("The AI would win diagonally up by placing at: " + "Row: " + row + " Col: " + col);
+                }
+                makeMove(col);
+                return;
+            }
+            if (willAIWin("diagonalDown", ref row, ref col))
+            {
+                if (shouldDebug)
+                {
+                    MessageBox.Show("The AI would win diagonally down by placing at: " + "Row: " + row + " Col: " + col);
+                }
+                makeMove(col);
+                return;
+            }
+
+            else if (willPlayerWin("horizontal", ref row, ref col))
             {
                 if (shouldDebug)
                 {
@@ -657,7 +694,7 @@ namespace Connect4_Group1
                 makeMove(col);
                 return;
             }
-            if(willPlayerWin("vertical", ref row, ref col))
+            else if (willPlayerWin("vertical", ref row, ref col))
             {
                 if (shouldDebug)
                 {
@@ -666,7 +703,7 @@ namespace Connect4_Group1
                 makeMove(col);
                 return;
             }
-            if(willPlayerWin("diagonalUp", ref row, ref col))
+            else if (willPlayerWin("diagonalUp", ref row, ref col))
             {
                 if (shouldDebug)
                 {
@@ -675,7 +712,7 @@ namespace Connect4_Group1
                 makeMove(col);
                 return;
             }
-            if(willPlayerWin("diagonalDown", ref row, ref col))
+            else if (willPlayerWin("diagonalDown", ref row, ref col))
             {
                 if (shouldDebug)
                 {
@@ -716,37 +753,37 @@ namespace Connect4_Group1
                 //MessageBox.Show(e.Message + "\n" + btnList.Count.ToString() + "\n" + "Attempted to click: " + col.ToString() + "\n" + listOfButtons);
 
 
-                // Disgusting hack to make this work...
+                //Disgusting hack to make this work...
                 btnList[0].PerformClick();
             }
 
-            // Dont think we need a swith case anymore
+            //Dont think we need a swith case anymore
             //switch (col)
-            //{
-            //    case 0:
-            //        btnList[col].PerformClick();
-            //        break;
-            //    case 1:
-            //        btnList[col].PerformClick();
-            //        break;
-            //    case 2:
-            //        btnList[col].PerformClick();
-            //        break;
-            //    case 3:
-            //        btnList[col].PerformClick();
-            //        break;
-            //    case 4:
-            //        btnList[col].PerformClick();
-            //        break;
-            //    case 5:
-            //        btnList[col].PerformClick();
-            //        break;
-            //    case 6:
-            //        btnList[col].PerformClick();
-            //        break;
-            //}
+            //    {
+            //        case 0:
+            //            btnList[col].PerformClick();
+            //            break;
+            //        case 1:
+            //            btnList[col].PerformClick();
+            //            break;
+            //        case 2:
+            //            btnList[col].PerformClick();
+            //            break;
+            //        case 3:
+            //            btnList[col].PerformClick();
+            //            break;
+            //        case 4:
+            //            btnList[col].PerformClick();
+            //            break;
+            //        case 5:
+            //            btnList[col].PerformClick();
+            //            break;
+            //        case 6:
+            //            btnList[col].PerformClick();
+            //            break;
+            //    }
         }
-        
+
         private void updatePlayerTurn()
         {
             if (gameConfig.getCurrentPlayer() == 1)
@@ -873,50 +910,109 @@ namespace Connect4_Group1
             return false;
         }
 
-        // Search for a win condition of the player and save the last cell the player needs
-        // Checks Horizontal win state. Left to Right
-        //for (int i = 0; i < rows; i++)
-        //{
-        //    for (int j = 0; j < cols - 3; j++)
-        //    {
-        //        if (gameBoard.getCell(i, j).getCellColor() == playerColor)
-        //        {
-        //            ////This states that cells 1, 2, and 3 are claimed by the player and the fourth cell is unclaimed.
-        //            if (gameBoard.getCell(i, j + 1).getCellColor() == playerColor
-        //                && gameBoard.getCell(i, j + 2).getCellColor() == playerColor
-        //                && gameBoard.getCell(i, j + 3).getClaimedStatus() == false)
-        //            {
-        //                lastOpenRow = i;
-        //                lastOpenCol = j + 3;
-        //                return true;
-        //            }
-        //        }
-        //    }
-        //}
+        //Smuck Code
+        //This function is the exact same as willPlayerWin, but changes the color to red for the AI.
+        //This is shown in the AI_MoveV2 code, to check if it can win first.
+        private bool willAIWin(string direction, ref int lastOpenRow, ref int lastOpenCol)
+        {
+            Color playerColor = Color.Red;
+            int rows = gameBoard.getRows();
+            int cols = gameBoard.getColumns();
 
-        ////Checks Horizontal win state. Right to Left
-        //for (int i = 0; i < rows; i++)
-        //{
-        //    for (int j = gameBoard.getColumns() - 1; j > 3; j--)
-        //    {
-        //        if (gameBoard.getCell(i, j).getCellColor() == playerColor)
-        //        {
-        //            ////This states that cells 1, 2, and 3 are claimed by the player and the fourth cell is unclaimed.
-        //            if (gameBoard.getCell(i, j - 1).getCellColor() == playerColor
-        //                && gameBoard.getCell(i, j - 2).getCellColor() == playerColor
-        //                && gameBoard.getCell(i, j - 3).getClaimedStatus() == false)
-        //            {
-        //                lastOpenRow = i;
-        //                lastOpenCol = j - 3;
-        //                return true;
-        //            }
-        //        }
-        //    }
-        //}
+            switch (direction)
+            {
+                case "horizontal":
+                    //Left to Right
+                    for (int i = 0; i < rows; i++)
+                    {
+                        for (int j = 0; j < cols - 3; j++)
+                        {
+                            if (gameBoard.getCell(i, j).getCellColor() == playerColor
+                                && gameBoard.getCell(i, j + 1).getCellColor() == playerColor
+                                && gameBoard.getCell(i, j + 2).getCellColor() == playerColor
+                                && gameBoard.getCell(i, j + 3).getClaimedStatus() == false)
+                            {
+                                lastOpenRow = i;
+                                lastOpenCol = j + 3;
 
+                                if (lastOpenRow == rows - 1 || gameBoard.getCell(lastOpenRow + 1, lastOpenCol).getClaimedStatus())
+                                {
+                                    return true;
+                                }
+                            }
+                        }
 
-        //return false;
-        //}
+                    }
+                    break;
+                case "vertical":
+                    for (int j = 0; j < cols; j++)
+                    {
+                        for (int i = 0; i < rows - 3; i++)
+                        {
+                            if (gameBoard.getCell(i, j).getCellColor() == playerColor
+                                 && gameBoard.getCell(i + 1, j).getCellColor() == playerColor
+                                 && gameBoard.getCell(i + 2, j).getCellColor() == playerColor
+                                 && gameBoard.getCell(i + 3, j).getClaimedStatus() == false)
+                            {
+                                lastOpenRow = i + 3;
+                                lastOpenCol = j;
+
+                                if (lastOpenRow == rows - 1 || gameBoard.getCell(lastOpenRow + 1, lastOpenCol).getClaimedStatus())
+                                {
+                                    return true;
+                                }
+                            }
+
+                        }
+                    }
+                    break;
+                case "diagonalUp":
+                    for (int i = 3; i < rows; i++)
+                    {
+                        for (int j = 0; j < cols - 3; j++)
+                        {
+                            if (gameBoard.getCell(i, j).getCellColor() == playerColor
+                                && gameBoard.getCell(i - 1, j + 1).getCellColor() == playerColor
+                                && gameBoard.getCell(i - 2, j + 2).getCellColor() == playerColor
+                                && gameBoard.getCell(i - 3, j + 3).getClaimedStatus() == false)
+                            {
+                                lastOpenRow = i - 3;
+                                lastOpenCol = j + 3;
+
+                                if (lastOpenRow == rows - 1 || gameBoard.getCell(lastOpenRow + 1, lastOpenCol).getClaimedStatus())
+                                {
+                                    return true;
+                                }
+                            }
+                        }
+                    }
+                    break;
+                case "diagonalDown":
+                    for (int i = 0; i < rows - 3; i++)
+                    {
+                        for (int j = 0; j < cols - 3; j++)
+                        {
+                            if (gameBoard.getCell(i, j).getCellColor() == playerColor
+                                && gameBoard.getCell(i + 1, j + 1).getCellColor() == playerColor
+                                && gameBoard.getCell(i + 2, j + 2).getCellColor() == playerColor
+                                && gameBoard.getCell(i + 3, j + 3).getClaimedStatus() == false)
+                            {
+                                lastOpenRow = i + 3;
+                                lastOpenCol = j + 3;
+
+                                if (lastOpenRow == rows - 1 || gameBoard.getCell(lastOpenRow + 1, lastOpenCol).getClaimedStatus())
+                                {
+                                    return true;
+                                }
+                            }
+                        }
+                    }
+                    break;
+            }
+
+            return false;
+        }
+
 
         private int getRandomNumber(int num)
         {
