@@ -685,7 +685,7 @@ namespace Connect4_Group1
 
             foreach (var goodBtns in buttonClick)
             {
-                if (goodBtns != 6)
+                if (goodBtns != 0)
                 {
                     goodButtons++;
                 }
