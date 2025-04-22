@@ -26,6 +26,7 @@ namespace Connect4_Group1
             winningPlayer = p_winningPlayer;
 
             updateFormInfo(winningPlayer);
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
 
         private void btnSAOPG_exit_Click(object sender, EventArgs e)
