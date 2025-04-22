@@ -740,7 +740,34 @@ namespace Connect4_Group1
 
             try
             {
-                btnList[col].PerformClick();
+                // This causes issues with AI piece placement
+                //btnList[col].PerformClick();
+
+                //Dont think we need a swith case anymore
+                switch (col)
+                {
+                    case 0:
+                        btnList[col].PerformClick();
+                        break;
+                    case 1:
+                        btnList[col].PerformClick();
+                        break;
+                    case 2:
+                        btnList[col].PerformClick();
+                        break;
+                    case 3:
+                        btnList[col].PerformClick();
+                        break;
+                    case 4:
+                        btnList[col].PerformClick();
+                        break;
+                    case 5:
+                        btnList[col].PerformClick();
+                        break;
+                    case 6:
+                        btnList[col].PerformClick();
+                        break;
+                }
             }
             catch (Exception e)
             {
@@ -756,32 +783,6 @@ namespace Connect4_Group1
                 //Disgusting hack to make this work...
                 btnList[0].PerformClick();
             }
-
-            //Dont think we need a swith case anymore
-            //switch (col)
-            //    {
-            //        case 0:
-            //            btnList[col].PerformClick();
-            //            break;
-            //        case 1:
-            //            btnList[col].PerformClick();
-            //            break;
-            //        case 2:
-            //            btnList[col].PerformClick();
-            //            break;
-            //        case 3:
-            //            btnList[col].PerformClick();
-            //            break;
-            //        case 4:
-            //            btnList[col].PerformClick();
-            //            break;
-            //        case 5:
-            //            btnList[col].PerformClick();
-            //            break;
-            //        case 6:
-            //            btnList[col].PerformClick();
-            //            break;
-            //    }
         }
 
         private void updatePlayerTurn()
