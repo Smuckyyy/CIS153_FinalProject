@@ -18,19 +18,23 @@ namespace Connect4_Group1
         Form1 mainMenuForm;
 
         Board gameBoard = new Board();
-        GameSettings gameConfig;
+        GameSettings gameConfig = new GameSettings();
         Data c_data;
         PictureBox[] picBoxWinners;
 
         // Major issue right now is the way the AI would know what buttons it can click
         // Right now it just uses a int counter to see how many buttons are available. The issue with this is
         // When the counter decrements it will no longer click buttons 6 or 7.
+        // Possibly Fixed (4-21-2025) ~ Matt
 
 
         // This holds how many time a button has been click.
         // Could be used to dictate if the game should end or
         // When a button should be disabled
+        // Index will be unique *******************
         int[] buttonClick = { 0, 0, 0, 0, 0, 0, 0 };
+        List<Button> btnList;
+        // Index will be unique ^^^^^^^^^^^^^^^^^^^
 
         // ENABLE/DISABLE THIS FOR DEBUGGING PROMPTS
         const bool shouldDebug = false;
@@ -76,9 +80,14 @@ namespace Connect4_Group1
 
         private void setupGameSettings()
         {
-            gameConfig = new GameSettings();
-
+            gameConfig.setCurrentPlayer(1);
+            sing_lblCurrentPlayer.Text = string.Format("Player {0,0} Turn", gameConfig.getCurrentPlayer());
             sing_pictureBoxPlayerColor.BackColor = gameConfig.getColorOfCurrPlayer();
+
+            // Stores each clickable column button into a List<Button>
+            btnList = new List<Button>() { sing_btnCol1, sing_btnCol2, sing_btnCol3, sing_btnCol4, sing_btnCol5, sing_btnCol6, sing_btnCol7 };
+
+            gameConfig.setGameStatus(true);
         }
 
         private void setBoardCellData()
@@ -272,24 +281,31 @@ namespace Connect4_Group1
                     {
                         case 0:
                             sing_btnCol1.Enabled = false;
+                            btnList.Remove(sing_btnCol1);
                             break;
                         case 1:
                             sing_btnCol2.Enabled = false;
+                            btnList.Remove(sing_btnCol2);
                             break;
                         case 2:
                             sing_btnCol3.Enabled = false;
+                            btnList.Remove(sing_btnCol3);
                             break;
                         case 3:
                             sing_btnCol4.Enabled = false;
+                            btnList.Remove(sing_btnCol4);
                             break;
                         case 4:
                             sing_btnCol5.Enabled = false;
+                            btnList.Remove(sing_btnCol5);
                             break;
                         case 5:
                             sing_btnCol6.Enabled = false;
+                            btnList.Remove(sing_btnCol6);
                             break;
                         case 6:
                             sing_btnCol7.Enabled = false;
+                            btnList.Remove(sing_btnCol7);
                             break;
                     }
                 }
@@ -388,17 +404,8 @@ namespace Connect4_Group1
                 }
             }
 
-            // Implement a New game button that will start the next game
-            //  ~ INSERT CODE HERE FOR THAT LATER ~ 4 / 11 / 2025
-
-            // Start game back with player one
-            //(This needs to be edited for AI implementation)
-            gameConfig.setCurrentPlayer(1);
-            sing_lblCurrentPlayer.Text = string.Format("Player {0,0} Turn", gameConfig.getCurrentPlayer());
-            sing_pictureBoxPlayerColor.BackColor = gameConfig.getColorOfCurrPlayer();
-
-            // For debugging purposes I will reenable the game to continue playing, This can be changed later
-            gameConfig.setGameStatus(true);
+            // Sets everything back to square 1
+            setupGameSettings();
         }
 
         private bool areFourCellsConnected()
@@ -681,17 +688,10 @@ namespace Connect4_Group1
             // Place a cell if it's possible to win with the AI
             // Place a cell in a random spot on the board if no win state is found
             // First find out if any buttons are disabled
-            int goodButtons = 6;
 
-            foreach (var goodBtns in buttonClick)
-            {
-                if (goodBtns != 0)
-                {
-                    goodButtons++;
-                }
-            }
 
-            int randomCol = getRandomNumber(goodButtons);
+
+            int randomCol = getRandomNumber(btnList.Count);
             makeMove(randomCol);
         }
 
@@ -700,25 +700,25 @@ namespace Connect4_Group1
             switch (col)
             {
                 case 0:
-                    sing_btnCol1.PerformClick();
+                    btnList[col].PerformClick();
                     break;
                 case 1:
-                    sing_btnCol2.PerformClick();
+                    btnList[col].PerformClick();
                     break;
                 case 2:
-                    sing_btnCol3.PerformClick();
+                    btnList[col].PerformClick();
                     break;
                 case 3:
-                    sing_btnCol4.PerformClick();
+                    btnList[col].PerformClick();
                     break;
                 case 4:
-                    sing_btnCol5.PerformClick();
+                    btnList[col].PerformClick();
                     break;
                 case 5:
-                    sing_btnCol6.PerformClick();
+                    btnList[col].PerformClick();
                     break;
                 case 6:
-                    sing_btnCol7.PerformClick();
+                    btnList[col].PerformClick();
                     break;
             }
         }
