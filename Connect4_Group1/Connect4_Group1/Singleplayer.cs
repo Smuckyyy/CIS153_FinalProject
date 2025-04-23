@@ -545,99 +545,6 @@ namespace Connect4_Group1
             return false;
         }
 
-        //Function for AI movement
-        //private void AI_Move()
-        //{
-        //    //Debugging
-        //    Console.WriteLine("AI Turn Triggered");
-        //
-        //    gameConfig.setPlayerColor(gameConfig.getAIColor());
-        //    Color playerColor = gameConfig.getPlayerColor();
-        //    Color aiColor = gameConfig.getAIColor();
-        //
-        //    for (int col = 0; col < gameBoard.getColumns(); col++)
-        //    {
-        //        int row = GetAvailableRow(col);
-        //
-        //        if (row == -1)
-        //            continue;
-        //
-        //        Cell simulatedCell = gameBoard.getCell(row, col);
-        //
-        //        //Simulate the player placing a coin
-        //        simulatedCell.setClaimStatus(true);
-        //        simulatedCell.setCellColor(playerColor);
-        //
-        //        //Pretend its player1 turn for check
-        //        gameConfig.setPlayerColor(playerColor);
-        //
-        //        //Check if the player is about to win
-        //        if(areFourCellsConnected())
-        //        {
-        //            //Undo simulation
-        //            simulatedCell.setClaimStatus(false);
-        //            //Make this the "empty" color
-        //            simulatedCell.setCellColor(Color.White);
-        //
-        //            gameConfig.setAIColor(aiColor);
-        //
-        //
-        //            // Right here lets do a switch case to click the column button instead.
-        //            // Clicking the button performs all the required updates and checks
-        //            // SMUCK CODE
-        //            //AI blocks the player here
-        //            //updateGameCells(col);
-        //            // END SMUCK CODE
-        //
-        //            switch (col)
-        //            {
-        //                case 0:
-        //                    sing_btnCol1.PerformClick();
-        //                    break;
-        //                case 1:
-        //                    sing_btnCol2.PerformClick();
-        //                    break;
-        //                case 2:
-        //                    sing_btnCol3.PerformClick();
-        //                    break;
-        //                case 3:
-        //                    sing_btnCol4.PerformClick();
-        //                    break;
-        //                case 4:
-        //                    sing_btnCol5.PerformClick();
-        //                    break;
-        //                case 5:
-        //                    sing_btnCol6.PerformClick();
-        //                    break;
-        //                case 6:
-        //                    sing_btnCol7.PerformClick();
-        //                    break;
-        //            }
-        //
-        //            CheckGameStatus();
-        //
-        //            return;
-        //        }
-        //
-        //        //Undo full simulation
-        //        simulatedCell.setClaimStatus(false);
-        //        simulatedCell.setCellColor(Color.White);
-        //    }
-        //
-        //    //If there isn't a player win threat, pick the first column
-        //    for (int col = 0; col < gameBoard.getColumns(); col++)
-        //    {
-        //        int row = GetAvailableRow(col);
-        //        if (row != -1)
-        //        {
-        //            gameConfig.setAIColor(aiColor);
-        //            //updateGameCells(col);
-        //            return;
-        //        }
-        //    }
-        //
-        //}
-
         // Matt W, AI implementation
         private void AI_MoveV2()
         {
@@ -964,13 +871,23 @@ namespace Connect4_Group1
                     {
                         for (int j = 0; j < cols - 3; j++)
                         {
-                            if (gameBoard.getCell(i, j).getCellColor() == playerColor
-                                && gameBoard.getCell(i - 1, j + 1).getCellColor() == playerColor
-                                && gameBoard.getCell(i - 2, j + 2).getCellColor() == playerColor
-                                && gameBoard.getCell(i - 3, j + 3).getClaimedStatus() == false)
+                            var c1 = gameBoard.getCell(i, j);
+                            var c2 = gameBoard.getCell(i - 1, j + 1);
+                            var c3 = gameBoard.getCell(i - 2, j + 2);
+                            var c4 = gameBoard.getCell(i - 3, j + 3);
+
+                            int count = 0;
+                            if (c1.getCellColor() == playerColor) count++;
+                            if (c2.getCellColor() == playerColor) count++;
+                            if (c3.getCellColor() == playerColor) count++;
+
+                            int targetRow = i - 3;
+                            int targetCol = j + 3;
+                            if (c4.getClaimedStatus() == false && count == 3
+                                && gameBoard.getLowestEmptyRow(targetCol) == targetRow)
                             {
-                                lastOpenRow = i - 3;
-                                lastOpenCol = j + 3;
+                                lastOpenRow = targetRow;
+                                lastOpenCol = targetCol;
                                 return true;
                             }
                         }
@@ -981,13 +898,23 @@ namespace Connect4_Group1
                     {
                         for (int j = 0; j < cols - 3; j++)
                         {
-                            if (gameBoard.getCell(i, j).getCellColor() == playerColor
-                                && gameBoard.getCell(i + 1, j + 1).getCellColor() == playerColor
-                                && gameBoard.getCell(i + 2, j + 2).getCellColor() == playerColor
-                                && gameBoard.getCell(i + 3, j + 3).getClaimedStatus() == false)
+                            var c1 = gameBoard.getCell(i, j);
+                            var c2 = gameBoard.getCell(i + 1, j + 1);
+                            var c3 = gameBoard.getCell(i + 2, j + 2);
+                            var c4 = gameBoard.getCell(i + 3, j + 3);
+
+                            int count = 0;
+                            if (c1.getCellColor() == playerColor) count++;
+                            if (c2.getCellColor() == playerColor) count++;
+                            if (c3.getCellColor() == playerColor) count++;
+
+                            int targetRow = i + 3;
+                            int targetCol = j + 3;
+                            if (c4.getClaimedStatus() == false && count == 3
+                                && gameBoard.getLowestEmptyRow(targetCol) == targetRow)
                             {
-                                lastOpenRow = i + 3;
-                                lastOpenCol = j + 3;
+                                lastOpenRow = targetRow;
+                                lastOpenCol = targetCol;
                                 return true;
                             }
                         }
@@ -1052,15 +979,24 @@ namespace Connect4_Group1
                     for (int i = 3; i < rows; i++)
                     {
                         for (int j = 0; j < cols - 3; j++)
-                        {
-                            if (gameBoard.getCell(i, j).getCellColor() == playerColor
-                                && gameBoard.getCell(i - 1, j + 1).getCellColor() == playerColor
-                                && gameBoard.getCell(i - 2, j + 2).getCellColor() == playerColor
-                                && gameBoard.getCell(i - 3, j + 3).getClaimedStatus() == false)
-                            {
-                                lastOpenRow = i - 3;
-                                lastOpenCol = j + 3;
+                        { 
+                            var c1 = gameBoard.getCell(i, j);
+                            var c2 = gameBoard.getCell(i - 1, j + 1);
+                            var c3 = gameBoard.getCell(i - 2, j + 2);
+                            var c4 = gameBoard.getCell(i - 3, j + 3);
 
+                            int count = 0;
+                            if (c1.getCellColor() == playerColor) count++;
+                            if (c2.getCellColor() == playerColor) count++;
+                            if (c3.getCellColor() == playerColor) count++;
+
+                            int targetRow = i - 3;
+                            int targetCol = j + 3;
+                            if (c4.getClaimedStatus() == false && count == 3
+                                && gameBoard.getLowestEmptyRow(targetCol) == targetRow)
+                            {
+                                lastOpenRow = targetRow;
+                                lastOpenCol = targetCol;
                                 return true;
                             }
                         }
@@ -1071,14 +1007,23 @@ namespace Connect4_Group1
                     {
                         for (int j = 0; j < cols - 3; j++)
                         {
-                            if (gameBoard.getCell(i, j).getCellColor() == playerColor
-                                && gameBoard.getCell(i + 1, j + 1).getCellColor() == playerColor
-                                && gameBoard.getCell(i + 2, j + 2).getCellColor() == playerColor
-                                && gameBoard.getCell(i + 3, j + 3).getClaimedStatus() == false)
-                            {
-                                lastOpenRow = i + 3;
-                                lastOpenCol = j + 3;
+                            var c1 = gameBoard.getCell(i, j);
+                            var c2 = gameBoard.getCell(i + 1, j + 1);
+                            var c3 = gameBoard.getCell(i + 2, j + 2);
+                            var c4 = gameBoard.getCell(i + 3, j + 3);
 
+                            int count = 0;
+                            if (c1.getCellColor() == playerColor) count++;
+                            if (c2.getCellColor() == playerColor) count++;
+                            if (c3.getCellColor() == playerColor) count++;
+
+                            int targetRow = i + 3;
+                            int targetCol = j + 3;
+                            if (c4.getClaimedStatus() == false && count == 3
+                                && gameBoard.getLowestEmptyRow(targetCol) == targetRow)
+                            {
+                                lastOpenRow = targetRow;
+                                lastOpenCol = targetCol;
                                 return true;
                             }
                         }
@@ -1088,6 +1033,8 @@ namespace Connect4_Group1
 
             return false;
         }
+
+        
 
 
         private int getRandomNumber()
