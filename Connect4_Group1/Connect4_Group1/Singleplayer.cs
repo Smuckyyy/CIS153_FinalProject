@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics.Metrics;
 using System.Drawing;
 using System.Linq;
 using System.Net.WebSockets;
@@ -34,10 +35,13 @@ namespace Connect4_Group1
         // Index will be unique *******************
         int[] buttonClick = { 0, 0, 0, 0, 0, 0, 0 };
         List<Button> btnList;
-        // Index will be unique ^^^^^^^^^^^^^^^^^^^
+
+        // Variables for the counter
+        const int weDefineCycleHere = 11;
+        int displayCycles = weDefineCycleHere;
 
         // ENABLE/DISABLE THIS FOR DEBUGGING PROMPTS
-        const bool shouldDebug = true;
+        const bool shouldDebug = false;
         //=========================================
 
         public Singleplayer()
@@ -281,31 +285,24 @@ namespace Connect4_Group1
                     {
                         case 0:
                             sing_btnCol1.Enabled = false;
-                            btnList.Remove(sing_btnCol1);
                             break;
                         case 1:
                             sing_btnCol2.Enabled = false;
-                            btnList.Remove(sing_btnCol2);
                             break;
                         case 2:
                             sing_btnCol3.Enabled = false;
-                            btnList.Remove(sing_btnCol3);
                             break;
                         case 3:
                             sing_btnCol4.Enabled = false;
-                            btnList.Remove(sing_btnCol4);
                             break;
                         case 4:
                             sing_btnCol5.Enabled = false;
-                            btnList.Remove(sing_btnCol5);
                             break;
                         case 5:
                             sing_btnCol6.Enabled = false;
-                            btnList.Remove(sing_btnCol6);
                             break;
                         case 6:
                             sing_btnCol7.Enabled = false;
-                            btnList.Remove(sing_btnCol7);
                             break;
                     }
                 }
@@ -721,51 +718,141 @@ namespace Connect4_Group1
                 makeMove(col);
                 return;
             }
-
-            // Place a cell if it's possible to win with the AI
-            // Place a cell in a random spot on the board if no win state is found
-            // First find out if any buttons are disabled
-            int randomCol;
-            do
+            else
             {
-                randomCol = getRandomNumber(btnList.Count);
-            }
-            while (randomCol >= btnList.Count || randomCol < 0);
+                // Place a cell if it's possible to win with the AI
+                // Place a cell in a random spot on the board if no win state is found
 
-            makeMove(randomCol);
+                makeMove(getRandomNumber());
+            }
         }
 
         private void makeMove(int col)
         {
-
             try
             {
-                // This causes issues with AI piece placement
-                //btnList[col].PerformClick();
-
-                //Dont think we need a swith case anymore
+                // Lord forgive me for what I am doing here
+                // Cols go from 0 - 6 (Which is 7 total)
                 switch (col)
                 {
                     case 0:
-                        btnList[col].PerformClick();
+                        if (sing_btnCol1.Enabled != false)
+                        {
+                            btnList[col].PerformClick();
+                        }
+                        else
+                        {
+                            int randomClick;
+                            do
+                            {
+                                randomClick = getRandomNumber();
+                            }
+                            while (buttonClick[randomClick] == 6);
+
+                            btnList[randomClick].PerformClick();
+                        }
                         break;
                     case 1:
-                        btnList[col].PerformClick();
+                        if (sing_btnCol1.Enabled != false)
+                        {
+                            btnList[col].PerformClick();
+                        }
+                        else
+                        {
+                            int randomClick;
+                            do
+                            {
+                                randomClick = getRandomNumber();
+                            }
+                            while (buttonClick[randomClick] == 6);
+
+                            btnList[randomClick].PerformClick();
+                        }
                         break;
                     case 2:
-                        btnList[col].PerformClick();
+                        if (sing_btnCol1.Enabled != false)
+                        {
+                            btnList[col].PerformClick();
+                        }
+                        else
+                        {
+                            int randomClick;
+                            do
+                            {
+                                randomClick = getRandomNumber();
+                            }
+                            while (buttonClick[randomClick] == 6);
+
+                            btnList[randomClick].PerformClick();
+                        }
                         break;
                     case 3:
-                        btnList[col].PerformClick();
+                        if (sing_btnCol1.Enabled != false)
+                        {
+                            btnList[col].PerformClick();
+                        }
+                        else
+                        {
+                            int randomClick;
+                            do
+                            {
+                                randomClick = getRandomNumber();
+                            }
+                            while (buttonClick[randomClick] == 6);
+
+                            btnList[randomClick].PerformClick();
+                        }
                         break;
                     case 4:
-                        btnList[col].PerformClick();
+                        if (sing_btnCol1.Enabled != false)
+                        {
+                            btnList[col].PerformClick();
+                        }
+                        else
+                        {
+                            int randomClick;
+                            do
+                            {
+                                randomClick = getRandomNumber();
+                            }
+                            while (buttonClick[randomClick] == 6);
+
+                            btnList[randomClick].PerformClick();
+                        }
                         break;
                     case 5:
-                        btnList[col].PerformClick();
+                        if (sing_btnCol1.Enabled != false)
+                        {
+                            btnList[col].PerformClick();
+                        }
+                        else
+                        {
+                            int randomClick;
+                            do
+                            {
+                                randomClick = getRandomNumber();
+                            }
+                            while (buttonClick[randomClick] == 6);
+
+                            btnList[randomClick].PerformClick();
+                        }
                         break;
                     case 6:
-                        btnList[col].PerformClick();
+                        if (sing_btnCol1.Enabled != false)
+                        {
+                            btnList[col].PerformClick();
+                        }
+                        else
+                        {
+                            int randomClick;
+                            do
+                            {
+                                randomClick = getRandomNumber();
+                            }
+                            while (buttonClick[randomClick] == 6);
+
+                            btnList[randomClick].PerformClick();
+                        }
                         break;
                 }
             }
@@ -781,7 +868,7 @@ namespace Connect4_Group1
 
 
                 //Disgusting hack to make this work...
-                btnList[0].PerformClick();
+                btnList[getRandomNumber()].PerformClick();
             }
         }
 
@@ -1003,11 +1090,18 @@ namespace Connect4_Group1
         }
 
 
-        private int getRandomNumber(int num)
+        private int getRandomNumber()
         {
             Random rnd = new Random();
 
-            return rnd.Next(num);
+            int randomCol;
+            do
+            {
+                randomCol = rnd.Next(btnList.Count);
+            }
+            while (randomCol >= btnList.Count || randomCol < 0);
+
+            return randomCol;
         }
 
         // These four functions handle displaying a users piece while mousing over a button
@@ -1119,6 +1213,10 @@ namespace Connect4_Group1
 
             saspg.ShowDialog(); // Display the SPG Complete form
 
+            // Disable the timer incase they clicked play again before it finished displaying and set the counter back to original state
+            timer_display_winner.Enabled = false;
+            displayCycles = weDefineCycleHere;
+
             // Enable the buttons on the board since "Play Again" was clicked
             setBoardState(0);
 
@@ -1181,19 +1279,32 @@ namespace Connect4_Group1
         // This function will just be used to change the colors of the winning pictures boxes. Possibly strobe them...
         public void displayWinningPicBoxes()
         {
-            int numOfCycles = 10;
+            timer_display_winner.Enabled = true;
+        }
 
-            while (numOfCycles > 0)
+        private void timer_display_winner_Tick(object sender, EventArgs e)
+        {
+            // This timer runs on a seperate thread so the UI can display the winner while other things are happening
+            if (displayCycles <= 0)
             {
-                foreach (PictureBox picBox in picBoxWinners)
-                {
-                    picBox.BackColor = Color.White;
-                    Thread.Sleep(200);
-                    Application.DoEvents();
-                    picBox.BackColor = gameConfig.getColorOfCurrPlayer();
-                }
-                numOfCycles--;
+                timer_display_winner.Enabled = false;
+
+                displayCycles = weDefineCycleHere;
             }
+
+            foreach (PictureBox winBox in picBoxWinners)
+            {
+                if (winBox.BackColor == gameConfig.getColorOfCurrPlayer())
+                {
+                    winBox.BackColor = Color.White;
+                }
+                else
+                {
+                    winBox.BackColor = gameConfig.getColorOfCurrPlayer();
+                }
+            }
+
+            displayCycles--;
         }
     }
 }
