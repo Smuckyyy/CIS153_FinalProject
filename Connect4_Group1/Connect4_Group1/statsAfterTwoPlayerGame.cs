@@ -24,6 +24,9 @@ namespace Connect4_Group1
             InitializeComponent();
             this.tpForm = tpForm;
 
+            this.StartPosition = FormStartPosition.CenterScreen;
+            this.FormBorderStyle = FormBorderStyle.Fixed3D;
+
             updateFormInfo(winningPlayer);
         }
 
@@ -147,6 +150,11 @@ namespace Connect4_Group1
             {
                 lblSATPG_winner.Text = "Player 2";
             }
+            else
+            {
+                lblSATPG_winner.Text = "Game was a tie!";
+                btnSATPG_review.Visible = false;
+            }
         }
 
         private void btnSATPG_again_Click(object sender, EventArgs e)
@@ -156,11 +164,11 @@ namespace Connect4_Group1
 
         private void btnSATPG_review_Click(object sender, EventArgs e)
         {
-            tpForm.Focus();
-            tpForm.displayWinningPicBoxes();
+            this.Location = new Point(tpForm.Location.X - 400, tpForm.Location.Y);
 
-            this.Activate();
-            this.Focus();
+            btnSATPG_review.Enabled = false; // Pic boxes will just flash untill the "Play Again" or "Exit" is clicked
+
+            tpForm.displayWinningPicBoxes();
         }
     }
 }

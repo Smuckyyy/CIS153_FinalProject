@@ -78,6 +78,8 @@ namespace Connect4_Group1
 
             pictureBoxPlayerColor.BackColor = gameConfig.getColorOfCurrPlayer();
 
+            gameConfig.setPlayerColor(Color.Yellow);
+            lblCurrentPlayer.Text = String.Format("Player {0,0} Turn", gameConfig.getCurrentPlayer());
         }
 
         // Called once at runtime to setup the 2D Array grid
@@ -351,6 +353,8 @@ namespace Connect4_Group1
 
                 c_data.writeToFile();
 
+                gameConfig.setCurrentPlayer(-1); // Sentenial to display a game tie
+
                 displayAfterGameForm();
 
                 if (shouldDebug)
@@ -358,6 +362,8 @@ namespace Connect4_Group1
                     // For Debugging
                     MessageBox.Show("Every Cell Is Filled", "Game Status");
                 }
+
+                cleanUpGame();
             }
             else
             {
@@ -388,41 +394,6 @@ namespace Connect4_Group1
                     updatePlayerTurn();
                 }
             }
-        }
-
-        // Clean up ; Should only be called if A.) The entire board is filled, or B.) A player got connect 4
-        private void cleanUpGame()
-        {
-            // Set each cell back to its default value
-            foreach (var cell in gameBoard.getEntireBoard())
-            {
-                cell.setClaimStatus(false);
-                cell.setCellColor(Color.White);
-            }
-
-            // Set the array of button clicks back to 0
-            for (int i = 0; i < buttonClick.Length; i++)
-            {
-                buttonClick[i] = 0;
-            }
-
-            // Set each button for the coloums back to enabled
-            foreach (Control button in this.Controls)
-            {
-                if (button is Button && (string)button.Tag == "btnColumn")
-                {
-                    button.Enabled = true;
-                }
-            }
-
-            // Implement a New game button that will start the next game
-            //  ~ INSERT CODE HERE FOR THAT LATER ~ 4 / 11 / 2025
-
-            // Start game back with player one
-            gameConfig.setCurrentPlayer(1);
-            gameConfig.setPlayerColor(Color.Yellow);
-            lblCurrentPlayer.Text = String.Format("Player {0,0} Turn", gameConfig.getCurrentPlayer());
-            pictureBoxPlayerColor.BackColor = gameConfig.getColorOfCurrPlayer();
         }
 
         // Check to see if a player has won the game
@@ -587,6 +558,37 @@ namespace Connect4_Group1
             }
         }
 
+        // Clean up ; Should only be called if A.) The entire board is filled, or B.) A player got connect 4
+        private void cleanUpGame()
+        {
+            // Set each cell back to its default value
+            foreach (var cell in gameBoard.getEntireBoard())
+            {
+                cell.setClaimStatus(false);
+                cell.setCellColor(Color.White);
+            }
+
+            // Set the array of button clicks back to 0
+            for (int i = 0; i < buttonClick.Length; i++)
+            {
+                buttonClick[i] = 0;
+            }
+
+            // Set each button for the coloums back to enabled
+            foreach (Control button in this.Controls)
+            {
+                if (button is Button && (string)button.Tag == "btnColumn")
+                {
+                    button.Enabled = true;
+                }
+            }
+
+            timer_display_winner.Enabled = false;
+
+            // Setup a new game
+            setupGameSettings();
+        }
+
         // This function will display where a players piece would go on the board if the button is clicked
         private void displayPiecePosition(int column)
         {
@@ -611,23 +613,6 @@ namespace Connect4_Group1
                     return;
                 }
             }
-        }
-
-        private void doubleBtn_Exit_Click(object sender, EventArgs e)
-        {
-            System.Environment.Exit(0);
-        }
-
-        private void btn_mainMenu_Click(object sender, EventArgs e)
-        {
-            DialogResult result = MessageBox.Show("Are you sure you want to return to the main menu?\nThis game will not be saved.", "Confirm Exit?", MessageBoxButtons.YesNo);
-
-            if (result == DialogResult.Yes)
-            {
-                mainMenuForm.Show();
-                this.Close();
-            }
-
         }
 
         // MouseEnter Handler for buttons
@@ -696,6 +681,23 @@ namespace Connect4_Group1
             }
         }
 
+        private void doubleBtn_Exit_Click(object sender, EventArgs e)
+        {
+            System.Environment.Exit(0);
+        }
+
+        private void btn_mainMenu_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Are you sure you want to return to the main menu?\nThis game will not be saved.", "Confirm Exit?", MessageBoxButtons.YesNo);
+
+            if (result == DialogResult.Yes)
+            {
+                mainMenuForm.Show();
+                this.Close();
+            }
+
+        }
+
         // Function saves data to the file
         private void updatePersistantData()
         {
@@ -719,19 +721,7 @@ namespace Connect4_Group1
         // This function will just be used to change the colors of the winning pictures boxes. Possibly strobe them...
         public void displayWinningPicBoxes()
         {
-            int numOfCycles = 10;
-
-            while (numOfCycles > 0)
-            {
-                foreach (PictureBox picBox in picBoxWinners)
-                {
-                    picBox.BackColor = Color.White;
-                    Thread.Sleep(200);
-                    Application.DoEvents();
-                    picBox.BackColor = gameConfig.getColorOfCurrPlayer();
-                }
-                numOfCycles--;
-            }
+            timer_display_winner.Enabled = true;
         }
 
         /**
@@ -781,6 +771,22 @@ namespace Connect4_Group1
             setBoardState(0);
 
             cleanUpGame();
+        }
+
+        private void timer_display_winner_Tick(object sender, EventArgs e)
+        {
+            // This one will just flash the winning pic boxes forever unless play again or exit is clicked
+            foreach (PictureBox winBox in picBoxWinners)
+            {
+                if (winBox.BackColor == gameConfig.getColorOfCurrPlayer())
+                {
+                    winBox.BackColor = Color.White;
+                }
+                else
+                {
+                    winBox.BackColor = gameConfig.getColorOfCurrPlayer();
+                }
+            }
         }
 
         // Tried and Failed DFS attempt

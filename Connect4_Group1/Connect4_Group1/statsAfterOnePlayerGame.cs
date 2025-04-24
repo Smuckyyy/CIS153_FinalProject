@@ -50,6 +50,7 @@ namespace Connect4_Group1
             {
                 // Tie
                 lblSAOPG_winner.Text = "Game was a tie!";
+                btnSAOPG_review.Visible = false;
             }
         }
 
@@ -58,7 +59,7 @@ namespace Connect4_Group1
             spForm.Focus();
 
             // Move this form to the left of the game board form
-            this.Location = new Point(spForm.Location.X - 250, spForm.Location.Y);
+            this.Location = new Point(spForm.Location.X - 400, spForm.Location.Y);
 
             if (winningPlayer != -1)
             {

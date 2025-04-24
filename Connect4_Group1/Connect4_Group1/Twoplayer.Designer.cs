@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             PictureBox pictureBox1;
             PictureBox pictureBox2;
             PictureBox pictureBox3;
@@ -96,6 +97,7 @@
             lblCurrentPlayer = new Label();
             doubleBtn_Exit = new Button();
             btn_mainMenu = new Button();
+            timer_display_winner = new System.Windows.Forms.Timer(components);
             pictureBox1 = new PictureBox();
             pictureBox2 = new PictureBox();
             pictureBox3 = new PictureBox();
@@ -860,6 +862,11 @@
             btn_mainMenu.UseVisualStyleBackColor = false;
             btn_mainMenu.Click += btn_mainMenu_Click;
             // 
+            // timer_display_winner
+            // 
+            timer_display_winner.Interval = 500;
+            timer_display_winner.Tick += timer_display_winner_Tick;
+            // 
             // Twoplayer
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -1054,5 +1061,6 @@
         private Label lblCurrentPlayer;
         private Button doubleBtn_Exit;
         private Button btn_mainMenu;
+        private System.Windows.Forms.Timer timer_display_winner;
     }
 }
