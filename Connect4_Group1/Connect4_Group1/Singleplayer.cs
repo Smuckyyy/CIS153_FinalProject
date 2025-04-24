@@ -41,7 +41,8 @@ namespace Connect4_Group1
         int displayCycles = weDefineCycleHere;
 
         // ENABLE/DISABLE THIS FOR DEBUGGING PROMPTS
-        const bool shouldDebug = false;
+        const bool shouldDebug = true;
+        const bool shouldEnableAI = true; // Enable or Disable if you want the AI to actually place a piece
         //=========================================
 
         public Singleplayer()
@@ -552,24 +553,8 @@ namespace Connect4_Group1
             int row = -1;
             int col = -1;
 
-            if (willAIWin("horizontal", ref row, ref col))
-            {
-                if (shouldDebug)
-                {
-                    MessageBox.Show("The AI would win horizontally by placing at: " + "Row: " + row + " Col: " + col);
-                }
-                makeMove(col);
-                return;
-            }
-            if (willAIWin("vertical", ref row, ref col))
-            {
-                if (shouldDebug)
-                {
-                    MessageBox.Show("The AI would win vertically by placing at: " + "Row: " + row + " Col: " + col);
-                }
-                makeMove(col);
-                return;
-            }
+            // Lets organize this so it checks Diagonal first then Vertical, then Horizontal
+
             if (willAIWin("diagonalUp", ref row, ref col))
             {
                 if (shouldDebug)
@@ -588,26 +573,27 @@ namespace Connect4_Group1
                 makeMove(col);
                 return;
             }
+            if (willAIWin("horizontal", ref row, ref col))
+            {
+                if (shouldDebug)
+                {
+                    MessageBox.Show("The AI would win horizontally by placing at: " + "Row: " + row + " Col: " + col);
+                }
+                makeMove(col);
+                return;
+            }
+            if (willAIWin("vertical", ref row, ref col))
+            {
+                if (shouldDebug)
+                {
+                    MessageBox.Show("The AI would win vertically by placing at: " + "Row: " + row + " Col: " + col);
+                }
+                makeMove(col);
+                return;
+            }
 
-            else if (willPlayerWin("horizontal", ref row, ref col))
-            {
-                if (shouldDebug)
-                {
-                    MessageBox.Show("The AI would place a piece at: " + "Row: " + row + " Col: " + col + "\nTo stop a player horizontal win.");
-                }
-                makeMove(col);
-                return;
-            }
-            else if (willPlayerWin("vertical", ref row, ref col))
-            {
-                if (shouldDebug)
-                {
-                    MessageBox.Show("The AI would place a piece at: " + "Row: " + row + " Col: " + col + "\nTo stop a player vertical win.");
-                }
-                makeMove(col);
-                return;
-            }
-            else if (willPlayerWin("diagonalUp", ref row, ref col))
+            // Why are we using else if here?
+            if (willPlayerWin("diagonalUp", ref row, ref col))
             {
                 if (shouldDebug)
                 {
@@ -616,7 +602,7 @@ namespace Connect4_Group1
                 makeMove(col);
                 return;
             }
-            else if (willPlayerWin("diagonalDown", ref row, ref col))
+            if (willPlayerWin("diagonalDown", ref row, ref col))
             {
                 if (shouldDebug)
                 {
@@ -625,156 +611,42 @@ namespace Connect4_Group1
                 makeMove(col);
                 return;
             }
-            else
+            if (willPlayerWin("horizontal", ref row, ref col))
             {
-                // Place a cell if it's possible to win with the AI
-                // Place a cell in a random spot on the board if no win state is found
+                if (shouldDebug)
+                {
+                    MessageBox.Show("The AI would place a piece at: " + "Row: " + row + " Col: " + col + "\nTo stop a player horizontal win.");
+                }
+                makeMove(col);
+                return;
+            }
+            if (willPlayerWin("vertical", ref row, ref col))
+            {
+                if (shouldDebug)
+                {
+                    MessageBox.Show("The AI would place a piece at: " + "Row: " + row + " Col: " + col + "\nTo stop a player vertical win.");
+                }
+                makeMove(col);
+                return;
+            }
 
+            // Since none of the logic returned anything we ended up at this point
+            if (shouldEnableAI)
+            {
                 makeMove(getRandomNumber());
             }
         }
 
         private void makeMove(int col)
         {
-            try
+            // Lord forgive me for what I am doing here
+            // Cols go from 0 - 6 (Which is 7 total
+            if (buttonClick[col] != 6)
             {
-                // Lord forgive me for what I am doing here
-                // Cols go from 0 - 6 (Which is 7 total)
-                switch (col)
-                {
-                    case 0:
-                        if (sing_btnCol1.Enabled != false)
-                        {
-                            btnList[col].PerformClick();
-                        }
-                        else
-                        {
-                            int randomClick;
-                            do
-                            {
-                                randomClick = getRandomNumber();
-                            }
-                            while (buttonClick[randomClick] == 6);
-
-                            btnList[randomClick].PerformClick();
-                        }
-                        break;
-                    case 1:
-                        if (sing_btnCol1.Enabled != false)
-                        {
-                            btnList[col].PerformClick();
-                        }
-                        else
-                        {
-                            int randomClick;
-                            do
-                            {
-                                randomClick = getRandomNumber();
-                            }
-                            while (buttonClick[randomClick] == 6);
-
-                            btnList[randomClick].PerformClick();
-                        }
-                        break;
-                    case 2:
-                        if (sing_btnCol1.Enabled != false)
-                        {
-                            btnList[col].PerformClick();
-                        }
-                        else
-                        {
-                            int randomClick;
-                            do
-                            {
-                                randomClick = getRandomNumber();
-                            }
-                            while (buttonClick[randomClick] == 6);
-
-                            btnList[randomClick].PerformClick();
-                        }
-                        break;
-                    case 3:
-                        if (sing_btnCol1.Enabled != false)
-                        {
-                            btnList[col].PerformClick();
-                        }
-                        else
-                        {
-                            int randomClick;
-                            do
-                            {
-                                randomClick = getRandomNumber();
-                            }
-                            while (buttonClick[randomClick] == 6);
-
-                            btnList[randomClick].PerformClick();
-                        }
-                        break;
-                    case 4:
-                        if (sing_btnCol1.Enabled != false)
-                        {
-                            btnList[col].PerformClick();
-                        }
-                        else
-                        {
-                            int randomClick;
-                            do
-                            {
-                                randomClick = getRandomNumber();
-                            }
-                            while (buttonClick[randomClick] == 6);
-
-                            btnList[randomClick].PerformClick();
-                        }
-                        break;
-                    case 5:
-                        if (sing_btnCol1.Enabled != false)
-                        {
-                            btnList[col].PerformClick();
-                        }
-                        else
-                        {
-                            int randomClick;
-                            do
-                            {
-                                randomClick = getRandomNumber();
-                            }
-                            while (buttonClick[randomClick] == 6);
-
-                            btnList[randomClick].PerformClick();
-                        }
-                        break;
-                    case 6:
-                        if (sing_btnCol1.Enabled != false)
-                        {
-                            btnList[col].PerformClick();
-                        }
-                        else
-                        {
-                            int randomClick;
-                            do
-                            {
-                                randomClick = getRandomNumber();
-                            }
-                            while (buttonClick[randomClick] == 6);
-
-                            btnList[randomClick].PerformClick();
-                        }
-                        break;
-                }
+                btnList[col].PerformClick();
             }
-            catch (Exception e)
+            else
             {
-                //string listOfButtons = "";
-                //foreach (var btn in btnList)
-                //{
-                //    listOfButtons += btn.Name.ToString() + ",";
-                //}
-
-                //MessageBox.Show(e.Message + "\n" + btnList.Count.ToString() + "\n" + "Attempted to click: " + col.ToString() + "\n" + listOfButtons);
-
-
-                //Disgusting hack to make this work...
                 btnList[getRandomNumber()].PerformClick();
             }
         }
@@ -821,7 +693,7 @@ namespace Connect4_Group1
         //                                       ref is the same thing as & in CPP
         private bool willPlayerWin(string direction, ref int lastOpenRow, ref int lastOpenCol)
         {
-            Color playerColor = Color.Yellow;
+            Color playerColor = gameConfig.getPlayerColor(); // This get will always be yellow btw
             int rows = gameBoard.getRows();
             int cols = gameBoard.getColumns();
 
@@ -867,58 +739,102 @@ namespace Connect4_Group1
                     }
                     break;
                 case "diagonalUp":
-                    for (int i = 3; i < rows; i++)
+                    // Matt W Code , Bottom left of board to Upper right of board Bottom left starts at {0,0} , Top right ends at {5,6}
+                    for (int row = 0; row < rows - 3; row++)
                     {
-                        for (int j = 0; j < cols - 3; j++)
+                        for (int col = 0; col < cols - 3; col++)
                         {
-                            var c1 = gameBoard.getCell(i, j);
-                            var c2 = gameBoard.getCell(i - 1, j + 1);
-                            var c3 = gameBoard.getCell(i - 2, j + 2);
-                            var c4 = gameBoard.getCell(i - 3, j + 3);
-
-                            int count = 0;
-                            if (c1.getCellColor() == playerColor) count++;
-                            if (c2.getCellColor() == playerColor) count++;
-                            if (c3.getCellColor() == playerColor) count++;
-
-                            int targetRow = i - 3;
-                            int targetCol = j + 3;
-                            if (c4.getClaimedStatus() == false && count == 3
-                                && gameBoard.getLowestEmptyRow(targetCol) == targetRow)
+                            if (gameBoard.getCell(row,col).getCellColor() == playerColor) // Found the first cell that contains the player color
                             {
-                                lastOpenRow = targetRow;
-                                lastOpenCol = targetCol;
-                                return true;
+                                // Now we check for cells 2, 3, and 4
+                                if (gameBoard.getCell(row + 1, col + 1).getCellColor() == playerColor // Cell 2 is claimed by player
+                                    && gameBoard.getCell(row + 2, col + 2).getCellColor() == playerColor // Cell 3 is claimed by player
+                                    && gameBoard.getCell(row + 3, col + 3).getClaimedStatus() == false) // Cell 4 is unclaimed and would lead to a win
+                                {
+                                    lastOpenRow = row + 3;
+                                    lastOpenCol = col + 3;
+                                    return true;
+                                }
                             }
                         }
                     }
+
+
+                    // Smuck Code
+                    //for (int i = 3; i < rows; i++)
+                    //{
+                    //    for (int j = 0; j < cols - 3; j++)
+                    //    {
+                    //        var c1 = gameBoard.getCell(i, j);
+                    //        var c2 = gameBoard.getCell(i - 1, j + 1);
+                    //        var c3 = gameBoard.getCell(i - 2, j + 2);
+                    //        var c4 = gameBoard.getCell(i - 3, j + 3);
+
+                    //        int count = 0;
+                    //        if (c1.getCellColor() == playerColor) count++;
+                    //        if (c2.getCellColor() == playerColor) count++;
+                    //        if (c3.getCellColor() == playerColor) count++;
+
+                    //        int targetRow = i - 3;
+                    //        int targetCol = j + 3;
+                    //        if (c4.getClaimedStatus() == false && count == 3
+                    //            && gameBoard.getLowestEmptyRow(targetCol) == targetRow)
+                    //        {
+                    //            lastOpenRow = targetRow;
+                    //            lastOpenCol = targetCol;
+                    //            return true;
+                    //        }
+                    //    }
+                    //}
                     break;
                 case "diagonalDown":
-                    for (int i = 0; i < rows - 3; i++)
+                    // Matt W Code ,Top right of board to bottom left. Top right ends at {5,6} Bottom left starts at {0,0}
+                    for (int row = rows - 1; row > 3; row--) // Start at the last row
                     {
-                        for (int j = 0; j < cols - 3; j++)
+                        for (int col = cols - 1; col > 3; col--) // Start at the top column
                         {
-                            var c1 = gameBoard.getCell(i, j);
-                            var c2 = gameBoard.getCell(i + 1, j + 1);
-                            var c3 = gameBoard.getCell(i + 2, j + 2);
-                            var c4 = gameBoard.getCell(i + 3, j + 3);
-
-                            int count = 0;
-                            if (c1.getCellColor() == playerColor) count++;
-                            if (c2.getCellColor() == playerColor) count++;
-                            if (c3.getCellColor() == playerColor) count++;
-
-                            int targetRow = i + 3;
-                            int targetCol = j + 3;
-                            if (c4.getClaimedStatus() == false && count == 3
-                                && gameBoard.getLowestEmptyRow(targetCol) == targetRow)
+                            if (gameBoard.getCell(row, col).getCellColor() == playerColor) // Found the first cell that contains the player color
                             {
-                                lastOpenRow = targetRow;
-                                lastOpenCol = targetCol;
-                                return true;
+                                // Now we check for cells 2, 3, and 4
+                                if (gameBoard.getCell(row - 1, col - 1).getCellColor() == playerColor // Cell 2 is claimed by player
+                                    && gameBoard.getCell(row - 2, col - 2).getCellColor() == playerColor // Cell 3 is claimed by player
+                                    && gameBoard.getCell(row - 3, col - 3).getClaimedStatus() == false) // Cell 4 is unclaimed and would lead to a win
+                                {
+                                    lastOpenRow = row - 3;
+                                    lastOpenCol = col - 3;
+                                    return true;
+                                }
                             }
                         }
                     }
+
+
+                    // Smuck Code
+                    //for (int i = 0; i < rows - 3; i++)
+                    //{
+                    //    for (int j = 0; j < cols - 3; j++)
+                    //    {
+                    //        var c1 = gameBoard.getCell(i, j);
+                    //        var c2 = gameBoard.getCell(i + 1, j + 1);
+                    //        var c3 = gameBoard.getCell(i + 2, j + 2);
+                    //        var c4 = gameBoard.getCell(i + 3, j + 3);
+
+                    //        int count = 0;
+                    //        if (c1.getCellColor() == playerColor) count++;
+                    //        if (c2.getCellColor() == playerColor) count++;
+                    //        if (c3.getCellColor() == playerColor) count++;
+
+                    //        int targetRow = i + 3;
+                    //        int targetCol = j + 3;
+                    //        if (c4.getClaimedStatus() == false && count == 3
+                    //            && gameBoard.getLowestEmptyRow(targetCol) == targetRow)
+                    //        {
+                    //            lastOpenRow = targetRow;
+                    //            lastOpenCol = targetCol;
+                    //            return true;
+                    //        }
+                    //    }
+                    //}
                     break;
             }
 
@@ -976,66 +892,106 @@ namespace Connect4_Group1
                     }
                     break;
                 case "diagonalUp":
-                    for (int i = 3; i < rows; i++)
+                    // Matt W Code , Bottom left of board to Upper right of board Bottom left starts at {0,0} , Top right ends at {5,6}
+                    for (int row = 0; row < rows - 3; row++)
                     {
-                        for (int j = 0; j < cols - 3; j++)
-                        { 
-                            var c1 = gameBoard.getCell(i, j);
-                            var c2 = gameBoard.getCell(i - 1, j + 1);
-                            var c3 = gameBoard.getCell(i - 2, j + 2);
-                            var c4 = gameBoard.getCell(i - 3, j + 3);
-
-                            int count = 0;
-                            if (c1.getCellColor() == playerColor) count++;
-                            if (c2.getCellColor() == playerColor) count++;
-                            if (c3.getCellColor() == playerColor) count++;
-
-                            int targetRow = i - 3;
-                            int targetCol = j + 3;
-                            if (c4.getClaimedStatus() == false && count == 3
-                                && gameBoard.getLowestEmptyRow(targetCol) == targetRow)
+                        for (int col = 0; col < cols - 3; col++)
+                        {
+                            if (gameBoard.getCell(row, col).getCellColor() == playerColor) // Found the first cell that contains the player color
                             {
-                                lastOpenRow = targetRow;
-                                lastOpenCol = targetCol;
-                                return true;
+                                // Now we check for cells 2, 3, and 4
+                                if (gameBoard.getCell(row + 1, col + 1).getCellColor() == playerColor // Cell 2 is claimed by player
+                                    && gameBoard.getCell(row + 2, col + 2).getCellColor() == playerColor // Cell 3 is claimed by player
+                                    && gameBoard.getCell(row + 3, col + 3).getClaimedStatus() == false) // Cell 4 is unclaimed and would lead to a win
+                                {
+                                    lastOpenRow = row + 3;
+                                    lastOpenCol = col + 3;
+                                    return true;
+                                }
                             }
                         }
                     }
+
+
+                    // Smuck Code
+                    //for (int i = 3; i < rows; i++)
+                    //{
+                    //    for (int j = 0; j < cols - 3; j++)
+                    //    { 
+                    //        var c1 = gameBoard.getCell(i, j);
+                    //        var c2 = gameBoard.getCell(i - 1, j + 1);
+                    //        var c3 = gameBoard.getCell(i - 2, j + 2);
+                    //        var c4 = gameBoard.getCell(i - 3, j + 3);
+
+                    //        int count = 0;
+                    //        if (c1.getCellColor() == playerColor) count++;
+                    //        if (c2.getCellColor() == playerColor) count++;
+                    //        if (c3.getCellColor() == playerColor) count++;
+
+                    //        int targetRow = i - 3;
+                    //        int targetCol = j + 3;
+                    //        if (c4.getClaimedStatus() == false && count == 3
+                    //            && gameBoard.getLowestEmptyRow(targetCol) == targetRow)
+                    //        {
+                    //            lastOpenRow = targetRow;
+                    //            lastOpenCol = targetCol;
+                    //            return true;
+                    //        }
+                    //    }
+                    //}
                     break;
                 case "diagonalDown":
-                    for (int i = 0; i < rows - 3; i++)
+                    // Matt W Code ,Top right of board to bottom left. Top right ends at {5,6} Bottom left starts at {0,0}
+                    for (int row = rows - 1; row > 3; row--) // Start at the last row
                     {
-                        for (int j = 0; j < cols - 3; j++)
+                        for (int col = cols - 1; col > 3; col--) // Start at the top column
                         {
-                            var c1 = gameBoard.getCell(i, j);
-                            var c2 = gameBoard.getCell(i + 1, j + 1);
-                            var c3 = gameBoard.getCell(i + 2, j + 2);
-                            var c4 = gameBoard.getCell(i + 3, j + 3);
-
-                            int count = 0;
-                            if (c1.getCellColor() == playerColor) count++;
-                            if (c2.getCellColor() == playerColor) count++;
-                            if (c3.getCellColor() == playerColor) count++;
-
-                            int targetRow = i + 3;
-                            int targetCol = j + 3;
-                            if (c4.getClaimedStatus() == false && count == 3
-                                && gameBoard.getLowestEmptyRow(targetCol) == targetRow)
+                            if (gameBoard.getCell(row, col).getCellColor() == playerColor) // Found the first cell that contains the player color
                             {
-                                lastOpenRow = targetRow;
-                                lastOpenCol = targetCol;
-                                return true;
+                                // Now we check for cells 2, 3, and 4
+                                if (gameBoard.getCell(row - 1, col - 1).getCellColor() == playerColor // Cell 2 is claimed by player
+                                    && gameBoard.getCell(row - 2, col - 2).getCellColor() == playerColor // Cell 3 is claimed by player
+                                    && gameBoard.getCell(row - 3, col - 3).getClaimedStatus() == false) // Cell 4 is unclaimed and would lead to a win
+                                {
+                                    lastOpenRow = row - 3;
+                                    lastOpenCol = col - 3;
+                                    return true;
+                                }
                             }
                         }
                     }
+
+                    // Smuck Code
+                    //for (int i = 0; i < rows - 3; i++)
+                    //{
+                    //    for (int j = 0; j < cols - 3; j++)
+                    //    {
+                    //        var c1 = gameBoard.getCell(i, j);
+                    //        var c2 = gameBoard.getCell(i + 1, j + 1);
+                    //        var c3 = gameBoard.getCell(i + 2, j + 2);
+                    //        var c4 = gameBoard.getCell(i + 3, j + 3);
+
+                    //        int count = 0;
+                    //        if (c1.getCellColor() == playerColor) count++;
+                    //        if (c2.getCellColor() == playerColor) count++;
+                    //        if (c3.getCellColor() == playerColor) count++;
+
+                    //        int targetRow = i + 3;
+                    //        int targetCol = j + 3;
+                    //        if (c4.getClaimedStatus() == false && count == 3
+                    //            && gameBoard.getLowestEmptyRow(targetCol) == targetRow)
+                    //        {
+                    //            lastOpenRow = targetRow;
+                    //            lastOpenCol = targetCol;
+                    //            return true;
+                    //        }
+                    //    }
+                    //}
                     break;
             }
 
             return false;
         }
-
-        
-
 
         private int getRandomNumber()
         {
