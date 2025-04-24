@@ -57,5 +57,21 @@ namespace Connect4_Group1
             gameBoard[cell.getRow(), cell.getColumn()] = cell;
         }
         // =================== SETTERS ===============
+
+        // =================== ADDITIONAL FUNCTIONALITY ===============
+        public int getLowestEmptyRow(int col)
+        {
+            //Start from bottom row (totalRows - 1) and move upwards
+            for (int row = totalRows - 1; row >= 0; row--)
+            {
+                if (!gameBoard[row, col].getClaimedStatus()) //If the cell is unclaimed (empty)
+                {
+                    return row; //Return the row number of the empty cell
+                }
+            }
+
+            return -1; //No empty cells in this column
+        }
+        // =================== ADDITIONAL FUNCTIONALITY ===============
     }
 }
