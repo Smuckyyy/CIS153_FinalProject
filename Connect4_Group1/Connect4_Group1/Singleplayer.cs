@@ -41,7 +41,7 @@ namespace Connect4_Group1
         int displayCycles = weDefineCycleHere;
 
         // ENABLE/DISABLE THIS FOR DEBUGGING PROMPTS
-        const bool shouldDebug = true;
+        const bool shouldDebug = false;
         const bool shouldEnableAI = true; // Enable or Disable if you want the AI to actually place a piece
         //=========================================
 
@@ -555,20 +555,11 @@ namespace Connect4_Group1
 
             // Lets organize this so it checks Diagonal first then Vertical, then Horizontal
 
-            if (willAIWin("diagonalUp", ref row, ref col))
+            if (willAIWin("diagonal", ref row, ref col))
             {
                 if (shouldDebug)
                 {
                     MessageBox.Show("The AI would win diagonally up by placing at: " + "Row: " + row + " Col: " + col);
-                }
-                makeMove(col);
-                return;
-            }
-            if (willAIWin("diagonalDown", ref row, ref col))
-            {
-                if (shouldDebug)
-                {
-                    MessageBox.Show("The AI would win diagonally down by placing at: " + "Row: " + row + " Col: " + col);
                 }
                 makeMove(col);
                 return;
@@ -593,20 +584,11 @@ namespace Connect4_Group1
             }
 
             // Why are we using else if here?
-            if (willPlayerWin("diagonalUp", ref row, ref col))
+            if (willPlayerWin("diagonal", ref row, ref col))
             {
                 if (shouldDebug)
                 {
                     MessageBox.Show("The AI would place a piece at: " + "Row: " + row + " Col: " + col + "\nTo stop a player diagonal-up win.");
-                }
-                makeMove(col);
-                return;
-            }
-            if (willPlayerWin("diagonalDown", ref row, ref col))
-            {
-                if (shouldDebug)
-                {
-                    MessageBox.Show("The AI would place a piece at: " + "Row: " + row + " Col: " + col + "\nTo stop a player diagonal-down win.");
                 }
                 makeMove(col);
                 return;
@@ -717,10 +699,29 @@ namespace Connect4_Group1
                                 return true;
                             }
                         }
+                    }
 
+                    //Right to left
+                    // Start on the lowest bottom row
+                    for (int row = 0; row < gameBoard.getRows(); row++)
+                    {
+                        // Start at the last column and go left
+                        for (int col = gameBoard.getColumns() - 1; col >= 3; col--)
+                        {
+                            if (gameBoard.getCell(row, col).getCellColor() == playerColor
+                                && gameBoard.getCell(row, col - 1).getCellColor() == playerColor
+                                && gameBoard.getCell(row, col - 2).getCellColor() == playerColor
+                                && gameBoard.getCell(row, col - 3).getClaimedStatus() == false)
+                            {
+                                lastOpenRow = row;
+                                lastOpenCol = col - 3;
+                                return true;
+                            }
+                        }
                     }
                     break;
                 case "vertical":
+                    // Bottom to Top, We only have to do this since all cells always go to the lowest point
                     for (int j = 0; j < cols; j++)
                     {
                         for (int i = 0; i < rows - 3; i++)
@@ -734,11 +735,10 @@ namespace Connect4_Group1
                                 lastOpenCol = j;
                                 return true;
                             }
-
                         }
                     }
                     break;
-                case "diagonalUp":
+                case "diagonal":
                     // Matt W Code , Bottom left of board to Upper right of board Bottom left starts at {0,0} , Top right ends at {5,6}
                     for (int row = 0; row < rows - 3; row++)
                     {
@@ -749,12 +749,31 @@ namespace Connect4_Group1
                                 // Now we check for cells 2, 3, and 4
                                 if (gameBoard.getCell(row + 1, col + 1).getCellColor() == playerColor // Cell 2 is claimed by player
                                     && gameBoard.getCell(row + 2, col + 2).getCellColor() == playerColor // Cell 3 is claimed by player
-                                    && gameBoard.getCell(row + 3, col + 3).getClaimedStatus() == false) // Cell 4 is unclaimed and would lead to a win
+                                    && gameBoard.getCell(row + 3, col + 3).getClaimedStatus() == false // Cell 4 is unclaimed and would lead to a win
+                                    && gameBoard.getCell(row + 2, col + 3).getClaimedStatus() == true) // Safe check to see if the cell under is claimed so it doesn't waste a turn
                                 {
                                     lastOpenRow = row + 3;
                                     lastOpenCol = col + 3;
                                     return true;
                                 }
+                            }
+                        }
+                    }
+
+                    // Matt W Code, Bottom right to Upper Left of board, Bottom Right {0,6}, Upper Left {5,0}
+                    for (int row = 0; row < rows - 3; row++)
+                    {
+                        for (int col = cols - 1; col >= 3; col--)
+                        {
+                            // Now we check for cells 2, 3, and 4
+                            if (gameBoard.getCell(row + 1, col - 1).getCellColor() == playerColor // Cell 2 is claimed by player
+                                && gameBoard.getCell(row + 2, col - 2).getCellColor() == playerColor // Cell 3 is claimed by player
+                                && gameBoard.getCell(row + 3, col - 3).getClaimedStatus() == false // Cell 4 is unclaimed and would lead to a win
+                                && gameBoard.getCell(row + 2, col - 3).getClaimedStatus() == true) // Safe check to see if the cell under is claimed so it doesn't waste a turn
+                            {
+                                lastOpenRow = row + 3;
+                                lastOpenCol = col - 3;
+                                return true;
                             }
                         }
                     }
@@ -776,55 +795,6 @@ namespace Connect4_Group1
                     //        if (c3.getCellColor() == playerColor) count++;
 
                     //        int targetRow = i - 3;
-                    //        int targetCol = j + 3;
-                    //        if (c4.getClaimedStatus() == false && count == 3
-                    //            && gameBoard.getLowestEmptyRow(targetCol) == targetRow)
-                    //        {
-                    //            lastOpenRow = targetRow;
-                    //            lastOpenCol = targetCol;
-                    //            return true;
-                    //        }
-                    //    }
-                    //}
-                    break;
-                case "diagonalDown":
-                    // Matt W Code ,Top right of board to bottom left. Top right ends at {5,6} Bottom left starts at {0,0}
-                    for (int row = rows - 1; row > 3; row--) // Start at the last row
-                    {
-                        for (int col = cols - 1; col > 3; col--) // Start at the top column
-                        {
-                            if (gameBoard.getCell(row, col).getCellColor() == playerColor) // Found the first cell that contains the player color
-                            {
-                                // Now we check for cells 2, 3, and 4
-                                if (gameBoard.getCell(row - 1, col - 1).getCellColor() == playerColor // Cell 2 is claimed by player
-                                    && gameBoard.getCell(row - 2, col - 2).getCellColor() == playerColor // Cell 3 is claimed by player
-                                    && gameBoard.getCell(row - 3, col - 3).getClaimedStatus() == false) // Cell 4 is unclaimed and would lead to a win
-                                {
-                                    lastOpenRow = row - 3;
-                                    lastOpenCol = col - 3;
-                                    return true;
-                                }
-                            }
-                        }
-                    }
-
-
-                    // Smuck Code
-                    //for (int i = 0; i < rows - 3; i++)
-                    //{
-                    //    for (int j = 0; j < cols - 3; j++)
-                    //    {
-                    //        var c1 = gameBoard.getCell(i, j);
-                    //        var c2 = gameBoard.getCell(i + 1, j + 1);
-                    //        var c3 = gameBoard.getCell(i + 2, j + 2);
-                    //        var c4 = gameBoard.getCell(i + 3, j + 3);
-
-                    //        int count = 0;
-                    //        if (c1.getCellColor() == playerColor) count++;
-                    //        if (c2.getCellColor() == playerColor) count++;
-                    //        if (c3.getCellColor() == playerColor) count++;
-
-                    //        int targetRow = i + 3;
                     //        int targetCol = j + 3;
                     //        if (c4.getClaimedStatus() == false && count == 3
                     //            && gameBoard.getLowestEmptyRow(targetCol) == targetRow)
@@ -870,6 +840,25 @@ namespace Connect4_Group1
                             }
                         }
 
+                        //Right to left
+                        // Start on the lowest bottom row
+                        for (int row = 0; row < gameBoard.getRows(); row++)
+                        {
+                            // Start at the last column and go left
+                            for (int col = gameBoard.getColumns() - 1; col >= 3; col--)
+                            {
+                                if (gameBoard.getCell(row, col).getCellColor() == playerColor
+                                    && gameBoard.getCell(row, col - 1).getCellColor() == playerColor
+                                    && gameBoard.getCell(row, col - 2).getCellColor() == playerColor
+                                    && gameBoard.getCell(row, col - 3).getClaimedStatus() == false)
+                                {
+                                    lastOpenRow = row;
+                                    lastOpenCol = col - 3;
+                                    return true;
+                                }
+                            }
+                        }
+
                     }
                     break;
                 case "vertical":
@@ -891,7 +880,7 @@ namespace Connect4_Group1
                         }
                     }
                     break;
-                case "diagonalUp":
+                case "diagonal": // This only needs to check right to left & left to right
                     // Matt W Code , Bottom left of board to Upper right of board Bottom left starts at {0,0} , Top right ends at {5,6}
                     for (int row = 0; row < rows - 3; row++)
                     {
@@ -902,12 +891,31 @@ namespace Connect4_Group1
                                 // Now we check for cells 2, 3, and 4
                                 if (gameBoard.getCell(row + 1, col + 1).getCellColor() == playerColor // Cell 2 is claimed by player
                                     && gameBoard.getCell(row + 2, col + 2).getCellColor() == playerColor // Cell 3 is claimed by player
-                                    && gameBoard.getCell(row + 3, col + 3).getClaimedStatus() == false) // Cell 4 is unclaimed and would lead to a win
+                                    && gameBoard.getCell(row + 3, col + 3).getClaimedStatus() == false // Cell 4 is unclaimed and would lead to a win
+                                    && gameBoard.getCell(row + 2, col + 3).getClaimedStatus() == true) // Safe check to see if the cell under is claimed so it doesn't waste a turn
                                 {
                                     lastOpenRow = row + 3;
                                     lastOpenCol = col + 3;
                                     return true;
                                 }
+                            }
+                        }
+                    }
+
+                    // Matt W Code, Bottom right to Upper Left of board, Bottom Right {0,6}, Upper Left {5,0}
+                    for (int row = 0; row < rows - 3; row++)
+                    {
+                        for (int col = cols - 1; col >= 3; col--)
+                        {
+                            // Now we check for cells 2, 3, and 4
+                            if (gameBoard.getCell(row + 1, col - 1).getCellColor() == playerColor // Cell 2 is claimed by player
+                                && gameBoard.getCell(row + 2, col - 2).getCellColor() == playerColor // Cell 3 is claimed by player
+                                && gameBoard.getCell(row + 3, col - 3).getClaimedStatus() == false // Cell 4 is unclaimed and would lead to a win
+                                && gameBoard.getCell(row + 2, col - 3).getClaimedStatus() == true) // Safe check to see if the cell under is claimed so it doesn't waste a turn
+                            {
+                                lastOpenRow = row + 3;
+                                lastOpenCol = col - 3;
+                                return true;
                             }
                         }
                     }
@@ -929,54 +937,6 @@ namespace Connect4_Group1
                     //        if (c3.getCellColor() == playerColor) count++;
 
                     //        int targetRow = i - 3;
-                    //        int targetCol = j + 3;
-                    //        if (c4.getClaimedStatus() == false && count == 3
-                    //            && gameBoard.getLowestEmptyRow(targetCol) == targetRow)
-                    //        {
-                    //            lastOpenRow = targetRow;
-                    //            lastOpenCol = targetCol;
-                    //            return true;
-                    //        }
-                    //    }
-                    //}
-                    break;
-                case "diagonalDown":
-                    // Matt W Code ,Top right of board to bottom left. Top right ends at {5,6} Bottom left starts at {0,0}
-                    for (int row = rows - 1; row > 3; row--) // Start at the last row
-                    {
-                        for (int col = cols - 1; col > 3; col--) // Start at the top column
-                        {
-                            if (gameBoard.getCell(row, col).getCellColor() == playerColor) // Found the first cell that contains the player color
-                            {
-                                // Now we check for cells 2, 3, and 4
-                                if (gameBoard.getCell(row - 1, col - 1).getCellColor() == playerColor // Cell 2 is claimed by player
-                                    && gameBoard.getCell(row - 2, col - 2).getCellColor() == playerColor // Cell 3 is claimed by player
-                                    && gameBoard.getCell(row - 3, col - 3).getClaimedStatus() == false) // Cell 4 is unclaimed and would lead to a win
-                                {
-                                    lastOpenRow = row - 3;
-                                    lastOpenCol = col - 3;
-                                    return true;
-                                }
-                            }
-                        }
-                    }
-
-                    // Smuck Code
-                    //for (int i = 0; i < rows - 3; i++)
-                    //{
-                    //    for (int j = 0; j < cols - 3; j++)
-                    //    {
-                    //        var c1 = gameBoard.getCell(i, j);
-                    //        var c2 = gameBoard.getCell(i + 1, j + 1);
-                    //        var c3 = gameBoard.getCell(i + 2, j + 2);
-                    //        var c4 = gameBoard.getCell(i + 3, j + 3);
-
-                    //        int count = 0;
-                    //        if (c1.getCellColor() == playerColor) count++;
-                    //        if (c2.getCellColor() == playerColor) count++;
-                    //        if (c3.getCellColor() == playerColor) count++;
-
-                    //        int targetRow = i + 3;
                     //        int targetCol = j + 3;
                     //        if (c4.getClaimedStatus() == false && count == 3
                     //            && gameBoard.getLowestEmptyRow(targetCol) == targetRow)
