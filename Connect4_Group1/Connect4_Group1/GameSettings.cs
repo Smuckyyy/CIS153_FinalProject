@@ -78,12 +78,6 @@ namespace Connect4_Group1
             return this.currentPlayer;
         }
 
-        // Return if the game is running
-        public bool getGameRunning()
-        {
-            return this.gameOver;
-        }
-
         public string getPlayerOneImage()
         {
             return this.playOneImage;

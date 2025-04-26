@@ -131,7 +131,7 @@ namespace Connect4_Group1
         // The names will be updated automatically when changed on the form
         private void button_click_handler(object sender, EventArgs e)
         {
-            if (gameConfig.getGameRunning() == true)
+            if (gameConfig.getGameStatus())
             {
                 if (sender == sing_btnCol1)
                 {

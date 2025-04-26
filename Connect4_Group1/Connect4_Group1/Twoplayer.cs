@@ -74,7 +74,7 @@ namespace Connect4_Group1
         {
 
             // Use the constructor instead
-            gameConfig = new GameSettings(Color.Yellow, Color.Red, 1, true);
+            gameConfig = new GameSettings(Color.Yellow, Color.Red, 1, false);
 
             pictureBoxPlayerColor.BackColor = gameConfig.getColorOfCurrPlayer();
 
@@ -119,7 +119,7 @@ namespace Connect4_Group1
         // The names will be updated automatically when changed on the form
         private void button_click_handler(object sender, EventArgs e)
         {
-            if (gameConfig.getGameRunning() == true)
+            if (gameConfig.getGameStatus())
             {
                 if (sender == btnCol1)
                 {
