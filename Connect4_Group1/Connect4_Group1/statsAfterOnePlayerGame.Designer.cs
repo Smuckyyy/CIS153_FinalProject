@@ -34,6 +34,8 @@
             btnSAOPG_again = new Button();
             btnSAOPG_review = new Button();
             btnSAOPG_exit = new Button();
+            label3 = new Label();
+            sAOPG_stats = new Label();
             SuspendLayout();
             // 
             // label1
@@ -108,12 +110,36 @@
             btnSAOPG_exit.UseVisualStyleBackColor = false;
             btnSAOPG_exit.Click += btnSAOPG_exit_Click;
             // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Times New Roman", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label3.ForeColor = Color.White;
+            label3.Location = new Point(38, 92);
+            label3.Name = "label3";
+            label3.Size = new Size(56, 23);
+            label3.TabIndex = 6;
+            label3.Text = "Stats:";
+            // 
+            // sAOPG_stats
+            // 
+            sAOPG_stats.AutoSize = true;
+            sAOPG_stats.Font = new Font("Times New Roman", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            sAOPG_stats.ForeColor = Color.White;
+            sAOPG_stats.Location = new Point(170, 92);
+            sAOPG_stats.Name = "sAOPG_stats";
+            sAOPG_stats.Size = new Size(87, 23);
+            sAOPG_stats.TabIndex = 7;
+            sAOPG_stats.Text = "stats here";
+            // 
             // statsAfterOnePlayerGame
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.CornflowerBlue;
             ClientSize = new Size(386, 396);
+            Controls.Add(sAOPG_stats);
+            Controls.Add(label3);
             Controls.Add(btnSAOPG_exit);
             Controls.Add(btnSAOPG_review);
             Controls.Add(btnSAOPG_again);
@@ -134,5 +160,7 @@
         private Button btnSAOPG_again;
         private Button btnSAOPG_review;
         private Button btnSAOPG_exit;
+        private Label label3;
+        private Label sAOPG_stats;
     }
 }

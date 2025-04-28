@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace Connect4_Group1
 {
@@ -26,6 +27,7 @@ namespace Connect4_Group1
             winningPlayer = p_winningPlayer;
 
             updateFormInfo(winningPlayer);
+            setStatsOnSAOPG();
             this.StartPosition = FormStartPosition.CenterScreen;
         }
 
@@ -34,6 +36,21 @@ namespace Connect4_Group1
             System.Environment.Exit(0);
         }
 
+        private void setStatsOnSAOPG()
+        {
+            //Applied code from statistics form to this one. -Cecil
+            // Create a formatted string that will be passed to a single label
+            Data c_data;
+            string formattedString = String.Format(
+            "Your Wins : {0,0}\n" +
+            "AI Wins : {1,0}\n" +
+            "Your Win Percent : {2,0}% \n" +
+            "AI Win Percent : {3,0}% \n" +
+            "Game Ties : {4,0}\n" +
+            "Total Games Played : {5,0}\n", c_data.getUserWins(), c_data.getAIWins(), c_data.getUserWinPercent(), c_data.getAiWinPercent(), c_data.getGameTies(), c_data.getTotalGamesPlayed());
+            sAOPG_stats.Text = formattedString;
+            this.AutoSize = true;
+        }
         private void updateFormInfo(int winningPlayer)
         {
             if (winningPlayer == 1)
