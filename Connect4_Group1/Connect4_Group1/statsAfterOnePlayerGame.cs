@@ -15,19 +15,22 @@ namespace Connect4_Group1
     {
         Singleplayer spForm;
         int winningPlayer;
+        Data c_data;
 
         public statsAfterOnePlayerGame()
         {
             InitializeComponent();
         }
-        public statsAfterOnePlayerGame(int p_winningPlayer, Color winningPlayerColor, Singleplayer p_spForm)
+        
+        //Pass a data object for displaying the statistics - Cecil
+        public statsAfterOnePlayerGame(int p_winningPlayer, Color winningPlayerColor, Singleplayer p_spForm, Data p_data)
         {
             InitializeComponent();
             spForm = p_spForm;
             winningPlayer = p_winningPlayer;
-
+            c_data = p_data;
             updateFormInfo(winningPlayer);
-            setStatsOnSAOPG();
+            setStatsOnSAOPG(c_data);
             this.StartPosition = FormStartPosition.CenterScreen;
         }
 
@@ -36,11 +39,10 @@ namespace Connect4_Group1
             System.Environment.Exit(0);
         }
 
-        private void setStatsOnSAOPG()
+        private void setStatsOnSAOPG(Data c_data)
         {
             //Applied code from statistics form to this one. -Cecil
             // Create a formatted string that will be passed to a single label
-            Data c_data;
             string formattedString = String.Format(
             "Your Wins : {0,0}\n" +
             "AI Wins : {1,0}\n" +

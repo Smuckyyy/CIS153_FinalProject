@@ -1037,7 +1037,7 @@ namespace Connect4_Group1
         {
             // Here I would pass the game status to the new stats form and update the public struct of game data
             // because areFourCellsConnected returned true meaning that a player has won the game
-            statsAfterOnePlayerGame saspg = new statsAfterOnePlayerGame(gameConfig.getCurrentPlayer(), gameConfig.getColorOfCurrPlayer(), this);
+            statsAfterOnePlayerGame saspg = new statsAfterOnePlayerGame(gameConfig.getCurrentPlayer(), gameConfig.getColorOfCurrPlayer(), this, c_data);
 
             // Update the .txt file
             updatePersistantData();
