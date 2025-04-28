@@ -1,7 +1,6 @@
-//Names         : Marcus Rollins, Matthew Wishman, Cecil Younglove
-//Date          :
-//Description   :  Connect 4 program that can support a game between a single player and an AI or a game between two players, while allowing users
-//                 to view game statistics
+//Names         :   Marcus Rollins, Matthew Wishman, Cecil Younglove
+//Date          :   April 8th, 2025
+//Description   :   Connect 4 program that can support a game between a single player and an AI or a game between two players, while allowing users to view game statistics
 using System.Media;
 using System.Resources;
 using static Connect4_Group1.Data;
