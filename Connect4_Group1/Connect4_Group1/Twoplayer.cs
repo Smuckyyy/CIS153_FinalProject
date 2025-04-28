@@ -29,8 +29,6 @@ namespace Connect4_Group1
         const bool shouldDebug = false;
         //=========================================
 
-        // This is what I think the DFS needs to function
-        // bool[,] visited;
         // This is needed to know what piece was last placed on the board
         int[] latestPiece = { 0, 0 };
 
@@ -176,17 +174,6 @@ namespace Connect4_Group1
                             gameBoard.getCell(i, currentCol).setCellColor(gameConfig.getColorOfCurrPlayer());
                             gameBoard.getCell(i, currentCol).setClaimStatus(true);
                             buttonClick[currentCol]++;
-
-                            // This is for testing using an image for a cell instead of a color 4-13-2025
-                            // This does work but the images are offset from the center
-                            //if (gameConfig.getPlayerColor() == "Yellow")
-                            //{
-                            //    gameBoard.getCell(i, currentCol).setCellImage(gameConfig.getPlayerOneImage());
-                            //}
-                            //else if (gameConfig.getPlayerColor() == "Red")
-                            //{
-                            //    gameBoard.getCell(i, currentCol).setCellImage(gameConfig.getPlayerTwoImage());
-                            //}
 
                             // Update the latest piece variable
                             latestPiece[0] = i;
@@ -367,21 +354,7 @@ namespace Connect4_Group1
             }
             else
             {
-                // The DFS would be performed here
-                //visited = new bool[gameBoard.getRows(), gameBoard.getColumns()];
 
-                //int connectedCells = 0;
-
-                //if (dfsForBoard(gameBoard, visited, latestPiece[0], latestPiece[1], ref connectedCells))
-                //{
-                //    MessageBox.Show("Found 4 Connected Cells!");
-
-                //    cleanUpGame();
-                //}
-                //else
-                //{
-                //    updatePlayerTurn();
-                //}
 
                 if (areFourCellsConnected())
                 {
@@ -472,10 +445,6 @@ namespace Connect4_Group1
             {
                 for (int j = 0; j < gameBoard.getColumns() - 3; j++)
                 {
-                    // Visual of how this functions ~ Uncomment to see what happens
-                    //gameBoard.getCell(i, j).setCellColor(Color.Green.ToString());
-                    //Thread.Sleep(100);
-                    //Application.DoEvents(); // This will update anything that is in the application buffer, Right now it's just used to update the cell color visually ~ https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.application.doevents?view=windowsdesktop-9.0
 
                     if (gameBoard.getCell(i, j).getCellColor() != Color.White)
                     {
@@ -508,10 +477,6 @@ namespace Connect4_Group1
                 // Move through each index in the columns now
                 for (int j = 0; j < gameBoard.getColumns() - 3; j++)
                 {
-                    // Visual of what is happening in this loop ~ Uncomment to see what happens
-                    //gameBoard.getCell(i, j).setCellColor(Color.Green.ToString());
-                    //Thread.Sleep(100);
-                    //Application.DoEvents(); // This will update anything that is in the application buffer, Right now it's just used to update the cell color visually ~ https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.application.doevents?view=windowsdesktop-9.0
 
                     if (gameBoard.getCell(i, j).getCellColor() != Color.White)
                     {
@@ -788,57 +753,5 @@ namespace Connect4_Group1
                 }
             }
         }
-
-        // Tried and Failed DFS attempt
-        //private bool dfsForBoard(Board gameBoard, bool[,] visted, int row, int col, ref int connectedCells)
-        //{
-        //    // Notes No Fn way this would be the solution, How can I ensure that the cells are in the same row, col, or diagonal direction?
-
-
-        //    // Base cased found 4 connect cells so we can exit this recursive function
-        //    if (connectedCells >= 4)
-        //    {
-        //        return true;
-        //    }
-
-        //    //                          Checks if out of bounds                                         If it was visited                           Checks if the color matches the current player
-        //    if (row < 0 || row >= gameBoard.getRows() || col < 0 || col >= gameBoard.getColumns() || visted[row,col] == true || gameBoard.getCell(row,col).getCellColor() != gameConfig.getColorOfCurrPlayer())
-        //    {
-        //        return false;
-        //    }
-
-        //    // Both checks passed now we are here, so we set this current position to visited
-        //    visited[row, col] = true;
-        //    connectedCells++;
-
-        //    // now we check each cell to see if we have a connect 4
-
-        //    if (dfsForBoard(gameBoard, visited, row + 1, col, ref connectedCells)) // Go up
-        //    {
-        //        return true;
-        //    }
-        //    if (dfsForBoard(gameBoard, visited, row - 1, col, ref connectedCells)) // Go Down
-        //    {
-        //        return true;
-        //    }
-        //    if (dfsForBoard(gameBoard, visited, row, col - 1, ref connectedCells)) // Go Left
-        //    {
-        //        return true;
-        //    }
-        //    if (dfsForBoard(gameBoard, visited, row, col + 1, ref connectedCells)) // Go Right
-        //    {
-        //        return true;
-        //    }
-        //    if (dfsForBoard(gameBoard, visited, row + 1, col + 1, ref connectedCells)) // Go Diagonal
-        //    {
-        //        return true;
-        //    }
-        //    if (dfsForBoard(gameBoard, visited, row - 1, col - 1, ref connectedCells)) // Go Diagonal reversed
-        //    {
-        //        return true;
-        //    }
-
-        //    return false;
-        //}
     }
 }
