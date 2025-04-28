@@ -60,12 +60,6 @@ namespace Connect4_Group1
             return this.playerTurn;
         }
 
-        // Returns the AI color
-        //public Color getAIColor()
-        //{
-        //    return this.AIColor;
-        //}
-
         // Returns the player color, DEPRICATED use getColorOfCurrPlayer()
         public Color getPlayerColor()
         {
