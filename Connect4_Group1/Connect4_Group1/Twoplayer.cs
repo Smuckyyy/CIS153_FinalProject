@@ -74,7 +74,7 @@ namespace Connect4_Group1
         {
 
             // Use the constructor instead
-            gameConfig = new GameSettings(Color.Yellow, Color.Red, 1, false);
+            gameConfig = new GameSettings(Color.Yellow, Color.Red, 1, true);
 
             pictureBoxPlayerColor.BackColor = gameConfig.getColorOfCurrPlayer();
 

@@ -338,7 +338,10 @@ namespace Connect4_Group1
 
 
                 // For Debugging
-                MessageBox.Show("Every Cell Is Filled", "Game Status");
+                if (shouldDebug)
+                {
+                    MessageBox.Show("Every Cell Is Filled", "Game Status");
+                }
 
                 cleanUpGame();
             }
@@ -629,7 +632,15 @@ namespace Connect4_Group1
             }
             else
             {
-                btnList[getRandomNumber()].PerformClick();
+                // Will place a piece in the next available column, This happens if it tries to click a button that is disabled
+                for (int i = 0; i < buttonClick.Length; i++)
+                {
+                    if (buttonClick[i] != 6)
+                    {
+                        btnList[i].PerformClick();
+                        return;
+                    }
+                }
             }
         }
 
@@ -828,15 +839,33 @@ namespace Connect4_Group1
                     {
                         for (int j = 0; j < cols - 3; j++)
                         {
-                            if (gameBoard.getCell(i, j).getCellColor() == playerColor
+                            if (i < 1)
+                            {
+                                if (gameBoard.getCell(i, j).getCellColor() == playerColor
                                 && gameBoard.getCell(i, j + 1).getCellColor() == playerColor
                                 && gameBoard.getCell(i, j + 2).getCellColor() == playerColor
                                 && gameBoard.getCell(i, j + 3).getClaimedStatus() == false)
-                            {
-                                lastOpenRow = i;
-                                lastOpenCol = j + 3;
+                                {
+                                    lastOpenRow = i;
+                                    lastOpenCol = j + 3;
 
-                                return true;
+                                    return true;
+                                }
+                            }
+                            else
+                            {
+                                // If greater than the first row perform a check to make sure that the cell below is claimed to not waste a move
+                                if (gameBoard.getCell(i, j).getCellColor() == playerColor
+                                && gameBoard.getCell(i, j + 1).getCellColor() == playerColor
+                                && gameBoard.getCell(i, j + 2).getCellColor() == playerColor
+                                && gameBoard.getCell(i, j + 3).getClaimedStatus() == false
+                                && gameBoard.getCell(i - 1, j + 3).getClaimedStatus() == true)
+                                {
+                                    lastOpenRow = i;
+                                    lastOpenCol = j + 3;
+
+                                    return true;
+                                }
                             }
                         }
 
@@ -847,14 +876,32 @@ namespace Connect4_Group1
                             // Start at the last column and go left
                             for (int col = gameBoard.getColumns() - 1; col >= 3; col--)
                             {
-                                if (gameBoard.getCell(row, col).getCellColor() == playerColor
+                                if (row < 1)
+                                {
+                                    if (gameBoard.getCell(row, col).getCellColor() == playerColor
                                     && gameBoard.getCell(row, col - 1).getCellColor() == playerColor
                                     && gameBoard.getCell(row, col - 2).getCellColor() == playerColor
                                     && gameBoard.getCell(row, col - 3).getClaimedStatus() == false)
+                                    {
+                                        lastOpenRow = row;
+                                        lastOpenCol = col - 3;
+                                        return true;
+                                    }
+                                }
+                                else
                                 {
-                                    lastOpenRow = row;
-                                    lastOpenCol = col - 3;
-                                    return true;
+                                    // If greater than the first row perform a check to make sure that the cell below is claimed to not waste a move
+                                    if (gameBoard.getCell(row, col).getCellColor() == playerColor
+                                    && gameBoard.getCell(row, col - 1).getCellColor() == playerColor
+                                    && gameBoard.getCell(row, col - 2).getCellColor() == playerColor
+                                    && gameBoard.getCell(row, col - 3).getClaimedStatus() == false
+                                    && gameBoard.getCell(row - 1, col - 3).getClaimedStatus() == true)
+                                    {
+                                        lastOpenRow = row;
+                                        lastOpenCol = col + 3;
+
+                                        return true;
+                                    }
                                 }
                             }
                         }
@@ -965,6 +1012,13 @@ namespace Connect4_Group1
             while (randomCol >= btnList.Count || randomCol < 0);
 
             return randomCol;
+        }
+
+        private int getRandomNumber(int num)
+        {
+            Random rnd = new Random();
+
+            return rnd.Next(num);
         }
 
         // These four functions handle displaying a users piece while mousing over a button
