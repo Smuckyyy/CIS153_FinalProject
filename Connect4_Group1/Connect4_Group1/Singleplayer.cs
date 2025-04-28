@@ -48,13 +48,6 @@ namespace Connect4_Group1
         public Singleplayer()
         {
             InitializeComponent();
-            /*this.FormBorderStyle = FormBorderStyle.Fixed3D; // Disable the ability to resize
-            this.StartPosition = FormStartPosition.CenterScreen; // Open the form at the center of the users screen*/
-            //The commented-out code didn't work when I tested it (before commenting it out, of course). Why is that?
-
-            //I figured out how to make that work; I realized this constructor is kind of useless since we have
-            //the Form1 sp one already. (I also don't want to delete it incase VS gets mad about the default constructor)
-            //But I added the center screen down below. -Marcus
         }
 
         public Singleplayer(Form1 sp, Data p_data)
@@ -187,17 +180,6 @@ namespace Connect4_Group1
                             gameBoard.getCell(i, currentCol).setCellColor(gameConfig.getColorOfCurrPlayer());
                             gameBoard.getCell(i, currentCol).setClaimStatus(true);
                             buttonClick[currentCol]++;
-
-                            // This is for testing using an image for a cell instead of a color 4-13-2025
-                            // This does work but the images are offset from the center
-                            //if (gameConfig.getPlayerColor() == "Yellow")
-                            //{
-                            //    gameBoard.getCell(i, currentCol).setCellImage(gameConfig.getPlayerOneImage());
-                            //}
-                            //else if (gameConfig.getPlayerColor() == "Red")
-                            //{
-                            //    gameBoard.getCell(i, currentCol).setCellImage(gameConfig.getPlayerTwoImage());
-                            //}
 
                             break;
                         }
@@ -380,8 +362,6 @@ namespace Connect4_Group1
         // Clean up
         private void cleanUpGame()
         {
-            // Here we would update the Struct that contains the game data. We would update how many times the game has been played
-            // STATUS - NOT IMPLEMENTED
 
             // Set every cell back to the starting color
             foreach (var cell in gameBoard.getEntireBoard())
@@ -481,12 +461,8 @@ namespace Connect4_Group1
 
             for (int i = 0; i < gameBoard.getRows() - 3; i++)
             {
-                for (int j = 0; j < gameBoard.getColumns() - 3; j++)
-                {
-                    // Visual of how this functions ~ Uncomment to see what happens
-                    //gameBoard.getCell(i, j).setCellColor(Color.Green.ToString());
-                    //Thread.Sleep(100);
-                    //Application.DoEvents(); // This will update anything that is in the application buffer, Right now it's just used to update the cell color visually ~ https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.application.doevents?view=windowsdesktop-9.0
+                for (int j = 0; j < gameBoard.getColumns() - 3; j++) {
+              
 
                     if (gameBoard.getCell(i, j).getCellColor() != Color.White)
                     {
@@ -518,10 +494,7 @@ namespace Connect4_Group1
                 // Move through each index in the columns now
                 for (int j = 0; j < gameBoard.getColumns() - 3; j++)
                 {
-                    // Visual of what is happening in this loop ~ Uncomment to see what happens
-                    //gameBoard.getCell(i, j).setCellColor(Color.Green.ToString());
-                    //Thread.Sleep(100);
-                    //Application.DoEvents(); // This will update anything that is in the application buffer, Right now it's just used to update the cell color visually ~ https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.application.doevents?view=windowsdesktop-9.0
+                    
 
                     if (gameBoard.getCell(i, j).getCellColor() != Color.White)
                     {
@@ -624,7 +597,6 @@ namespace Connect4_Group1
 
         private void makeMove(int col)
         {
-            // Lord forgive me for what I am doing here
             // Cols go from 0 - 6 (Which is 7 total
             if (buttonClick[col] != 6)
             {
@@ -790,32 +762,7 @@ namespace Connect4_Group1
                     }
 
 
-                    // Smuck Code
-                    //for (int i = 3; i < rows; i++)
-                    //{
-                    //    for (int j = 0; j < cols - 3; j++)
-                    //    {
-                    //        var c1 = gameBoard.getCell(i, j);
-                    //        var c2 = gameBoard.getCell(i - 1, j + 1);
-                    //        var c3 = gameBoard.getCell(i - 2, j + 2);
-                    //        var c4 = gameBoard.getCell(i - 3, j + 3);
 
-                    //        int count = 0;
-                    //        if (c1.getCellColor() == playerColor) count++;
-                    //        if (c2.getCellColor() == playerColor) count++;
-                    //        if (c3.getCellColor() == playerColor) count++;
-
-                    //        int targetRow = i - 3;
-                    //        int targetCol = j + 3;
-                    //        if (c4.getClaimedStatus() == false && count == 3
-                    //            && gameBoard.getLowestEmptyRow(targetCol) == targetRow)
-                    //        {
-                    //            lastOpenRow = targetRow;
-                    //            lastOpenCol = targetCol;
-                    //            return true;
-                    //        }
-                    //    }
-                    //}
                     break;
             }
 
@@ -966,34 +913,6 @@ namespace Connect4_Group1
                             }
                         }
                     }
-
-
-                    // Smuck Code
-                    //for (int i = 3; i < rows; i++)
-                    //{
-                    //    for (int j = 0; j < cols - 3; j++)
-                    //    { 
-                    //        var c1 = gameBoard.getCell(i, j);
-                    //        var c2 = gameBoard.getCell(i - 1, j + 1);
-                    //        var c3 = gameBoard.getCell(i - 2, j + 2);
-                    //        var c4 = gameBoard.getCell(i - 3, j + 3);
-
-                    //        int count = 0;
-                    //        if (c1.getCellColor() == playerColor) count++;
-                    //        if (c2.getCellColor() == playerColor) count++;
-                    //        if (c3.getCellColor() == playerColor) count++;
-
-                    //        int targetRow = i - 3;
-                    //        int targetCol = j + 3;
-                    //        if (c4.getClaimedStatus() == false && count == 3
-                    //            && gameBoard.getLowestEmptyRow(targetCol) == targetRow)
-                    //        {
-                    //            lastOpenRow = targetRow;
-                    //            lastOpenCol = targetCol;
-                    //            return true;
-                    //        }
-                    //    }
-                    //}
                     break;
             }
 
@@ -1027,7 +946,6 @@ namespace Connect4_Group1
         {
             if (sender == sing_btnCol1)
             {
-                //MessageBox.Show("Mouse Entered Buttton 1");
                 displayPiecePosition(0);
             }
             else if (sender == sing_btnCol2)
@@ -1061,7 +979,6 @@ namespace Connect4_Group1
         {
             if (sender == sing_btnCol1)
             {
-                //MessageBox.Show("Mouse Entered Buttton 1");
                 removePiecePosition(0);
             }
             else if (sender == sing_btnCol2)
