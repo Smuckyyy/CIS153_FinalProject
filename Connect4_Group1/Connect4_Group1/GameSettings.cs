@@ -21,20 +21,7 @@ namespace Connect4_Group1
         private string playOneImage = @"..\..\..\Resources\Player_1.png";
         private string playTwoImage = @"..\..\..\Resources\Player_2.png";
 
-        // Constructor for singleplayer, This can be changed depending on how the Form is setup
-        public GameSettings()
-        {
-            this.gameOver = false;
-
-            // Set the colors of the players
-            this.playerColor = Color.Yellow;
-            this.playerTwoColor = Color.Red;
-
-            // Set the first player to player one
-            this.currentPlayer = 1; // The human will always go first on this
-        }
-
-        // Constructor for Two Player
+        // Constructor
         public GameSettings(Color P1Color, Color P2Color, int PlayerStart, bool gameState)
         {
             // Set the colors of the players
@@ -60,10 +47,16 @@ namespace Connect4_Group1
             return this.playerTurn;
         }
 
-        // Returns the player color, DEPRICATED use getColorOfCurrPlayer()
+        // Returns the player one color
         public Color getPlayerColor()
         {
             return this.playerColor;
+        }
+
+        // Returns player two color
+        public Color getPlayerTwoColor()
+        {
+            return this.playerTwoColor;
         }
 
         // Returns what player goes next

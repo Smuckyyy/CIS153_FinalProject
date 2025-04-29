@@ -19,7 +19,7 @@ namespace Connect4_Group1
         Form1 mainMenuForm;
 
         Board gameBoard = new Board();
-        GameSettings gameConfig = new GameSettings();
+        GameSettings gameConfig; // Initilized in game setup
         Data c_data;
         PictureBox[] picBoxWinners;
 
@@ -78,14 +78,14 @@ namespace Connect4_Group1
 
         private void setupGameSettings()
         {
-            gameConfig.setCurrentPlayer(1);
+            // We can change to any piece color by changing these values
+            gameConfig = new GameSettings(Color.Yellow, Color.Red, 1, true);
+
             sing_lblCurrentPlayer.Text = string.Format("Player {0,0} Turn", gameConfig.getCurrentPlayer());
             sing_pictureBoxPlayerColor.BackColor = gameConfig.getColorOfCurrPlayer();
 
             // Stores each clickable column button into a List<Button>
             btnList = new List<Button>() { sing_btnCol1, sing_btnCol2, sing_btnCol3, sing_btnCol4, sing_btnCol5, sing_btnCol6, sing_btnCol7 };
-
-            gameConfig.setGameStatus(true);
         }
 
         private void setBoardCellData()
@@ -773,7 +773,7 @@ namespace Connect4_Group1
         //This is shown in the AI_MoveV2 code, to check if it can win first.
         private bool willAIWin(string direction, ref int lastOpenRow, ref int lastOpenCol)
         {
-            Color aiColor = Color.Red;
+            Color aiColor = gameConfig.getPlayerTwoColor();
             int rows = gameBoard.getRows();
             int cols = gameBoard.getColumns();
 
