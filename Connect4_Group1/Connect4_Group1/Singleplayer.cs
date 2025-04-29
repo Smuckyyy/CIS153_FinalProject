@@ -41,7 +41,7 @@ namespace Connect4_Group1
         int displayCycles = weDefineCycleHere;
 
         // ENABLE/DISABLE THIS FOR DEBUGGING PROMPTS
-        const bool shouldDebug = false;
+        const bool shouldDebug = true;
         const bool shouldEnableAI = true; // Enable or Disable if you want the AI to actually place a piece
         //=========================================
 
@@ -559,7 +559,6 @@ namespace Connect4_Group1
                 return;
             }
 
-            // Why are we using else if here?
             if (willPlayerWin("diagonal", ref row, ref col))
             {
                 if (shouldDebug)
@@ -774,7 +773,7 @@ namespace Connect4_Group1
         //This is shown in the AI_MoveV2 code, to check if it can win first.
         private bool willAIWin(string direction, ref int lastOpenRow, ref int lastOpenCol)
         {
-            Color playerColor = Color.Red;
+            Color aiColor = Color.Red;
             int rows = gameBoard.getRows();
             int cols = gameBoard.getColumns();
 
@@ -788,9 +787,9 @@ namespace Connect4_Group1
                         {
                             if (i < 1)
                             {
-                                if (gameBoard.getCell(i, j).getCellColor() == playerColor
-                                && gameBoard.getCell(i, j + 1).getCellColor() == playerColor
-                                && gameBoard.getCell(i, j + 2).getCellColor() == playerColor
+                                if (gameBoard.getCell(i, j).getCellColor() == aiColor
+                                && gameBoard.getCell(i, j + 1).getCellColor() == aiColor
+                                && gameBoard.getCell(i, j + 2).getCellColor() == aiColor
                                 && gameBoard.getCell(i, j + 3).getClaimedStatus() == false)
                                 {
                                     lastOpenRow = i;
@@ -802,9 +801,9 @@ namespace Connect4_Group1
                             else
                             {
                                 // If greater than the first row perform a check to make sure that the cell below is claimed to not waste a move
-                                if (gameBoard.getCell(i, j).getCellColor() == playerColor
-                                && gameBoard.getCell(i, j + 1).getCellColor() == playerColor
-                                && gameBoard.getCell(i, j + 2).getCellColor() == playerColor
+                                if (gameBoard.getCell(i, j).getCellColor() == aiColor
+                                && gameBoard.getCell(i, j + 1).getCellColor() == aiColor
+                                && gameBoard.getCell(i, j + 2).getCellColor() == aiColor
                                 && gameBoard.getCell(i, j + 3).getClaimedStatus() == false
                                 && gameBoard.getCell(i - 1, j + 3).getClaimedStatus() == true)
                                 {
@@ -825,9 +824,9 @@ namespace Connect4_Group1
                             {
                                 if (row < 1)
                                 {
-                                    if (gameBoard.getCell(row, col).getCellColor() == playerColor
-                                    && gameBoard.getCell(row, col - 1).getCellColor() == playerColor
-                                    && gameBoard.getCell(row, col - 2).getCellColor() == playerColor
+                                    if (gameBoard.getCell(row, col).getCellColor() == aiColor
+                                    && gameBoard.getCell(row, col - 1).getCellColor() == aiColor
+                                    && gameBoard.getCell(row, col - 2).getCellColor() == aiColor
                                     && gameBoard.getCell(row, col - 3).getClaimedStatus() == false)
                                     {
                                         lastOpenRow = row;
@@ -838,9 +837,9 @@ namespace Connect4_Group1
                                 else
                                 {
                                     // If greater than the first row perform a check to make sure that the cell below is claimed to not waste a move
-                                    if (gameBoard.getCell(row, col).getCellColor() == playerColor
-                                    && gameBoard.getCell(row, col - 1).getCellColor() == playerColor
-                                    && gameBoard.getCell(row, col - 2).getCellColor() == playerColor
+                                    if (gameBoard.getCell(row, col).getCellColor() == aiColor
+                                    && gameBoard.getCell(row, col - 1).getCellColor() == aiColor
+                                    && gameBoard.getCell(row, col - 2).getCellColor() == aiColor
                                     && gameBoard.getCell(row, col - 3).getClaimedStatus() == false
                                     && gameBoard.getCell(row - 1, col - 3).getClaimedStatus() == true)
                                     {
@@ -860,9 +859,9 @@ namespace Connect4_Group1
                     {
                         for (int i = 0; i < rows - 3; i++)
                         {
-                            if (gameBoard.getCell(i, j).getCellColor() == playerColor
-                                 && gameBoard.getCell(i + 1, j).getCellColor() == playerColor
-                                 && gameBoard.getCell(i + 2, j).getCellColor() == playerColor
+                            if (gameBoard.getCell(i, j).getCellColor() == aiColor
+                                 && gameBoard.getCell(i + 1, j).getCellColor() == aiColor
+                                 && gameBoard.getCell(i + 2, j).getCellColor() == aiColor
                                  && gameBoard.getCell(i + 3, j).getClaimedStatus() == false)
                             {
                                 lastOpenRow = i + 3;
@@ -880,11 +879,11 @@ namespace Connect4_Group1
                     {
                         for (int col = 0; col < cols - 3; col++)
                         {
-                            if (gameBoard.getCell(row, col).getCellColor() == playerColor) // Found the first cell that contains the player color
+                            if (gameBoard.getCell(row, col).getCellColor() == aiColor) // Found the first cell that contains the player color
                             {
                                 // Now we check for cells 2, 3, and 4
-                                if (gameBoard.getCell(row + 1, col + 1).getCellColor() == playerColor // Cell 2 is claimed by player
-                                    && gameBoard.getCell(row + 2, col + 2).getCellColor() == playerColor // Cell 3 is claimed by player
+                                if (gameBoard.getCell(row + 1, col + 1).getCellColor() == aiColor // Cell 2 is claimed by player
+                                    && gameBoard.getCell(row + 2, col + 2).getCellColor() == aiColor // Cell 3 is claimed by player
                                     && gameBoard.getCell(row + 3, col + 3).getClaimedStatus() == false // Cell 4 is unclaimed and would lead to a win
                                     && gameBoard.getCell(row + 2, col + 3).getClaimedStatus() == true) // Safe check to see if the cell under is claimed so it doesn't waste a turn
                                 {
@@ -902,8 +901,8 @@ namespace Connect4_Group1
                         for (int col = cols - 1; col >= 3; col--)
                         {
                             // Now we check for cells 2, 3, and 4
-                            if (gameBoard.getCell(row + 1, col - 1).getCellColor() == playerColor // Cell 2 is claimed by player
-                                && gameBoard.getCell(row + 2, col - 2).getCellColor() == playerColor // Cell 3 is claimed by player
+                            if (gameBoard.getCell(row + 1, col - 1).getCellColor() == aiColor // Cell 2 is claimed by player
+                                && gameBoard.getCell(row + 2, col - 2).getCellColor() == aiColor // Cell 3 is claimed by player
                                 && gameBoard.getCell(row + 3, col - 3).getClaimedStatus() == false // Cell 4 is unclaimed and would lead to a win
                                 && gameBoard.getCell(row + 2, col - 3).getClaimedStatus() == true) // Safe check to see if the cell under is claimed so it doesn't waste a turn
                             {
