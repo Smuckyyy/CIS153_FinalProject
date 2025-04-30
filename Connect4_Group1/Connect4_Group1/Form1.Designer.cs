@@ -41,11 +41,11 @@
             // 
             label1.AutoSize = true;
             label1.BackColor = Color.Firebrick;
-            label1.Font = new Font("Microsoft Sans Serif", 36F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Font = new Font("Algerian", 36F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.Black;
             label1.Location = new Point(51, 9);
             label1.Name = "label1";
-            label1.Size = new Size(646, 55);
+            label1.Size = new Size(698, 54);
             label1.TabIndex = 0;
             label1.Text = "Ye Olde Connect Four Game";
             label1.TextAlign = ContentAlignment.MiddleCenter;

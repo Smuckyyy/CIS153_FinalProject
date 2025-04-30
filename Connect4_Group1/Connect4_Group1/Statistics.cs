@@ -64,5 +64,10 @@ namespace Connect4_Group1
         {
 
         }
+
+        private void btnStats_exitProgram_Click(object sender, EventArgs e)
+        {
+            System.Environment.Exit(0);
+        }
     }
 }
