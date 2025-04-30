@@ -41,7 +41,7 @@ namespace Connect4_Group1
         int displayCycles = weDefineCycleHere;
 
         // ENABLE/DISABLE THIS FOR DEBUGGING PROMPTS
-        const bool shouldDebug = true;
+        const bool shouldDebug = false;
         const bool shouldEnableAI = true; // Enable or Disable if you want the AI to actually place a piece
         //=========================================
 
@@ -671,14 +671,30 @@ namespace Connect4_Group1
                     {
                         for (int j = 0; j < cols - 3; j++)
                         {
-                            if (gameBoard.getCell(i, j).getCellColor() == playerColor
+                            if (i < 1)
+                            {
+                                if (gameBoard.getCell(i, j).getCellColor() == playerColor
                                 && gameBoard.getCell(i, j + 1).getCellColor() == playerColor
                                 && gameBoard.getCell(i, j + 2).getCellColor() == playerColor
                                 && gameBoard.getCell(i, j + 3).getClaimedStatus() == false)
+                                {
+                                    lastOpenRow = i;
+                                    lastOpenCol = j + 3;
+                                    return true;
+                                }
+                            }
+                            else
                             {
-                                lastOpenRow = i;
-                                lastOpenCol = j + 3;
-                                return true;
+                                if (gameBoard.getCell(i, j).getCellColor() == playerColor
+                                && gameBoard.getCell(i, j + 1).getCellColor() == playerColor
+                                && gameBoard.getCell(i, j + 2).getCellColor() == playerColor
+                                && gameBoard.getCell(i, j + 3).getClaimedStatus() == false
+                                && gameBoard.getCell(i - 1, j + 3).getClaimedStatus() == true)
+                                {
+                                    lastOpenRow = i;
+                                    lastOpenCol = j + 3;
+                                    return true;
+                                }
                             }
                         }
                     }
@@ -690,14 +706,30 @@ namespace Connect4_Group1
                         // Start at the last column and go left
                         for (int col = gameBoard.getColumns() - 1; col >= 3; col--)
                         {
-                            if (gameBoard.getCell(row, col).getCellColor() == playerColor
+                            if (row < 1)
+                            {
+                                if (gameBoard.getCell(row, col).getCellColor() == playerColor
                                 && gameBoard.getCell(row, col - 1).getCellColor() == playerColor
                                 && gameBoard.getCell(row, col - 2).getCellColor() == playerColor
                                 && gameBoard.getCell(row, col - 3).getClaimedStatus() == false)
+                                {
+                                    lastOpenRow = row;
+                                    lastOpenCol = col - 3;
+                                    return true;
+                                }
+                            }
+                            else
                             {
-                                lastOpenRow = row;
-                                lastOpenCol = col - 3;
-                                return true;
+                                if (gameBoard.getCell(row, col).getCellColor() == playerColor
+                                && gameBoard.getCell(row, col - 1).getCellColor() == playerColor
+                                && gameBoard.getCell(row, col - 2).getCellColor() == playerColor
+                                && gameBoard.getCell(row, col - 3).getClaimedStatus() == false
+                                && gameBoard.getCell(row - 1, col - 3).getClaimedStatus() == true)
+                                {
+                                    lastOpenRow = row;
+                                    lastOpenCol = col - 3;
+                                    return true;
+                                }
                             }
                         }
                     }
@@ -747,15 +779,18 @@ namespace Connect4_Group1
                     {
                         for (int col = cols - 1; col >= 3; col--)
                         {
-                            // Now we check for cells 2, 3, and 4
-                            if (gameBoard.getCell(row + 1, col - 1).getCellColor() == playerColor // Cell 2 is claimed by player
-                                && gameBoard.getCell(row + 2, col - 2).getCellColor() == playerColor // Cell 3 is claimed by player
-                                && gameBoard.getCell(row + 3, col - 3).getClaimedStatus() == false // Cell 4 is unclaimed and would lead to a win
-                                && gameBoard.getCell(row + 2, col - 3).getClaimedStatus() == true) // Safe check to see if the cell under is claimed so it doesn't waste a turn
+                            if (gameBoard.getCell(row,col).getCellColor() == playerColor)
                             {
-                                lastOpenRow = row + 3;
-                                lastOpenCol = col - 3;
-                                return true;
+                                // Now we check for cells 2, 3, and 4
+                                if (gameBoard.getCell(row + 1, col - 1).getCellColor() == playerColor // Cell 2 is claimed by player
+                                    && gameBoard.getCell(row + 2, col - 2).getCellColor() == playerColor // Cell 3 is claimed by player
+                                    && gameBoard.getCell(row + 3, col - 3).getClaimedStatus() == false // Cell 4 is unclaimed and would lead to a win
+                                    && gameBoard.getCell(row + 2, col - 3).getClaimedStatus() == true) // Safe check to see if the cell under is claimed so it doesn't waste a turn
+                                {
+                                    lastOpenRow = row + 3;
+                                    lastOpenCol = col - 3;
+                                    return true;
+                                }
                             }
                         }
                     }
@@ -900,15 +935,18 @@ namespace Connect4_Group1
                     {
                         for (int col = cols - 1; col >= 3; col--)
                         {
-                            // Now we check for cells 2, 3, and 4
-                            if (gameBoard.getCell(row + 1, col - 1).getCellColor() == aiColor // Cell 2 is claimed by player
-                                && gameBoard.getCell(row + 2, col - 2).getCellColor() == aiColor // Cell 3 is claimed by player
-                                && gameBoard.getCell(row + 3, col - 3).getClaimedStatus() == false // Cell 4 is unclaimed and would lead to a win
-                                && gameBoard.getCell(row + 2, col - 3).getClaimedStatus() == true) // Safe check to see if the cell under is claimed so it doesn't waste a turn
+                            if (gameBoard.getCell(row,col).getCellColor() == aiColor)
                             {
-                                lastOpenRow = row + 3;
-                                lastOpenCol = col - 3;
-                                return true;
+                                // Now we check for cells 2, 3, and 4
+                                if (gameBoard.getCell(row + 1, col - 1).getCellColor() == aiColor // Cell 2 is claimed by player
+                                    && gameBoard.getCell(row + 2, col - 2).getCellColor() == aiColor // Cell 3 is claimed by player
+                                    && gameBoard.getCell(row + 3, col - 3).getClaimedStatus() == false // Cell 4 is unclaimed and would lead to a win
+                                    && gameBoard.getCell(row + 2, col - 3).getClaimedStatus() == true) // Safe check to see if the cell under is claimed so it doesn't waste a turn
+                                {
+                                    lastOpenRow = row + 3;
+                                    lastOpenCol = col - 3;
+                                    return true;
+                                }
                             }
                         }
                     }
