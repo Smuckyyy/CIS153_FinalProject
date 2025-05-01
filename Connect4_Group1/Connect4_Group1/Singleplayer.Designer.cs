@@ -746,9 +746,9 @@
             sing_lblCurrentPlayer.AutoSize = true;
             sing_lblCurrentPlayer.Location = new Point(620, 530);
             sing_lblCurrentPlayer.Name = "sing_lblCurrentPlayer";
-            sing_lblCurrentPlayer.Size = new Size(73, 15);
+            sing_lblCurrentPlayer.Size = new Size(83, 15);
             sing_lblCurrentPlayer.TabIndex = 81;
-            sing_lblCurrentPlayer.Text = "Player 1 First";
+            sing_lblCurrentPlayer.Text = "Player 1's Turn";
             // 
             // sing_pictureBoxPlayerColor
             // 

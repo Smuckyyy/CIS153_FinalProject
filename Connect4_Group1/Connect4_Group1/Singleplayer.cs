@@ -629,7 +629,7 @@ namespace Connect4_Group1
             {
                 // Since this is single player we now want to call the AI move
                 gameConfig.setCurrentPlayer(2);
-                sing_lblCurrentPlayer.Text = System.String.Format("AI's Turn", gameConfig.getCurrentPlayer());
+                sing_lblCurrentPlayer.Text = System.String.Format("Player 2's Turn", gameConfig.getCurrentPlayer());
                 sing_pictureBoxPlayerColor.BackColor = gameConfig.getColorOfCurrPlayer();
 
                 AI_MoveV2();
@@ -638,7 +638,7 @@ namespace Connect4_Group1
             {
                 // Set the next player to player one
                 gameConfig.setCurrentPlayer(1);
-                sing_lblCurrentPlayer.Text = System.String.Format("Your Turn", gameConfig.getCurrentPlayer());
+                sing_lblCurrentPlayer.Text = System.String.Format("Player 1's Turn", gameConfig.getCurrentPlayer());
                 sing_pictureBoxPlayerColor.BackColor = gameConfig.getColorOfCurrPlayer();
 
 

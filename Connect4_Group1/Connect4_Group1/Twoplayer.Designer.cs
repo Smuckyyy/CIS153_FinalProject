@@ -832,9 +832,9 @@
             lblCurrentPlayer.AutoSize = true;
             lblCurrentPlayer.Location = new Point(537, 513);
             lblCurrentPlayer.Name = "lblCurrentPlayer";
-            lblCurrentPlayer.Size = new Size(73, 15);
+            lblCurrentPlayer.Size = new Size(83, 15);
             lblCurrentPlayer.TabIndex = 18;
-            lblCurrentPlayer.Text = "Player 1 First";
+            lblCurrentPlayer.Text = "Player 1's Turn";
             // 
             // doubleBtn_Exit
             // 
