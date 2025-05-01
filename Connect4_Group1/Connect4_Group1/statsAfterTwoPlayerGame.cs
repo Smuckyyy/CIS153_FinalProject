@@ -153,7 +153,6 @@ namespace Connect4_Group1
             else
             {
                 lblSATPG_winner.Text = "Game was a tie!";
-                btnSATPG_review.Visible = false;
             }
         }
 
@@ -168,7 +167,12 @@ namespace Connect4_Group1
 
             btnSATPG_review.Enabled = false; // Pic boxes will just flash untill the "Play Again" or "Exit" is clicked
 
-            tpForm.displayWinningPicBoxes();
+            if(lblSATPG_winner.Text != "Game was a tie!")
+            {
+                //Winning cells don't flash if the game ended in a tie - Cecil
+                tpForm.displayWinningPicBoxes();
+            }
         }
+
     }
 }
