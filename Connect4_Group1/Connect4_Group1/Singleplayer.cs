@@ -43,6 +43,7 @@ namespace Connect4_Group1
         // ENABLE/DISABLE THIS FOR DEBUGGING PROMPTS
         const bool shouldDebug = false;
         const bool shouldEnableAI = true; // Enable or Disable if you want the AI to actually place a piece
+        const bool enableRandomAI = false;
         //=========================================
 
         public Singleplayer()
@@ -590,7 +591,14 @@ namespace Connect4_Group1
             // Since none of the logic returned anything we ended up at this point
             if (shouldEnableAI)
             {
-                makeMove(getRandomNumber());
+                if (enableRandomAI)
+                {
+                    makeMove(getRandomNumber());
+                }
+                else
+                {
+                    verySimpleAIStrat();
+                }
             }
         }
 
@@ -624,7 +632,6 @@ namespace Connect4_Group1
                 sing_lblCurrentPlayer.Text = System.String.Format("AI's Turn", gameConfig.getCurrentPlayer());
                 sing_pictureBoxPlayerColor.BackColor = gameConfig.getColorOfCurrPlayer();
 
-                //AI_Move();
                 AI_MoveV2();
             }
             else if (gameConfig.getCurrentPlayer() == 2)
@@ -1176,6 +1183,23 @@ namespace Connect4_Group1
             }
 
             displayCycles--;
+        }
+
+        // Instead of just placing a piece at random, Place a piece in the first avaiable column
+        private void verySimpleAIStrat()
+        {
+            int rows = gameBoard.getRows() - 1; // Will always be the very top piece of the board
+            int cols = gameBoard.getColumns() - 1; // Will always be the last column of the board
+
+            for (int i = 0; i < cols; i++)
+            {
+                if (gameBoard.getCell(rows, i).getClaimedStatus() == false)
+                {
+                    btnList[i].PerformClick();
+                    return;
+                }
+            }
+
         }
     }
 }
