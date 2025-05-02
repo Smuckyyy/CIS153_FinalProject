@@ -72,7 +72,8 @@ namespace Connect4_Group1
 
         private void statsBtn_menu_Click(object sender, EventArgs e)
         {
-
+            mainMenuForm.Show();
+            this.Close();
         }
     }
 }
