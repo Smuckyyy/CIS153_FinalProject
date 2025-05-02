@@ -43,11 +43,12 @@ namespace Connect4_Group1
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Viner Hand ITC", 27.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.White;
+            label1.BackColor = Color.Goldenrod;
+            label1.Font = new Font("Algerian", 27.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.Black;
             label1.Location = new Point(12, 9);
             label1.Name = "label1";
-            label1.Size = new Size(376, 60);
+            label1.Size = new Size(402, 41);
             label1.TabIndex = 1;
             label1.Text = "Good Game, Knights!";
             // 
@@ -55,8 +56,8 @@ namespace Connect4_Group1
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Times New Roman", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.ForeColor = Color.White;
-            label2.Location = new Point(61, 69);
+            label2.ForeColor = Color.Black;
+            label2.Location = new Point(60, 59);
             label2.Name = "label2";
             label2.Size = new Size(76, 23);
             label2.TabIndex = 2;
@@ -66,8 +67,8 @@ namespace Connect4_Group1
             // 
             lblSATPG_winner.AutoSize = true;
             lblSATPG_winner.Font = new Font("Times New Roman", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblSATPG_winner.ForeColor = Color.White;
-            lblSATPG_winner.Location = new Point(211, 69);
+            lblSATPG_winner.ForeColor = Color.Black;
+            lblSATPG_winner.Location = new Point(211, 59);
             lblSATPG_winner.Name = "lblSATPG_winner";
             lblSATPG_winner.Size = new Size(107, 23);
             lblSATPG_winner.TabIndex = 3;
@@ -76,11 +77,11 @@ namespace Connect4_Group1
             // btnSATPG_again
             // 
             btnSATPG_again.AutoSize = true;
-            btnSATPG_again.BackColor = Color.LightGray;
-            btnSATPG_again.Font = new Font("Viner Hand ITC", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnSATPG_again.Location = new Point(128, 95);
+            btnSATPG_again.BackColor = Color.Goldenrod;
+            btnSATPG_again.Font = new Font("Algerian", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnSATPG_again.Location = new Point(145, 95);
             btnSATPG_again.Name = "btnSATPG_again";
-            btnSATPG_again.Size = new Size(141, 44);
+            btnSATPG_again.Size = new Size(142, 44);
             btnSATPG_again.TabIndex = 4;
             btnSATPG_again.Text = "Play Again";
             btnSATPG_again.UseVisualStyleBackColor = false;
@@ -89,11 +90,11 @@ namespace Connect4_Group1
             // btnSATPG_review
             // 
             btnSATPG_review.AutoSize = true;
-            btnSATPG_review.BackColor = Color.LightGray;
-            btnSATPG_review.Font = new Font("Viner Hand ITC", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnSATPG_review.Location = new Point(101, 145);
+            btnSATPG_review.BackColor = Color.Goldenrod;
+            btnSATPG_review.Font = new Font("Algerian", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnSATPG_review.Location = new Point(121, 145);
             btnSATPG_review.Name = "btnSATPG_review";
-            btnSATPG_review.Size = new Size(197, 44);
+            btnSATPG_review.Size = new Size(201, 44);
             btnSATPG_review.TabIndex = 5;
             btnSATPG_review.Text = "Review Thy Game";
             btnSATPG_review.UseVisualStyleBackColor = false;
@@ -102,9 +103,9 @@ namespace Connect4_Group1
             // btnSATPG_exit
             // 
             btnSATPG_exit.AutoSize = true;
-            btnSATPG_exit.BackColor = Color.LightGray;
-            btnSATPG_exit.Font = new Font("Viner Hand ITC", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnSATPG_exit.Location = new Point(156, 195);
+            btnSATPG_exit.BackColor = Color.Goldenrod;
+            btnSATPG_exit.Font = new Font("Algerian", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnSATPG_exit.Location = new Point(179, 195);
             btnSATPG_exit.Name = "btnSATPG_exit";
             btnSATPG_exit.Size = new Size(70, 44);
             btnSATPG_exit.TabIndex = 6;
@@ -114,8 +115,8 @@ namespace Connect4_Group1
             // 
             // statsAfterTwoPlayerGame
             // 
-            BackColor = Color.CornflowerBlue;
-            ClientSize = new Size(403, 249);
+            BackColor = Color.MediumSlateBlue;
+            ClientSize = new Size(426, 249);
             Controls.Add(btnSATPG_exit);
             Controls.Add(btnSATPG_review);
             Controls.Add(btnSATPG_again);
