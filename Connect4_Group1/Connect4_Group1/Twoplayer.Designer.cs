@@ -730,13 +730,15 @@
             // 
             // btnCol1
             // 
+            btnCol1.BackColor = Color.Goldenrod;
+            btnCol1.Font = new Font("Times New Roman", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnCol1.Location = new Point(127, 493);
             btnCol1.Name = "btnCol1";
             btnCol1.Size = new Size(50, 35);
             btnCol1.TabIndex = 16;
             btnCol1.Tag = "btnColumn";
             btnCol1.Text = "Insert";
-            btnCol1.UseVisualStyleBackColor = true;
+            btnCol1.UseVisualStyleBackColor = false;
             btnCol1.Click += button_click_handler;
             btnCol1.MouseEnter += btnCol_MouseEnter;
             btnCol1.MouseLeave += btnCol_MouseLeave;
@@ -871,7 +873,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.Silver;
+            BackColor = Color.MediumSlateBlue;
             ClientSize = new Size(630, 582);
             Controls.Add(btn_mainMenu);
             Controls.Add(doubleBtn_Exit);
