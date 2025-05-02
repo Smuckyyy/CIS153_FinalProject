@@ -69,5 +69,10 @@ namespace Connect4_Group1
         {
             System.Environment.Exit(0);
         }
+
+        private void statsBtn_menu_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

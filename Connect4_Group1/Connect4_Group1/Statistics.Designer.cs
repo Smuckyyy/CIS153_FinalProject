@@ -240,6 +240,7 @@
             statsBtn_menu.TabIndex = 15;
             statsBtn_menu.Text = "Main Menu";
             statsBtn_menu.UseVisualStyleBackColor = false;
+            statsBtn_menu.Click += statsBtn_menu_Click;
             // 
             // Statistics
             // 
