@@ -43,6 +43,7 @@
             label7 = new Label();
             statLbl_totalGamesPlayed = new Label();
             btnStats_exitProgram = new Button();
+            statsBtn_menu = new Button();
             SuspendLayout();
             // 
             // lblStats
@@ -227,12 +228,26 @@
             btnStats_exitProgram.UseVisualStyleBackColor = false;
             btnStats_exitProgram.Click += btnStats_exitProgram_Click;
             // 
+            // statsBtn_menu
+            // 
+            statsBtn_menu.AutoSize = true;
+            statsBtn_menu.BackColor = Color.Gainsboro;
+            statsBtn_menu.Font = new Font("Algerian", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            statsBtn_menu.ForeColor = Color.DimGray;
+            statsBtn_menu.Location = new Point(75, 355);
+            statsBtn_menu.Name = "statsBtn_menu";
+            statsBtn_menu.Size = new Size(129, 34);
+            statsBtn_menu.TabIndex = 15;
+            statsBtn_menu.Text = "Main Menu";
+            statsBtn_menu.UseVisualStyleBackColor = false;
+            // 
             // Statistics
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.MediumSlateBlue;
-            ClientSize = new Size(537, 383);
+            ClientSize = new Size(537, 417);
+            Controls.Add(statsBtn_menu);
             Controls.Add(btnStats_exitProgram);
             Controls.Add(statLbl_totalGamesPlayed);
             Controls.Add(label7);
@@ -271,5 +286,6 @@
         private Label label7;
         private Label statLbl_totalGamesPlayed;
         private Button btnStats_exitProgram;
+        private Button statsBtn_menu;
     }
 }
