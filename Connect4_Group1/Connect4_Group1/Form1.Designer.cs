@@ -40,7 +40,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.BackColor = Color.Firebrick;
+            label1.BackColor = Color.Goldenrod;
             label1.Font = new Font("Algerian", 36F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.Black;
             label1.Location = new Point(51, 9);
@@ -52,9 +52,9 @@
             // 
             // btn_Singleplayer
             // 
-            btn_Singleplayer.BackColor = Color.Silver;
-            btn_Singleplayer.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btn_Singleplayer.ForeColor = Color.MediumBlue;
+            btn_Singleplayer.BackColor = Color.Goldenrod;
+            btn_Singleplayer.Font = new Font("Algerian", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btn_Singleplayer.ForeColor = Color.Black;
             btn_Singleplayer.Location = new Point(51, 76);
             btn_Singleplayer.Name = "btn_Singleplayer";
             btn_Singleplayer.Size = new Size(158, 81);
@@ -65,9 +65,9 @@
             // 
             // btn_Twoplayer
             // 
-            btn_Twoplayer.BackColor = Color.Silver;
-            btn_Twoplayer.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btn_Twoplayer.ForeColor = Color.MediumBlue;
+            btn_Twoplayer.BackColor = Color.Goldenrod;
+            btn_Twoplayer.Font = new Font("Algerian", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btn_Twoplayer.ForeColor = Color.Black;
             btn_Twoplayer.Location = new Point(215, 76);
             btn_Twoplayer.Name = "btn_Twoplayer";
             btn_Twoplayer.Size = new Size(158, 81);
@@ -78,9 +78,9 @@
             // 
             // btn_Exit
             // 
-            btn_Exit.BackColor = Color.Silver;
-            btn_Exit.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btn_Exit.ForeColor = Color.MediumBlue;
+            btn_Exit.BackColor = Color.Goldenrod;
+            btn_Exit.Font = new Font("Algerian", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btn_Exit.ForeColor = Color.Black;
             btn_Exit.Location = new Point(587, 76);
             btn_Exit.Name = "btn_Exit";
             btn_Exit.Size = new Size(158, 81);
@@ -91,9 +91,9 @@
             // 
             // btn_Stats
             // 
-            btn_Stats.BackColor = Color.Silver;
-            btn_Stats.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btn_Stats.ForeColor = Color.MediumBlue;
+            btn_Stats.BackColor = Color.Goldenrod;
+            btn_Stats.Font = new Font("Algerian", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btn_Stats.ForeColor = Color.Black;
             btn_Stats.Location = new Point(423, 76);
             btn_Stats.Name = "btn_Stats";
             btn_Stats.Size = new Size(158, 81);
@@ -105,10 +105,10 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label2.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label2.Location = new Point(12, 160);
             label2.Name = "label2";
-            label2.Size = new Size(264, 20);
+            label2.Size = new Size(239, 19);
             label2.TabIndex = 5;
             label2.Tag = "https://soundcloud.com/zbofficialmusic/moonlit-lake";
             label2.Text = "Music provided by: ZB - SoundCloud";
@@ -116,9 +116,10 @@
             // checkBoxMusic
             // 
             checkBoxMusic.AutoSize = true;
-            checkBoxMusic.Location = new Point(705, 167);
+            checkBoxMusic.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            checkBoxMusic.Location = new Point(693, 163);
             checkBoxMusic.Name = "checkBoxMusic";
-            checkBoxMusic.Size = new Size(83, 19);
+            checkBoxMusic.Size = new Size(95, 23);
             checkBoxMusic.TabIndex = 6;
             checkBoxMusic.Text = "Play Music";
             checkBoxMusic.UseVisualStyleBackColor = true;
