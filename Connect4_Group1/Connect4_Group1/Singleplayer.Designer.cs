@@ -310,9 +310,9 @@
             // 
             // singleBtn_Exit
             // 
-            singleBtn_Exit.BackColor = Color.Silver;
-            singleBtn_Exit.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            singleBtn_Exit.ForeColor = Color.MediumBlue;
+            singleBtn_Exit.BackColor = Color.Goldenrod;
+            singleBtn_Exit.Font = new Font("Algerian", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            singleBtn_Exit.ForeColor = Color.Black;
             singleBtn_Exit.Location = new Point(630, 12);
             singleBtn_Exit.Name = "singleBtn_Exit";
             singleBtn_Exit.Size = new Size(158, 39);
@@ -744,9 +744,10 @@
             // sing_lblCurrentPlayer
             // 
             sing_lblCurrentPlayer.AutoSize = true;
+            sing_lblCurrentPlayer.Font = new Font("Times New Roman", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             sing_lblCurrentPlayer.Location = new Point(620, 530);
             sing_lblCurrentPlayer.Name = "sing_lblCurrentPlayer";
-            sing_lblCurrentPlayer.Size = new Size(83, 15);
+            sing_lblCurrentPlayer.Size = new Size(81, 15);
             sing_lblCurrentPlayer.TabIndex = 81;
             sing_lblCurrentPlayer.Text = "Player 1's Turn";
             // 
@@ -760,100 +761,115 @@
             // 
             // sing_btnCol7
             // 
+            sing_btnCol7.BackColor = Color.Goldenrod;
+            sing_btnCol7.Font = new Font("Times New Roman", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            sing_btnCol7.ForeColor = Color.Black;
             sing_btnCol7.Location = new Point(540, 510);
             sing_btnCol7.Name = "sing_btnCol7";
             sing_btnCol7.Size = new Size(50, 35);
             sing_btnCol7.TabIndex = 73;
             sing_btnCol7.Tag = "btnColumn";
             sing_btnCol7.Text = "Insert";
-            sing_btnCol7.UseVisualStyleBackColor = true;
+            sing_btnCol7.UseVisualStyleBackColor = false;
             sing_btnCol7.Click += button_click_handler;
             sing_btnCol7.MouseEnter += btnCol_MouseEnter;
             sing_btnCol7.MouseLeave += btnCol_MouseLeave;
             // 
             // sing_btnCol6
             // 
+            sing_btnCol6.BackColor = Color.Goldenrod;
+            sing_btnCol6.Font = new Font("Times New Roman", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             sing_btnCol6.Location = new Point(485, 510);
             sing_btnCol6.Name = "sing_btnCol6";
             sing_btnCol6.Size = new Size(50, 35);
             sing_btnCol6.TabIndex = 74;
             sing_btnCol6.Tag = "btnColumn";
             sing_btnCol6.Text = "Insert";
-            sing_btnCol6.UseVisualStyleBackColor = true;
+            sing_btnCol6.UseVisualStyleBackColor = false;
             sing_btnCol6.Click += button_click_handler;
             sing_btnCol6.MouseEnter += btnCol_MouseEnter;
             sing_btnCol6.MouseLeave += btnCol_MouseLeave;
             // 
             // sing_btnCol5
             // 
+            sing_btnCol5.BackColor = Color.Goldenrod;
+            sing_btnCol5.Font = new Font("Times New Roman", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             sing_btnCol5.Location = new Point(430, 510);
             sing_btnCol5.Name = "sing_btnCol5";
             sing_btnCol5.Size = new Size(50, 35);
             sing_btnCol5.TabIndex = 75;
             sing_btnCol5.Tag = "btnColumn";
             sing_btnCol5.Text = "Insert";
-            sing_btnCol5.UseVisualStyleBackColor = true;
+            sing_btnCol5.UseVisualStyleBackColor = false;
             sing_btnCol5.Click += button_click_handler;
             sing_btnCol5.MouseEnter += btnCol_MouseEnter;
             sing_btnCol5.MouseLeave += btnCol_MouseLeave;
             // 
             // sing_btnCol4
             // 
+            sing_btnCol4.BackColor = Color.Goldenrod;
+            sing_btnCol4.Font = new Font("Times New Roman", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             sing_btnCol4.Location = new Point(375, 510);
             sing_btnCol4.Name = "sing_btnCol4";
             sing_btnCol4.Size = new Size(50, 35);
             sing_btnCol4.TabIndex = 76;
             sing_btnCol4.Tag = "btnColumn";
             sing_btnCol4.Text = "Insert";
-            sing_btnCol4.UseVisualStyleBackColor = true;
+            sing_btnCol4.UseVisualStyleBackColor = false;
             sing_btnCol4.Click += button_click_handler;
             sing_btnCol4.MouseEnter += btnCol_MouseEnter;
             sing_btnCol4.MouseLeave += btnCol_MouseLeave;
             // 
             // sing_btnCol3
             // 
+            sing_btnCol3.BackColor = Color.Goldenrod;
+            sing_btnCol3.Font = new Font("Times New Roman", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             sing_btnCol3.Location = new Point(320, 510);
             sing_btnCol3.Name = "sing_btnCol3";
             sing_btnCol3.Size = new Size(50, 35);
             sing_btnCol3.TabIndex = 77;
             sing_btnCol3.Tag = "btnColumn";
             sing_btnCol3.Text = "Insert";
-            sing_btnCol3.UseVisualStyleBackColor = true;
+            sing_btnCol3.UseVisualStyleBackColor = false;
             sing_btnCol3.Click += button_click_handler;
             sing_btnCol3.MouseEnter += btnCol_MouseEnter;
             sing_btnCol3.MouseLeave += btnCol_MouseLeave;
             // 
             // sing_btnCol2
             // 
+            sing_btnCol2.BackColor = Color.Goldenrod;
+            sing_btnCol2.Font = new Font("Times New Roman", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             sing_btnCol2.Location = new Point(265, 510);
             sing_btnCol2.Name = "sing_btnCol2";
             sing_btnCol2.Size = new Size(50, 35);
             sing_btnCol2.TabIndex = 78;
             sing_btnCol2.Tag = "btnColumn";
             sing_btnCol2.Text = "Insert";
-            sing_btnCol2.UseVisualStyleBackColor = true;
+            sing_btnCol2.UseVisualStyleBackColor = false;
             sing_btnCol2.Click += button_click_handler;
             sing_btnCol2.MouseEnter += btnCol_MouseEnter;
             sing_btnCol2.MouseLeave += btnCol_MouseLeave;
             // 
             // sing_btnCol1
             // 
+            sing_btnCol1.BackColor = Color.Goldenrod;
+            sing_btnCol1.Font = new Font("Times New Roman", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             sing_btnCol1.Location = new Point(210, 510);
             sing_btnCol1.Name = "sing_btnCol1";
             sing_btnCol1.Size = new Size(50, 35);
             sing_btnCol1.TabIndex = 79;
             sing_btnCol1.Tag = "btnColumn";
             sing_btnCol1.Text = "Insert";
-            sing_btnCol1.UseVisualStyleBackColor = true;
+            sing_btnCol1.UseVisualStyleBackColor = false;
             sing_btnCol1.Click += button_click_handler;
             sing_btnCol1.MouseEnter += btnCol_MouseEnter;
             sing_btnCol1.MouseLeave += btnCol_MouseLeave;
             // 
             // btn_mainMenu
             // 
-            btn_mainMenu.BackColor = Color.Silver;
-            btn_mainMenu.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btn_mainMenu.ForeColor = Color.MediumBlue;
+            btn_mainMenu.BackColor = Color.Goldenrod;
+            btn_mainMenu.Font = new Font("Algerian", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btn_mainMenu.ForeColor = Color.Black;
             btn_mainMenu.Location = new Point(630, 66);
             btn_mainMenu.Name = "btn_mainMenu";
             btn_mainMenu.Size = new Size(158, 39);
