@@ -958,7 +958,7 @@
             Controls.Add(sing_6a);
             Controls.Add(singleBtn_Exit);
             Name = "Singleplayer";
-            Text = "Connect 4: Single Player Mode";
+            Text = "Connect 4: Single-Player Mode";
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
