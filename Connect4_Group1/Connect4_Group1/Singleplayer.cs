@@ -41,8 +41,8 @@ namespace Connect4_Group1
         int displayCycles = weDefineCycleHere;
 
         // ENABLE/DISABLE THIS FOR DEBUGGING PROMPTS
-        const bool shouldDebug = false;
-        const bool shouldEnableAI = true; // Enable or Disable if you want the AI to actually place a piece
+        const bool shouldDebug = true;
+        const bool shouldEnableAI = false; // Enable or Disable if you want the AI to actually place a piece
         const bool enableRandomAI = false;
         //=========================================
 
@@ -602,6 +602,23 @@ namespace Connect4_Group1
             }
         }
 
+        private void AI_MoveV3()
+        {
+            int col = -1;
+
+            AICheckWinStates(ref col);
+
+            if (col > 0)
+            {
+                makeMove(col);
+            }
+            else
+            {
+                verySimpleAIStrat();
+            }
+
+        }
+
         private void makeMove(int col)
         {
             // Cols go from 0 - 6 (Which is 7 total
@@ -632,7 +649,8 @@ namespace Connect4_Group1
                 sing_lblCurrentPlayer.Text = System.String.Format("Player 2's Turn", gameConfig.getCurrentPlayer());
                 sing_pictureBoxPlayerColor.BackColor = gameConfig.getColorOfCurrPlayer();
 
-                AI_MoveV2();
+                //AI_MoveV2();
+                AI_MoveV3();
             }
             else if (gameConfig.getCurrentPlayer() == 2)
             {
@@ -806,6 +824,610 @@ namespace Connect4_Group1
 
                     break;
             }
+
+            return false;
+        }
+
+        private bool AICheckWinStates(ref int column)
+        {
+            // This will check any of these states,
+            // -, X, X, X // Right -> Left
+            // X, -, X, X // Diagonal
+            // X, X, -, X // Diagonal
+            // X, X, X, - // Left -> Right
+
+            // i ; will always be rows
+            // j ; will always be columns
+
+            Color playerColor = gameConfig.getPlayerColor();
+            Color AIColor = gameConfig.getPlayerTwoColor();
+
+            int vectorRows = gameBoard.getRows() - 1;       // 5
+            int vectorCols = gameBoard.getColumns() - 1;    // 6
+
+
+            // DIAGONAL CHECKS ==============================================================
+            // AI Win States
+            // Left -> Right, X, X, X, -
+            for (int i = 0; i < vectorRows - 3; i++)
+            {
+                for (int j = 0; j < vectorCols - 3; j++)
+                {
+                    if (gameBoard.getCell(i, j).getCellColor() == AIColor)
+                    {
+                        if (gameBoard.getCell(i + 1, j + 1).getCellColor() == AIColor &&
+                            gameBoard.getCell(i + 2, j + 2).getCellColor() == AIColor &&
+                            gameBoard.getCell(i + 3, j + 3).getClaimedStatus() == false)
+                        {
+                            // A possible diagonal win was found
+                            if (shouldDebug)
+                            {
+                                MessageBox.Show("A win would happen at " + (i + 3) + "," + (j + 3));
+                            }
+                            column = j + 3;
+                            return true;
+                        }
+                    }
+                }
+            }
+            // Left -> Right, X, X, -, X
+            for (int i = 0; i < vectorRows - 3; i++)
+            {
+                for (int j = 0; j < vectorCols - 3; j++)
+                {
+                    if (gameBoard.getCell(i, j).getCellColor() == AIColor)
+                    {
+                        if (gameBoard.getCell(i + 1, j + 1).getCellColor() == AIColor &&
+                            gameBoard.getCell(i + 2, j + 2).getClaimedStatus() == false &&
+                            gameBoard.getCell(i + 3, j + 3).getCellColor() == AIColor)
+                        {
+                            // A possible diagonal win was found
+                            if (shouldDebug)
+                            {
+                                MessageBox.Show("A win would happen at " + (i + 2) + "," + (j + 2));
+                            }
+                            column = j + 2;
+                            return true;
+                        }
+                    }
+                }
+            }
+            // Left -> Right, X, -, X, X
+            for (int i = 0; i < vectorRows - 3; i++)
+            {
+                for (int j = 0; j < vectorCols - 3; j++)
+                {
+                    if (gameBoard.getCell(i, j).getCellColor() == AIColor)
+                    {
+                        if (gameBoard.getCell(i + 1, j + 1).getClaimedStatus() == false &&
+                            gameBoard.getCell(i + 2, j + 2).getCellColor() == AIColor &&
+                            gameBoard.getCell(i + 3, j + 3).getCellColor() == AIColor)
+                        {
+                            // A possible diagonal win was found
+                            if (shouldDebug)
+                            {
+                                MessageBox.Show("A win would happen at " + (i + 1) + "," + (j + 1));
+                            }
+                            column = j + 1;
+                            return true;
+                        }
+                    }
+                }
+            }
+            // Right -> Left -, X, X, X
+            for (int i = 0; i < vectorRows - 3; i++)
+            {
+                for (int j = vectorCols; j > 3; j--)
+                {
+                    if (gameBoard.getCell(i, j).getCellColor() == AIColor)
+                    {
+                        if (gameBoard.getCell(i + 1, j - 1).getCellColor() == AIColor &&
+                            gameBoard.getCell(i + 2, j - 2).getCellColor() == AIColor &&
+                            gameBoard.getCell(i + 3, j - 3).getClaimedStatus() == false)
+                        {
+                            // A possible diagonal win was found
+                            if (shouldDebug)
+                            {
+                                MessageBox.Show("A win would happen at " + (i + 3) + "," + (j - 3));
+                            }
+                            column = j - 3;
+                            return true;
+                        }
+                    }
+                }
+            }
+            // Right -> Left X, -, X, X
+            for (int i = 0; i < vectorRows - 3; i++)
+            {
+                for (int j = vectorCols; j > 3; j--)
+                {
+                    if (gameBoard.getCell(i, j).getCellColor() == AIColor)
+                    {
+                        if (gameBoard.getCell(i + 1, j - 1).getCellColor() == AIColor &&
+                            gameBoard.getCell(i + 2, j - 2).getClaimedStatus() == false &&
+                            gameBoard.getCell(i + 3, j - 3).getCellColor() == AIColor)
+                        {
+                            // A possible diagonal win was found
+                            if (shouldDebug)
+                            {
+                                MessageBox.Show("A win would happen at " + (i + 2) + "," + (j - 2));
+                            }
+                            column = j - 2;
+                            return true;
+                        }
+                    }
+                }
+            }
+            // Right -> Left X, X, -, X
+            for (int i = 0; i < vectorRows - 3; i++)
+            {
+                for (int j = vectorCols; j > 3; j--)
+                {
+                    if (gameBoard.getCell(i, j).getCellColor() == AIColor)
+                    {
+                        if (gameBoard.getCell(i + 1, j - 1).getClaimedStatus() == false &&
+                            gameBoard.getCell(i + 2, j - 2).getCellColor() == AIColor &&
+                            gameBoard.getCell(i + 3, j - 3).getCellColor() == AIColor)
+                        {
+                            // A possible diagonal win was found
+                            if (shouldDebug)
+                            {
+                                MessageBox.Show("A win would happen at " + (i + 1) + "," + (j - 1));
+                            }
+                            column = j - 1;
+                            return true;
+                        }
+                    }
+                }
+            }
+            // END DIAGONAL CHECKS ==============================================================
+
+            // VERTICAL CHECKS ==================================================================
+            for (int j = 0; j < vectorCols; j++)
+            {
+                for (int i = 0; i < vectorRows - 3; i++)
+                {
+                    if (gameBoard.getCell(i, j).getCellColor() == AIColor)
+                    {
+                        if (gameBoard.getCell(i + 1, j).getCellColor() == AIColor &&
+                            gameBoard.getCell(i + 2, j).getCellColor() == AIColor &&
+                            gameBoard.getCell(i + 3, j).getClaimedStatus() == false)
+                        {
+                            if (shouldDebug)
+                            {
+                                MessageBox.Show("A win would happen at " + (i + 3) + "," + j);
+                            }
+                            column = j;
+                            return true;
+                        }
+                    }
+                }
+            }
+            // END VERTICAL CHECKS ==================================================================
+
+            // HORIZONTAL CHECKS =================================================================
+            // Left -> Right X, X, X, -
+            for (int i = 0; i < vectorRows; i++)
+            {
+                for (int j = 0; j < vectorCols - 3; j++)
+                {
+                    if (gameBoard.getCell(i, j).getCellColor() == AIColor)
+                    {
+                        if (gameBoard.getCell(i, j + 1).getCellColor() == AIColor &&
+                            gameBoard.getCell(i, j + 2).getCellColor() == AIColor &&
+                            gameBoard.getCell(i, j + 3).getClaimedStatus() == false)
+                        {
+                            if (shouldDebug)
+                            {
+                                MessageBox.Show("A win would happen at " + i + "," + (j + 3));
+                            }
+                            column = j + 3;
+                            return true;
+                        }
+                    }
+                }
+            }
+            // Left -> Right X, X, -, X
+            for (int i = 0; i < vectorRows; i++)
+            {
+                for (int j = 0; j < vectorCols - 3; j++)
+                {
+                    if (gameBoard.getCell(i, j).getCellColor() == AIColor)
+                    {
+                        if (gameBoard.getCell(i, j + 1).getCellColor() == AIColor &&
+                            gameBoard.getCell(i, j + 2).getClaimedStatus() == false &&
+                            gameBoard.getCell(i, j + 3).getCellColor() == AIColor)
+                        {
+                            if (shouldDebug)
+                            {
+                                MessageBox.Show("A win would happen at " + i + "," + (j + 2));
+                            }
+                            column = j + 2;
+                            return true;
+                        }
+                    }
+                }
+            }
+            // Left -> Right X, -, X, X
+            for (int i = 0; i < vectorRows; i++)
+            {
+                for (int j = 0; j < vectorCols - 3; j++)
+                {
+                    if (gameBoard.getCell(i, j).getCellColor() == AIColor)
+                    {
+                        if (gameBoard.getCell(i, j + 1).getClaimedStatus() == false &&
+                            gameBoard.getCell(i, j + 2).getCellColor() == AIColor &&
+                            gameBoard.getCell(i, j + 3).getCellColor() == AIColor)
+                        {
+                            if (shouldDebug)
+                            {
+                                MessageBox.Show("A win would happen at " + i + "," + (j + 1));
+                            }
+                            column = j + 1;
+                            return true;
+                        }
+                    }
+                }
+            }
+
+            // Right -> Left -, X, X, X
+            for (int i = 0; i < vectorRows; i++)
+            {
+                for (int j = vectorCols; j > 3; j--)
+                {
+                    if (gameBoard.getCell(i, j).getCellColor() == AIColor)
+                    {
+                        if (gameBoard.getCell(i, j - 1).getCellColor() == AIColor &&
+                            gameBoard.getCell(i, j - 2).getCellColor() == AIColor &&
+                            gameBoard.getCell(i, j - 3).getClaimedStatus() == false)
+                        {
+                            if (shouldDebug)
+                            {
+                                MessageBox.Show("A win would happen at " + i + "," + (j - 3));
+                            }
+                            column = j - 3;
+                            return true;
+                        }
+                    }
+                }
+            }
+
+            // Right -> Left X, -, X, X
+            for (int i = 0; i < vectorRows; i++)
+            {
+                for (int j = vectorCols; j > 3; j--)
+                {
+                    if (gameBoard.getCell(i, j).getCellColor() == AIColor)
+                    {
+                        if (gameBoard.getCell(i, j - 1).getCellColor() == AIColor &&
+                            gameBoard.getCell(i, j - 2).getClaimedStatus() == false &&
+                            gameBoard.getCell(i, j - 3).getCellColor() == AIColor)
+                        {
+                            if (shouldDebug)
+                            {
+                                MessageBox.Show("A win would happen at " + i + "," + (j - 2));
+                            }
+                            column = j - 2;
+                            return true;
+                        }
+                    }
+                }
+            }
+
+            // Right -> Left X, X, -, X
+            for (int i = 0; i < vectorRows; i++)
+            {
+                for (int j = vectorCols; j > 3; j--)
+                {
+                    if (gameBoard.getCell(i, j).getCellColor() == AIColor)
+                    {
+                        if (gameBoard.getCell(i, j - 1).getClaimedStatus() == false &&
+                            gameBoard.getCell(i, j - 2).getCellColor() == AIColor &&
+                            gameBoard.getCell(i, j - 3).getCellColor() == AIColor)
+                        {
+                            if (shouldDebug)
+                            {
+                                MessageBox.Show("A win would happen at " + i + "," + (j - 1));
+                            }
+                            column = j - 1;
+                            return true;
+                        }
+                    }
+                }
+            }
+            // END HORIZONTAL CHECKS ==================================================================
+
+
+            // DIAGONAL CHECKS ==============================================================
+            // Player Win States
+            // Left -> Right, X, X, X, -
+            for (int i = 0; i < vectorRows - 3; i++)
+            {
+                for (int j = 0; j < vectorCols - 3; j++)
+                {
+                    if (gameBoard.getCell(i,j).getCellColor() == playerColor)
+                    {
+                        if (gameBoard.getCell(i + 1, j + 1).getCellColor() == playerColor &&
+                            gameBoard.getCell(i + 2, j + 2).getCellColor() == playerColor &&
+                            gameBoard.getCell(i + 3, j + 3).getClaimedStatus() == false)
+                        {
+                            // A possible diagonal win was found
+                            if (shouldDebug)
+                            {
+                                MessageBox.Show("A win would happen at " + (i + 3) + "," + (j + 3));
+                            }
+                            column = j + 3;
+                            return true;
+                        }
+                    }
+                }
+            }
+            // Left -> Right, X, X, -, X
+            for (int i = 0; i < vectorRows - 3; i++)
+            {
+                for (int j = 0; j < vectorCols - 3; j++)
+                {
+                    if (gameBoard.getCell(i, j).getCellColor() == playerColor)
+                    {
+                        if (gameBoard.getCell(i + 1, j + 1).getCellColor() == playerColor &&
+                            gameBoard.getCell(i + 2, j + 2).getClaimedStatus() == false &&
+                            gameBoard.getCell(i + 3, j + 3).getCellColor() == playerColor)
+                        {
+                            // A possible diagonal win was found
+                            if (shouldDebug)
+                            {
+                                MessageBox.Show("A win would happen at " + (i + 2) + "," + (j + 2));
+                            }
+                            column = j + 2;
+                            return true;
+                        }
+                    }
+                }
+            }
+            // Left -> Right, X, -, X, X
+            for (int i = 0; i < vectorRows - 3; i++)
+            {
+                for (int j = 0; j < vectorCols - 3; j++)
+                {
+                    if (gameBoard.getCell(i, j).getCellColor() == playerColor)
+                    {
+                        if (gameBoard.getCell(i + 1, j + 1).getClaimedStatus() == false &&
+                            gameBoard.getCell(i + 2, j + 2).getCellColor() == playerColor &&
+                            gameBoard.getCell(i + 3, j + 3).getCellColor() == playerColor)
+                        {
+                            // A possible diagonal win was found
+                            if (shouldDebug)
+                            {
+                                MessageBox.Show("A win would happen at " + (i + 1) + "," + (j + 1));
+                            }
+                            column = j + 1;
+                            return true;
+                        }
+                    }
+                }
+            }
+            // Right -> Left -, X, X, X
+            for (int i = 0; i < vectorRows - 3; i++)
+            {
+                for (int j = vectorCols; j > 3; j--)
+                {
+                    if (gameBoard.getCell(i, j).getCellColor() == playerColor)
+                    {
+                        if (gameBoard.getCell(i + 1, j - 1).getCellColor() == playerColor &&
+                            gameBoard.getCell(i + 2, j - 2).getCellColor() == playerColor &&
+                            gameBoard.getCell(i + 3, j - 3).getClaimedStatus() == false)
+                        {
+                            // A possible diagonal win was found
+                            if (shouldDebug)
+                            {
+                                MessageBox.Show("A win would happen at " + (i + 3) + "," + (j - 3));
+                            }
+                            column = j - 3;
+                            return true;
+                        }
+                    }
+                }
+            }
+            // Right -> Left X, -, X, X
+            for (int i = 0; i < vectorRows - 3; i++)
+            {
+                for (int j = vectorCols; j > 3; j--)
+                {
+                    if (gameBoard.getCell(i, j).getCellColor() == playerColor)
+                    {
+                        if (gameBoard.getCell(i + 1, j - 1).getCellColor() == playerColor &&
+                            gameBoard.getCell(i + 2, j - 2).getClaimedStatus() == false &&
+                            gameBoard.getCell(i + 3, j - 3).getCellColor() == playerColor)
+                        {
+                            // A possible diagonal win was found
+                            if (shouldDebug)
+                            {
+                                MessageBox.Show("A win would happen at " + (i + 2) + "," + (j - 2));
+                            }
+                            column = j - 2;
+                            return true;
+                        }
+                    }
+                }
+            }
+            // Right -> Left X, X, -, X
+            for (int i = 0; i < vectorRows - 3; i++)
+            {
+                for (int j = vectorCols; j > 3; j--)
+                {
+                    if (gameBoard.getCell(i, j).getCellColor() == playerColor)
+                    {
+                        if (gameBoard.getCell(i + 1, j - 1).getClaimedStatus() == false &&
+                            gameBoard.getCell(i + 2, j - 2).getCellColor() == playerColor &&
+                            gameBoard.getCell(i + 3, j - 3).getCellColor() == playerColor)
+                        {
+                            // A possible diagonal win was found
+                            if (shouldDebug)
+                            {
+                                MessageBox.Show("A win would happen at " + (i + 1) + "," + (j - 1));
+                            }
+                            column = j - 1;
+                            return true;
+                        }
+                    }
+                }
+            }
+            // END DIAGONAL CHECKS ==============================================================
+
+            // VERTICAL CHECKS ==================================================================
+            for (int j = 0; j < vectorCols; j++)
+            {
+                for (int i = 0; i < vectorRows - 3; i++)
+                {
+                    if (gameBoard.getCell(i,j).getCellColor() == playerColor)
+                    {
+                        if (gameBoard.getCell(i + 1, j).getCellColor() == playerColor &&
+                            gameBoard.getCell(i + 2, j).getCellColor() == playerColor &&
+                            gameBoard.getCell(i + 3, j).getClaimedStatus() == false)
+                        {
+                            if (shouldDebug)
+                            {
+                                MessageBox.Show("A win would happen at " + (i + 3) + "," + j);
+                            }
+                            column = j;
+                            return true;
+                        }
+                    }
+                }
+            }
+            // END VERTICAL CHECKS ==================================================================
+
+            // HORIZONTAL CHECKS =================================================================
+            // Left -> Right X, X, X, -
+            for (int i = 0; i < vectorRows; i++)
+            {
+                for (int j = 0; j < vectorCols - 3; j++)
+                {
+                    if (gameBoard.getCell(i,j).getCellColor() == playerColor)
+                    {
+                        if (gameBoard.getCell(i,j + 1).getCellColor() == playerColor &&
+                            gameBoard.getCell(i, j + 2).getCellColor() == playerColor &&
+                            gameBoard.getCell(i, j + 3).getClaimedStatus() == false)
+                        {
+                            if (shouldDebug)
+                            {
+                                MessageBox.Show("A win would happen at " + i + "," + (j + 3));
+                            }
+                            column = j + 3;
+                            return true;
+                        }
+                    }
+                }
+            }
+            // Left -> Right X, X, -, X
+            for (int i = 0; i < vectorRows; i++)
+            {
+                for (int j = 0; j < vectorCols - 3; j++)
+                {
+                    if (gameBoard.getCell(i, j).getCellColor() == playerColor)
+                    {
+                        if (gameBoard.getCell(i, j + 1).getCellColor() == playerColor &&
+                            gameBoard.getCell(i, j + 2).getClaimedStatus() == false &&
+                            gameBoard.getCell(i, j + 3).getCellColor() == playerColor)
+                        {
+                            if (shouldDebug)
+                            {
+                                MessageBox.Show("A win would happen at " + i + "," + (j + 2));
+                            }
+                            column = j + 2;
+                            return true;
+                        }
+                    }
+                }
+            }
+            // Left -> Right X, -, X, X
+            for (int i = 0; i < vectorRows; i++)
+            {
+                for (int j = 0; j < vectorCols - 3; j++)
+                {
+                    if (gameBoard.getCell(i, j).getCellColor() == playerColor)
+                    {
+                        if (gameBoard.getCell(i, j + 1).getClaimedStatus() == false &&
+                            gameBoard.getCell(i, j + 2).getCellColor() == playerColor &&
+                            gameBoard.getCell(i, j + 3).getCellColor() == playerColor)
+                        {
+                            if (shouldDebug)
+                            {
+                                MessageBox.Show("A win would happen at " + i + "," + (j + 1));
+                            }
+                            column = j + 1;
+                            return true;
+                        }
+                    }
+                }
+            }
+
+            // Right -> Left -, X, X, X
+            for (int i = 0; i < vectorRows; i++)
+            {
+                for (int j = vectorCols; j > 3; j--)
+                {
+                    if (gameBoard.getCell(i, j).getCellColor() == playerColor)
+                    {
+                        if (gameBoard.getCell(i, j - 1).getCellColor() == playerColor &&
+                            gameBoard.getCell(i, j - 2).getCellColor() == playerColor &&
+                            gameBoard.getCell(i, j - 3).getClaimedStatus() == false)
+                        {
+                            if (shouldDebug)
+                            {
+                                MessageBox.Show("A win would happen at " + i + "," + (j - 3));
+                            }
+                            column = j - 3;
+                            return true;
+                        }
+                    }
+                }
+            }
+
+            // Right -> Left X, -, X, X
+            for (int i = 0; i < vectorRows; i++)
+            {
+                for (int j = vectorCols; j > 3; j--)
+                {
+                    if (gameBoard.getCell(i, j).getCellColor() == playerColor)
+                    {
+                        if (gameBoard.getCell(i, j - 1).getCellColor() == playerColor &&
+                            gameBoard.getCell(i, j - 2).getClaimedStatus() == false &&
+                            gameBoard.getCell(i, j - 3).getCellColor() == playerColor)
+                        {
+                            if (shouldDebug)
+                            {
+                                MessageBox.Show("A win would happen at " + i + "," + (j - 2));
+                            }
+                            column = j - 2;
+                            return true;
+                        }
+                    }
+                }
+            }
+
+            // Right -> Left X, X, -, X
+            for (int i = 0; i < vectorRows; i++)
+            {
+                for (int j = vectorCols; j > 3; j--)
+                {
+                    if (gameBoard.getCell(i, j).getCellColor() == playerColor)
+                    {
+                        if (gameBoard.getCell(i, j - 1).getClaimedStatus() == false &&
+                            gameBoard.getCell(i, j - 2).getCellColor() == playerColor &&
+                            gameBoard.getCell(i, j - 3).getCellColor() == playerColor)
+                        {
+                            if (shouldDebug)
+                            {
+                                MessageBox.Show("A win would happen at " + i + "," + (j - 1));
+                            }
+                            column = j - 1;
+                            return true;
+                        }
+                    }
+                }
+            }
+            // END HORIZONTAL CHECKS ==================================================================
 
             return false;
         }
