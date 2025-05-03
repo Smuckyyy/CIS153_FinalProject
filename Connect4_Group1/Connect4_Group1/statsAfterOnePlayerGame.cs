@@ -56,17 +56,20 @@ namespace Connect4_Group1
             if (winningPlayer == 1)
             {
                 // Human Won
-                lblSAOPG_winner.Text = "Human has won!";
+                lblSAOPG_winner.Text = "Player 1 has won!";
+                lblSAOPG_winner.ForeColor = Color.Gold;
             }
             else if (winningPlayer == 2)
             {
                 // AI Won
-                lblSAOPG_winner.Text = "AI has won!";
+                lblSAOPG_winner.Text = "Player 2 has won!";
+                lblSAOPG_winner.ForeColor = Color.Purple;
             }
             else if (winningPlayer == -1)
             {
                 // Tie
                 lblSAOPG_winner.Text = "Game was a tie!";
+                lblSAOPG_winner.ForeColor = Color.Black;
             }
         }
 

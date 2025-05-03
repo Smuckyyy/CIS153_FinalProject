@@ -178,14 +178,17 @@ namespace Connect4_Group1
             if (winner == 1)
             {
                 lblSATPG_winner.Text = "Player 1";
+                lblSATPG_winner.ForeColor = Color.Gold;
             }
             else if (winner == 2)
             {
                 lblSATPG_winner.Text = "Player 2";
+                lblSATPG_winner.ForeColor = Color.Purple;
             }
             else
             {
                 lblSATPG_winner.Text = "Game was a tie!";
+                lblSATPG_winner.ForeColor = Color.Black;
             }
         }
 
