@@ -38,6 +38,10 @@ namespace Connect4_Group1
             btnSATPG_again = new Button();
             btnSATPG_review = new Button();
             btnSATPG_exit = new Button();
+            pictureBox2 = new PictureBox();
+            pictureBox1 = new PictureBox();
+            ((ISupportInitialize)pictureBox2).BeginInit();
+            ((ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -57,7 +61,7 @@ namespace Connect4_Group1
             label2.AutoSize = true;
             label2.Font = new Font("Times New Roman", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.Black;
-            label2.Location = new Point(60, 59);
+            label2.Location = new Point(64, 111);
             label2.Name = "label2";
             label2.Size = new Size(76, 23);
             label2.TabIndex = 2;
@@ -68,7 +72,7 @@ namespace Connect4_Group1
             lblSATPG_winner.AutoSize = true;
             lblSATPG_winner.Font = new Font("Times New Roman", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblSATPG_winner.ForeColor = Color.Black;
-            lblSATPG_winner.Location = new Point(211, 59);
+            lblSATPG_winner.Location = new Point(215, 111);
             lblSATPG_winner.Name = "lblSATPG_winner";
             lblSATPG_winner.Size = new Size(107, 23);
             lblSATPG_winner.TabIndex = 3;
@@ -79,7 +83,7 @@ namespace Connect4_Group1
             btnSATPG_again.AutoSize = true;
             btnSATPG_again.BackColor = Color.Goldenrod;
             btnSATPG_again.Font = new Font("Algerian", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnSATPG_again.Location = new Point(145, 95);
+            btnSATPG_again.Location = new Point(146, 198);
             btnSATPG_again.Name = "btnSATPG_again";
             btnSATPG_again.Size = new Size(142, 44);
             btnSATPG_again.TabIndex = 4;
@@ -92,7 +96,7 @@ namespace Connect4_Group1
             btnSATPG_review.AutoSize = true;
             btnSATPG_review.BackColor = Color.Goldenrod;
             btnSATPG_review.Font = new Font("Algerian", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnSATPG_review.Location = new Point(121, 145);
+            btnSATPG_review.Location = new Point(122, 248);
             btnSATPG_review.Name = "btnSATPG_review";
             btnSATPG_review.Size = new Size(201, 44);
             btnSATPG_review.TabIndex = 5;
@@ -105,7 +109,7 @@ namespace Connect4_Group1
             btnSATPG_exit.AutoSize = true;
             btnSATPG_exit.BackColor = Color.Goldenrod;
             btnSATPG_exit.Font = new Font("Algerian", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnSATPG_exit.Location = new Point(179, 195);
+            btnSATPG_exit.Location = new Point(180, 298);
             btnSATPG_exit.Name = "btnSATPG_exit";
             btnSATPG_exit.Size = new Size(70, 44);
             btnSATPG_exit.TabIndex = 6;
@@ -113,10 +117,34 @@ namespace Connect4_Group1
             btnSATPG_exit.UseVisualStyleBackColor = false;
             btnSATPG_exit.Click += btnSATPG_exit_Click;
             // 
+            // pictureBox2
+            // 
+            pictureBox2.BackColor = Color.Transparent;
+            pictureBox2.Image = Properties.Resources.Sword_Border_2;
+            pictureBox2.Location = new Point(60, 53);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(315, 55);
+            pictureBox2.SizeMode = PictureBoxSizeMode.AutoSize;
+            pictureBox2.TabIndex = 10;
+            pictureBox2.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.BackColor = Color.Transparent;
+            pictureBox1.Image = Properties.Resources.Sword_Border_1;
+            pictureBox1.Location = new Point(60, 137);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(315, 55);
+            pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
+            pictureBox1.TabIndex = 11;
+            pictureBox1.TabStop = false;
+            // 
             // statsAfterTwoPlayerGame
             // 
             BackColor = Color.MediumSlateBlue;
-            ClientSize = new Size(426, 249);
+            ClientSize = new Size(426, 350);
+            Controls.Add(pictureBox1);
+            Controls.Add(pictureBox2);
             Controls.Add(btnSATPG_exit);
             Controls.Add(btnSATPG_review);
             Controls.Add(btnSATPG_again);
@@ -125,6 +153,8 @@ namespace Connect4_Group1
             Controls.Add(label1);
             Name = "statsAfterTwoPlayerGame";
             Text = "Two-Player Game Complete";
+            ((ISupportInitialize)pictureBox2).EndInit();
+            ((ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -134,6 +164,8 @@ namespace Connect4_Group1
         private Label lblSATPG_winner;
         private Button btnSATPG_again;
         private Button btnSATPG_review;
+        private PictureBox pictureBox2;
+        private PictureBox pictureBox1;
         private Button btnSATPG_exit;
 
         private void btnSATPG_exit_Click(object sender, EventArgs e)
