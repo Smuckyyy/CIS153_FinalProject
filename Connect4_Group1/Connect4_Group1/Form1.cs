@@ -36,7 +36,7 @@ namespace Connect4_Group1
             //Begin looping the music
             checkBoxMusic.Checked = false; // DISABLED 4-17-25 because I can no longer hear it over and over again
             musicHandler();
-            
+
         }
 
         //========================================
@@ -127,6 +127,11 @@ namespace Connect4_Group1
             {
                 player.Stop();
             }
+        }
+
+        private void checkBoxMusic_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
