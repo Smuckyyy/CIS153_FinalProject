@@ -72,11 +72,10 @@ namespace Connect4_Group1
         {
 
             // Use the constructor instead
-            gameConfig = new GameSettings(Color.Yellow, Color.Red, 1, true);
+            gameConfig = new GameSettings(Color.Gold, Color.Purple, 1, true);
 
             pictureBoxPlayerColor.BackColor = gameConfig.getColorOfCurrPlayer();
 
-            gameConfig.setPlayerColor(Color.Yellow);
             lblCurrentPlayer.Text = String.Format("Player {0,0} Turn", gameConfig.getCurrentPlayer());
         }
 

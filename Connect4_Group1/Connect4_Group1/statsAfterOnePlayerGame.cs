@@ -67,7 +67,6 @@ namespace Connect4_Group1
             {
                 // Tie
                 lblSAOPG_winner.Text = "Game was a tie!";
-                btnSAOPG_review.Visible = false;
             }
         }
 
