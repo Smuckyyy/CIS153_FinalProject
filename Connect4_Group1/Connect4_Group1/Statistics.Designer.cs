@@ -31,6 +31,10 @@
             lblStats = new Label();
             btnStats_exitProgram = new Button();
             statsBtn_menu = new Button();
+            pictureBox3 = new PictureBox();
+            pictureBox4 = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             SuspendLayout();
             // 
             // lblStats
@@ -73,17 +77,43 @@
             statsBtn_menu.UseVisualStyleBackColor = false;
             statsBtn_menu.Click += statsBtn_menu_Click;
             // 
+            // pictureBox3
+            // 
+            pictureBox3.BackColor = Color.Transparent;
+            pictureBox3.Image = Properties.Resources.Tiny_Castle_1;
+            pictureBox3.Location = new Point(12, 305);
+            pictureBox3.Name = "pictureBox3";
+            pictureBox3.Size = new Size(61, 75);
+            pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox3.TabIndex = 16;
+            pictureBox3.TabStop = false;
+            // 
+            // pictureBox4
+            // 
+            pictureBox4.BackColor = Color.Transparent;
+            pictureBox4.Image = Properties.Resources.Tiny_Castle_2;
+            pictureBox4.Location = new Point(257, 305);
+            pictureBox4.Name = "pictureBox4";
+            pictureBox4.Size = new Size(61, 75);
+            pictureBox4.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox4.TabIndex = 17;
+            pictureBox4.TabStop = false;
+            // 
             // Statistics
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.MediumSlateBlue;
-            ClientSize = new Size(292, 312);
+            ClientSize = new Size(330, 381);
+            Controls.Add(pictureBox4);
+            Controls.Add(pictureBox3);
             Controls.Add(statsBtn_menu);
             Controls.Add(btnStats_exitProgram);
             Controls.Add(lblStats);
             Name = "Statistics";
             Text = "Connect 4: Statistics";
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -93,5 +123,7 @@
         private Label lblStats;
         private Button btnStats_exitProgram;
         private Button statsBtn_menu;
+        private PictureBox pictureBox3;
+        private PictureBox pictureBox4;
     }
 }

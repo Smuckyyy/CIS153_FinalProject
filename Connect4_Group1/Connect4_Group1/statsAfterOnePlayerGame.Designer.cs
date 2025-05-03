@@ -36,6 +36,10 @@
             btnSAOPG_exit = new Button();
             label3 = new Label();
             sAOPG_stats = new Label();
+            pictureBox1 = new PictureBox();
+            pictureBox2 = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -54,7 +58,7 @@
             label2.AutoSize = true;
             label2.Font = new Font("Times New Roman", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.Black;
-            label2.Location = new Point(38, 69);
+            label2.Location = new Point(36, 115);
             label2.Name = "label2";
             label2.Size = new Size(76, 23);
             label2.TabIndex = 1;
@@ -65,7 +69,7 @@
             lblSAOPG_winner.AutoSize = true;
             lblSAOPG_winner.Font = new Font("Times New Roman", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblSAOPG_winner.ForeColor = Color.Black;
-            lblSAOPG_winner.Location = new Point(199, 69);
+            lblSAOPG_winner.Location = new Point(197, 115);
             lblSAOPG_winner.Name = "lblSAOPG_winner";
             lblSAOPG_winner.Size = new Size(107, 23);
             lblSAOPG_winner.TabIndex = 2;
@@ -76,7 +80,7 @@
             btnSAOPG_again.AutoSize = true;
             btnSAOPG_again.BackColor = Color.Goldenrod;
             btnSAOPG_again.Font = new Font("Algerian", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnSAOPG_again.Location = new Point(135, 242);
+            btnSAOPG_again.Location = new Point(133, 288);
             btnSAOPG_again.Name = "btnSAOPG_again";
             btnSAOPG_again.Size = new Size(142, 44);
             btnSAOPG_again.TabIndex = 3;
@@ -89,7 +93,7 @@
             btnSAOPG_review.AutoSize = true;
             btnSAOPG_review.BackColor = Color.Goldenrod;
             btnSAOPG_review.Font = new Font("Algerian", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnSAOPG_review.Location = new Point(109, 292);
+            btnSAOPG_review.Location = new Point(107, 338);
             btnSAOPG_review.Name = "btnSAOPG_review";
             btnSAOPG_review.Size = new Size(201, 44);
             btnSAOPG_review.TabIndex = 4;
@@ -102,7 +106,7 @@
             btnSAOPG_exit.AutoSize = true;
             btnSAOPG_exit.BackColor = Color.Goldenrod;
             btnSAOPG_exit.Font = new Font("Algerian", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnSAOPG_exit.Location = new Point(105, 340);
+            btnSAOPG_exit.Location = new Point(103, 386);
             btnSAOPG_exit.Name = "btnSAOPG_exit";
             btnSAOPG_exit.Size = new Size(210, 44);
             btnSAOPG_exit.TabIndex = 5;
@@ -115,7 +119,7 @@
             label3.AutoSize = true;
             label3.Font = new Font("Times New Roman", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.Black;
-            label3.Location = new Point(38, 92);
+            label3.Location = new Point(36, 138);
             label3.Name = "label3";
             label3.Size = new Size(56, 23);
             label3.TabIndex = 6;
@@ -126,18 +130,43 @@
             sAOPG_stats.AutoSize = true;
             sAOPG_stats.Font = new Font("Times New Roman", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             sAOPG_stats.ForeColor = Color.Black;
-            sAOPG_stats.Location = new Point(170, 92);
+            sAOPG_stats.Location = new Point(168, 138);
             sAOPG_stats.Name = "sAOPG_stats";
             sAOPG_stats.Size = new Size(87, 23);
             sAOPG_stats.TabIndex = 7;
             sAOPG_stats.Text = "stats here";
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.BackColor = Color.Transparent;
+            pictureBox1.Image = Properties.Resources.Sword_Border_1;
+            pictureBox1.Location = new Point(49, 53);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(315, 55);
+            pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
+            pictureBox1.TabIndex = 8;
+            pictureBox1.TabStop = false;
+            pictureBox1.Click += pictureBox1_Click;
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.BackColor = Color.Transparent;
+            pictureBox2.Image = Properties.Resources.Sword_Border_2;
+            pictureBox2.Location = new Point(49, 227);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(315, 55);
+            pictureBox2.SizeMode = PictureBoxSizeMode.AutoSize;
+            pictureBox2.TabIndex = 9;
+            pictureBox2.TabStop = false;
             // 
             // statsAfterOnePlayerGame
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.MediumSlateBlue;
-            ClientSize = new Size(400, 396);
+            ClientSize = new Size(400, 444);
+            Controls.Add(pictureBox2);
+            Controls.Add(pictureBox1);
             Controls.Add(sAOPG_stats);
             Controls.Add(label3);
             Controls.Add(btnSAOPG_exit);
@@ -148,6 +177,8 @@
             Controls.Add(label1);
             Name = "statsAfterOnePlayerGame";
             Text = "Connect 4: Single-Player Game Complete";
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -162,5 +193,7 @@
         private Button btnSAOPG_exit;
         private Label label3;
         private Label sAOPG_stats;
+        private PictureBox pictureBox1;
+        private PictureBox pictureBox2;
     }
 }

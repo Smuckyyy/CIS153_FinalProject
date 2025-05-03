@@ -726,7 +726,7 @@
             // sing_5a
             // 
             sing_5a.BackColor = Color.White;
-            sing_5a.Location = new Point(211, 370);
+            sing_5a.Location = new Point(209, 370);
             sing_5a.Name = "sing_5a";
             sing_5a.Size = new Size(50, 57);
             sing_5a.TabIndex = 66;

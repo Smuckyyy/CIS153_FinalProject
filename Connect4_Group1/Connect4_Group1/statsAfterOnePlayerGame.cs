@@ -21,7 +21,7 @@ namespace Connect4_Group1
         {
             InitializeComponent();
         }
-        
+
         //Pass a data object for displaying the statistics - Cecil
         public statsAfterOnePlayerGame(int p_winningPlayer, Color winningPlayerColor, Singleplayer p_spForm, Data p_data)
         {
@@ -86,6 +86,11 @@ namespace Connect4_Group1
         private void btnSAOPG_again_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
