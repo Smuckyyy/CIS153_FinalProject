@@ -98,6 +98,7 @@
             doubleBtn_Exit = new Button();
             btn_mainMenu = new Button();
             timer_display_winner = new System.Windows.Forms.Timer(components);
+            pictureBox16 = new PictureBox();
             pictureBox1 = new PictureBox();
             pictureBox2 = new PictureBox();
             pictureBox3 = new PictureBox();
@@ -171,6 +172,7 @@
             ((System.ComponentModel.ISupportInitialize)doubPic_1f).BeginInit();
             ((System.ComponentModel.ISupportInitialize)doubPic_1g).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBoxPlayerColor).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox16).BeginInit();
             SuspendLayout();
             // 
             // pictureBox1
@@ -854,7 +856,7 @@
             // doubleBtn_Exit
             // 
             doubleBtn_Exit.BackColor = Color.Goldenrod;
-            doubleBtn_Exit.Font = new Font("Vivian", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            doubleBtn_Exit.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             doubleBtn_Exit.ForeColor = Color.Black;
             doubleBtn_Exit.Location = new Point(523, 12);
             doubleBtn_Exit.Name = "doubleBtn_Exit";
@@ -867,7 +869,7 @@
             // btn_mainMenu
             // 
             btn_mainMenu.BackColor = Color.Goldenrod;
-            btn_mainMenu.Font = new Font("Vivian", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btn_mainMenu.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btn_mainMenu.ForeColor = Color.Black;
             btn_mainMenu.Location = new Point(523, 71);
             btn_mainMenu.Name = "btn_mainMenu";
@@ -882,12 +884,24 @@
             timer_display_winner.Interval = 500;
             timer_display_winner.Tick += timer_display_winner_Tick;
             // 
+            // pictureBox16
+            // 
+            pictureBox16.BackColor = Color.Transparent;
+            pictureBox16.Image = Properties.Resources.Tiny_Castle_2;
+            pictureBox16.Location = new Point(-1, 447);
+            pictureBox16.Name = "pictureBox16";
+            pictureBox16.Size = new Size(112, 135);
+            pictureBox16.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox16.TabIndex = 84;
+            pictureBox16.TabStop = false;
+            // 
             // Twoplayer
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.MediumSlateBlue;
             ClientSize = new Size(630, 582);
+            Controls.Add(pictureBox16);
             Controls.Add(btn_mainMenu);
             Controls.Add(doubleBtn_Exit);
             Controls.Add(lblCurrentPlayer);
@@ -1017,6 +1031,7 @@
             ((System.ComponentModel.ISupportInitialize)doubPic_1f).EndInit();
             ((System.ComponentModel.ISupportInitialize)doubPic_1g).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBoxPlayerColor).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox16).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -1077,5 +1092,6 @@
         private Button doubleBtn_Exit;
         private Button btn_mainMenu;
         private System.Windows.Forms.Timer timer_display_winner;
+        private PictureBox pictureBox16;
     }
 }
