@@ -42,7 +42,7 @@ namespace Connect4_Group1
 
         // ENABLE/DISABLE THIS FOR DEBUGGING PROMPTS
         const bool shouldDebug = false;
-        const bool shouldEnableAI = false; // Enable or Disable if you want the AI to actually place a piece
+        const bool shouldEnableAI = true; // Enable or Disable if you want the AI to actually place a piece
         const bool enableRandomAI = false;
         //=========================================
 
@@ -80,7 +80,7 @@ namespace Connect4_Group1
         private void setupGameSettings()
         {
             // We can change to any piece color by changing these values
-            gameConfig = new GameSettings(Color.Yellow, Color.Red, 1, true);
+            gameConfig = new GameSettings(Color.Gold, Color.Purple, 1, true);
 
             sing_lblCurrentPlayer.Text = string.Format("Player {0,0} Turn", gameConfig.getCurrentPlayer());
             sing_pictureBoxPlayerColor.BackColor = gameConfig.getColorOfCurrPlayer();
@@ -604,19 +604,28 @@ namespace Connect4_Group1
 
         private void AI_MoveV3()
         {
-            int col = -1;
-
-            AICheckWinStates(ref col);
-
-            if (col > 0)
+            if (shouldEnableAI)
             {
-                makeMove(col);
-            }
-            else
-            {
-                verySimpleAIStrat();
-            }
+                int col = -1;
 
+                AICheckWinStates(ref col);
+
+                if (col > 0)
+                {
+                    makeMove(col);
+                }
+                else
+                {
+                    if (enableRandomAI)
+                    {
+                        makeMove(getRandomNumber());
+                    }
+                    else
+                    {
+                        verySimpleAIStrat();
+                    }
+                }
+            }
         }
 
         private void makeMove(int col)
@@ -857,7 +866,8 @@ namespace Connect4_Group1
                     {
                         if (gameBoard.getCell(i + 1, j + 1).getCellColor() == AIColor &&
                             gameBoard.getCell(i + 2, j + 2).getCellColor() == AIColor &&
-                            gameBoard.getCell(i + 3, j + 3).getClaimedStatus() == false)
+                            gameBoard.getCell(i + 3, j + 3).getClaimedStatus() == false &&
+                            gameBoard.getCell(i + 2, j + 3).getClaimedStatus() == true)
                         {
                             // A possible diagonal win was found
                             if (shouldDebug)
@@ -879,7 +889,8 @@ namespace Connect4_Group1
                     {
                         if (gameBoard.getCell(i + 1, j + 1).getCellColor() == AIColor &&
                             gameBoard.getCell(i + 2, j + 2).getClaimedStatus() == false &&
-                            gameBoard.getCell(i + 3, j + 3).getCellColor() == AIColor)
+                            gameBoard.getCell(i + 3, j + 3).getCellColor() == AIColor &&
+                            gameBoard.getCell(i + 1, j + 2).getClaimedStatus() == true)
                         {
                             // A possible diagonal win was found
                             if (shouldDebug)
@@ -901,7 +912,8 @@ namespace Connect4_Group1
                     {
                         if (gameBoard.getCell(i + 1, j + 1).getClaimedStatus() == false &&
                             gameBoard.getCell(i + 2, j + 2).getCellColor() == AIColor &&
-                            gameBoard.getCell(i + 3, j + 3).getCellColor() == AIColor)
+                            gameBoard.getCell(i + 3, j + 3).getCellColor() == AIColor &&
+                            gameBoard.getCell(i, j + 1).getClaimedStatus() == true)
                         {
                             // A possible diagonal win was found
                             if (shouldDebug)
@@ -923,7 +935,8 @@ namespace Connect4_Group1
                     {
                         if (gameBoard.getCell(i + 1, j - 1).getCellColor() == AIColor &&
                             gameBoard.getCell(i + 2, j - 2).getCellColor() == AIColor &&
-                            gameBoard.getCell(i + 3, j - 3).getClaimedStatus() == false)
+                            gameBoard.getCell(i + 3, j - 3).getClaimedStatus() == false &&
+                            gameBoard.getCell(i + 2, j - 3).getClaimedStatus() == true)
                         {
                             // A possible diagonal win was found
                             if (shouldDebug)
@@ -945,7 +958,8 @@ namespace Connect4_Group1
                     {
                         if (gameBoard.getCell(i + 1, j - 1).getCellColor() == AIColor &&
                             gameBoard.getCell(i + 2, j - 2).getClaimedStatus() == false &&
-                            gameBoard.getCell(i + 3, j - 3).getCellColor() == AIColor)
+                            gameBoard.getCell(i + 3, j - 3).getCellColor() == AIColor &&
+                            gameBoard.getCell(i + 1, j - 2).getClaimedStatus() == true)
                         {
                             // A possible diagonal win was found
                             if (shouldDebug)
@@ -967,7 +981,8 @@ namespace Connect4_Group1
                     {
                         if (gameBoard.getCell(i + 1, j - 1).getClaimedStatus() == false &&
                             gameBoard.getCell(i + 2, j - 2).getCellColor() == AIColor &&
-                            gameBoard.getCell(i + 3, j - 3).getCellColor() == AIColor)
+                            gameBoard.getCell(i + 3, j - 3).getCellColor() == AIColor &&
+                            gameBoard.getCell(i, j - 1).getClaimedStatus() == true)
                         {
                             // A possible diagonal win was found
                             if (shouldDebug)
@@ -1145,11 +1160,12 @@ namespace Connect4_Group1
             {
                 for (int j = 0; j < vectorCols - 3; j++)
                 {
-                    if (gameBoard.getCell(i,j).getCellColor() == playerColor)
+                    if (gameBoard.getCell(i, j).getCellColor() == playerColor)
                     {
                         if (gameBoard.getCell(i + 1, j + 1).getCellColor() == playerColor &&
                             gameBoard.getCell(i + 2, j + 2).getCellColor() == playerColor &&
-                            gameBoard.getCell(i + 3, j + 3).getClaimedStatus() == false)
+                            gameBoard.getCell(i + 3, j + 3).getClaimedStatus() == false &&
+                            gameBoard.getCell(i + 2, j + 3).getClaimedStatus() == true)
                         {
                             // A possible diagonal win was found
                             if (shouldDebug)
@@ -1171,7 +1187,8 @@ namespace Connect4_Group1
                     {
                         if (gameBoard.getCell(i + 1, j + 1).getCellColor() == playerColor &&
                             gameBoard.getCell(i + 2, j + 2).getClaimedStatus() == false &&
-                            gameBoard.getCell(i + 3, j + 3).getCellColor() == playerColor)
+                            gameBoard.getCell(i + 3, j + 3).getCellColor() == playerColor &&
+                            gameBoard.getCell(i + 1, j + 2).getClaimedStatus() == true)
                         {
                             // A possible diagonal win was found
                             if (shouldDebug)
@@ -1193,7 +1210,8 @@ namespace Connect4_Group1
                     {
                         if (gameBoard.getCell(i + 1, j + 1).getClaimedStatus() == false &&
                             gameBoard.getCell(i + 2, j + 2).getCellColor() == playerColor &&
-                            gameBoard.getCell(i + 3, j + 3).getCellColor() == playerColor)
+                            gameBoard.getCell(i + 3, j + 3).getCellColor() == playerColor &&
+                            gameBoard.getCell(i, j + 1).getClaimedStatus() == true)
                         {
                             // A possible diagonal win was found
                             if (shouldDebug)
@@ -1215,7 +1233,8 @@ namespace Connect4_Group1
                     {
                         if (gameBoard.getCell(i + 1, j - 1).getCellColor() == playerColor &&
                             gameBoard.getCell(i + 2, j - 2).getCellColor() == playerColor &&
-                            gameBoard.getCell(i + 3, j - 3).getClaimedStatus() == false)
+                            gameBoard.getCell(i + 3, j - 3).getClaimedStatus() == false &&
+                            gameBoard.getCell(i + 2, j - 3).getClaimedStatus() == true)
                         {
                             // A possible diagonal win was found
                             if (shouldDebug)
@@ -1237,7 +1256,8 @@ namespace Connect4_Group1
                     {
                         if (gameBoard.getCell(i + 1, j - 1).getCellColor() == playerColor &&
                             gameBoard.getCell(i + 2, j - 2).getClaimedStatus() == false &&
-                            gameBoard.getCell(i + 3, j - 3).getCellColor() == playerColor)
+                            gameBoard.getCell(i + 3, j - 3).getCellColor() == playerColor &&
+                            gameBoard.getCell(i + 1, j - 2).getClaimedStatus() == true)
                         {
                             // A possible diagonal win was found
                             if (shouldDebug)
@@ -1259,7 +1279,8 @@ namespace Connect4_Group1
                     {
                         if (gameBoard.getCell(i + 1, j - 1).getClaimedStatus() == false &&
                             gameBoard.getCell(i + 2, j - 2).getCellColor() == playerColor &&
-                            gameBoard.getCell(i + 3, j - 3).getCellColor() == playerColor)
+                            gameBoard.getCell(i + 3, j - 3).getCellColor() == playerColor &&
+                            gameBoard.getCell(i, j - 1).getClaimedStatus() == true)
                         {
                             // A possible diagonal win was found
                             if (shouldDebug)
@@ -1279,7 +1300,7 @@ namespace Connect4_Group1
             {
                 for (int i = 0; i < vectorRows - 3; i++)
                 {
-                    if (gameBoard.getCell(i,j).getCellColor() == playerColor)
+                    if (gameBoard.getCell(i, j).getCellColor() == playerColor)
                     {
                         if (gameBoard.getCell(i + 1, j).getCellColor() == playerColor &&
                             gameBoard.getCell(i + 2, j).getCellColor() == playerColor &&
@@ -1303,9 +1324,9 @@ namespace Connect4_Group1
             {
                 for (int j = 0; j < vectorCols - 3; j++)
                 {
-                    if (gameBoard.getCell(i,j).getCellColor() == playerColor)
+                    if (gameBoard.getCell(i, j).getCellColor() == playerColor)
                     {
-                        if (gameBoard.getCell(i,j + 1).getCellColor() == playerColor &&
+                        if (gameBoard.getCell(i, j + 1).getCellColor() == playerColor &&
                             gameBoard.getCell(i, j + 2).getCellColor() == playerColor &&
                             gameBoard.getCell(i, j + 3).getClaimedStatus() == false)
                         {
