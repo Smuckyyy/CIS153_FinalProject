@@ -311,7 +311,7 @@
             // singleBtn_Exit
             // 
             singleBtn_Exit.BackColor = Color.Goldenrod;
-            singleBtn_Exit.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            singleBtn_Exit.Font = new Font("Vivian", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             singleBtn_Exit.ForeColor = Color.Black;
             singleBtn_Exit.Location = new Point(630, 12);
             singleBtn_Exit.Name = "singleBtn_Exit";
@@ -868,7 +868,7 @@
             // btn_mainMenu
             // 
             btn_mainMenu.BackColor = Color.Goldenrod;
-            btn_mainMenu.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btn_mainMenu.Font = new Font("Vivian", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btn_mainMenu.ForeColor = Color.Black;
             btn_mainMenu.Location = new Point(630, 66);
             btn_mainMenu.Name = "btn_mainMenu";
