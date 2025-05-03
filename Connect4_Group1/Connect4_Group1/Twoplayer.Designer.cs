@@ -745,78 +745,90 @@
             // 
             // btnCol2
             // 
+            btnCol2.BackColor = Color.Goldenrod;
+            btnCol2.Font = new Font("Times New Roman", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnCol2.Location = new Point(182, 493);
             btnCol2.Name = "btnCol2";
             btnCol2.Size = new Size(50, 35);
             btnCol2.TabIndex = 16;
             btnCol2.Tag = "btnColumn";
             btnCol2.Text = "Insert";
-            btnCol2.UseVisualStyleBackColor = true;
+            btnCol2.UseVisualStyleBackColor = false;
             btnCol2.Click += button_click_handler;
             btnCol2.MouseEnter += btnCol_MouseEnter;
             btnCol2.MouseLeave += btnCol_MouseLeave;
             // 
             // btnCol3
             // 
+            btnCol3.BackColor = Color.Goldenrod;
+            btnCol3.Font = new Font("Times New Roman", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnCol3.Location = new Point(237, 493);
             btnCol3.Name = "btnCol3";
             btnCol3.Size = new Size(50, 35);
             btnCol3.TabIndex = 16;
             btnCol3.Tag = "btnColumn";
             btnCol3.Text = "Insert";
-            btnCol3.UseVisualStyleBackColor = true;
+            btnCol3.UseVisualStyleBackColor = false;
             btnCol3.Click += button_click_handler;
             btnCol3.MouseEnter += btnCol_MouseEnter;
             btnCol3.MouseLeave += btnCol_MouseLeave;
             // 
             // btnCol4
             // 
+            btnCol4.BackColor = Color.Goldenrod;
+            btnCol4.Font = new Font("Times New Roman", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnCol4.Location = new Point(292, 493);
             btnCol4.Name = "btnCol4";
             btnCol4.Size = new Size(50, 35);
             btnCol4.TabIndex = 16;
             btnCol4.Tag = "btnColumn";
             btnCol4.Text = "Insert";
-            btnCol4.UseVisualStyleBackColor = true;
+            btnCol4.UseVisualStyleBackColor = false;
             btnCol4.Click += button_click_handler;
             btnCol4.MouseEnter += btnCol_MouseEnter;
             btnCol4.MouseLeave += btnCol_MouseLeave;
             // 
             // btnCol5
             // 
+            btnCol5.BackColor = Color.Goldenrod;
+            btnCol5.Font = new Font("Times New Roman", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnCol5.Location = new Point(347, 493);
             btnCol5.Name = "btnCol5";
             btnCol5.Size = new Size(50, 35);
             btnCol5.TabIndex = 16;
             btnCol5.Tag = "btnColumn";
             btnCol5.Text = "Insert";
-            btnCol5.UseVisualStyleBackColor = true;
+            btnCol5.UseVisualStyleBackColor = false;
             btnCol5.Click += button_click_handler;
             btnCol5.MouseEnter += btnCol_MouseEnter;
             btnCol5.MouseLeave += btnCol_MouseLeave;
             // 
             // btnCol6
             // 
+            btnCol6.BackColor = Color.Goldenrod;
+            btnCol6.Font = new Font("Times New Roman", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnCol6.Location = new Point(402, 493);
             btnCol6.Name = "btnCol6";
             btnCol6.Size = new Size(50, 35);
             btnCol6.TabIndex = 16;
             btnCol6.Tag = "btnColumn";
             btnCol6.Text = "Insert";
-            btnCol6.UseVisualStyleBackColor = true;
+            btnCol6.UseVisualStyleBackColor = false;
             btnCol6.Click += button_click_handler;
             btnCol6.MouseEnter += btnCol_MouseEnter;
             btnCol6.MouseLeave += btnCol_MouseLeave;
             // 
             // btnCol7
             // 
+            btnCol7.BackColor = Color.Goldenrod;
+            btnCol7.Font = new Font("Times New Roman", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnCol7.Location = new Point(457, 493);
             btnCol7.Name = "btnCol7";
             btnCol7.Size = new Size(50, 35);
             btnCol7.TabIndex = 16;
             btnCol7.Tag = "btnColumn";
             btnCol7.Text = "Insert";
-            btnCol7.UseVisualStyleBackColor = true;
+            btnCol7.UseVisualStyleBackColor = false;
             btnCol7.Click += button_click_handler;
             btnCol7.MouseEnter += btnCol_MouseEnter;
             btnCol7.MouseLeave += btnCol_MouseLeave;
@@ -832,15 +844,16 @@
             // lblCurrentPlayer
             // 
             lblCurrentPlayer.AutoSize = true;
+            lblCurrentPlayer.Font = new Font("Times New Roman", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblCurrentPlayer.Location = new Point(537, 513);
             lblCurrentPlayer.Name = "lblCurrentPlayer";
-            lblCurrentPlayer.Size = new Size(83, 15);
+            lblCurrentPlayer.Size = new Size(81, 15);
             lblCurrentPlayer.TabIndex = 18;
             lblCurrentPlayer.Text = "Player 1's Turn";
             // 
             // doubleBtn_Exit
             // 
-            doubleBtn_Exit.BackColor = Color.Silver;
+            doubleBtn_Exit.BackColor = Color.Goldenrod;
             doubleBtn_Exit.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             doubleBtn_Exit.ForeColor = Color.MediumBlue;
             doubleBtn_Exit.Location = new Point(523, 12);
@@ -853,7 +866,7 @@
             // 
             // btn_mainMenu
             // 
-            btn_mainMenu.BackColor = Color.Silver;
+            btn_mainMenu.BackColor = Color.Goldenrod;
             btn_mainMenu.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btn_mainMenu.ForeColor = Color.MediumBlue;
             btn_mainMenu.Location = new Point(523, 71);
