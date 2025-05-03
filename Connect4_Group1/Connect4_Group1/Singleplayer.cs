@@ -41,7 +41,7 @@ namespace Connect4_Group1
         int displayCycles = weDefineCycleHere;
 
         // ENABLE/DISABLE THIS FOR DEBUGGING PROMPTS
-        const bool shouldDebug = true;
+        const bool shouldDebug = false;
         const bool shouldEnableAI = true; // Enable or Disable if you want the AI to actually place a piece
         //=========================================
 
