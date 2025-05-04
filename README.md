@@ -5,16 +5,16 @@ Made by: Marcus Rollins, Matt Wishman, and Cecil Younglove
 
 # Program Description
 
-In this version of Connect 4, we have 4 Main Forms:  
--Main Form: This is the games main menu. It features the title, a music feature, and 4 buttons that lead to the other forms listed below.  
+Our version of Connect 4 includes four Main Forms:  
+-Main Form: This is the games main menu. It features the title, background music, and four buttons that lead to the other forms listed below.  
 -Singleplayer Form  
 -Two-Player Form  
 -Statistics Form  
--Exit button: The exit button is on every single form that the user enters. It full exits the entire program, no matter how far in they are. 
+-Exit button: The exit button is on every single form that the user enters. It fully exits the program. 
   
 # Singleplayer and Two-Player Gamemodes
 
-In these two forms no matter which one the player chooses, it displays a Board with 7 (width) x 6 (height) Cells. There is an exit button and main menu button in the top right. When the user clicks the main menu button during a game, it displays to them a warning message saying that if they do return to the main menu, the game will not be saved.  
+In both forms, it displays a gameboard with 7 (width) x 6 (height). There is an exit button and main menu button in the top right corner. When the user clicks the main menu button during a game, it displays a warning message saying that if they do return to the main menu, the game will not be saved.  
 
 Below each Cell is an "Insert" button, where the player(s) can insert their piece. If the player(s) hover over a column, it will show where the piece will go after they hit "Insert" button.  
 
@@ -54,7 +54,12 @@ In the Statistics form, it shows some of the same stats as stated above, just in
 
 # Code Information  
 
-Our Connect 4 game includes 4 classes: Board (contains all Getters and Setters for the Board), Cell (contains all Getters and Setters for each Cell and colors), Data (for persistant game data), and Game Settings (holds all settings that allow the game to be played and ran).  
+Our version of Connect 4 includes four main classes:
+
+-Board: Handles all getters and setters for the game board.  
+-Cell: Manages getters, setters, and color information for each cell.  
+-Data: Stores persistent game data.  
+-GameSettings: Contains all configurable settings needed to run the game.   
 
 
 Thank you for playing our Game!
