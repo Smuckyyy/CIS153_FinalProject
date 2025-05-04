@@ -62,7 +62,7 @@ namespace Connect4_Group1
             else if (winningPlayer == 2)
             {
                 // AI Won
-                lblSAOPG_winner.Text = "Player 2 has won!";
+                lblSAOPG_winner.Text = "AI has won!";
                 lblSAOPG_winner.ForeColor = Color.Purple;
             }
             else if (winningPlayer == -1)
