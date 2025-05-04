@@ -54,7 +54,7 @@ In the Statistics form, it shows some of the same stats as stated above, just in
 
 # Code Information  
 
-Our Connect 4 game includes 3 classes: Board (contains all Getters and Setters for the Board), Cell (contains all Getters and Setters for each Cell and colors), and Data (for starting the game settings and statistics).  
+Our Connect 4 game includes 4 classes: Board (contains all Getters and Setters for the Board), Cell (contains all Getters and Setters for each Cell and colors), Data (for persistant game data), and Game Settings (holds all settings that allow the game to be played and ran).  
 
 
 Thank you for playing our Game!
