@@ -1,6 +1,9 @@
+//==================================================================================
 //Names         :   Marcus Rollins, Matthew Wishman, Cecil Younglove
 //Date          :   April 8th, 2025
-//Description   :   Connect 4 program that can support a game between a single player and an AI or a game between two players, while allowing users to view game statistics
+//Description   :   Connect 4 program that can support a game between a single player and an AI or a game between two players,
+//                  while allowing users to view game statistics
+//==================================================================================
 using System.Media;
 using System.Resources;
 using static Connect4_Group1.Data;
@@ -34,7 +37,7 @@ namespace Connect4_Group1
             }
 
             //Begin looping the music
-            checkBoxMusic.Checked = false; // DISABLED 4-17-25 because I can no longer hear it over and over again
+            checkBoxMusic.Checked = false; //Change this to true for the music to loop automatically once the program is opened
             musicHandler();
 
         }

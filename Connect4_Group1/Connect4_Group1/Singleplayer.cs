@@ -23,11 +23,6 @@ namespace Connect4_Group1
         Data c_data;
         PictureBox[] picBoxWinners;
 
-        // Major issue right now is the way the AI would know what buttons it can click
-        // Right now it just uses a int counter to see how many buttons are available. The issue with this is
-        // When the counter decrements it will no longer click buttons 6 or 7.
-        // Possibly Fixed (4-21-2025) ~ Matt
-
 
         // This holds how many time a button has been click.
         // Could be used to dictate if the game should end or
@@ -530,8 +525,6 @@ namespace Connect4_Group1
             int row = -1;
             int col = -1;
 
-            // Lets organize this so it checks Diagonal first then Vertical, then Horizontal
-
             if (willAIWin("diagonal", ref row, ref col))
             {
                 if (shouldDebug)
@@ -630,7 +623,7 @@ namespace Connect4_Group1
 
         private void makeMove(int col)
         {
-            // Cols go from 0 - 6 (Which is 7 total
+            // Cols go from 0 - 6 (Which is 7 total)
             if (buttonClick[col] != 6)
             {
                 btnList[col].PerformClick();
@@ -695,8 +688,7 @@ namespace Connect4_Group1
             int rows = gameBoard.getRows();
             int cols = gameBoard.getColumns();
 
-            // We should check if the AI could win first THEN check if the player would win
-            //Smuck Code: Added a switch case for directional checks
+            //Marcus Code: Added a switch case for directional checks
             switch (direction)
             {
                 case "horizontal":
@@ -1453,7 +1445,7 @@ namespace Connect4_Group1
             return false;
         }
 
-        //Smuck Code
+        //Marcus Code
         //This function is the exact same as willPlayerWin, but changes the color to red for the AI.
         //This is shown in the AI_MoveV2 code, to check if it can win first.
         private bool willAIWin(string direction, ref int lastOpenRow, ref int lastOpenCol)
